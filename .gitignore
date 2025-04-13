@@ -1,0 +1,14 @@
+# General
+*.log
+.idea/
+vendor/
+node_modules/
+.env
+
+# Backend
+backend/target/
+backend/*.iml
+
+# Frontend
+frontend/storage/logs/*
+frontend/public/build/
