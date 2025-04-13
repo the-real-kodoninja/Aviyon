@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviyon - Cyberpunk Coding Platform</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Aviyon</title>
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #1A1A1A;
+            color: #E6E6FA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .text-center { text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: bold; color: #D400D4; }
+        p { margin-top: 1rem; color: #00F7FF; }
+        a { color: #A100A1; margin: 1.5rem; }
+        a:hover { color: #D400D4; }
+    </style>
 </head>
-<body class="bg-cyber-dark font-sans">
-    <nav class="p-6 border-b border-cyber-purple">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-mono text-cyber-neon">Aviyon</h1>
-            <ul class="flex space-x-6">
-                <li><a href="/ide" class="nav-link">IDE</a></li>
-                <li><a href="/deploy" class="nav-link">Deploy</a></li>
-                <li><a href="/host" class="nav-link">Host</a></li>
-                <li><a href="/login" class="nav-link">Login</a></li>
-                <li><a href="/signup" class="button">Signup</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container mx-auto p-6 text-center">
-        <h2 class="text-5xl font-mono text-cyber-cyan mb-4">Code the Future</h2>
-        <p class="text-xl text-cyber-white mb-6">Aviyon: Minimal, action-packed platform for coding, deploying, and hosting with a cyberpunk edge.</p>
-        <a href="/signup" class="button text-lg">Get Started Free</a>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="text-center">
+        <h1>Welcome to Aviyon</h1>
+        <p>A cyberpunk coding platform</p>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
     </div>
 </body>
 </html>

@@ -1,15 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  @apply bg-cyber-dark text-cyber-white;
-}
-
-.nav-link {
-  @apply text-cyber-purple hover:text-cyber-neon transition duration-200;
-}
-
-.button {
-  @apply bg-cyber-purple text-cyber-white px-4 py-2 rounded hover:bg-cyber-neon;
-}
