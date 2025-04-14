@@ -89,7 +89,8 @@ nimbus.ai is Aviyon's ultimate form---an AI-driven colossus chasing ASI and AGI 
     -   Aviyon.code1: Taps GitHub/GitLab for coding gold.
     -   Aviyon.health1: Fuels fitness and the 2045 Initiative.
     -   Aviyon.business: Distills trading and investment lore.
-    -   Aviyon.planet: Champions nomads and sustainability.
+    -   Aviyon.planet: Save our planet initive and sustainability.
+    -   Aviyon.nomad: Champions nomads.
     -   Aviyon.founder1: Chronicles Emmanuel Moore via GitHub/Google Drive.
 -   Nimbus Agents:
     -   Craft up to 5 agents with roles (e.g., mentor, ally), 3D avatars (Three.js), and unique quirks.
@@ -197,103 +198,103 @@ Setup Instructions: Boot Up the Future
 
 1.  Clone:
 
-    bash
-
-    `git clone https://github.com/the-real-kodoninja/aviyon.git`
+    ```bash
+    git clone https://github.com/the-real-kodoninja/aviyon.git
+    ```
 
 2.  Navigate:
 
-    bash
-
-    `cd aviyon/frontend`
+    ```bash
+    cd aviyon/frontend
+    ```
 
 3.  Install:
 
-    bash
-
-    `composer install npm install`
+    ```bash
+    composer install npm install
+    ```
 
 4.  Config:
 
-    bash
-
-    `cp .env.example .env`
-
+    ```bash
+    cp .env.example .env
+    ```
+    
     Edit .env:
 
-    env
-
-    `APP_URL=http://127.0.0.1:8001`
+    ```env
+    APP_URL=http://127.0.0.1:8001
+    ```
 
 5.  Build:
 
-    bash
-
-    `npm run build php artisan key:generate`
+    ```bash
+    npm run build php artisan key:generate
+    ```
 
 6.  Run:
 
-    bash
-
-    `php artisan serve --port=8001`
+    ```bash
+    php artisan serve --port=8001
+    ```
 
 ### Aviyon Backend
 
 1.  Navigate:
 
-    bash
-
-    `cd aviyon/core/auth`
+    ```bash
+    cd aviyon/core/auth
+    ```
 
 2.  Build:
 
-    bash
-
-    `mvn clean install`
+    ```bash
+    mvn clean install
+    ```
 
 3.  Run:
 
-    bash
-
-    `mvn spring-boot:run -Dspring-boot.run.main=com.aviyon.auth.AuthApplication`
+    ```bash
+    mvn spring-boot:run -Dspring-boot.run.main=com.aviyon.auth.AuthApplication
+    ```
 
 ### nimbus.ai
 
 1.  Clone:
 
-    bash
-
-    `git clone https://github.com/the-real-kodoninja/nimbus.ai.git`
+    ```bash
+    git clone https://github.com/the-real-kodoninja/nimbus.ai.git
+    ...
 
 2.  Install:
 
-    bash
-
-    `cd nimbus.ai npm install`
+    ```bash
+    cd nimbus.ai npm install
+    ```
 
 3.  Config .env:
 
-    env
-
-    `REACT_APP_FIREBASE_API_KEY=your-key CANISTER_ID=your-id STRIPE_SECRET_KEY=your-secret`
+    ```env
+    REACT_APP_FIREBASE_API_KEY=your-key CANISTER_ID=your-id STRIPE_SECRET_KEY=your-secret
+    ```
 
 4.  Deploy Canister:
 
-    bash
-
-    `cd nimbus_marketplace dfx deploy`
+    ```bash
+    cd nimbus_marketplace dfx deploy
+    ```
 
 5.  Backend:
 
-    bash
+    ```bash
+    cd server npm install node index.js
+    ```
 
-    `cd server npm install node index.js`
+7.  Frontend:
 
-6.  Frontend:
-
-    bash
-
-    `cd .. npm start`
+    ```bash
+    cd .. npm start
+    ```
 
 Visit http://localhost:3000 or your Codeanywhere domain.
 
@@ -303,21 +304,21 @@ Contributing: Join the Rebellion
 1.  Fork it.
 2.  Branch:
 
-    bash
-
-    `git checkout -b feature/your-hack`
+    ```bash
+    git checkout -b feature/your-hack
+    ```
 
 3.  Commit:
 
-    bash
+    ```bash
+    git commit -m "Neon tweak"
+    ```
 
-    `git commit -m "Neon tweak"`
+5.  Push/PR:
 
-4.  Push/PR:
-
-    bash
-
-    `git push origin feature/your-hack`
+    ```bash
+    git push origin feature/your-hack
+    ```
 
 Details: [Contributing Guidelines](https://github.com/the-real-kodoninja/nimbus.ai/blob/main/CONTRIBUTING.md).
 
@@ -326,11 +327,28 @@ Repositories and Ecosystem: The kodoverse Network
 
 -   Aviyon: [GitHub: Aviyon](https://github.com/the-real-kodoninja/aviyon) - The core platform.
 -   nimbus.ai: [GitHub: nimbus.ai](https://github.com/the-real-kodoninja/nimbus.ai) - AI evolution.
--   KodoCity: [GitHub: KodoCity](https://github.com/the-real-kodoninja/KodoCity) - Virtual sprawl.
--   kodoanime.social: [GitHub: kodoanime.social](https://github.com/the-real-kodoninja/kodoanime.social) - Anime-coded social nexus.
+-   kodoverse
+-   - kodoninja: [GitHub: kodoninja](https://github.com/the-real-kodoninja/kodoninja) - The origin of the kodoverse, a self-help magnifier.
+-   - kodospace: [GitHub: kodospacel](https://github.com/the-real-kodoninja/kodospace) - Simply a standalone social network within the kodoverse.
+-   - KodoCity enter the kodoverse: [GitHub: KodoCity](https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse) - Virtual world.
+-   - kodoanime.social: [GitHub: kodoanime.social](https://github.com/the-real-kodoninja/kodoanime.social) - Anime-coded social nexus.
+-   - chess.social: [GitHub: chess.social](https://github.com/the-real-kodoninja/chess.social) - A very social way to play chess & make money.
+-   - kodofitness: [GitHub: kodofitness](https://github.com/the-real-kodoninja/kodofitness) - Fitness evolved socially.
+-   - kodofilms: [GitHub: kodofilms](https://github.com/the-real-kodoninja/kodofilms) - A film universe
+-   - kodonomad: [GitHub: kodonomad](https://github.com/the-real-kodoninja/kodonomad) - A nomadic adventure on earth into the kodoverse.
+-   - kodoplanet: [GitHub: kodoplanet](https://github.com/the-real-kodoninja/kodoplanet) -  Sustainability & ECO mission to save our planet earth & our vitural kodoplanet.
+-   - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the are kodoverse are built on
+-   - ... More to be listed
 -   Founder Hub: [GitHub: the-real-kodoninja](https://github.com/the-real-kodoninja) - Emmanuel Moore's galaxy.
 
 These threads weave the kodoverse tapestry.
+
+Crypto (Coin, tokens), NFT's (coming soon)
+------------------------------------------
+- AVNcoin: [GitHub: AVNcoin](https://github.com/the-real-kodoninja/avncoin)
+- Nimbustoken: [GitHub: ntkn](https://github.com/the-real-kodoninja/ntkn)
+- kodotoken: [GitHub: kodotoken](https://github.com/the-real-kodoninja/kodotoken)
+- kodocoin: [GitHub: kodocoin](https://github.com/the-real-kodoninja/kodocoin)
 
 License: Free the Code
 ----------------------
