@@ -379,6 +379,7 @@ Acknowledgements: Neon Inspirations
 
 Salutes to the following mentions for igniting this cyber-saga
 - *Ghost in the Shell*
+- Akira
 - Do Androids Dream of Electric Sheep?
 - Blade Runner
 - The Matrix
