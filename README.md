@@ -377,7 +377,27 @@ License: Free the Code
 Acknowledgements: Neon Inspirations
 -----------------------------------
 
-Salutes to Neal Shusterman's Thunderhead and *Ghost in the Shell* for igniting this cyber-saga.
+Salutes to the following mentions for igniting this cyber-saga
+- *Ghost in the Shell*
+- Do Androids Dream of Electric Sheep?
+- Blade Runner
+- The Matrix
+- Alita Battle Angel
+- Neal Shusterman's Thunderhead
+
+Platforms:
+- [Heroku](https://www.heroku.com/)
+- [Hostinger](https://www.hostinger.com/)
+- [replit](https://replit.com/~)
+- [Codeanywhere](https://codeanywhere.com/)
+- [Codesandbox](https://codesandbox.io/)
+- [MITx](https://mitxonline.mit.edu/)
+- [Github](https://github.com/)
+
+[MIT EECS](https://www.eecs.mit.edu/) - EECS is where the future is invented.
+- Electrical Engineering
+- Computer Science
+- Artificial Intelligence + Decision-making
 
 * * * * *
 
