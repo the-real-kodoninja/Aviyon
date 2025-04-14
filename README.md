@@ -394,6 +394,10 @@ Platforms:
 - [MITx](https://mitxonline.mit.edu/)
 - [Github](https://github.com/)
 
+[ICP](https://internetcomputer.org/) - "The Internet Computer hosts secure, network-resident code and data."
+
+[Motoko](https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction) - "Meet Motoko: The language shaping the future of Web3."
+
 [MIT EECS](https://www.eecs.mit.edu/) - EECS is where the future is invented.
 - Electrical Engineering
 - Computer Science
