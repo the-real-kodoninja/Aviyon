@@ -337,7 +337,7 @@ Repositories and Ecosystem: The kodoverse Network
 -   - kodofilms: [GitHub: kodofilms](https://github.com/the-real-kodoninja/kodofilms) - A film universe
 -   - kodonomad: [GitHub: kodonomad](https://github.com/the-real-kodoninja/kodonomad) - A nomadic adventure on earth into the kodoverse.
 -   - kodoplanet: [GitHub: kodoplanet](https://github.com/the-real-kodoninja/kodoplanet) -  Sustainability & ECO mission to save our planet earth & our vitural kodoplanet.
--   - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the are kodoverse are built on
+-   - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the kodoverse are built on
 -   - ... More to be listed
 -   Founder Hub: [GitHub: the-real-kodoninja](https://github.com/the-real-kodoninja) - Emmanuel Moore's galaxy.
 
