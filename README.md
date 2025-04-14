@@ -197,7 +197,11 @@ Roadmap: To Infinity and Beyond
 -   AI Ascension: Refine ASI/AGI models.
 -   kodoverse Expansion: Link with metaverses like Decentraland.
 -   DeFi Depth: Launch a native token (AVN) on ICP.
+-   2045 initive, & protocols: The prolonging of life now beyond 120, to eventually, beyond the flesh.
 -   Brain-Cloud Sync: Prototype neural interfaces.
+-   Thunderhead: to deleop a ASI/AGI super computer to solve mankinds greatest questions.
+-   Brain-backup-storage: To store the brain and data underwater, underground, in the skies.
+-   Brain to Humanoid Robots: to entangle the ghost within the shell 
 
 Aviyon aims to rewrite humanity's destiny.
 
