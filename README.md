@@ -346,18 +346,18 @@ Repositories and Ecosystem: The kodoverse Network
 -   Aviyon: [GitHub: Aviyon](https://github.com/the-real-kodoninja/aviyon) - The core platform.
 -   nimbus.ai: [GitHub: nimbus.ai](https://github.com/the-real-kodoninja/nimbus.ai) - AI evolution.
 -   kodoverse
--   - kodoninja: [GitHub: kodoninja](https://github.com/the-real-kodoninja/kodoninja) - The origin of the kodoverse, a self-help magnifier.
--   - kodospace: [GitHub: kodospacel](https://github.com/the-real-kodoninja/kodospace) - Simply a standalone social network within the kodoverse.
--   - KodoCity enter the kodoverse: [GitHub: Kodocity_enter_the_kodoverse](https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse) - Virtual world.
--   - kodoanime.social: [GitHub: kodoanime.social](https://github.com/the-real-kodoninja/kodoanime.social) - Anime-coded social nexus.
--   - velocity.social: [GitHub: velocity.social](https://github.com/the-real-kodoninja/velocity.social) - A all inclusive social gaming network.
--   - chess.social: [GitHub: chess.social](https://github.com/the-real-kodoninja/chess.social) - A very social way to play chess & make money.
--   - kodofitness: [GitHub: kodofitness](https://github.com/the-real-kodoninja/kodofitness) - Fitness evolved socially.
--   - kodofilms: [GitHub: kodofilms](https://github.com/the-real-kodoninja/kodofilms) - A film universe
--   - kodonomad: [GitHub: kodonomad](https://github.com/the-real-kodoninja/kodonomad) - A nomadic adventure on earth into the kodoverse.
--   - kodoplanet: [GitHub: kodoplanet](https://github.com/the-real-kodoninja/kodoplanet) -  Sustainability & ECO mission to save our planet earth & our vitural kodoplanet.
--   - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the kodoverse are built on.
--   - ... More to be listed
+    - kodoninja: [GitHub: kodoninja](https://github.com/the-real-kodoninja/kodoninja) - The origin of the kodoverse, a self-help magnifier.
+    - kodospace: [GitHub: kodospacel](https://github.com/the-real-kodoninja/kodospace) - Simply a standalone social network within the kodoverse.
+    - KodoCity enter the kodoverse: [GitHub: Kodocity_enter_the_kodoverse](https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse) - Virtual world.
+    - kodoanime.social: [GitHub: kodoanime.social](https://github.com/the-real-kodoninja/kodoanime.social) - Anime-coded social nexus.
+    - velocity.social: [GitHub: velocity.social](https://github.com/the-real-kodoninja/velocity.social) - A all inclusive social gaming network.
+    - chess.social: [GitHub: chess.social](https://github.com/the-real-kodoninja/chess.social) - A very social way to play chess & make money.
+    - kodofitness: [GitHub: kodofitness](https://github.com/the-real-kodoninja/kodofitness) - Fitness evolved socially.
+    - kodofilms: [GitHub: kodofilms](https://github.com/the-real-kodoninja/kodofilms) - A film universe
+    - kodonomad: [GitHub: kodonomad](https://github.com/the-real-kodoninja/kodonomad) - A nomadic adventure on earth into the kodoverse.
+    - kodoplanet: [GitHub: kodoplanet](https://github.com/the-real-kodoninja/kodoplanet) -  Sustainability & ECO mission to save our planet earth & our vitural kodoplanet.
+    - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the kodoverse are built on.
+    - ... More to be listed
 -   Founder Hub: [GitHub: the-real-kodoninja](https://github.com/the-real-kodoninja) - Emmanuel Moore's galaxy.
 
 These threads weave the kodoverse tapestry.
