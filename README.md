@@ -330,7 +330,7 @@ Repositories and Ecosystem: The kodoverse Network
 -   kodoverse
 -   - kodoninja: [GitHub: kodoninja](https://github.com/the-real-kodoninja/kodoninja) - The origin of the kodoverse, a self-help magnifier.
 -   - kodospace: [GitHub: kodospacel](https://github.com/the-real-kodoninja/kodospace) - Simply a standalone social network within the kodoverse.
--   - KodoCity enter the kodoverse: [GitHub: KodoCity](https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse) - Virtual world.
+-   - KodoCity enter the kodoverse: [GitHub: Kodocity_enter_the_kodoverse](https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse) - Virtual world.
 -   - kodoanime.social: [GitHub: kodoanime.social](https://github.com/the-real-kodoninja/kodoanime.social) - Anime-coded social nexus.
 -   - chess.social: [GitHub: chess.social](https://github.com/the-real-kodoninja/chess.social) - A very social way to play chess & make money.
 -   - kodofitness: [GitHub: kodofitness](https://github.com/the-real-kodoninja/kodofitness) - Fitness evolved socially.
