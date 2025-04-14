@@ -197,11 +197,11 @@ Roadmap: To Infinity and Beyond
 -   AI Ascension: Refine ASI/AGI models.
 -   kodoverse Expansion: Link with metaverses like Decentraland.
 -   DeFi Depth: Launch a native token (AVN) on ICP.
--   2045 initive, & protocols: The prolonging of life now beyond 120, to eventually, beyond the flesh.
+-   2045 initive, & protocols: The prolonging of life now beyond 120, to eventually, & beyond the flesh.
 -   Brain-Cloud Sync: Prototype neural interfaces.
 -   Thunderhead: to deleop a ASI/AGI super computer to solve mankinds greatest questions.
 -   Brain-backup-storage: To store the brain and data underwater, underground, in the skies.
--   Brain to Humanoid Robots: to entangle the ghost within the shell 
+-   Brain to Humanoid Robots: to entangle the ghost within the shell.
 
 Aviyon aims to rewrite humanity's destiny.
 
@@ -350,12 +350,13 @@ Repositories and Ecosystem: The kodoverse Network
 -   - kodospace: [GitHub: kodospacel](https://github.com/the-real-kodoninja/kodospace) - Simply a standalone social network within the kodoverse.
 -   - KodoCity enter the kodoverse: [GitHub: Kodocity_enter_the_kodoverse](https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse) - Virtual world.
 -   - kodoanime.social: [GitHub: kodoanime.social](https://github.com/the-real-kodoninja/kodoanime.social) - Anime-coded social nexus.
+-   - velocity.social: [GitHub: velocity.social](https://github.com/the-real-kodoninja/velocity.social) - A all inclusive social gaming network.
 -   - chess.social: [GitHub: chess.social](https://github.com/the-real-kodoninja/chess.social) - A very social way to play chess & make money.
 -   - kodofitness: [GitHub: kodofitness](https://github.com/the-real-kodoninja/kodofitness) - Fitness evolved socially.
 -   - kodofilms: [GitHub: kodofilms](https://github.com/the-real-kodoninja/kodofilms) - A film universe
 -   - kodonomad: [GitHub: kodonomad](https://github.com/the-real-kodoninja/kodonomad) - A nomadic adventure on earth into the kodoverse.
 -   - kodoplanet: [GitHub: kodoplanet](https://github.com/the-real-kodoninja/kodoplanet) -  Sustainability & ECO mission to save our planet earth & our vitural kodoplanet.
--   - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the kodoverse are built on
+-   - KDNProtocol: [GitHub: KDNProtocol](https://github.com/the-real-kodoninja/KDNProtocol) - A protocol in which platforms of the kodoverse are built on.
 -   - ... More to be listed
 -   Founder Hub: [GitHub: the-real-kodoninja](https://github.com/the-real-kodoninja) - Emmanuel Moore's galaxy.
 
