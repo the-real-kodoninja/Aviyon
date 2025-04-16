@@ -1,22 +1,39 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './resources/views/**/*.blade.php',
-    './resources/js/**/*.js',
+    './templates/**/*.{html,twig}',
+    './assets/js/**/*.js'
   ],
   theme: {
     extend: {
       colors: {
-        'cyber-dark': '#1A1A1A',
-        'cyber-purple': '#A100A1',
-        'cyber-neon': '#D400D4',
-        'cyber-cyan': '#00F7FF',
-        'cyber-white': '#E6E6FA',
+        // Futuristic Dark Theme
+        'neon-blue': '#00D4FF',
+        'neon-magenta': '#FF00E5',
+        'dark-space': '#0A0E1A',
+        'light-space': '#E0F7FA',
+        'cyber-gray': '#B0BEC5',
       },
       fontFamily: {
-        mono: ['Fira Code', 'monospace'],
-        sans: ['Inter', 'sans-serif'],
+        orbitron: ['Orbitron', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'typewriter': 'typewriter 3s steps(40) 1s 1 normal both',
+      },
+      keyframes: {
+        pulse: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.7 },
+        },
+        typewriter: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
+        },
       },
     },
   },
+  darkMode: 'class',
   plugins: [],
-}
+};

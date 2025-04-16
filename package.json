@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "vite-plugin-symfony": "^8.0.2"
+  }
+}

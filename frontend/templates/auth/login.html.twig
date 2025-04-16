@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <div class="min-h-screen flex items-center justify-center bg-dark-space">
+    <div class="text-center px-4">
+      <!-- Title -->
+      <h1 class="mb-6">Login to Aviyon</h1>
+
+      <!-- Tagline -->
+      <p class="text-lg md:text-xl mb-8 text-cyber-gray">
+        Hack into Web3: Track whales, mine clouds, secure trades.
+      </p>
+
+      <!-- Login Form -->
+      <form action="{{ path('login') }}" method="post" class="max-w-md mx-auto">
+        <div class="mb-4">
+          <input type="text" name="username" placeholder="Username" class="w-full px-4 py-2 bg-dark-space border border-neon-blue text-cyber-gray rounded-lg focus:outline-none focus:border-neon-magenta" required>
+        </div>
+        <div class="mb-6">
+          <input type="password" name="password" placeholder="Password" class="w-full px-4 py-2 bg-dark-space border border-neon-blue text-cyber-gray rounded-lg focus:outline-none focus:border-neon-magenta" required>
+        </div>
+        <button type="submit" class="cta-button primary w-full animate-pulse-slow">Access</button>
+      </form>
+
+      <!-- Link to Signup -->
+      <p class="mt-4 text-cyber-gray">
+        Need an account? <a href="{{ path('signup') }}" class="text-neon-blue hover:text-neon-magenta">Create Account</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

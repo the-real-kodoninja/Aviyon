@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <section class="py-16 bg-dark-bg dark:bg-dark-bg bg-light-bg">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-12 text-center text-ghost-blue dark:text-ghost-blue text-primary-light">Aviyon Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid-card">
+          <h3 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-xl mb-4">Cloud Mining</h3>
+          <p class="text-sm text-text-light dark:text-text-light text-text-light-light">Monitor DeFi airdrops and faucets in real-time with DeFiScraper.</p>
+          <a href="https://github.com/the-real-kodoninja/DeFiScraper" class="link mt-4 inline-block">Launch Miner</a>
+        </div>
+        <div class="grid-card">
+          <h3 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-xl mb-4">Stoploss</h3>
+          <p class="text-sm text-text-light dark:text-text-light text-text-light-light">Secure trades with trailing stop-loss automation.</p>
+          <a href="https://github.com/the-real-kodoninja/stoploss" class="link mt-4 inline-block">Set Stoploss</a>
+        </div>
+        <div class="grid-card">
+          <h3 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-xl mb-4">Whale Tracker</h3>
+          <p class="text-sm text-text-light dark:text-text-light text-text-light-light">Spot big moves in ICP, BTC, ETH markets.</p>
+          <a href="https://github.com/the-real-kodoninja/whale" class="link mt-4 inline-block">Track Whales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

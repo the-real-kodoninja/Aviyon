@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+body {
+  @apply bg-dark-space text-cyber-gray font-inter;
+}
+
+/* Typography */
+h1 {
+  @apply font-orbitron text-5xl md:text-6xl text-neon-blue;
+}
+
+h2 {
+  @apply font-orbitron text-3xl text-neon-blue;
+}
+
+p {
+  @apply text-cyber-gray;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(10, 14, 26, 0.95), rgba(0, 212, 255, 0.1));
+}
+
+/* Three.js Canvas */
+#three-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.6; /* Slightly increased for visibility */
+}
+
+/* Add a glow effect to the Three.js canvas */
+#three-canvas canvas {
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.4));
+}
+
+/* Typing Animation for Tagline */
+.tagline {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00D4FF;
+}
+
+/* Buttons */
+.cta-button {
+  @apply font-orbitron text-sm uppercase tracking-wider px-6 py-3 rounded-full transition-all duration-300;
+}
+
+.cta-button.primary {
+  @apply bg-neon-blue text-dark-space hover:bg-neon-magenta hover:text-white;
+}
+
+.cta-button.secondary {
+  @apply border border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-dark-space;
+}
+
+/* Feature List */
+.feature-item {
+  @apply flex items-center space-x-3 py-2;
+}
+
+.feature-item::before {
+  content: ">";
+  @apply text-neon-magenta font-bold;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  @apply bg-dark-space border border-neon-blue text-cyber-gray rounded-lg px-4 py-2 w-full focus:outline-none focus:border-neon-magenta;
+}
+
+input::placeholder {
+  @apply text-cyber-gray opacity-60;
+}
+
+/* Flash Messages */
+.flash-message {
+  @apply fixed top-4 left-1/2 transform -translate-x-1/2 bg-dark-space border border-neon-blue text-neon-blue px-4 py-2 rounded-lg shadow-lg z-50;
+}
+
+/* Footer */
+footer {
+  @apply py-4 text-center text-sm text-cyber-gray;
+}
