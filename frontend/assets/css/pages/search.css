@@ -1,0 +1,7 @@
+.search-bar input {
+    max-width: 800px;
+}
+
+.result-item {
+    border: 1px solid #333;
+}

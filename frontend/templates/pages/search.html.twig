@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl text-light mb-6">Search</h1>
+    <div class="search-bar mb-6">
+        <input type="text" id="search-input" class="w-full p-3 bg-dark border border-gray-600 rounded text-light" placeholder="Search Aviyon...">
+    </div>
+    <div class="search-results">
+        <h2 class="text-2xl text-light mb-4">Results</h2>
+        <div class="result-item p-4 bg-dark rounded mb-4">
+            <a href="#" class="text-light hover:underline">Feature: Cloud IDE</a>
+            <p class="text-gray-400">Browser-based coding with real-time collaboration.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

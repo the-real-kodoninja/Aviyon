@@ -1,0 +1,11 @@
+.domain-search input {
+    max-width: 600px;
+}
+
+.result-item {
+    border: 1px solid #333;
+}
+
+.extensions p {
+    font-size: 0.9rem;
+}

@@ -1,23 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
 {% block body %}
-  <div class="container py-16">
-    <h1 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-3xl font-bold mb-8 text-center">Aviyon Dashboard</h1>
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <h1 class="mb-6">Dashboard</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="grid-card">
-        <h3 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-xl mb-4">Cloud Mining</h3>
-        <p class="text-sm text-text-light dark:text-text-light text-text-light-light">Monitor DeFi airdrops and faucets in real-time.</p>
-        <a href="https://github.com/the-real-kodoninja/DeFiScraper" class="link mt-4 inline-block">Launch Miner</a>
-      </div>
-      <div class="grid-card">
-        <h3 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-xl mb-4">Stoploss</h3>
-        <p class="text-sm text-text-light dark:text-text-light text-text-light-light">Secure trades with trailing stop-loss automation.</p>
-        <a href="https://github.com/the-real-kodoninja/stoploss" class="link mt-4 inline-block">Set Stoploss</a>
-      </div>
-      <div class="grid-card">
-        <h3 class="text-ghost-blue dark:text-ghost-blue text-primary-light text-xl mb-4">Whale Tracker</h3>
-        <p class="text-sm text-text-light dark:text-text-light text-text-light-light">Spot big moves in ICP, BTC, ETH markets.</p>
-        <a href="https://github.com/the-real-kodoninja/whale" class="link mt-4 inline-block">Track Whales</a>
-      </div>
+      <a href="{{ path('dashboard_ide') }}" class="card">
+        <h3 class="mb-2">Cloud IDE</h3>
+        <p class="text-gray-400">Browser-based coding with real-time collaboration.</p>
+      </a>
+      <a href="{{ path('dashboard_deployments') }}" class="card">
+        <h3 class="mb-2">Deployments</h3>
+        <p class="text-gray-400">Manage your CI/CD pipelines.</p>
+      </a>
+      <a href="{{ path('dashboard_hosting') }}" class="card">
+        <h3 class="mb-2">Hosting</h3>
+        <p class="text-gray-400">Custom domains, databases, and storage.</p>
+      </a>
+      <a href="{{ path('dashboard_agents') }}" class="card">
+        <h3 class="mb-2">nimbus.ai Agents</h3>
+        <p class="text-gray-400">Customize your AI-driven 3D avatars.</p>
+      </a>
+      <a href="{{ path('dashboard_marketplace') }}" class="card">
+        <h3 class="mb-2">NFT Marketplace</h3>
+        <p class="text-gray-400">Trade items on the Internet Computer (ICP).</p>
+      </a>
+      <a href="{{ path('dashboard_virtual_world') }}" class="card">
+        <h3 class="mb-2">Virtual World</h3>
+        <p class="text-gray-400">Interact in the Kodoverse.</p>
+      </a>
     </div>
   </div>
 {% endblock %}

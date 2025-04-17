@@ -1,0 +1,25 @@
+aside {
+  @apply bg-dark-light w-64 border-r border-gray-800 min-h-screen p-4;
+}
+
+/* Fallback */
+aside {
+  background-color: #1A1B23;
+  width: 16rem;
+  border-right: 1px solid #2A2A2A;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.sidebar-link {
+  @apply text-gray-400 hover:text-blue transition-colors;
+}
+
+/* Fallback */
+.sidebar-link {
+  color: #A0A0A0;
+}
+
+.sidebar-link:hover {
+  color: #2A6DD1;
+}

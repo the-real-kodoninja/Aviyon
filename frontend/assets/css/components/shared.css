@@ -1,0 +1,185 @@
+/* Buttons */
+.cta-button {
+  @apply font-roboto text-sm uppercase tracking-wider px-4 py-2 rounded-md transition-all;
+}
+
+/* Fallback */
+.cta-button {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s;
+}
+
+.cta-button.primary {
+  @apply bg-blue text-light hover:bg-pink;
+}
+
+/* Fallback */
+.cta-button.primary {
+  background-color: #2A6DD1;
+  color: #F5F5F5;
+}
+
+.cta-button.primary:hover {
+  background-color: #FF2D55;
+}
+
+.cta-button.secondary {
+  @apply border border-blue text-blue hover:bg-blue hover:text-light;
+}
+
+/* Fallback */
+.cta-button.secondary {
+  border: 1px solid #2A6DD1;
+  color: #2A6DD1;
+}
+
+.cta-button.secondary:hover {
+  background-color: #2A6DD1;
+  color: #F5F5F5;
+}
+
+/* Cards */
+.card {
+  @apply bg-dark-light p-4 rounded-lg hover:bg-gray-800 transition-colors;
+}
+
+/* Fallback */
+.card {
+  background-color: #1A1B23;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.card:hover {
+  background-color: #2A2A2A;
+}
+
+/* Feature List */
+.feature-item {
+  @apply flex items-center space-x-2 py-1;
+}
+
+/* Fallback */
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.feature-item::before {
+  content: "•";
+  @apply text-blue font-bold;
+}
+
+/* Fallback */
+.feature-item::before {
+  content: "•";
+  color: #2A6DD1;
+  font-weight: bold;
+}
+
+/* Form Inputs */
+.input-field {
+  @apply bg-dark border border-gray-800 text-light rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue;
+}
+
+/* Fallback */
+.input-field {
+  background-color: #0B0C12;
+  border: 1px solid #2A2A2A;
+  color: #F5F5F5;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.input-field:focus {
+  border-color: #2A6DD1;
+  outline: none;
+}
+
+.input-field::placeholder {
+  @apply text-gray-400 opacity-60;
+}
+
+/* Fallback */
+.input-field::placeholder {
+  color: #A0A0A0;
+  opacity: 0.6;
+}
+
+/* Flash Messages */
+.flash-message {
+  @apply fixed top-20 left-1/2 transform -translate-x-1/2 bg-dark-light border border-blue text-light px-4 py-2 rounded-md shadow-lg z-50;
+}
+
+/* Fallback */
+.flash-message {
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1A1B23;
+  border: 1px solid #2A6DD1;
+  color: #F5F5F5;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+
+/* Typography */
+h1 {
+  @apply font-roboto text-3xl md:text-4xl text-light;
+}
+
+/* Fallback */
+h1 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.875rem;
+  color: #F5F5F5;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+h2 {
+  @apply font-roboto text-2xl text-light;
+}
+
+/* Fallback */
+h2 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5rem;
+  color: #F5F5F5;
+}
+
+h3, h4 {
+  @apply font-roboto text-lg text-light;
+}
+
+/* Fallback */
+h3, h4 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.125rem;
+  color: #F5F5F5;
+}
+
+p {
+  @apply text-gray-400;
+}
+
+/* Fallback */
+p {
+  color: #A0A0A0;
+}

@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html.twig' %}
+{% block body %}
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <h1 class="mb-6">Hosting Service</h1>
+    <div class="bg-dark-light p-6 rounded-lg">
+      <h3 class="text-lg mb-4">Manage Hosting</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-light">Domain</label>
+          <input type="text" class="input-field" placeholder="example.com">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-light">Database</label>
+          <select class="input-field">
+            <option>MySQL</option>
+            <option>PostgreSQL</option>
+          </select>
+        </div>
+        <button class="cta-button primary">Save</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}

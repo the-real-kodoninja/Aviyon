@@ -1,0 +1,36 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Fallback Styles */
+body {
+  background-color: #0B0C12;
+  color: #F5F5F5;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Tailwind Styles */
+body {
+  @apply bg-dark text-light font-inter;
+}
+
+/* Colors */
+.dark {
+  background-color: #0B0C12;
+}
+
+.dark-light {
+  background-color: #1A1B23;
+}
+
+.light {
+  color: #F5F5F5;
+}
+
+.blue {
+  color: #2A6DD1;
+}
+
+.pink {
+  color: #FF2D55;
+}

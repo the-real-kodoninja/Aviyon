@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl text-light mb-6">Checkout</h1>
+    <div class="checkout-options grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Email Link -->
+        <div class="mb-4">
+            <label for="email" class="block text-gray-400">Email (to link your domain purchase)</label>
+            <input type="email" id="email" class="w-full p-2 bg-dark border border-gray-600 rounded text-light" placeholder="your-email@example.com">
+        </div>
+        <!-- Payment Options -->
+        <div class="payment-methods">
+            <h2 class="text-2xl text-light mb-4">Payment Methods</h2>
+            <!-- Metamask -->
+            <button class="w-full p-3 bg-purple-600 text-light rounded mb-2 flex items-center justify-center">
+                <span class="mr-2">🦊</span> Pay with Metamask
+            </button>
+            <!-- Stripe -->
+            <button class="w-full p-3 bg-blue-600 text-light rounded mb-2 flex items-center justify-center">
+                <span class="mr-2">💳</span> Pay with Stripe
+            </button>
+            <!-- All Wallets -->
+            <button class="w-full p-3 bg-green-600 text-light rounded mb-2 flex items-center justify-center">
+                <span class="mr-2">💼</span> Pay with Any Wallet
+            </button>
+            <!-- All Crypto -->
+            <select class="w-full p-3 bg-dark border border-gray-600 rounded text-light">
+                <option>Select Cryptocurrency</option>
+                <option>Bitcoin (BTC)</option>
+                <option>Ethereum (ETH)</option>
+                <option>ICP</option>
+                <option>Others...</option>
+            </select>
+        </div>
+    </div>
+    <div class="mt-6">
+        <button class="bg-green-500 text-light p-3 rounded">Complete Purchase</button>
+    </div>
+</div>
+{% endblock %}

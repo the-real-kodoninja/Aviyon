@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block body %}
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl text-light mb-6">Nimbus.ai</h1>
+    <p class="text-gray-400 mb-4">Artificial Superintelligence for your cloud needs.</p>
+    <!-- Placeholder for additional pages -->
+    <div class="nimbus-links">
+        <a href="#" class="text-light hover:underline">Explore Features</a>
+    </div>
+</div>
+
+<!-- Floating Cloud Chat Icon -->
+<div class="fixed bottom-4 right-4">
+    <button id="chat-toggle" class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+        <svg class="w-6 h-6 text-light" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v6a2 2 0 01-2 2H6l-4 4V5zm4 3h8v2H6V8z"/>
+        </svg>
+    </button>
+    <div id="chat-popup" class="hidden absolute bottom-16 right-0 w-80 p-4 bg-dark rounded shadow-lg">
+        <h3 class="text-light mb-2">Nimbus.ai Chat</h3>
+        <div class="chat-messages h-40 overflow-y-auto mb-2">
+            <p class="text-gray-400">Hello! How can I assist you today?</p>
+        </div>
+        <textarea class="w-full p-2 bg-dark border border-gray-600 rounded text-light mb-2" placeholder="Type your message..."></textarea>
+        <button class="p-2 bg-blue-600 text-light rounded mr-2">Send</button>
+        <button class="p-2 bg-gray-600 text-light rounded">Request Human Support</button>
+    </div>
+</div>
+
+<script>
+document.getElementById('chat-toggle').addEventListener('click', () => {
+    const popup = document.getElementById('chat-popup');
+    popup.classList.toggle('hidden');
+});
+</script>
+{% endblock %}

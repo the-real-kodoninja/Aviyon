@@ -1,0 +1,34 @@
+{% extends 'layouts/base.html.twig' %}
+{% block body %}
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <h1 class="mb-6">nimbus.ai Agents</h1>
+    <div class="bg-dark-light p-6 rounded-lg">
+      <h3 class="text-lg mb-4">Your Agents</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="card">
+          <h4 class="mb-2">Agent 1</h4>
+          <p class="text-gray-400">Role: Assistant</p>
+          <button class="cta-button secondary mt-2">Customize</button>
+        </div>
+      </div>
+      <div class="mt-6">
+        <h3 class="text-lg mb-4">Create New Agent</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-light">Role</label>
+            <select class="input-field">
+              <option>Assistant</option>
+              <option>Wife</option>
+              <option>Friend</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-light">Personality</label>
+            <input type="text" class="input-field" placeholder="Friendly, empathetic">
+          </div>
+          <button class="cta-button primary">Create Agent</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

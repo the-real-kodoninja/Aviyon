@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html.twig' %}
+{% block body %}
+  <div class="hero">
+    <!-- Three.js Background -->
+    <div id="three-canvas" class="absolute inset-0 z-0"></div>
+    <!-- Thundering Cloud -->
+    <div id="thunder-cloud" class="absolute top-20 left-1/2 transform -translate-x-1/2 z-1"></div>
+    <!-- Nimbus Cloud for Cursor -->
+    <div id="nimbus-cloud" class="absolute z-1 pointer-events-none"></div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
+      <!-- Title Section -->
+      <h1 class="mb-4">Aviyon</h1>
+      <p class="text-lg mb-8">
+        Web3 Cloud Platform for DeFi & ICP
+      </p>
+
+      <!-- Vision Section -->
+      <section class="mb-12">
+        <h2 class="mb-4">nimbus.ai: The Ghost in the Cloud</h2>
+        <p class="text-base max-w-2xl mx-auto">
+          Aviyon’s vision realized—a self-sustaining Artificial Superintelligence (ASI) that solves the impossible, unlocks the essence of consciousness, and drives human evolution through seamless brain-cloud integration.
+        </p>
+      </section>
+
+      <!-- Features Section -->
+      <section class="mb-12">
+        <h2 class="mb-6">Our Features</h2>
+        <ul class="max-w-md mx-auto text-left space-y-3">
+          <li class="feature-item">Cloud IDE: Browser-based coding with real-time collaboration</li>
+          <li class="feature-item">Deployment Engine: Automated CI/CD pipelines</li>
+          <li class="feature-item">Hosting Service: Custom domains, databases, storage</li>
+          <li class="feature-item">nimbus.ai Agents: Customizable 3D avatars with AI-driven interactions</li>
+          <li class="feature-item">NFT Marketplace: Decentralized trading on the Internet Computer (ICP)</li>
+        </ul>
+      </section>
+
+      <!-- Call to Action -->
+      <div class="space-x-4">
+        <a href="{{ path('login') }}" class="cta-button primary">Login</a>
+        <a href="{{ path('signup') }}" class="cta-button secondary">Join Now</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

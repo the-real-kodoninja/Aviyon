@@ -1,18 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './templates/**/*.{html,twig}',
-    './assets/js/**/*.js'
+    './templates/**/*.html,twig', // Scan all Twig templates
+    './assets/js/**/*.js', // Scan all JS files
+    './src/**/*.php,twig', // Scan PHP and Twig files in src
   ],
   theme: {
     extend: {
       colors: {
-        // Futuristic Dark Theme
         'neon-blue': '#00D4FF',
         'neon-magenta': '#FF00E5',
         'dark-space': '#0A0E1A',
         'light-space': '#E0F7FA',
         'cyber-gray': '#B0BEC5',
+	'pink-500': '#ff69b4',
       },
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],

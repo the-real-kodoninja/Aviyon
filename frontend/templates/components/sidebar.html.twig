@@ -1,0 +1,16 @@
+{% if app.user %}
+<aside class="bg-dark-light w-64 border-r border-gray-800 min-h-screen p-4">
+    <h3 class="text-lg font-roboto text-light mb-4">Dashboard</h3>
+    <nav class="space-y-2">
+        <a href="{{ path('dashboard') }}" class="block sidebar-link">Overview</a>
+        <a href="{{ path('dashboard_ide') }}" class="block sidebar-link">Cloud IDE</a>
+        <a href="{{ path('dashboard_deployments') }}" class="block sidebar-link">Deployments</a>
+        <a href="{{ path('dashboard_hosting') }}" class="block sidebar-link">Hosting</a>
+        <a href="{{ path('dashboard_agents') }}" class="block sidebar-link">Agents</a>
+        <a href="{{ path('dashboard_marketplace') }}" class="block sidebar-link">Marketplace</a>
+        <a href="{{ path('dashboard_virtual_world') }}" class="block sidebar-link">Virtual World</a>
+    </nav>
+</aside>
+{% else %}
+<div class="w-0"></div>
+{% endif %}
