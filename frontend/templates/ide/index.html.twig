@@ -1,0 +1,17 @@
+<!-- templates/ide/index.html.twig -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting to Cloud IDE...</title>
+    <script>
+        // Open Nimbuspad++ in a new window
+        window.onload = function() {
+            window.open('http://localhost:3000', '_blank');
+            window.location.href = '{{ path('dashboard') }}'; // Redirect back to dashboard
+        };
+    </script>
+</head>
+<body>
+    <p>Opening Cloud IDE in a new window...</p>
+</body>
+</html>

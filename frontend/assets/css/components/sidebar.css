@@ -1,5 +1,5 @@
 aside {
-  @apply bg-dark-light w-64 border-r border-gray-800 min-h-screen p-4;
+  @apply bg-dark-light w-64 border-r border-gray-800 min-h-screen p-4; /* 'dark-light' is now defined */
 }
 
 /* Fallback */
@@ -12,7 +12,7 @@ aside {
 }
 
 .sidebar-link {
-  @apply text-gray-400 hover:text-blue transition-colors;
+  @apply text-gray-400 hover:text-blue; /* 'blue' is now defined */
 }
 
 /* Fallback */

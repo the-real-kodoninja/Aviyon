@@ -2,16 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Fallback Styles */
-body {
-  background-color: #0B0C12;
-  color: #F5F5F5;
-  font-family: 'Inter', sans-serif;
-}
-
 /* Tailwind Styles */
 body {
-  @apply bg-dark text-light font-inter;
+  @apply bg-dark-space text-cyber-gray font-inter;
 }
 
 /* Colors */

@@ -1,6 +1,6 @@
 /* Buttons */
 .cta-button {
-  @apply font-roboto text-sm uppercase tracking-wider px-4 py-2 rounded-md transition-all;
+  @apply font-inter text-sm uppercase tracking-wider px-4 py-2 rounded-md transition-all;
 }
 
 /* Fallback */
@@ -15,7 +15,7 @@
 }
 
 .cta-button.primary {
-  @apply bg-blue text-light hover:bg-pink;
+  @apply bg-blue text-light hover:bg-pink; /* 'blue', 'light', and 'pink' are now defined */
 }
 
 /* Fallback */
@@ -29,7 +29,7 @@
 }
 
 .cta-button.secondary {
-  @apply border border-blue text-blue hover:bg-blue hover:text-light;
+  @apply border border-blue text-blue hover:bg-blue hover:text-light; /* 'blue' and 'light' are defined */
 }
 
 /* Fallback */
@@ -45,7 +45,7 @@
 
 /* Cards */
 .card {
-  @apply bg-dark-light p-4 rounded-lg hover:bg-gray-800 transition-colors;
+  @apply bg-dark-light p-4 rounded-lg hover:bg-gray-800 transition-colors; /* 'dark-light' is defined */
 }
 
 /* Fallback */
@@ -75,7 +75,7 @@
 
 .feature-item::before {
   content: "•";
-  @apply text-blue font-bold;
+  @apply text-blue font-bold; /* 'blue' is defined */
 }
 
 /* Fallback */
@@ -87,7 +87,7 @@
 
 /* Form Inputs */
 .input-field {
-  @apply bg-dark border border-gray-800 text-light rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue;
+  @apply bg-dark border border-gray-800 text-light rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue; /* 'dark', 'light', and 'blue' are defined */
 }
 
 /* Fallback */
@@ -117,7 +117,7 @@
 
 /* Flash Messages */
 .flash-message {
-  @apply fixed top-20 left-1/2 transform -translate-x-1/2 bg-dark-light border border-blue text-light px-4 py-2 rounded-md shadow-lg z-50;
+  @apply fixed top-20 left-1/2 transform -translate-x-1/2 bg-dark-light border border-blue text-light px-4 py-2 rounded-md shadow-lg z-50; /* 'dark-light', 'blue', and 'light' are defined */
 }
 
 /* Fallback */
@@ -137,12 +137,12 @@
 
 /* Typography */
 h1 {
-  @apply font-roboto text-3xl md:text-4xl text-light;
+  @apply font-inter text-3xl md:text-4xl text-light; /* Use 'inter' instead of 'roboto', 'light' is defined */
 }
 
 /* Fallback */
 h1 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 1.875rem;
   color: #F5F5F5;
 }
@@ -154,23 +154,23 @@ h1 {
 }
 
 h2 {
-  @apply font-roboto text-2xl text-light;
+  @apply font-inter text-2xl text-light; /* Use 'inter', 'light' is defined */
 }
 
 /* Fallback */
 h2 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   color: #F5F5F5;
 }
 
 h3, h4 {
-  @apply font-roboto text-lg text-light;
+  @apply font-inter text-lg text-light; /* Use 'inter', 'light' is defined */
 }
 
 /* Fallback */
 h3, h4 {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 1.125rem;
   color: #F5F5F5;
 }

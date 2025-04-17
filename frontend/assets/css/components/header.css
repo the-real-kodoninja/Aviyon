@@ -3,27 +3,26 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #111827; /* Fallback for bg-gray-900 */
-    border-bottom: 2px solid #ff69b4; /* Fallback for border-pink-500 */
+    background-color: #0A0E1A; /* Matches 'dark-space' for dark theme */
+    border-bottom: none; /* Remove border */
 }
 
 .logo svg {
     stroke-width: 2;
 }
 
-.logo span {
-    font-weight: 600;
-    color: #10b981; /* Fallback for text-green-500 */
+.logo-svg text {
+    fill: #e5e7eb; /* Matches text-gray-200 */
 }
 
 .menu-dropdown-fallback,
 .cart-dropdown-fallback,
 .user-dropdown-fallback,
 .search-dropdown-fallback {
-    border-width: 2px;
-    border-color: #ff69b4; /* Fallback for border-pink-500 */
-    background-color: #1f2937; /* Fallback for bg-gray-800 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid #2A2A2A; /* Subtle gray border, sleek and professional */
+    background-color: #1A1B23; /* Matches 'dark-light' */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft gradient shadow for depth */
+    border-radius: 8px; /* Slightly rounded for a fluid look */
     z-index: 1000;
 }
 
@@ -31,7 +30,7 @@
 .cart-dropdown-fallback a,
 .user-dropdown-fallback a,
 .search-dropdown-fallback a {
-    color: #e5e7eb; /* Fallback for text-gray-200 */
+    color: #B0BEC5; /* Matches 'cyber-gray' */
 }
 
 .menu-dropdown-fallback a:hover,
@@ -40,18 +39,20 @@
 .search-dropdown-fallback a:hover {
     background-color: #374151; /* Fallback for hover:bg-gray-700 */
     color: #ffffff; /* Fallback for hover:text-white */
+    border-radius: 4px; /* Subtle rounding on hover */
 }
 
 .search-input-fallback {
-    background-color: #1f2937; /* Fallback for bg-gray-800 */
-    border: 1px solid #ff69b4; /* Fallback for border-pink-500 */
-    color: #e5e7eb; /* Fallback for text-gray-200 */
-    transition: border-color 0.3s ease;
+    background-color: #0B0C12; /* Matches 'dark' */
+    border: 1px solid #2A2A2A; /* Matches dropdown borders, subtle by default */
+    color: #F5F5F5; /* Matches 'light' */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.search-input-fallback:focus {
-    border-color: #ff69b4;
-    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+.search-input-fallback:focus,
+.search-input-fallback:not(:placeholder-shown) {
+    border-color: #ff69b4; /* Pink border only when focused or typing */
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.3); /* Subtle pink glow */
 }
 
 .search-input-fallback::placeholder {
@@ -86,23 +87,24 @@
 }
 
 input#header-search {
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input#header-search:focus {
-    border-color: #ff69b4;
-    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+input#header-search:focus,
+input#header-search:not(:placeholder-shown) {
+    border-color: #ff69b4; /* Pink border when focused or typing */
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
 }
 
 /* Light mode styles */
 .light-mode {
-    background-color: #f7f7f7;
+    background-color: #E0F7FA; /* Matches 'light-space' */
     color: #333;
 }
 
 .light-mode .header-fallback {
-    background-color: #ffffff;
-    border-bottom: 2px solid #ff69b4;
+    background-color: #E0F7FA; /* Matches 'light-space' for light theme */
+    border-bottom: none;
 }
 
 .light-mode .bg-gray-800 {
@@ -125,11 +127,23 @@ input#header-search:focus {
     color: #000 !important;
 }
 
-.light-mode .border-pink-500 {
-    border-color: #ff69b4 !important;
+.light-mode .menu-dropdown-fallback,
+.light-mode .cart-dropdown-fallback,
+.light-mode .user-dropdown-fallback,
+.light-mode .search-dropdown-fallback {
+    border: 1px solid #d1d5db; /* Light gray border for light mode */
+    background-color: #ffffff; /* White background for light mode */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.light-mode .search-input-fallback:focus {
+.light-mode .search-input-fallback {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db; /* Light gray border by default */
+    color: #333;
+}
+
+.light-mode .search-input-fallback:focus,
+.light-mode .search-input-fallback:not(:placeholder-shown) {
     border-color: #ff69b4;
-    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
 }

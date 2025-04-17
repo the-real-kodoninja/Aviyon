@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './templates/**/*.html,twig', // Scan all Twig templates
-    './assets/js/**/*.js', // Scan all JS files
-    './src/**/*.php,twig', // Scan PHP and Twig files in src
+    './templates/**/*.html.twig',
+    './assets/js/**/*.js',
+    './src/**/*.php',
   ],
   theme: {
     extend: {
@@ -13,7 +13,13 @@ module.exports = {
         'dark-space': '#0A0E1A',
         'light-space': '#E0F7FA',
         'cyber-gray': '#B0BEC5',
-	'pink-500': '#ff69b4',
+        'pink-500': '#ff69b4',
+        // Add the custom colors from base.css
+        dark: '#0B0C12',
+        'dark-light': '#1A1B23',
+        light: '#F5F5F5',
+        blue: '#2A6DD1',
+        pink: '#FF2D55',
       },
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],
@@ -32,6 +38,9 @@ module.exports = {
           '0%': { width: '0%' },
           '100%': { width: '100%' },
         },
+      },
+      zIndex: {
+        '1': '1',
       },
     },
   },

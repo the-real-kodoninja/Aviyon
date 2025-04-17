@@ -5,7 +5,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}?v={{ "now"|date("U") }}
+        {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body class="bg-dark text-light flex">
@@ -33,9 +33,5 @@
         <!-- Footer -->
         {% include 'components/footer.html.twig' %}
     </div>
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}?v={{ "now"|date("U") }}
-    {% endblock %}
 </body>
 </html>

@@ -46,9 +46,9 @@ dashboard:
     path: /dashboard
     controller: App\Controller\DashboardController::index
 
-dashboard_ide:
-    path: /dashboard/ide
-    controller: App\Controller\DashboardController::ide
+ide:
+    path: /ide
+    controller: App\Controller\IdeController::index
 
 dashboard_deployments:
     path: /dashboard/deployments
