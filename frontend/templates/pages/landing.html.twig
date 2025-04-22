@@ -1,46 +1,166 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Nimbus.ai - The Ghost in the Cloud{% endblock %}
+
 {% block body %}
-  <div class="hero">
-    <!-- Three.js Background -->
-    <div id="three-canvas" class="absolute inset-0 z-0"></div>
-    <!-- Thundering Cloud -->
-    <div id="thunder-cloud" class="absolute top-20 left-1/2 transform -translate-x-1/2 z-1"></div>
-    <!-- Nimbus Cloud for Cursor -->
-    <div id="nimbus-cloud" class="absolute z-1 pointer-events-none"></div>
-
-    <!-- Main Content -->
-    <div class="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
-      <!-- Title Section -->
-      <h1 class="mb-4">Aviyon</h1>
-      <p class="text-lg mb-8">
-        Web3 Cloud Platform for DeFi & ICP
-      </p>
-
-      <!-- Vision Section -->
-      <section class="mb-12">
-        <h2 class="mb-4">nimbus.ai: The Ghost in the Cloud</h2>
-        <p class="text-base max-w-2xl mx-auto">
-          Aviyon’s vision realized—a self-sustaining Artificial Superintelligence (ASI) that solves the impossible, unlocks the essence of consciousness, and drives human evolution through seamless brain-cloud integration.
-        </p>
-      </section>
-
-      <!-- Features Section -->
-      <section class="mb-12">
-        <h2 class="mb-6">Our Features</h2>
-        <ul class="max-w-md mx-auto text-left space-y-3">
-          <li class="feature-item">Cloud IDE: Browser-based coding with real-time collaboration</li>
-          <li class="feature-item">Deployment Engine: Automated CI/CD pipelines</li>
-          <li class="feature-item">Hosting Service: Custom domains, databases, storage</li>
-          <li class="feature-item">nimbus.ai Agents: Customizable 3D avatars with AI-driven interactions</li>
-          <li class="feature-item">NFT Marketplace: Decentralized trading on the Internet Computer (ICP)</li>
-        </ul>
-      </section>
-
-      <!-- Call to Action -->
-      <div class="space-x-4">
-        <a href="{{ path('login') }}" class="cta-button primary">Login</a>
-        <a href="{{ path('signup') }}" class="cta-button secondary">Join Now</a>
-      </div>
+<section class="landing relative">
+    <!-- Hero Section -->
+    <div class="hero relative bg-cover bg-center py-20 text-center" style="background-image: url('{{ asset('build/images/cyberpunk-city.jpg') }}')">
+        <div class="container">
+            <h1 class="text-5xl font-bold text-accent animate-pulse">Welcome to Nimbus.ai</h1>
+            <p class="text-xl text-secondary mt-4">The ultimate Web3 cloud platform for creators, coders, and innovators, powered by ASI.</p>
+            <canvas id="three-canvas" class="w-full h-64 mt-8 mx-auto"></canvas>
+            <div class="mt-6 flex justify-center space-x-4">
+                <button id="wallet-connect" class="btn">Connect Wallet</button>
+                <a href="{{ path('explore') }}" class="btn bg-secondary">Explore Now</a>
+                <a href="{{ path('marketplace') }}" class="btn bg-accent-hover">Join the NFT Bazaar</a>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-black opacity-50"></div>
     </div>
-  </div>
+
+    <!-- Features Section -->
+    <section class="features container py-12">
+        <h2 class="text-3xl font-bold text-accent text-center mb-8">Why Nimbus.ai?</h2>
+        <div class="flex flex-wrap justify-between gap-8">
+            <div class="feature-card w-1/3 profile-card">
+                <h3 class="text-2xl font-semibold text-accent">Decentralized Hosting</h3>
+                <p class="text-secondary mt-2">Host DApps with blockchain-backed security and 99.9% uptime on ICP.</p>
+            </div>
+            <div class="feature-card w-1/3 profile-card">
+                <h3 class="text-2xl font-semibold text-accent">AI-Powered Tools</h3>
+                <p class="text-secondary mt-2">Leverage Nimbus AI for code suggestions, smart contracts, and analytics.</p>
+            </div>
+            <div class="feature-card w-1/3 profile-card">
+                <h3 class="text-2xl font-semibold text-accent">Global Community</h3>
+                <p class="text-secondary mt-2">Connect with creators in the kodoverse via Threads-like feeds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats bg-secondary py-12">
+        <div class="container grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <h3 class="text-3xl text-accent">10K+</h3>
+                <p class="text-secondary">Active Users</p>
+            </div>
+            <div>
+                <h3 class="text-3xl text-accent">$5M+</h3>
+                <p class="text-secondary">NFT Volume</p>
+            </div>
+            <div>
+                <h3 class="text-3xl text-accent">50+</h3>
+                <p class="text-secondary">Kodoverse Platforms</p>
+            </div>
+            <div>
+                <h3 class="text-3xl text-accent">99.9%</h3>
+                <p class="text-secondary">Uptime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DeFi Showcase -->
+    <section class="defi-showcase container py-12">
+        <h2 class="text-3xl font-bold text-accent mb-8">DeFi Hub</h2>
+        <div class="flex flex-wrap justify-between gap-8">
+            <div class="profile-card w-1/2">
+                <h3 class="text-xl text-accent">Token Swap</h3>
+                <p class="text-secondary">Swap ETH, ICP, and more with low gas fees.</p>
+                <button class="btn mt-2">Start Swapping</button>
+            </div>
+            <div class="profile-card w-1/2">
+                <h3 class="text-xl text-accent">Stake & Earn</h3>
+                <p class="text-secondary">Stake tokens for up to 12% APY.</p>
+                <button class="btn mt-2">Stake Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Feed -->
+    <section class="global-feed container py-12">
+        <h2 class="text-3xl font-bold text-accent mb-8">Global Feed</h2>
+        {% if global_posts is defined and global_posts|length > 0 %}
+            {% for post in global_posts %}
+                <div class="post-card bg-secondary p-6 rounded-lg shadow-lg mb-6">
+                    <div class="post-header flex items-center">
+                        {% set profileImage = post.platform in ['kodonomad', 'kodoninja'] ? asset('build/images/' ~ post.platform ~ '-profile.jpg') : asset('build/images/user-placeholder.jpg') %}
+                        <img src="{{ profileImage }}" alt="{{ post.author }}" class="post-author-image w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <span class="post-author text-accent font-semibold">{{ post.author }}</span>
+                            <span class="post-timestamp text-secondary text-sm block">{{ post.timestamp|date('Y-m-d H:i') }}</span>
+                        </div>
+                    </div>
+                    <div class="post-content text-primary mt-4">
+                        {{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}
+                        {% if post.image %}
+                            <img src="{{ asset('build/images/' ~ post.image) }}" alt="Post image" class="post-image w-full mt-4 rounded">
+                        {% endif %}
+                    </div>
+                    <div class="post-actions mt-4 flex space-x-4">
+                        <form action="{{ path('like_post') }}" method="POST" class="like-form">
+                            <input type="hidden" name="post_id" value="{{ loop.index }}">
+                            <button type="submit" class="btn like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes }}</span>)</button>
+                        </form>
+                        <button class="btn comment-toggle">Comment</button>
+                        <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
+                            <input type="hidden" name="post_id" value="{{ loop.index }}">
+                            <textarea name="content" placeholder="Add a comment, use #hashtags or @mentions" class="form-control"></textarea>
+                            <button type="submit" class="btn mt-2">Comment</button>
+                        </form>
+                    </div>
+                    {% for comment in post.comments %}
+                        <div class="comment mt-4 text-secondary">
+                            <span>{{ comment.author }}: {{ comment.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</span>
+                            <span class="block text-sm">{{ comment.timestamp|date('Y-m-d H:i') }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button id="load-more" class="btn mx-auto block">Load More</button>
+        {% else %}
+            <p class="text-secondary">No posts available.</p>
+        {% endif %}
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta container py-12 text-center">
+        <h2 class="text-4xl font-bold text-accent mb-4">Join the Kodoverse</h2>
+        <p class="text-secondary mb-8">Create your Nimbus.ai agent and explore the future of AI and DeFi.</p>
+        <a href="{{ path('register') }}" class="btn text-lg px-8">Start Now</a>
+    </section>
+</section>
+
+{% block javascripts %}
+<script src="{{ asset('build/three.min.js') }}"></script>
+<script>
+    // Parallax effect for hero background
+    window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero');
+        const scrollPosition = window.pageYOffset;
+        hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+    });
+
+    // Three.js Canvas (Placeholder)
+    const canvas = document.getElementById('three-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+    renderer.setSize(canvas.width, canvas.height);
+
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+
+    camera.position.z = 30;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        torusKnot.rotation.x += 0.01;
+        torusKnot.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+    animate();
+</script>
 {% endblock %}

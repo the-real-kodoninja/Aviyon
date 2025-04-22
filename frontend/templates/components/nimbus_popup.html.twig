@@ -1,0 +1,43 @@
+{% block nimbus_popup %}
+<div id="chat-popup" class="fixed bottom-4 right-4 bg-secondary p-4 rounded-lg shadow-lg hidden max-h-96 overflow-y-auto z-50">
+    <div class="flex justify-between items-center mb-2">
+        <h3 class="text-accent">Nimbus AI Chat</h3>
+        <button id="chat-close" class="text-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="chat-messages">
+        <!-- Messages will be populated by JavaScript -->
+    </div>
+    <form class="comment-form mt-2">
+        <input type="text" class="form-control w-full" id="chat-input" placeholder="Ask Nimbus...">
+        <button type="submit" class="btn mt-2">Send</button>
+    </form>
+</div>
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chat = document.getElementById('chat-popup');
+        const chatClose = document.getElementById('chat-close');
+        const chatToggle = document.getElementById('chat-toggle'); // Ensure this exists in base.html.twig
+
+        if (chatToggle) {
+            chatToggle.addEventListener('click', () => {
+                chat.classList.toggle('hidden');
+                chat.classList.toggle('max-h-96');
+                chat.classList.toggle('max-h-screen');
+            });
+        }
+
+        if (chatClose) {
+            chatClose.addEventListener('click', () => {
+                chat.classList.add('hidden');
+            });
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}

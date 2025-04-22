@@ -1,37 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
-    <title>Aviyon - Web3 Cloud Platform</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Aviyon{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('build/base.css') }}">
+    {% block stylesheets %}{% endblock %}
 </head>
-<body class="bg-dark text-light flex">
-    <!-- Sidebar -->
-    {% include 'components/sidebar.html.twig' %}
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_root') }}">Home</a></li>
+                <li><a href="{{ path('marketplace') }}">Marketplace</a></li>
+                <li><a href="{{ path('explore') }}">Explore</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('ide') }}">IDE</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="flex-1 flex flex-col min-h-screen">
-        <!-- Header -->
-        {% include 'components/header.html.twig' %}
+    <main class="container">
+        {% block body %}{% endblock %}
+    </main>
 
-        <!-- Flash Messages -->
-        <div class="pt-16">
-            {% for message in app.flashes('success') %}
-                <div class="flash-message">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
+    <footer class="footer">
+        <ul>
+            <li><a href="{{ path('about') }}">About</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+        </ul>
+    </footer>
 
-        <!-- Main Content -->
-        <main class="flex-1">
-            {% block body %}{% endblock %}
-        </main>
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="fixed bottom-4 right-4 btn bg-accent">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
 
-        <!-- Footer -->
-        {% include 'components/footer.html.twig' %}
-    </div>
+    <!-- Nimbus Popup -->
+    {% include 'components/nimbus_popup.html.twig' %}
+
+    <script src="{{ asset('build/app.js') }}"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>

@@ -1,16 +1,13 @@
 const Encore = require('@symfony/webpack-encore');
-
-if (!Encore.isRuntimeEnvironmentConfigured()) {
-    Encore.configureRuntimeEnvironment('dev', {
-        nodeEnv: 'development'
-    });
-}
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const fs = require('fs');
+const path = require('path');
 
 Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('app', './assets/js/app.js')
-    .splitEntryChunks()
+    .addStyleEntry('base', './assets/css/base.css')
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
@@ -19,15 +16,16 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
-    })
-    .enableSassLoader()
-    .enablePostCssLoader((options) => {
-        options.postcssOptions = {
-            plugins: [
-                require('tailwindcss'),
-                require('autoprefixer'),
-            ],
-        };
     });
+
+// Add CopyWebpackPlugin only if assets/images/ contains files
+const imagesPath = path.resolve(__dirname, 'assets/images');
+if (fs.existsSync(imagesPath) && fs.readdirSync(imagesPath).length > 0) {
+    Encore.addPlugin(new CopyWebpackPlugin({
+        patterns: [
+            { from: './assets/images', to: 'images/[path][name].[ext]' },
+        ],
+    }));
+}
 
 module.exports = Encore.getWebpackConfig();

@@ -1,17 +1,201 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - NFT Marketplace{% endblock %}
+
 {% block body %}
-  <div class="max-w-7xl mx-auto px-6 py-16">
-    <h1 class="mb-6">NFT Marketplace</h1>
-    <div class="bg-dark-light p-6 rounded-lg">
-      <h3 class="text-lg mb-4">Browse Items</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="card">
-          <div id="marketplace-item-1" class="w-full h-48 mb-2"></div>
-          <h4 class="mb-2">Cyber Jacket</h4>
-          <p class="text-gray-400">Price: 0.1 ICP</p>
-          <button class="cta-button primary mt-2">Buy</button>
-        </div>
-      </div>
+<section class="marketplace container py-12">
+    <h1 class="text-4xl font-bold text-accent">Aviyon NFT Bazaar</h1>
+    <p class="text-secondary mb-8">Discover, buy, and bid on unique NFTs in the kodoverse.</p>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-between gap-4 mb-8">
+        <select class="form-control w-48" id="sort-by">
+            <option value="price-asc">Sort by: Price (Low to High)</option>
+            <option value="price-desc">Sort by: Price (High to Low)</option>
+            <option value="newest">Sort by: Newest</option>
+            <option value="popularity">Sort by: Popularity</option>
+        </select>
+        <select class="form-control w-48" id="category">
+            <option value="all">Category: All</option>
+            <option value="art">Art</option>
+            <option value="collectibles">Collectibles</option>
+            <option value="gaming">Gaming</option>
+            <option value="avatars">Avatars</option>
+        </select>
+        <select class="form-control w-48" id="blockchain">
+            <option value="all">Blockchain: All</option>
+            <option value="icp">Internet Computer</option>
+            <option value="ethereum">Ethereum</option>
+        </select>
+        <input type="text" class="form-control flex-1" id="nft-search" placeholder="Search NFTs by name, creator, or description">
     </div>
-  </div>
+
+    <!-- NFT Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for nft in nfts %}
+            <div class="profile-card nft-card" data-nft-id="{{ nft.id }}">
+                <canvas id="nft-{{ nft.id }}-preview" class="w-full h-48 mb-2" data-model="{{ nft.modelUrl }}"></canvas>
+                <h3 class="text-accent">{{ nft.name }}</h3>
+                <p class="text-secondary">Creator: <a href="{{ path('user_profile', {'username': nft.creator}) }}">{{ nft.creator }}</a></p>
+                <p class="text-secondary">Price: {{ nft.price }} {{ nft.currency }}</p>
+                <p class="text-secondary text-sm">Created: {{ nft.createdAt|date('Y-m-d') }}</p>
+                <div class="flex space-x-2 mt-2">
+                    <button class="btn buy-now" data-nft-id="{{ nft.id }}">Buy Now</button>
+                    <button class="btn bg-secondary place-bid" data-nft-id="{{ nft.id }}">Place Bid</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- NFT Detail Modal -->
+    <div id="nft-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+        <div class="bg-secondary p-8 rounded-lg max-w-2xl w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="modal-title" class="text-2xl text-accent"></h2>
+                <button id="modal-close" class="text-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <canvas id="modal-nft-preview" class="w-full h-64 mb-4"></canvas>
+            <p id="modal-creator" class="text-secondary"></p>
+            <p id="modal-price" class="text-secondary"></p>
+            <p id="modal-description" class="text-secondary mb-4"></p>
+            <div class="flex space-x-4">
+                <button id="modal-buy" class="btn">Buy Now</button>
+                <div class="flex items-center">
+                    <input type="number" id="modal-bid" class="form-control w-32 mr-2" placeholder="Enter bid">
+                    <button id="modal-bid-submit" class="btn bg-secondary">Place Bid</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('build/three.min.js') }}"></script>
+<script src="{{ asset('build/GLTFLoader.js') }}"></script>
+<script>
+    // Initialize Three.js with GLTFLoader for NFT previews
+    document.querySelectorAll('[id^="nft-"]').forEach(canvas => {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        camera.position.z = 5;
+
+        const light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light.position.set(0, 1, 1);
+        scene.add(light);
+
+        const modelUrl = canvas.dataset.model;
+        if (modelUrl) {
+            const loader = new THREE.GLTFLoader();
+            loader.load(modelUrl, (gltf) => {
+                scene.add(gltf.scene);
+                gltf.scene.scale.set(1, 1, 1);
+                gltf.scene.position.set(0, 0, 0);
+            }, undefined, (error) => {
+                console.error('Error loading GLTF model:', error);
+                // Fallback to cube
+                const geometry = new THREE.BoxGeometry(1, 1, 1);
+                const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff });
+                const cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
+            });
+        } else {
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('nft-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCreator = document.getElementById('modal-creator');
+    const modalPrice = document.getElementById('modal-price');
+    const modalDescription = document.getElementById('modal-description');
+    const modalClose = document.getElementById('modal-close');
+
+    document.querySelectorAll('.nft-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const nftId = card.dataset.nftId;
+            const nft = {{ nfts|json_encode|raw }}.find(n => n.id == nftId);
+            modalTitle.textContent = nft.name;
+            modalCreator.textContent = `Creator: ${nft.creator}`;
+            modalPrice.textContent = `Price: ${nft.price} ${nft.currency}`;
+            modalDescription.textContent = nft.description;
+            modal.classList.remove('hidden');
+
+            // Render NFT in modal
+            const modalCanvas = document.getElementById('modal-nft-preview');
+            const modalScene = new THREE.Scene();
+            const modalCamera = new THREE.PerspectiveCamera(75, modalCanvas.clientWidth / modalCanvas.clientHeight, 0.1, 1000);
+            const modalRenderer = new THREE.WebGLRenderer({ canvas: modalCanvas, alpha: true });
+            modalRenderer.setSize(modalCanvas.clientWidth, modalCanvas.clientHeight);
+            modalCamera.position.z = 5;
+
+            const modalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            modalLight.position.set(0, 1, 1);
+            modalScene.add(modalLight);
+
+            const loader = new THREE.GLTFLoader();
+            loader.load(nft.modelUrl, (gltf) => {
+                modalScene.add(gltf.scene);
+                gltf.scene.scale.set(1, 1, 1);
+                gltf.scene.position.set(0, 0, 0);
+            }, undefined, (error) => {
+                console.error('Error loading GLTF model:', error);
+                const geometry = new THREE.BoxGeometry(1, 1, 1);
+                const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff });
+                const cube = new THREE.Mesh(geometry, material);
+                modalScene.add(cube);
+            });
+
+            function animateModal() {
+                requestAnimationFrame(animateModal);
+                modalRenderer.render(modalScene, modalCamera);
+            }
+            animateModal();
+        });
+    });
+
+    modalClose.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    document.querySelectorAll('.buy-now').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const nftId = btn.dataset.nftId;
+            // Placeholder for Motoko canister call
+            alert(`Initiating purchase for NFT ID: ${nftId}`);
+        });
+    });
+
+    document.querySelectorAll('.place-bid').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const nftId = btn.dataset.nftId;
+            modal.classList.remove('hidden');
+            document.getElementById('modal-bid').focus();
+        });
+    });
+
+    document.getElementById('modal-bid-submit').addEventListener('click', () => {
+        const bid = document.getElementById('modal-bid').value;
+        // Placeholder for Motoko canister call
+        alert(`Bid placed: ${bid}`);
+    });
+</script>
 {% endblock %}

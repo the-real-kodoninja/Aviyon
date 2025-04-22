@@ -1,17 +1,44 @@
 {% extends 'layouts/base.html.twig' %}
 
+{% block title %}Aviyon - Search{% endblock %}
+
 {% block body %}
-<div class="container mx-auto p-6">
-    <h1 class="text-4xl text-light mb-6">Search</h1>
-    <div class="search-bar mb-6">
-        <input type="text" id="search-input" class="w-full p-3 bg-dark border border-gray-600 rounded text-light" placeholder="Search Aviyon...">
+<section class="search container py-12">
+    <h1 class="text-4xl font-bold text-accent">Search Aviyon</h1>
+    <form action="{{ path('search') }}" method="GET" class="flex flex-wrap gap-4 mt-4">
+        <input type="text" name="q" value="{{ query|default('') }}" class="form-control flex-1" placeholder="Search users, repos, posts, NFTs, #hashtags, @mentions">
+        <select class="form-control w-48" name="type">
+            <option value="">All Types</option>
+            <option value="user" {{ type == 'user' ? 'selected' }}>Users</option>
+            <option value="repo" {{ type == 'repo' ? 'selected' }}>Repos</option>
+            <option value="post" {{ type == 'post' ? 'selected' }}>Posts</option>
+            <option value="nft" {{ type == 'nft' ? 'selected' }}>NFTs</option>
+        </select>
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    <div class="results mt-8">
+        <h2 class="text-3xl text-accent mb-4">Results for "{{ query|default('All') }}"</h2>
+        {% if results|length > 0 %}
+            {% for result in results %}
+                <div class="profile-card mb-4">
+                    <p class="text-secondary capitalize">{{ result.type }}</p>
+                    {% if result.type == 'user' %}
+                        <a href="{{ result.url }}" class="text-accent font-semibold">{{ result.name }}</a>
+                    {% elseif result.type == 'repo' %}
+                        <a href="{{ result.url }}" class="text-accent font-semibold">{{ result.name }}</a>
+                    {% elseif result.type == 'post' %}
+                        <p class="text-primary">{{ result.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</p>
+                        <a href="{{ result.url }}" class="text-accent">View Post</a>
+                    {% elseif result.type == 'nft' %}
+                        <p class="text-primary">{{ result.name }}</p>
+                        <a href="{{ result.url }}" class="text-accent">View on Marketplace</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-secondary">No results found.</p>
+        {% endif %}
     </div>
-    <div class="search-results">
-        <h2 class="text-2xl text-light mb-4">Results</h2>
-        <div class="result-item p-4 bg-dark rounded mb-4">
-            <a href="#" class="text-light hover:underline">Feature: Cloud IDE</a>
-            <p class="text-gray-400">Browser-based coding with real-time collaboration.</p>
-        </div>
-    </div>
-</div>
+</section>
 {% endblock %}

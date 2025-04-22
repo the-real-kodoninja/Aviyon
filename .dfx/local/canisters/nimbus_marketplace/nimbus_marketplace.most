@@ -1,0 +1,15 @@
+// Version: 1.0.0
+type NFT =
+  {
+    createdAt : Text;
+    creator : Text;
+    currency : Text;
+    description : Text;
+    id : Nat;
+    modelUrl : Text;
+    name : Text;
+    price : Float
+  };
+actor {
+  stable var nftStore : [NFT]
+};

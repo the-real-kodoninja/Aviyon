@@ -1,0 +1,138 @@
+:root {
+    --bg-primary: #0d0d1a;
+    --bg-secondary: #1a1a2e;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3cc;
+    --accent: #6b48ff;
+    --accent-hover: #8971ff;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0d0d1a;
+    --bg-secondary: #1a1a2e;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3cc;
+    --accent: #6b48ff;
+    --accent-hover: #8971ff;
+}
+
+[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent: #6b48ff;
+    --accent-hover: #8971ff;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.global-feed {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-card {
+    background: var(--bg-primary);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-author-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.platform-badge {
+    background: var(--accent);
+    color: var(--text-primary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.post-timestamp {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.post-content {
+    margin: 10px 0;
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.action-btn {
+    background: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: var(--accent-hover);
+}
+
+.comments-section {
+    margin-top: 20px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.comment-author-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-timestamp {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.comment-form {
+    display: none;
+    margin-top: 10px;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-secondary);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}

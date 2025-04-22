@@ -1,0 +1,18 @@
+{
+  "canisters": {
+    "nimbus_marketplace": {
+      "main": "backend/canisters/nimbus_marketplace/src/nimbus_marketplace.mo",
+      "type": "motoko"
+    },
+    "nimbus_ai": {
+      "main": "backend/canisters/nimbus_ai/src/nimbus_ai.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "version": 1
+}

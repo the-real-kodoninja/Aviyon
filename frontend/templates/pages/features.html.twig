@@ -1,33 +1,22 @@
 {% extends 'layouts/base.html.twig' %}
 {% block body %}
-  <div class="max-w-5xl mx-auto px-6 py-16">
-    <h1 class="mb-6">Features</h1>
-    <section class="mb-12">
-      <h2 class="mb-4">Core AI Capabilities</h2>
-      <ul class="space-y-3">
-        <li class="feature-item">Website Search: Access reputable sources (.edu, .gov, .org)</li>
-        <li class="feature-item">Knowledge Base: MIT, Harvard, and Ivy League course info</li>
-        <li class="feature-item">Grammar Assistance: Powered by grammar rules and writing books</li>
-        <li class="feature-item">Code Assistance: Access public GitHub/GitLab repos and documentation</li>
-        <li class="feature-item">Health Insights: Fitness, medical nutrition, and the 2045 Initiative</li>
-      </ul>
-    </section>
-    <section class="mb-12">
-      <h2 class="mb-4">Nimbus Agent Customization</h2>
-      <ul class="space-y-3">
-        <li class="feature-item">Multiple Agents: Create up to 5 agents per account</li>
-        <li class="feature-item">3D Avatar Customization: Height, skin tone, hair, eyes, clothing</li>
-        <li class="feature-item">Personality Customization: Define traits, tone, and empathy levels</li>
-        <li class="feature-item">Exportable Agents: Export as VRM files for virtual worlds</li>
-      </ul>
-    </section>
-    <section class="mb-12">
-      <h2 class="mb-4">NFT Marketplace</h2>
-      <ul class="space-y-3">
-        <li class="feature-item">Decentralized Marketplace: Built on the Internet Computer (ICP)</li>
-        <li class="feature-item">Microtransactions: Purchase items with ICP, Bitcoin, Ethereum, or fiat</li>
-        <li class="feature-item">3D Gallery: Browse items in a visually stunning 3D gallery</li>
-      </ul>
-    </section>
+  <h1 class="mb-4">Features</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">AI-Driven Development</h5>
+          <p class="card-text">Leverage Nimbus AI for code suggestions and automation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Blockchain Integration</h5>
+          <p class="card-text">Build secure DeFi applications with ICP support.</p>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}

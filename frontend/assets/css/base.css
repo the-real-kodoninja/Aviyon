@@ -1,29 +1,41 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* Updated 2025-04-23 for modularity */
+:root {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --accent: #6b48ff;
+    --accent-hover: #5a3de6;
+    --border: #d1d5db;
+    --red: #ef4444;
+}
 
-/* Tailwind Styles */
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1f1f1f;
+    --text-primary: #e5e5e5;
+    --text-secondary: #a1a1aa;
+    --accent: #8b5cf6;
+    --accent-hover: #7c4de0;
+    --border: #3f3f46;
+    --red: #f87171;
+}
+
+/* General */
 body {
-  @apply bg-dark-space text-cyber-gray font-inter;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    margin: 0;
 }
 
-/* Colors */
-.dark {
-  background-color: #0B0C12;
-}
+/* Import page-specific styles */
+@import './pages/landing.css';
+@import './pages/dashboard.css';
+@import './components/header.css';
+@import './components/footer.css';
+@import './components/sidebar.css';
+@import './components/shared.css';
 
-.dark-light {
-  background-color: #1A1B23;
-}
-
-.light {
-  color: #F5F5F5;
-}
-
-.blue {
-  color: #2A6DD1;
-}
-
-.pink {
-  color: #FF2D55;
-}
+/* ... rest of base.css from your original ... */

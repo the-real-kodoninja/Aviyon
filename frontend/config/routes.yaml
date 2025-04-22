@@ -2,6 +2,10 @@ app_root:
     path: /
     controller: App\Controller\AuthController::root
 
+landing:
+    path: /landing
+    controller: App\Controller\AuthController::landing
+
 login:
     path: /login
     controller: App\Controller\AuthController::login
@@ -10,74 +14,37 @@ signup:
     path: /signup
     controller: App\Controller\AuthController::signup
 
-app_logout:
-    path: /logout
-    controller: App\Controller\AuthController::logout
+marketplace:
+    path: /marketplace
+    controller: App\Controller\AuthController::marketplace
 
-features:
-    path: /features
-    controller: App\Controller\PageController::features
+user_profile:
+    path: /user/{username}
+    controller: App\Controller\AuthController::userProfile
 
 about:
     path: /about
-    controller: App\Controller\PageController::about
-
-checkout:
-    path: /checkout
-    controller: App\Controller\PageController::checkout
-
-domain:
-    path: /domain
-    controller: App\Controller\PageController::domain
-
-search:
-    path: /search
-    controller: App\Controller\PageController::search
-
-user:
-    path: /user
-    controller: App\Controller\PageController::user
-
-settings:
-    path: /settings
-    controller: App\Controller\PageController::settings
-
-dashboard:
-    path: /dashboard
-    controller: App\Controller\DashboardController::index
+    controller: App\Controller\AuthController::about
 
 ide:
     path: /ide
-    controller: App\Controller\IdeController::index
+    controller: App\Controller\AuthController::ide
 
-dashboard_deployments:
-    path: /dashboard/deployments
-    controller: App\Controller\DashboardController::deployments
+search:
+    path: /search
+    controller: App\Controller\AuthController::search
+    methods: [GET]
 
-dashboard_hosting:
-    path: /dashboard/hosting
-    controller: App\Controller\DashboardController::hosting
+add_comment:
+    path: /comment
+    controller: App\Controller\AuthController::addComment
+    methods: [POST]
 
-dashboard_agents:
-    path: /dashboard/agents
-    controller: App\Controller\DashboardController::agents
+like_post:
+    path: /like
+    controller: App\Controller\AuthController::likePost
+    methods: [POST]
 
-dashboard_marketplace:
-    path: /dashboard/marketplace
-    controller: App\Controller\DashboardController::marketplace
-
-dashboard_virtual_world:
-    path: /dashboard/virtual-world
-    controller: App\Controller\DashboardController::virtualWorld
-
-dashboard_messages:
-    path: /dashboard/messages
-    controller: App\Controller\DashboardController::messages
-
-dashboard_nimbus_ai:
-    path: /dashboard/nimbus-ai
-    controller: App\Controller\DashboardController::nimbusAi
-
-admin:
-    path: /admin
-    controller: App\Controller\AdminController::index
+explore:
+    path: /explore
+    controller: App\Controller\AuthController::explore

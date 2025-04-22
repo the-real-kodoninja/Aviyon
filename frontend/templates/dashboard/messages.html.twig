@@ -1,25 +1,11 @@
 {% extends 'layouts/base.html.twig' %}
-
 {% block body %}
-<div class="container mx-auto p-6">
-    <h1 class="text-4xl text-light mb-6">Messages</h1>
-    <div class="messages-section">
-        <div class="message-list p-4 bg-dark rounded mb-4">
-            <h2 class="text-2xl text-light mb-4">Inbox</h2>
-            <div class="message-item p-2 border-b border-gray-600">
-                <p class="text-light">Support: Your domain is ready!</p>
-                <p class="text-gray-400 text-sm">2 hours ago</p>
-            </div>
-        </div>
-        <div class="message-compose p-4 bg-dark rounded">
-            <h2 class="text-2xl text-light mb-4">New Message</h2>
-            <textarea class="w-full p-2 bg-dark border border-gray-600 rounded text-light mb-2" placeholder="Type your message..."></textarea>
-            <div class="upload-section">
-                <label class="block text-gray-400 mb-2">Attach File</label>
-                <input type="file" class="text-light">
-            </div>
-            <button class="mt-2 p-2 bg-blue-600 text-light rounded">Send</button>
-        </div>
+  <h1 class="mb-4">Messages</h1>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Your Messages</h5>
+      <p class="card-text">View and manage your communications.</p>
+      <a href="#" class="btn btn-primary">View Messages</a>
     </div>
-</div>
+  </div>
 {% endblock %}

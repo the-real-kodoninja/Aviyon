@@ -1,16 +1,17 @@
-{% if app.user %}
-<aside class="bg-dark-light w-64 border-r border-gray-800 min-h-screen p-4">
-    <h3 class="text-lg font-roboto text-light mb-4">Dashboard</h3>
-    <nav class="space-y-2">
-        <a href="{{ path('dashboard') }}" class="block sidebar-link">Overview</a>
-        <a href="{{ path('dashboard_ide') }}" class="block sidebar-link">Cloud IDE</a>
-        <a href="{{ path('dashboard_deployments') }}" class="block sidebar-link">Deployments</a>
-        <a href="{{ path('dashboard_hosting') }}" class="block sidebar-link">Hosting</a>
-        <a href="{{ path('dashboard_agents') }}" class="block sidebar-link">Agents</a>
-        <a href="{{ path('dashboard_marketplace') }}" class="block sidebar-link">Marketplace</a>
-        <a href="{{ path('dashboard_virtual_world') }}" class="block sidebar-link">Virtual World</a>
-    </nav>
-</aside>
-{% else %}
-<div class="w-0"></div>
-{% endif %}
+<div class="col-md-3">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Dashboard Menu</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link" href="/dashboard">Overview</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/deployments">Deployments</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/hosting">Hosting</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/agents">AI Agents</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/marketplace">Marketplace</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/virtual-world">Virtual World</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/messages">Messages</a></li>
+        <li class="nav-item"><a class="nav-link" href="/dashboard/nimbus-ai">Nimbus AI</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

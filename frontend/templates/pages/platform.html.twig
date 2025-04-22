@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html.twig' %}
+{% block title %}{{ platformName | capitalize }}{% endblock %}
+{% block body %}
+    <div class="profile-header">
+        <img src="{{ asset('build/images/' ~ platformName ~ '-cover.jpg') }}" alt="{{ platformName }} Cover" class="cover-image">
+        <div class="profile-info">
+            <img src="{{ asset('build/images/' ~ platformName ~ '-profile.jpg') }}" alt="{{ platformName }} Profile" class="profile-image">
+            <h1>{{ platformName | capitalize }}</h1>
+            <p><a href="https://github.com/the-real-kodoninja/{{ platformName }}" target="_blank">View on GitHub</a></p>
+        </div>
+    </div>
+    <section class="platform-feed">
+        <h2>{{ platformName | capitalize }} Feed</h2>
+        {% for post in platform_posts %}
+            <div class="post-card">
+                <div class="post-header">
+                    <img src="{{ asset('build/images/' ~ post.platform ~ '-profile.jpg') }}" alt="{{ post.author }}" class="post-author-image">
+                    <div>
+                        <h3>{{ post.author }} <span class="platform-badge">{{ post.platform | capitalize }}</span></h3>
+                        <span class="post-timestamp">{{ post.timestamp|date('M d, Y h:i A') }}</span>
+                    </div>
+                </div>
+                <p class="post-content">{{ post.content }}</p>
+                {% if post.image %}
+                    <img src="{{ asset('build/images/' ~ post.image) }}" alt="Post Image" class="post-image">
+                {% endif %}
+                <div class="post-actions">
+                    <button class="action-btn like-btn" data-post-id="{{ loop.index }}">Like <span>{{ post.likes }}</span></button>
+                    <button class="action-btn comment-toggle">Comment</button>
+                    <button class="action-btn">Share</button>
+                </div>
+                <div class="comments-section">
+                    <h4>Comments</h4>
+                    {% for comment in post.comments %}
+                        <div class="comment">
+                            <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="{{ comment.author }}" class="comment-author-image">
+                            <div>
+                                <h5>{{ comment.author }}</h5>
+                                <p>{{ comment.content }}</p>
+                                <span class="comment-timestamp">{{ comment.timestamp|date('M d, Y h:i A') }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <form class="comment-form" action="{{ path('add_comment') }}" method="post">
+                        <input type="hidden" name="post_id" value="{{ loop.index }}">
+                        <textarea name="content" placeholder="Write a comment..." class="comment-input" required></textarea>
+                        <button type="submit" class="btn">Post</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

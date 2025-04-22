@@ -1,39 +1,11 @@
 {% extends 'layouts/base.html.twig' %}
-
 {% block body %}
-<div class="container mx-auto p-6">
-    <h1 class="text-4xl text-light mb-6">Find Your Domain</h1>
-    <!-- Domain Search -->
-    <div class="domain-search mb-6">
-        <input type="text" id="domain-search" class="w-full p-3 bg-dark border border-gray-600 rounded text-light" placeholder="Search for a domain (e.g., example.com)">
-        <button class="mt-2 p-3 bg-blue-600 text-light rounded">Check Availability</button>
+  <h1 class="mb-4">Domain Management</h1>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Manage Domains</h5>
+      <p class="card-text">Configure custom domains for your applications.</p>
+      <a href="#" class="btn btn-primary">Add Domain</a>
     </div>
-    <!-- Domain Results -->
-    <div class="domain-results">
-        <h2 class="text-2xl text-light mb-4">Availability</h2>
-        <div class="result-item p-4 bg-dark rounded mb-4">
-            <p class="text-light">example.com - <span class="text-green-500">Available</span></p>
-            <p class="text-gray-400">Price: $12.99/year</p>
-            <button class="p-2 bg-green-500 text-light rounded">Add to Cart</button>
-        </div>
-        <div class="result-item p-4 bg-dark rounded mb-4">
-            <p class="text-light">example.ai - <span class="text-red-500">Taken</span></p>
-            <p class="text-gray-400">Owner: John Doe (WHOIS Lookup)</p>
-            <button class="p-2 bg-yellow-500 text-light rounded">We Can Help Acquire It</button>
-        </div>
-        <!-- Extensions -->
-        <div class="extensions mt-4">
-            <h3 class="text-xl text-light mb-2">Other Extensions</h3>
-            <p class="text-gray-400">.com ($12.99) | .io ($29.99) | .ai ($49.99) | .net ($14.99)</p>
-        </div>
-        <!-- Hosting Option -->
-        <div class="hosting-option mt-4">
-            <label class="text-light"><input type="checkbox" class="mr-2"> Add Hosting ($5.99/month)</label>
-        </div>
-        <!-- Free Subdomain -->
-        <div class="free-subdomain mt-4">
-            <p class="text-light">Or get a free subdomain: <span class="text-green-500">example.aviyon.com</span></p>
-        </div>
-    </div>
-</div>
+  </div>
 {% endblock %}

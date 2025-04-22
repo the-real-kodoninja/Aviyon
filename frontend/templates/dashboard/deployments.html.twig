@@ -1,27 +1,11 @@
 {% extends 'layouts/base.html.twig' %}
 {% block body %}
-  <div class="max-w-7xl mx-auto px-6 py-16">
-    <h1 class="mb-6">Deployments</h1>
-    <div class="bg-dark-light p-6 rounded-lg">
-      <h3 class="text-lg mb-4">CI/CD Pipelines</h3>
-      <table class="w-full text-left">
-        <thead>
-          <tr class="border-b border-gray-800">
-            <th class="py-2">Project</th>
-            <th class="py-2">Status</th>
-            <th class="py-2">Last Deployed</th>
-            <th class="py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-b border-gray-800">
-            <td class="py-2">MyApp</td>
-            <td class="py-2 text-green-500">Success</td>
-            <td class="py-2">2025-04-15</td>
-            <td class="py-2"><button class="cta-button secondary">Redeploy</button></td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="mb-4">Deployments</h1>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Manage Deployments</h5>
+      <p class="card-text">View and manage your application deployments on the Internet Computer.</p>
+      <a href="#" class="btn btn-primary">New Deployment</a>
     </div>
   </div>
 {% endblock %}

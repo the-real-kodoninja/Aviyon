@@ -1,31 +1,17 @@
-/* Marketplace Item */
-#marketplace-item-1 {
-  @apply w-full h-48;
+/* Marketplace-specific styles */
+.marketplace {
+    background: var(--bg-secondary);
+    border-radius: 10px;
 }
 
-/* Fallback */
-#marketplace-item-1 {
-  width: 100%;
-  height: 192px;
+.nft-card {
+    transition: transform 0.3s ease;
 }
 
-.messages-section .message-list, .messages-section .message-compose {
-    border: 1px solid #333;
+.nft-card:hover {
+    transform: translateY(-5px);
 }
 
-.message-item:hover {
-    background-color: #222;
-}
-
-#chat-toggle:hover {
-    background-color: #7b3fe4;
-}
-
-#chat-popup {
-    border: 1px solid #333;
-}
-
-.chat-messages {
-    border: 1px solid #444;
-    padding: 10px;
+#nft-modal {
+    transition: opacity 0.3s ease;
 }

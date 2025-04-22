@@ -1,32 +1,93 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Command Center{% endblock %}
+
 {% block body %}
-  <div class="max-w-7xl mx-auto px-6 py-16">
-    <h1 class="mb-6">Dashboard</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <a href="{{ path('ide') }}" class="card">
-        <h3 class="mb-2">Cloud IDE</h3>
-        <p class="text-gray-400">Browser-based coding with real-time collaboration.</p>
-      </a>
-      <a href="{{ path('dashboard_deployments') }}" class="card">
-        <h3 class="mb-2">Deployments</h3>
-        <p class="text-gray-400">Manage your CI/CD pipelines.</p>
-      </a>
-      <a href="{{ path('dashboard_hosting') }}" class="card">
-        <h3 class="mb-2">Hosting</h3>
-        <p class="text-gray-400">Custom domains, databases, and storage.</p>
-      </a>
-      <a href="{{ path('dashboard_agents') }}" class="card">
-        <h3 class="mb-2">nimbus.ai Agents</h3>
-        <p class="text-gray-400">Customize your AI-driven 3D avatars.</p>
-      </a>
-      <a href="{{ path('dashboard_marketplace') }}" class="card">
-        <h3 class="mb-2">NFT Marketplace</h3>
-        <p class="text-gray-400">Trade items on the Internet Computer (ICP).</p>
-      </a>
-      <a href="{{ path('dashboard_virtual_world') }}" class="card">
-        <h3 class="mb-2">Virtual World</h3>
-        <p class="text-gray-400">Interact in the Kodoverse.</p>
-      </a>
-    </div>
-  </div>
+    <section class="dashboard container py-12">
+        <h1 class="text-4xl font-bold text-accent">Command Center</h1>
+
+        <div class="flex flex-wrap justify-between gap-8 mb-8">
+            <div class="profile-card w-1/3">
+                <h3 class="text-xl text-accent">Wallet</h3>
+                <p class="text-secondary">Balance: 1.2 ETH | 500 ICP</p>
+                <button id="swap-tokens" class="btn mt-2">Swap Tokens</button>
+                <button id="stake-tokens" class="btn mt-2 bg-secondary">Stake Tokens</button>
+            </div>
+            <div class="profile-card w-1/3">
+                <h3 class="text-xl text-accent">Resource Usage</h3>
+                <p class="text-secondary">CPU: {{ usage.cpu }} cores</p>
+                <p class="text-secondary">RAM: {{ usage.ram }} GB</p>
+                <p class="text-secondary">Storage: {{ usage.storage }} GB</p>
+                <canvas id="resource-chart" class="w-full h-24 mt-4"></canvas>
+            </div>
+            <div class="profile-card w-1/3">
+                <h3 class="text-xl text-accent">Quick Actions</h3>
+                <a href="{{ path('ide') }}" class="btn block mb-2">Open IDE</a>
+                <button class="btn block">Deploy App</button>
+                <button class="btn block bg-secondary">New Workspace</button>
+            </div>
+        </div>
+
+        <div class="workspaces mb-8">
+            <h2 class="text-3xl text-accent mb-4">Workspaces</h2>
+            {% for workspace in workspaces %}
+                <div class="profile-card">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-accent mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.22-1.79L9 14v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        <a href="{{ workspace.repo }}" class="text-accent font-semibold">{{ workspace.name }}</a>
+                    </div>
+                    <p class="text-secondary"><strong>ID:</strong> {{ workspace.id }}</p>
+                    <p class="text-secondary"><strong>Class:</strong> {{ workspace.class }}</p>
+                    <p class="text-secondary"><strong>Last Worked:</strong> {{ workspace.lastWorked|date('Y-m-d H:i') }}</p>
+                    <div class="flex space-x-2 mt-2">
+                        <button class="btn">Start</button>
+                        <button class="btn bg-red-500">Delete</button>
+                        <a href="{{ path('ide') }}" class="btn">Open IDE</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="social-feed">
+            <h2 class="text-3xl text-accent mb-4">Platform Updates</h2>
+            {% for post in social_posts|default([]) %}
+                <div class="profile-card">
+                    <p class="text-primary">{{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</p>
+                    <p class="text-secondary text-sm">{{ post.timestamp|date('Y-m-d H:i') }}</p>
+                    <div class="flex space-x-4 mt-2">
+                        <form action="{{ path('like_post') }}" method="POST">
+                            <input type="hidden" name="post_id" value="{{ loop.index }}">
+                            <button type="submit" class="btn like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes|default(0) }}</span>)</button>
+                        </form>
+                        <button class="btn comment-toggle">Comment</button>
+                        <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
+                            <input type="hidden" name="post_id" value="{{ loop.index }}">
+                            <textarea name="content" class="form-control" placeholder="Add a comment"></textarea>
+                            <button type="submit" class="btn mt-2">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            <a href="{{ path('landing') }}" class="btn">View All</a>
+        </div>
+    </section>
+
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Resource Chart
+            const ctx = document.getElementById('resource-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['5m', '4m', '3m', '2m', '1m'],
+                    datasets: [
+                        { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
+                        { label: 'RAM', data: [2, 3, 4, 3.5, 4], borderColor: '#6b48ff', fill: false },
+                    ],
+                },
+                options: { scales: { y: { beginAtZero: true } } },
+            });
+        </script>
+    {% endblock %}
 {% endblock %}

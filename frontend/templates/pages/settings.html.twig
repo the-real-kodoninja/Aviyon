@@ -1,26 +1,16 @@
 {% extends 'layouts/base.html.twig' %}
-
 {% block body %}
-<div class="container mx-auto p-6">
-    <h1 class="text-4xl text-light mb-6">Settings</h1>
-    <div class="settings-sections">
-        <div class="section p-4 bg-dark rounded mb-4">
-            <h2 class="text-2xl text-light mb-2">Account</h2>
-            <label class="block text-gray-400 mb-2">Email</label>
-            <input type="email" class="w-full p-2 bg-dark border border-gray-600 rounded text-light" value="user@example.com">
+  <h1 class="mb-4">Settings</h1>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">Account Settings</h5>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" value="user@example.com">
         </div>
-        <div class="section p-4 bg-dark rounded mb-4">
-            <h2 class="text-2xl text-light mb-2">Preferences</h2>
-            <label class="block text-gray-400 mb-2">Theme</label>
-            <select class="w-full p-2 bg-dark border border-gray-600 rounded text-light">
-                <option>Dark</option>
-                <option>Light</option>
-            </select>
-        </div>
-        <div class="section p-4 bg-dark rounded">
-            <h2 class="text-2xl text-light mb-2">Notifications</h2>
-            <label class="text-light"><input type="checkbox" class="mr-2"> Email Notifications</label>
-        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
     </div>
-</div>
+  </div>
 {% endblock %}

@@ -1,3 +1,193 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: skyblue;
+    font-family: 'Fira Code', 'Inter', monospace;
+    background-color: #1E1E1E;
+    color: #CCCCCC;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Header */
+.header-fallback {
+    @apply sticky top-0 z-50 bg-[#1E1E1E] py-3 flex items-center justify-between;
+}
+
+.logo svg {
+    @apply w-6 h-6 mr-2 text-[#CCCCCC];
+}
+
+.logo-svg text {
+    @apply fill-[#CCCCCC] font-bold text-xl;
+}
+
+#menu-toggle, #cart-toggle, #user-toggle {
+    @apply text-[#CCCCCC] hover:text-[#007ACC] focus:outline-none;
+}
+
+.menu-dropdown-fallback, .cart-dropdown-fallback, .user-dropdown-fallback, .search-dropdown-fallback {
+    @apply absolute bg-[#252526] border border-[#3C3C3C] rounded-lg shadow-lg p-2 mt-2;
+}
+
+.menu-dropdown-fallback a, .cart-dropdown-fallback a, .user-dropdown-fallback a, .search-dropdown-fallback a {
+    @apply block px-4 py-2 text-[#CCCCCC] hover:bg-[#37373D] hover:text-[#FFFFFF] rounded;
+}
+
+.search-input-fallback {
+    @apply w-full p-2 bg-[#2D2D2D] border border-[#2D2D2D] text-[#CCCCCC] rounded focus:outline-none focus:border-[#007ACC];
+}
+
+.search-input-fallback:focus, .search-input-fallback:not(:placeholder-shown) {
+    @apply border-[#FF4081] shadow-[0_0_5px_rgba(255,64,129,0.3)];
+}
+
+.cart-count-fallback, .notification-count-fallback {
+    @apply bg-[#EF4444] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs;
+}
+
+.checkout-button-fallback {
+    @apply bg-[#10B981] text-white rounded py-2 hover:bg-[#059669];
+}
+
+.user-image-fallback {
+    @apply w-8 h-8 rounded-full;
+}
+
+/* Sidebar */
+aside {
+    @apply bg-[#252526] w-64 border-r border-[#2D2D2D] min-h-screen p-4 transition-all;
+}
+
+.sidebar-link {
+    @apply block text-[#CCCCCC] py-2 px-3 hover:bg-[#37373D] hover:text-[#007ACC] rounded;
+}
+
+/* Footer */
+footer {
+    @apply bg-[#1E1E1E] border-t border-[#333333] py-6 mt-auto text-center;
+}
+
+footer a {
+    @apply text-[#A0A0A0] hover:text-[#007ACC] text-sm;
+}
+
+.sitemap {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-4 mb-4;
+}
+
+/* Buttons */
+.cta-button {
+    @apply font-mono text-sm uppercase tracking-wider px-4 py-2 rounded transition-all;
+}
+
+.cta-button.primary {
+    @apply bg-[#007ACC] text-[#FFFFFF] hover:bg-[#FF4081];
+}
+
+.cta-button.secondary {
+    @apply border border-[#007ACC] text-[#007ACC] hover:bg-[#007ACC] hover:text-[#FFFFFF];
+}
+
+/* Cards */
+.card {
+    @apply bg-[#2D2D2D] p-4 rounded-lg hover:bg-[#37373D] transition-colors;
+}
+
+/* Form Inputs */
+.input-field {
+    @apply bg-[#2D2D2D] border border-[#2D2D2D] text-[#CCCCCC] rounded-md px-4 py-2 w-full focus:outline-none focus:border-[#007ACC];
+}
+
+.input-field::placeholder {
+    @apply text-[#A0A0A0] opacity-60;
+}
+
+/* Flash Messages */
+.flash-message {
+    @apply fixed top-20 left-1/2 transform -translate-x-1/2 bg-[#252526] border border-[#007ACC] text-[#CCCCCC] px-4 py-2 rounded-md shadow-lg z-50;
+}
+
+/* Typography */
+h1 {
+    @apply text-3xl md:text-4xl text-[#FFFFFF] font-bold;
+}
+
+h2 {
+    @apply text-2xl text-[#FFFFFF];
+}
+
+h3, h4 {
+    @apply text-lg text-[#FFFFFF];
+}
+
+p {
+    @apply text-[#A0A0A0];
+}
+
+/* Page-Specific Styles */
+.hero {
+    @apply relative min-h-screen flex items-center justify-center bg-gradient-to-b from-[#1E1E1E] to-[#0B0C12];
+}
+
+#three-canvas {
+    @apply absolute inset-0 z-0 opacity-40;
+}
+
+#thunder-cloud {
+    @apply absolute top-20 left-1/2 transform -translate-x-1/2 z-10 w-48 h-24;
+}
+
+#nimbus-cloud {
+    @apply absolute z-1 pointer-events-none w-16 h-16;
+}
+
+.domain-search input, .search-bar input {
+    @apply max-w-2xl;
+}
+
+.result-item {
+    @apply p-4 bg-[#2D2D2D] border border-[#333333] rounded;
+}
+
+.settings-sections .section, .profile-info, .profile-details {
+    @apply p-4 bg-[#2D2D2D] border border-[#333333] rounded;
+}
+
+.messages-section .message-list, .messages-section .message-compose {
+    @apply p-4 bg-[#2D2D2D] border border-[#333333] rounded;
+}
+
+.message-item:hover {
+    @apply bg-[#37373D];
+}
+
+#chat-toggle {
+    @apply bg-[#FF4081] hover:bg-[#E91E63];
+}
+
+#chat-popup {
+    @apply bg-[#252526] border border-[#333333];
+}
+
+.chat-messages {
+    @apply border border-[#444444] p-2;
+}
+
+/* Marketplace */
+#marketplace-item-1 {
+    @apply w-full h-48 bg-[#2D2D2D] rounded;
 }

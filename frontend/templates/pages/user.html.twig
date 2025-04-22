@@ -1,20 +1,97 @@
 {% extends 'layouts/base.html.twig' %}
 
+{% block title %}Aviyon - {{ user.username }}{% endblock %}
+
 {% block body %}
-<div class="container mx-auto p-6">
-    <h1 class="text-4xl text-light mb-6">User Profile</h1>
-    <div class="user-profile grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="profile-info p-4 bg-dark rounded">
-            <img src="/build/user-placeholder.jpg" alt="User Avatar" class="w-32 h-32 rounded-full mx-auto mb-4">
-            <h2 class="text-2xl text-light text-center">Username</h2>
-            <p class="text-gray-400 text-center">user@example.com</p>
+    <section class="user-profile container py-12">
+        <div class="profile-card flex items-center">
+            <img src="{{ asset(user.avatar) }}" alt="{{ user.username }}" class="rounded-full w-24 h-24 mr-4">
+            <div>
+                <h1 class="text-3xl text-accent">{{ user.username }}</h1>
+                <p class="text-secondary">{{ user.bio }}</p>
+                <p class="text-secondary">Wallet: 0.8 ETH | 200 ICP</p>
+                <p class="text-secondary">Followers: {{ user.followers|default(100) }} | Following: {{ user.following|default(50) }}</p>
+                <button class="btn mt-2">Follow</button>
+            </div>
         </div>
-        <div class="profile-details md:col-span-2 p-4 bg-dark rounded">
-            <h2 class="text-2xl text-light mb-4">Activity</h2>
-            <p class="text-gray-400">Purchased Domains: example.com, example.ai</p>
-            <p class="text-gray-400">Hosting Plans: Basic Plan ($5.99/month)</p>
-            <p class="text-gray-400">Recent Messages: 3 unread</p>
+
+        <div class="tabs flex space-x-4 mb-4">
+            <button class="btn tab-active" data-tab="posts">Posts</button>
+            <button class="btn" data-tab="repos">Repos</button>
+            <button class="btn" data-tab="nfts">NFTs</button>
+            <button class="btn" data-tab="activity">Activity</button>
         </div>
+
+        <div class="tab-content posts">
+            {% for post in user.posts %}
+                <div class="profile-card">
+                    <div class="flex items-center">
+                        <img src="{{ asset(user.avatar) }}" alt="{{ user.username }}" class="rounded-full w-12 h-12 mr-2">
+                        <div>
+                            <span class="text-accent font-semibold">{{ user.username }}</span>
+                            <span class="text-secondary text-sm block">{{ post.timestamp|date('Y-m-d H:i') }}</span>
+                        </div>
+            </div>
+            <p class="text-primary">{{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</p>
+            <div class="flex space-x-4 mt-2">
+                <form action="{{ path('like_post') }}" method="POST">
+                    <input type="hidden" name="post_id" value="{{ loop.index }}">
+                    <button type="submit" class="btn like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes }}</span>)</button>
+                </form>
+                <button class="btn comment-toggle">Comment</button>
+                <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
+                    <input type="hidden" name="post_id" value="{{ loop.index }}">
+                    <textarea name="content" class="form-control" placeholder="Add a comment, use #hashtags or @mentions"></textarea>
+                    <button type="submit" class="btn mt-2">Comment</button>
+                </form>
+            </div>
+            {% for comment in post.comments %}
+                <div class="ml-4 mt-2 text-secondary">
+                    <span>{{ comment.author }}: {{ comment.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</span>
+                    <span class="block text-sm">{{ comment.timestamp|date('Y-m-d H:i') }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="tab-content repos hidden">
+    {% for repo in user.repos %}
+        <div class="profile-card">
+            <a href="{{ repo.url }}" class="text-accent font-semibold">{{ repo.name }}</a>
+            <p class="text-secondary">Stars: {{ repo.stars }}</p>
+            <button class="btn mt-2">Fork</button>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="tab-content nfts hidden">
+    {% for nft in user.nfts|default([{'id': 1, 'name': 'Cyberpunk Avatar #1'}]) %}
+        <div class="profile-card">
+            <canvas id="nft-{{ nft.id }}-preview" class="w-full h-48 mb-2"></canvas>
+            <p class="text-primary">{{ nft.name }}</p>
+            <a href="{{ path('marketplace') }}" class="btn">View on Marketplace</a>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="tab-content activity hidden">
+    <div class="profile-card">
+        <p class="text-secondary">Deployed smart contract - {{ 'now'|date('Y-m-d H:i') }}</p>
+        <p class="text-secondary">Commented on @kodoninja post - {{ 'yesterday'|date('Y-m-d H:i') }}</p>
     </div>
 </div>
+</section>
+
+{% block javascripts %}
+<script>
+    document.querySelectorAll('.tabs .btn').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.tabs .btn').forEach(btn => btn.classList.remove('tab-active'));
+            button.classList.add('tab-active');
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            document.querySelector(`.tab-content.${button.dataset.tab}`).classList.remove('hidden');
+        });
+    });
+</script>
 {% endblock %}

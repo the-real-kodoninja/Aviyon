@@ -1,0 +1,16 @@
+type NFT = 
+ record {
+   createdAt: text;
+   creator: text;
+   currency: text;
+   description: text;
+   id: nat;
+   modelUrl: text;
+   name: text;
+   price: float64;
+ };
+service : {
+  buyNFT: (nat, text) -> (bool);
+  createNFT: (NFT) -> ();
+  getNFTs: () -> (vec NFT) query;
+}
