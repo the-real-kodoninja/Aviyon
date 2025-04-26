@@ -1,0 +1,92 @@
+# Ios & Android kodo.space App - design tree
+
+- home (feed) page (wall overall)
+    - view all
+        - text
+            - automatically seen in (info view)
+        - photo
+            - header (minimal 1 line)
+                - user photo small
+                - user name
+                - time ago (right side)
+            - body
+                - (side to side, header to footer)
+            - footer (minimal 1 line)
+                - like
+                - share
+                - comment
+                - buy
+            - click image full screen perspective to height, width ratio
+            - videos
+                - automatically seen in (thumbnail view)
+                    - body
+                        - thumbnail
+                            - landscape view
+                    - footer
+                        - user image
+                        - user name
+                        - title
+                        - views
+                        - time ago
+            - stories
+- menu
+    - home icon (logo)
+        - long press the home button to reveal the explore icon
+        - home icon brings you to feed
+    - AI (search)
+        - click, pulls up a mini full width plane with a text displayed “How can I help you (…)” Ask the search bar anything.
+            - Whats trending?
+            - Pokimane
+            - Find me someone new in finance.
+            - How long was I on the app for?
+            - Can you help me find a job?
+            - How can I get to my notifications?
+            - Can I get paid for posting to the platform?
+            - You can also add to your spaces with quick commands
+                - [x|spiders]
+                - [chess]
+    - post (+)
+        - long press
+    - spaces
+    - profile
+        - long press brings up settings menu
+        - a number in the top left will indicate notifications
+            - found by long pressing
+- explore page
+- user page
+- search page
+- video view page
+- photo view page
+- live view page
+- (NFT) Collections page
+- list page
+- notifications page
+- subscribers page
+- subscriber recommendations
+- video recomendations
+- post (popup overlay)
+- live video (all overlay)
+- insta’ chat (all overlay)
+- Messenger Page
+    - Open the app page
+- freelance page
+    - Open the business app
+- settings page
+- likes page
+- watched videos page
+- history page
+- post view (universal)
+    - header
+        - user photo
+        - user name
+    - body
+    - footer
+        - like
+        - share
+        - comment
+        - buy
+            - fraction
+            - full
+    - text - info view
+    - photo - full view
+    - video - thumbnail view

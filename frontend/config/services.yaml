@@ -1,15 +1,16 @@
-parameters:
-    locale: 'en'
-
+# config/services.yaml
 services:
+    # Default configuration for services in *this* file
     _defaults:
         autowire: true
         autoconfigure: true
 
+    # Automatically register all controllers in src/Controller as services
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # Add other service definitions if needed
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
-
-    App\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']

@@ -1,0 +1,52 @@
+# Designers Block Outline
+
+- Actors
+    - Chantel V. | Valentina Coco ****(Lead Actress)
+        - Bio
+            - Success-aholic
+            - Workaholic
+            - WIll do anything to succeed
+            - gifted girl with good intentions, turns dark to maintain image and keep her brand at the top
+- Inspiration
+    - Breaking Bad
+    - Sweeny Todd
+    - Joker
+- Premise
+- Scenes
+    - Helping her contact getting rid of a body she begins to feel aroused over the joys of dismantling a body she demands her contact to fuck her right there right now, the contact cant help as she was named the sexiest woman & designer 2 years in a row as the thought always ponders him, this he doesn't ask twice as he merely drools over the request. He puts down the saw begins to touch caress her, she rips her pants and her blouse to make it easier.
+        - contact: “Are you sure that must be worth a fortune?”
+        - chantel: “shhhh… just fuck before the moment goes.”
+        - contact work his way on her neck her breast, her nipples, down to her vagina, he kisses then he eats
+        - chantel: “You are a God at that,.. just keep going
+    - Blood on her face from a kill in Paris she notices a state of the art new model sewing machine, thus she loads the thread, parallels of a piano getting the strings tuned, she sets out a design stolen from the dead designer and begins to create, the up most joys in her face a sense of beginnings & happiness shows over her face as she creates the perfect outfit.
+        - her contact barges in, in 10 as promised, he begins to feel agitated what he sees, he throwing words of how reckless she is for doing that right next to a body.
+        - Chantel: “Lock the door & at me, as I do this”
+        - Although angry he locks the door and does what she ask. Designing while being pleasured is the greatest feeling shes ever experienced
+    
+    - 
+- Notes & Ideas
+    - Scenes that depict a classical like precision joy and belonging when Chantel designs and create via the sewing machine
+        - Chantel is in her element and the joy of creating never dies
+    - the sewing machine is the piano and Chantel is Mozart, let the music & cinematography show this perfectly
+    - Even when the designs are modified from stolen work, whenever Chantel designs, its pure precision, best of the best, let it show not even mozart, precision mass producing machines, or the greatest designer can compete with her perfection. unmatched & untouched. The limits only reflect in her ideas for unique designs that capture trends
+    - The greatest designer & seamstress that ever lived, let it show.
+    - Show to the audience just how hard it is to create 100’s skus on a season essentially by yourself, talented but ideas don’t come fast enough.
+    - Even when she steals from other designers work she cant help but let her own dormented potential show through the victims work
+- Summary
+    - Beginning:
+        - A gifted designer in college rises to fame during an internship. She was the best in class, most gifted. She is offered a design deal during her internship to began working at the end of college. The stress to maintain her image and designs becomes increasingly difficult but she manages. She eventually quits her job to focus on her own brand scrapping her design book as per contract belongs to the job she quit. Confident in her talents she begins to start fresh creating new design theory and patterns for her newly developed company utilizing her blog and social media success. Things go well really well. Well enough to hire employees, a promising assistant & interns of her own. Chantel is the sole creator of the work, and allows some design critique and implementations that follow her own design theory and patterns only.
+    - Middle / Climax:
+        - With success comes complexity for originality, time has past in the well has seemingly run dry. Chantel begins to revisit her old design books for creativity not too far back. The designs she made back in high school or dated. However the books shes currently looking at she realizes will render difficult considering they belong to the company she left. Shes fresh out, Frantic, fresh out of ideas she starts looking for creativity everywhere. A night alone in her office she notices a binder left on her assistants desk. She takes a peak, a peak leads to her looking deeply into her work. There good, in fact they seem trend setting, shes never seen anything like this as she reminisce on the days in her college years when the spark of creativity was strong. The next day she decides to buy the designs from the assistant, however the assistant declines the offer, asking for more money way too much money but before she could think of a solution the assistant says nevermind as she explains this is something that she is doing to get her through college as she plans to open her own clothing company. The assistants work is magnificent good enough to set the next design shift,  there's enough work and theory to last close to a decade if not more even with pattern and style modifications. The day is over Chantel is going through her work taking photos, she heads back to her desk and whips something up in the design studio, she tries her best to infuse as much of her as possible deviating from her assistants work. The day ends she heads home. Back at work Chantel is in her office using a sewing machine she hasn’t used in a while, a few hours go by and she is done. Her assistant walks over to take a look, she loves it but… wait it looks a lot like her work but clearly made to look different the assistant goes to grab her binders narrows it down to the one open the page and shows it to Chantel.
+        - They both go back in forth Chantel denying it of course but admits she took a slight inspiration from her work. The assistant says that's not right, heavy words are said with a demand for equity in Chantel’s brand. However that goes against her philosophy, and she refuses to own anything less than 100%, however she can’t afford to be late issuing the next season. Chantel declines, then the assistant threatens to sue and promises to take equity along with an amount that would ruin her, the allegations alone will tarnish her image with the distributors let alone in the media and public opinion. There’s a fight. Chantel rips up the dress saying look its gone, sorry, I'll find inspiration elsewhere.
+        - TIme passes the distributors are requesting non stop for her new collection. She panics. The only thing in her mind are those designs so she designs a collection she knows the assistant will throw a fuss over, firing her wont help so she completes the collection and submits it for approval. They love it, they eat every bit of work up like its day 1 all over again, its all facility can talk about. whispers of the trend setting design and outfits hit the media. Chantel can’t back away, so she pulls some strings and has a check ready for her assistant and a contract she had her lawyer draft up. The assistant has read the work in the tabloids and let’s just she shes not happy, she barges in the office. Chantel says let’s be partners and today your _______. The look on her face, seems very happy, she takes a seat looks over the paperwork and the check. WTF is this. Chantel is disgruntled over her attitude but doesn't show it, THat’s a check for 5 Million dollars. She responds well aren't you worth like 30 Million. Chantel explains how it all works including it all goes to the luxury diva image she upholds expenses, And that the company is fairly new. Her networth is the evaluation of the business. She responds BS, No I want more. Chantel goes over math with excepted sales, cost to produce, promotion, press, and more but she isn't buying it
+        - Assistant: “Look bitch I read you all ready have store orders, I hear what there saying, and I know how much this company makes, and then your still not giving me equity…. I want a percentage, I could be working for myself”
+        - Chantel; “Look just because you can design doesn’t mean you know how to run a business, Im the youngest and only female period that has 100% in a fashion trend setting mass produce fashion company..” cuts off
+        - Assistant: “Look bitch… I know you have a history of ripping of other peoples designs, some have gone missing…” cuts off
+        - Chantel: “And you believe this?”
+        - Assistant: “I’ve been doing some digging, I found some similarities, just like what you did with my work, you have a pattern…” cuts off
+        - Chantel: “And you came up with this yourself who else knows about this garbage?”
+        - Assistant: “My boyfriend, but soon everybody will know bitch… I want 20 Mil….”
+        - The assistant has been shot in her eye, her head now leaning backwards in the chair. Chantel lowers the gun disembles the weapon placing it into a ziplock bag, taking off her gloves placing them inside the bag as well, zip locking it and placing it into her Prada purse. She goes over to the door locks it and walks to the file cabinet and grabs a phone from the bags of phones in the cabinet, then grabs a sim. Boots up the phone then makes a phone call
+        - Chantel: “Yeah, you were right it had to be done, can you be here ASAP I’ll need a new chair and a new floor with a full clean.”
+        - Contact: “She was that bloody huh, Il be there in 20” hangs up
+    - Conclusion:

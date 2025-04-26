@@ -1,0 +1,53 @@
+# An N (Annhinna)
+
+- An content stats: VR, Mocap, Gaming, Anime, Cosplay, Code, Trading, content creator & streamer
+- Fly to TX, to visit CEO Immanuel Taylor for a week to month to plan Annhinna & her vision
+    - Sign contract before flying to Texas
+- Have lawyers draft contracts:
+    - Incorporate name IBT&H M.A. LLC gets 5%
+    - Sponsor [kodo.space](http://kodo.space)
+- Vehicle
+    - Lamborghini Urus
+- High Rise penthouse (LA) ($5,000,000)
+- Equipment needed
+    - VR gear
+    - Mocap gear
+    - Gaming PC ($10,000)
+    - Scuff Controllers
+    - Gaming Laptop ($3,000)
+    - Virtuix gear
+    - Gaming consoles (all)
+        - Sony Playstation 5
+        - Microsoft Xbox One X
+        - Nintendo Switch
+        - Stream Deck
+    - Streamer / gaming setup
+        - 3 monitor setup for trading & streaming
+    - Car / Flight Sim
+    - Camera, lighting, audio gear
+- Set up with Equinox
+    - Personal trainer (model goal)
+- Setup home gym (lite)
+- Nutritionist
+- Expenses ($15,000/m)
+    - Food
+    - Shopping
+    - Hair
+    - Travel
+    - Cosmetic / plastic
+        - plastic covered separately non expense to Annhinna does not take away from 15k budget
+    - Protocol
+- Velocity Coming soon
+    - Velocity OS
+    - Velocity Social
+    - Velocity Gaming
+        - Velocity beta, alpha, stable game tester
+- Velocity Esports
+- Startup Velocity
+    - Pending feature in Startup Velocity cast
+- Annhinnaverse (game)
+    - In game purchases
+    - Steam
+    - Velocity
+- kodoverse (game)
+    - Kodocity: enter the kodoverse 1st version of the kodoverse game

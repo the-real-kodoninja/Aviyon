@@ -1,26 +1,92 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Login{% endblock %}
+
 {% block body %}
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h3 class="card-title text-center mb-4">Login</h3>
-          <form>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" required>
+    <!-- Login Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4 text-center">Login to the Kodoverse</h1>
+        <p class="text-xl text-gray-300 mb-8 text-center">Access your account securely with email or Web3 wallet.</p>
+    </section>
+
+    <!-- Login Form -->
+    <section class="max-w-md mx-auto py-8">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+            <!-- Traditional Login -->
+            <form action="{{ path('login') }}" method="POST">
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-300 mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-300 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="remember_me" name="remember_me" class="mr-2">
+                    <label for="remember_me" class="text-gray-300">Remember Me</label>
+                </div>
+                <button type="submit" class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Login</button>
+            </form>
+
+            <!-- Web3 Wallet Login -->
+            <div class="my-6 text-center">
+                <p class="text-gray-300 mb-2">Or login with your Web3 wallet</p>
+                <button id="metamask-login" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Connect with MetaMask</button>
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" required>
+
+            <!-- Links -->
+            <div class="text-center">
+                <p class="text-gray-300">
+                    Don’t have an account? <a href="{{ path('signup') }}" class="text-purple-400 hover:underline">Sign up</a>
+                </p>
+                <p class="text-gray-300 mt-2">
+                    Forgot your password? <a href="{{ path('password_reset') }}" class="text-purple-400 hover:underline">Reset it</a>
+                </p>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-          </form>
-          <p class="text-center mt-3">
-            Don’t have an account? <a href="/signup">Sign up</a>
-          </p>
         </div>
-      </div>
+    </section>
+
+    <!-- 2FA Modal (Hidden by Default) -->
+    <div id="2fa-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h3 class="text-xl text-purple-400 mb-4">Two-Factor Authentication</h3>
+            <p class="text-gray-300 mb-4">Enter the code sent to your email or authenticator app.</p>
+            <form action="{{ path('2fa_verify') }}" method="POST">
+                <div class="mb-4">
+                    <label for="2fa_code" class="block text-gray-300 mb-2">2FA Code</label>
+                    <input type="text" id="2fa_code" name="2fa_code" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button type="button" id="2fa-cancel" class="text-gray-400 hover:underline">Cancel</button>
+                    <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Verify</button>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Simulate Web3 Wallet Login (MetaMask)
+        document.getElementById('metamask-login').addEventListener('click', () => {
+            alert('Connecting to MetaMask... (This is a simulation)');
+            // In a real implementation, this would integrate with MetaMask's API
+        });
+
+        // Simulate 2FA Modal Trigger (for demo purposes, triggered on login button click if 2FA is enabled)
+        document.querySelector('form').addEventListener('submit', (e) => {
+            // Check if 2FA is required (this would be server-side in a real app)
+            const is2faRequired = true; // Simulated condition
+            if (is2faRequired) {
+                e.preventDefault();
+                document.getElementById('2fa-modal').classList.remove('hidden');
+            }
+        });
+
+        // Close 2FA Modal
+        document.getElementById('2fa-cancel').addEventListener('click', () => {
+            document.getElementById('2fa-modal').classList.add('hidden');
+        });
+    </script>
 {% endblock %}

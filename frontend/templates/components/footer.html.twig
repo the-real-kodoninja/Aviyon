@@ -1,10 +1,34 @@
-<footer class="bg-light py-4 mt-5">
-  <div class="container text-center">
-    <p class="text-muted mb-0">&copy; 2025 Aviyon. All rights reserved.</p>
-    <p class="text-muted mb-0">
-      <a href="/about" class="text-muted text-decoration-none">About</a> |
-      <a href="/features" class="text-muted text-decoration-none">Features</a> |
-      <a href="/contact" class="text-muted text-decoration-none">Contact</a>
-    </p>
-  </div>
+<footer class="bg-dark-light py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-inter text-neon-purple mb-4">Aviyon</h3>
+                <p class="text-gray-400">A self-investment firm focused on trading, crypto, and Web3 innovation. Join us in shaping the future of finance.</p>
+            </div>
+
+            <!-- Navigation Links -->
+            <div>
+                <h3 class="text-xl font-inter text-neon-purple mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ path('terms') }}" class="text-gray-300 hover:text-neon-purple transition">Terms</a></li>
+                    <li><a href="{{ path('privacy') }}" class="text-gray-300 hover:text-neon-purple transition">Privacy</a></li>
+                    <li><a href="{{ path('contact') }}" class="text-gray-300 hover:text-neon-purple transition">Contact</a></li>
+                    <li><a href="{{ path('careers') }}" class="text-gray-300 hover:text-neon-purple transition">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h3 class="text-xl font-inter text-neon-purple mb-4">Newsletter</h3>
+                <form action="{{ path('newsletter_subscribe') }}" method="POST" class="space-y-3">
+                    <input type="email" name="email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                    <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-gray-400">
+            &copy; 2025 Aviyon Corporation S-Corp. All rights reserved.
+        </div>
+    </div>
 </footer>

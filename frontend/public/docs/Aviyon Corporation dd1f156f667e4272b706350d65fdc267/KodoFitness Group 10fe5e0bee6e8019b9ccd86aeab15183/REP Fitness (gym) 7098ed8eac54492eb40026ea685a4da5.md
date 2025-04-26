@@ -1,0 +1,157 @@
+# REP Fitness (gym)
+
+5M/2M (30 locations) reinforced concrete warehouse
+
+- Acquisition
+    - https://repfitness.com/ (20M-40M)
+- Locations (6 beginning)
+    - Large plot of land with parking and concrete warehouse
+        - Nevada
+        - Washington
+        - Colorado
+        - California
+        - Texas (2)
+        - North Carolina
+- Features
+    - 24/7
+    - Harassment free zone
+- Type
+    - Sigma
+        - Standalone
+        - 5M
+    - Alpha
+        - Standalone
+        - 2M
+    - Beta
+        - Commercial store front
+        - 500K - 1M
+- Kodoverse integration
+    - Kodohealth
+    - Kodotoken
+- Outside workout area
+    - Sled outdoor area
+    - Track area
+- Appearance
+    - Inside
+        - LED, Art, John Reed Fitness look
+        - Industrial ceiling
+        - Eco purified air
+        - (tan, black, grey) Concrete flooring / walls
+        - Exposed metal beams
+        - Reinforced epoxy Wood floor
+        - Black padding in heavy weight areas
+        - Locker rooms (m/f)
+            - sauna
+            - ice bath
+        - rock climbing peck board with padded floors and harness system
+        - Protocol room
+    - Outside
+        - 3 story
+        - Minimal & luxurious vibe
+        - Garage look with doors
+        - Large Industrial warehouse
+        - Solar panels
+        - track around building with solar shade awning
+            - gutter for rain
+            - water drain around track
+            - rain shield
+        - 
+- Membership
+    
+    All membership access to all gyms
+    
+    - Features
+        - Keychain, Card & app
+        - No annual fees
+        - No annual contracts
+        - No initiation fees
+        - Towel service
+        - Personal trainers
+    - $10 Nomad list discount
+    - $80/m (kodoverse)
+    - $100/m (non kodoverse)
+    - $120/m (premium /w kodoverse)
+        - Recovery room
+        - Free monthly merch
+        - $5 monthly salad bar credit
+        - Can roll over
+- Weight training
+    - Olympic power lifting rack
+    - Olympic bar system
+    - Multi bench system
+    - Dumbbell rack (1lb - 300lb)
+    - Barbell rack (5lb - 250lb)
+    - Smith machine
+    - Resistance machine
+    - Leg press
+    - Hack squat
+    - Quad machine
+    - Overheard press machine
+    - Upper, lower, middle Chess press
+    - Lat pull
+- MMA training
+    - 300lb bags
+    - Padded floors, walls
+    - Octagon
+    - Swing pads
+    - Speed bags
+    - MMA gear
+        - Shin guards
+        - Hand wraps
+        - Ankle wraps
+        - Thai pads
+        - 4oz gloves
+        - 120z,14oz,16oz gloves
+        - Smell grabs
+        - Head gear
+        - Jump ropeResistance bands
+        - Toss bags
+        - Training dummy
+    - CrossFit
+        - Rock climbing wall
+        - Rope climbs
+        - Kettlebell (5lb - 150lb)
+        - Multipurpose pull-up rack
+        - Medicine balls
+        - Slam balls
+        - Giant balls
+        - Jump box
+        - Pushup gear
+        - Slam ropes
+        - Weighted sleds
+        - Sledge hammers (10lbs - 100lbs)
+        - Real monster Tires
+- Cardio
+    - Assault bikes
+    - Arch treadmills
+    - Treadmills
+    - Ellipticals
+    - Stair masters
+    - Seated Rows
+    - Seated bikes
+    - Ab rocker
+    - Ab slider
+    - Crunch machine
+    
+    - Spin room
+    - Grass turf area
+    - Parkour area
+    - Ab area
+    - Pool
+    - Recovery room
+        - Cryoniq
+        - Hyperbaric Chamber
+        - Red light room
+        - Sauna / Salt
+        - Steam room
+        - Massage chairs
+- CrossFit
+- MMA
+- Bodybuilding
+- Cardio
+- Calisthenics
+- Smoothie / salad shop
+- Equipment / Features
+    - Purpose (pro)
+    - Pro training oasis, for pro trainers
+    - No unnecessary BS equipment that don’t work

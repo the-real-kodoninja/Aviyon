@@ -1,11 +1,89 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Hosting Management{% endblock %}
+
 {% block body %}
-  <h1 class="mb-4">Hosting</h1>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Decentralized Hosting</h5>
-      <p class="card-text">Configure hosting settings for your Web3 applications.</p>
-      <a href="#" class="btn btn-primary">Configure</a>
-    </div>
-  </div>
+    <!-- Hosting Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4">Manage Your Hosting</h1>
+        <p class="text-xl text-gray-300 mb-8">Deploy and manage your Web3 applications on Aviyon’s decentralized infrastructure.</p>
+    </section>
+
+    <!-- Hosting Plans -->
+    <section class="grid gap-6 md:grid-cols-2 py-12">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl text-purple-400 mb-2">Free Hosting Plan</h3>
+            <p class="text-gray-300 mb-4">Perfect for getting started with your Web3 project.</p>
+            <ul class="text-gray-300 mb-4 space-y-2">
+                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 100 GB Storage</li>
+                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 4 GB RAM</li>
+                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Decentralized Infrastructure</li>
+            </ul>
+            <a href="{{ path('deploy_app') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Deploy Now</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl text-purple-400 mb-2">Advanced Hosting</h3>
+            <p class="text-gray-300 mb-4">Scale your project with enhanced resources (coming soon).</p>
+            <ul class="text-gray-300 mb-4 space-y-2">
+                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 500 GB Storage</li>
+                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 16 GB RAM</li>
+                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Priority Support</li>
+            </ul>
+            <button class="bg-gray-700 text-gray-300 px-4 py-2 rounded-lg cursor-not-allowed">Coming Soon</button>
+        </div>
+    </section>
+
+    <!-- Resource Usage -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Resource Usage</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div class="grid gap-4 md:grid-cols-3 mb-4">
+                <div>
+                    <p class="text-gray-300"><strong>CPU:</strong> {{ usage.cpu }} cores</p>
+                    <p class="text-gray-300"><strong>RAM:</strong> {{ usage.ram }} GB</p>
+                    <p class="text-gray-300"><strong>Storage:</strong> {{ usage.storage }} GB</p>
+                </div>
+                <div class="md:col-span-2">
+                    <canvas id="resource-chart" class="w-full h-32"></canvas>
+                </div>
+            </div>
+            <a href="{{ path('resource_analytics') }}" class="text-purple-400 hover:underline">View Detailed Analytics</a>
+        </div>
+    </section>
+
+    <!-- Deployment Wizard -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Quick Deploy Wizard</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <form action="{{ path('quick_deploy') }}" method="POST">
+                <div class="mb-4">
+                    <label for="app_name" class="block text-gray-300 mb-2">Application Name</label>
+                    <input type="text" id="app_name" name="app_name" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="repo_url" class="block text-gray-300 mb-2">Repository URL</label>
+                    <input type="url" id="repo_url" name="repo_url" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="https://github.com/username/repo" required>
+                </div>
+                <button type="submit" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Start Deployment</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('resource-chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['5m', '4m', '3m', '2m', '1m'],
+                datasets: [
+                    { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
+                    { label: 'RAM', data: [2, 3, 4, 3.5, 4], borderColor: '#6b48ff', fill: false }
+                ]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+    </script>
 {% endblock %}

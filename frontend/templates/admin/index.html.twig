@@ -1,11 +1,158 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Admin Panel{% endblock %}
+
 {% block body %}
-  <h1 class="mb-4">Admin Panel</h1>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Manage Platform</h5>
-      <p class="card-text">Administer users, settings, and platform features.</p>
-      <a href="#" class="btn btn-primary">Manage Users</a>
-    </div>
-  </div>
+    <!-- Admin Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4">Admin Control Center</h1>
+        <p class="text-xl text-gray-300 mb-8">Oversee and manage all aspects of the Kodoverse platform.</p>
+    </section>
+
+    <!-- System Metrics -->
+    <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 py-12">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl text-purple-400 mb-2">Total Users</h3>
+            <p class="text-3xl text-gray-100">{{ system_metrics.total_users }}</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl text-purple-400 mb-2">Active Platforms</h3>
+            <p class="text-3xl text-gray-100">{{ system_metrics.active_platforms }}</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl text-purple-400 mb-2">Total Transactions</h3>
+            <p class="text-3xl text-gray-100">{{ system_metrics.total_transactions }}</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+            <h3 class="text-xl text-purple-400 mb-2">System Uptime</h3>
+            <p class="text-3xl text-gray-100">{{ system_metrics.uptime }}%</p>
+        </div>
+    </section>
+
+    <!-- Manage Users -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Manage Users</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl text-purple-400">User Overview</h3>
+                <a href="{{ path('admin_users_new') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Add New User</a>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-gray-300">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="p-3 text-left">Username</th>
+                            <th class="p-3 text-left">Email</th>
+                            <th class="p-3 text-left">Role</th>
+                            <th class="p-3 text-left">Status</th>
+                            <th class="p-3 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr class="border-b border-gray-700">
+                                <td class="p-3">{{ user.username }}</td>
+                                <td class="p-3">{{ user.email }}</td>
+                                <td class="p-3">{{ user.role }}</td>
+                                <td class="p-3">
+                                    <span class="px-2 py-1 rounded {{ user.status == 'active' ? 'bg-green-500' : 'bg-red-500' }} text-white text-sm">
+                                        {{ user.status|capitalize }}
+                                    </span>
+                                </td>
+                                <td class="p-3 flex space-x-2">
+                                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="text-purple-400 hover:underline">Edit</a>
+                                    <form action="{{ path('admin_user_delete') }}" method="POST">
+                                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                                        <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manage Platforms -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Manage Platforms</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl text-purple-400">Platform Overview</h3>
+                <a href="{{ path('admin_platforms_new') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Add New Platform</a>
+            </div>
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {% for platform in platforms %}
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <img src="{{ asset('build/images/' ~ platform.name ~ '-profile.jpg') }}" alt="{{ platform.name }}" class="w-10 h-10 rounded-full">
+                            <h4 class="text-purple-400 font-semibold">{{ platform.name }}</h4>
+                        </div>
+                        <p class="text-gray-300 mb-2">{{ platform.description|truncate(100) }}</p>
+                        <div class="flex space-x-2">
+                            <a href="{{ path('admin_platform_edit', {'id': platform.id}) }}" class="text-purple-400 hover:underline">Edit</a>
+                            <form action="{{ path('admin_platform_delete') }}" method="POST">
+                                <input type="hidden" name="platform_id" value="{{ platform.id }}">
+                                <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to delete this platform?')">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Reported Content -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Reported Content</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl text-purple-400 mb-4">Review Reported Items</h3>
+            <div class="space-y-4">
+                {% for report in reports %}
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300 mb-2"><strong>Type:</strong> {{ report.type|capitalize }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Content:</strong> {{ report.content|truncate(100) }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Reported By:</strong> {{ report.reported_by }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Reason:</strong> {{ report.reason }}</p>
+                        <div class="flex space-x-2">
+                            <a href="{{ path('admin_report_view', {'id': report.id}) }}" class="text-purple-400 hover:underline">View Details</a>
+                            <form action="{{ path('admin_report_dismiss') }}" method="POST">
+                                <input type="hidden" name="report_id" value="{{ report.id }}">
+                                <button type="submit" class="text-green-400 hover:underline">Dismiss</button>
+                            </form>
+                            <form action="{{ path('admin_report_remove_content') }}" method="POST">
+                                <input type="hidden" name="report_id" value="{{ report.id }}">
+                                <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to remove this content?')">Remove Content</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Settings -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Platform Settings</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl text-purple-400 mb-4">Configure System Settings</h3>
+            <form action="{{ path('admin_settings_save') }}" method="POST">
+                <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                        <label for="site_name" class="block text-gray-300 mb-2">Site Name</label>
+                        <input type="text" id="site_name" name="site_name" value="{{ settings.site_name }}" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label for="maintenance_mode" class="block text-gray-300 mb-2">Maintenance Mode</label>
+                        <select id="maintenance_mode" name="maintenance_mode" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="off" {{ settings.maintenance_mode == 'off' ? 'selected' }}>Off</option>
+                            <option value="on" {{ settings.maintenance_mode == 'on' ? 'selected' }}>On</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Save Settings</button>
+            </form>
+        </div>
+    </section>
 {% endblock %}

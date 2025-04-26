@@ -1,53 +1,96 @@
 {% extends 'layouts/base.html.twig' %}
-{% block title %}{{ platformName | capitalize }}{% endblock %}
+
+{% block title %}{{ platformName | capitalize }} - Aviyon{% endblock %}
+
 {% block body %}
-    <div class="profile-header">
-        <img src="{{ asset('build/images/' ~ platformName ~ '-cover.jpg') }}" alt="{{ platformName }} Cover" class="cover-image">
-        <div class="profile-info">
-            <img src="{{ asset('build/images/' ~ platformName ~ '-profile.jpg') }}" alt="{{ platformName }} Profile" class="profile-image">
-            <h1>{{ platformName | capitalize }}</h1>
-            <p><a href="https://github.com/the-real-kodoninja/{{ platformName }}" target="_blank">View on GitHub</a></p>
+    <!-- Platform Header -->
+    <section class="relative">
+        <img src="{{ asset('build/images/' ~ platformName ~ '-cover.jpg') }}" alt="{{ platformName }} Cover" class="w-full h-64 object-cover">
+        <div class="absolute top-0 left-0 w-full h-64 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="text-center">
+                <img src="{{ asset('build/images/' ~ platformName ~ '-profile.jpg') }}" alt="{{ platformName }} Profile" class="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-purple-400">
+                <h1 class="text-4xl font-bold text-gray-100">{{ platformName | capitalize }}</h1>
+                <p class="text-gray-300 mt-2">
+                    <a href="https://github.com/the-real-kodoninja/{{ platformName }}" target="_blank" class="text-purple-400 hover:underline">View on GitHub</a>
+                </p>
+            </div>
         </div>
-    </div>
-    <section class="platform-feed">
-        <h2>{{ platformName | capitalize }} Feed</h2>
-        {% for post in platform_posts %}
-            <div class="post-card">
-                <div class="post-header">
-                    <img src="{{ asset('build/images/' ~ post.platform ~ '-profile.jpg') }}" alt="{{ post.author }}" class="post-author-image">
-                    <div>
-                        <h3>{{ post.author }} <span class="platform-badge">{{ post.platform | capitalize }}</span></h3>
-                        <span class="post-timestamp">{{ post.timestamp|date('M d, Y h:i A') }}</span>
+    </section>
+
+    <!-- Platform Stats -->
+    <section class="py-8">
+        <div class="flex justify-center space-x-8 text-center">
+            <div>
+                <p class="text-2xl text-purple-400">{{ platformStats.followers }}</p>
+                <p class="text-gray-300">Followers</p>
+            </div>
+            <div>
+                <p class="text-2xl text-purple-400">{{ platformStats.posts }}</p>
+                <p class="text-gray-300">Posts</p>
+            </div>
+            <div>
+                <p class="text-2xl text-purple-400">{{ platformStats.projects }}</p>
+                <p class="text-gray-300">Projects</p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Follow</button>
+        </div>
+    </section>
+
+    <!-- Platform Feed -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-6">{{ platformName | capitalize }} Feed</h2>
+        <div class="space-y-6">
+            {% for post in platform_posts %}
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center mb-4">
+                        <img src="{{ asset('build/images/' ~ post.platform ~ '-profile.jpg') }}" alt="{{ post.author }}" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h3 class="text-gray-300 font-semibold">{{ post.author }} <span class="text-purple-400 text-sm">{{ post.platform | capitalize }}</span></h3>
+                            <span class="text-gray-500 text-sm">{{ post.timestamp|date('M d, Y h:i A') }}</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">{{ post.content }}</p>
+                    {% if post.image %}
+                        <img src="{{ asset('build/images/' ~ post.image) }}" alt="Post Image" class="w-full h-48 object-cover rounded-lg mb-4">
+                    {% endif %}
+                    <div class="flex space-x-3 mb-4">
+                        <button class="action-btn like-btn text-gray-400 hover:text-purple-400" data-post-id="{{ loop.index }}">Like <span>{{ post.likes }}</span></button>
+                        <button class="action-btn comment-toggle text-gray-400 hover:text-purple-400">Comment</button>
+                        <button class="action-btn text-gray-400 hover:text-purple-400">Share</button>
+                    </div>
+                    <div class="comments-section hidden">
+                        <h4 class="text-gray-100 mb-2">Comments</h4>
+                        {% for comment in post.comments %}
+                            <div class="flex items-start space-x-3 mb-3">
+                                <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="{{ comment.author }}" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <h5 class="text-gray-300 font-semibold">{{ comment.author }}</h5>
+                                    <p class="text-gray-400">{{ comment.content }}</p>
+                                    <span class="text-gray-500 text-sm">{{ comment.timestamp|date('M d, Y h:i A') }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <form class="comment-form mt-4" action="{{ path('add_comment') }}" method="post">
+                            <input type="hidden" name="post_id" value="{{ loop.index }}">
+                            <textarea name="content" placeholder="Write a comment..." class="w-full p-2 bg-gray-700 rounded text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" required></textarea>
+                            <button type="submit" class="mt-2 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Post</button>
+                        </form>
                     </div>
                 </div>
-                <p class="post-content">{{ post.content }}</p>
-                {% if post.image %}
-                    <img src="{{ asset('build/images/' ~ post.image) }}" alt="Post Image" class="post-image">
-                {% endif %}
-                <div class="post-actions">
-                    <button class="action-btn like-btn" data-post-id="{{ loop.index }}">Like <span>{{ post.likes }}</span></button>
-                    <button class="action-btn comment-toggle">Comment</button>
-                    <button class="action-btn">Share</button>
-                </div>
-                <div class="comments-section">
-                    <h4>Comments</h4>
-                    {% for comment in post.comments %}
-                        <div class="comment">
-                            <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="{{ comment.author }}" class="comment-author-image">
-                            <div>
-                                <h5>{{ comment.author }}</h5>
-                                <p>{{ comment.content }}</p>
-                                <span class="comment-timestamp">{{ comment.timestamp|date('M d, Y h:i A') }}</span>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    <form class="comment-form" action="{{ path('add_comment') }}" method="post">
-                        <input type="hidden" name="post_id" value="{{ loop.index }}">
-                        <textarea name="content" placeholder="Write a comment..." class="comment-input" required></textarea>
-                        <button type="submit" class="btn">Post</button>
-                    </form>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.querySelectorAll('.comment-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const commentsSection = button.parentElement.nextElementSibling;
+                commentsSection.classList.toggle('hidden');
+            });
+        });
+    </script>
 {% endblock %}

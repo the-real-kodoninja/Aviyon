@@ -1,0 +1,92 @@
+# Spanny R.
+
+- Spanny R. client  stats: Artist, Actress, Modeling, Lifestyle Content Creator (fashion, beauty, glowup, luxury, fitness)
+- Fly to IBT&H Corporation Texas Estate for 1 month planning with CEO Immanuel Taylor
+- Draft Contracts with Spanny & lawyers:
+    - IBT&H Management Agency
+    - [kodo.space](http://kodo.space) executive plus deal Sponsor
+        - A social network owned by Aviyon Corporation in which we pay you to be exclusive first to [kodo.space](http://kodo.space)
+            - Your first social network of choice
+            - You must promote [kodo.space](http://kodo.space) always
+- File for Spanny’s art NFT business in which Aviyon Corporation owns 10%
+- IBT&H Management Agency perks
+    - All expenses paid ($15,000/m base lifestyle support)
+        - Food ($1,000/m)
+        - Travel ($3,000/m)
+        - Shopping ($2,000/m)
+        - Spa, Massage
+        - Beauty (hair, face, nails, body…) (
+        - Supplements
+        - Protocol & Biohacking (home protocol gear / protocol appointments)
+        - Cosmetic & light plastic
+        - Full insurance coverage (dental, eye, health, / car, home)
+        - 1 lease personal vehicle
+        - Uber, Lift
+        - EV/HD Group long term rental & charter unlimited
+            - long term classified as (1) month
+            - Luxury Car rental
+            - Luxury yacht rental
+            - Luxury private jet charter
+- How IBT&H Management Agency makes money & how we can afford to essentially fund your lifestyle
+    - We help you incorporate your name where your revenue made from (Social Media, Acting, Sponsorships, modeling, brand deals, investments and any other revenue stream) goes to.
+        - We help you invest your money into blue chips, minimal speculative stocks, bonds, ETF’s, index funds, mutual funds, commodities, robo advisors, 401K’s, Roth IRA’s…
+        - We then take a percentage of the profit made
+    - Our parent company nets millions a year, and our brother company Aviyon Corporation has over 38 billion worth of 200 companies in its portfolio 10 billion liquid, billions are made a year.
+        - This is where the bulk of the money use to fund your lifestyle
+            - Aviyon Corporation owns 10% into your art brand in will likely invest into any other company you will create.
+        - Aviyon Corporation owns a sector in fashion multiple fashion businesses owned, has its own film studio & production company to produce film & tv shows, a modeling agency and more.
+            - You promote the fashion brands via Social Media, in public, modeling, film & TV
+            - You star in films & tv by KodoFIlms Studios
+            - You model for various projects and fashion platforms
+            - By paying for your acting school, we benefit by having a talented actress in our films
+            - By paying for your fitness, beauty etc. we benefit from the lucrative benefits of sex sales, so more modeling, more sponsorships, etc.
+            - Aviyon owns [kodo.space](http://kodo.space) since your a lifestyle vlog based channel, you’ll bring in sponsor deals, ad revenue, subscribers to your channel and platform
+- How does it works simplified
+    - You are a IBT&H employee (client) we pay you to make you a celebrity so we can profit from you.
+    - Thank of it like this some employees get paid $100,000 - $1,000,000+ a year, especially if your a dev/eng, brand manager and so forth
+    - We pay you to become a celebrity just a bit differently, let’s say we start you off at a yearly net before taxes of $150,000/yr that’s $12,500/m
+        - Now here’s the caveat Aviyon already owns luxury rental car companies, luxury properties so you benefit from these options
+        - Your an employee so insurance & benefits are covered
+        - A flashier lifestyle, & a sexier you attracts more brand deals, sponsorships, modeling gigs, film & tv roles, art sales, potential music sales and more.
+            - So by pumping money in you, your lifestyle makes you more money so we can make our money back and more.
+            - Soon you’ll be making $50,000 a month on sponsorships alone not including everything else, we profit off that to keep funding your lifestyle and managing you.
+        - That $12,500/m goes into your lifestyle. When you bring in more money we increase that year net.
+            - You can potentially be making the management agency millions so your lifestyle will reflect
+- Fly to NY, LA to look for high rise penthouses under 10M, upon selection IBT&H Corporation will purchase on the spot
+- Start Social Media (kodo.space, Instagram, YouTube, X,)
+    - Hot girl
+    - Actress
+    - Fashion
+        - Required to model Chantel Viera
+    - Shopping
+    - Luxury
+    - Beauty
+    - Diva
+    - Fitness (Protocol, biohacking)
+    - Club (high end)
+    - Travel
+    - Dating
+- Set her up with Equinox
+- Hire personal trainers & nutritionist to morph model physique
+- Start NFT & digital store Collection
+- Hire developers to create a web3 website to showcase Spanny’s digital & physical art (Poly Kole)
+    - Create a digital art studio
+    - Art studio to also exist in the kodoverse: (kodocity enter the kodoverse) at a mall location to be seen in kodocity In real life
+- Enroll into the best acting school in NY or LA
+- Enroll into dancing lessons
+- Hire a vocal coach for singing lessons
+- Possible aiming for singer
+- Dating
+    - Dated Who is a fresh slate
+    - Forbidden to date lower class males only celebrities
+    - IBT&H M.A. has elevated Spanny to a higher class citizen thus friends & relationships will reflect so
+    - If you are linked to have dated Immanuel, lateral or slighter lateral will only be tolerated or dropped from Agency
+- Coming Soon: State of the Art, Art Studio in the KodoCity Mall
+- Set up modeling gigs
+- During school get small roles in film & tv
+- After Acting school get large roles in film & tv
+- Create lead for a show by Immanuel T.
+- Position for beauty lines
+- [**⭐**](https://emojipedia.org/star) Star as lead in film written & directed by Immanuel Barry Taylor
+    
+    [Broken Chords Outline](Spanny%20R%2013ae5e0bee6e800a82dde6981428fecf/Broken%20Chords%20Outline%20146e5e0bee6e80d3a4b1d0f7fa3f316d.md)

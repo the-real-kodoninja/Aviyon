@@ -1,0 +1,406 @@
+# KodoFilms studios
+
+- Notes
+    - Slow build
+        - 1st (Priority)
+            - Warehouses
+                - Filming (6)
+                    - Sets
+                    - Rooms
+                        - bathroom (each)
+                        - mirrored after luxury hotel
+                    - Offices
+                - Equipment
+                    - Filming
+                    - Lighting
+                    - Audio
+                    - Rail, dolly,
+                    - Cranes
+                    - Cables
+                - Storage
+                    - All building equipment for set building
+                        - metal scraps
+                        - tools
+                        - lumber
+                - Vehicles (electric)
+                    - Mercedes Vans
+                    - Tesla 18 wheeler
+                    - Also repair area and maintenance tools
+            - Office building (Kodofilms Studios HQ / Aviyon HQ)
+                - 5 story building
+                - Corporate
+                - Developers
+                - Engineers
+                - Production
+                - VFX
+                - Licensing (AMC Theaters as well)
+                - Promotion
+                - Writers. Editors
+                - Actors
+            - Gym
+                - 3- story
+                - Protocol longevity (floor)
+            - Luxury Apartments
+                - Housing onsite (500)
+                    - Pent house
+                    - 1-2 story suites
+                - Actors
+                - Coporate
+                - etc.
+            - Hotel
+                - 
+            - Trailer Area
+                - Power
+                - Grey water
+                - Fresh water fill
+            - Food
+        - Postponed
+            - Shopping districts
+            - Velocity Esports
+    - Build roads
+    - Fiber optics
+    - Complete Solar City
+    - Modern futuristic
+    - Areas for homes to be built in driving distance within studios
+- ChatGPT 4 Building Render
+    - Note
+        - Ill be basing the design of the first image many of which is brilliant ant will be showcased
+    
+    Here is the 2D blueprint design of the modern high-tech film production studio district you requested. It showcases the layout of the studio with the key elements including warehouses, the HQ building, office spaces, subsidiary studios, greenery, solar roads, and more, all within the 100-acre district. The design incorporates a minimalist approach with advanced technology for streamlined production.
+    
+    ![DALL·E 2024-09-25 18.43.42 - A 2D blueprint design of a modern high-tech film production studio district spread over 100 acres. The design includes_ two large warehouses for filmi.webp](KodoFilms%20studios%2026f1e272155b4381b92c7056fff8eb99/DALLE_2024-09-25_18.43.42_-_A_2D_blueprint_design_of_a_modern_high-tech_film_production_studio_district_spread_over_100_acres._The_design_includes__two_large_warehouses_for_filmi.webp)
+    
+    Here is the labeled 2D blueprint design of the modern high-tech film production studio district. The buildings and areas are labeled for easier identification, including the warehouses, HQ building, subsidiary and animation studios, greenery, and other features you requested.
+    
+    ![DALL·E 2024-09-25 18.45.17 - A labeled 2D blueprint design of a modern high-tech film production studio district spread over 100 acres. The labels should include_ two large wareho.webp](KodoFilms%20studios%2026f1e272155b4381b92c7056fff8eb99/DALLE_2024-09-25_18.45.17_-_A_labeled_2D_blueprint_design_of_a_modern_high-tech_film_production_studio_district_spread_over_100_acres._The_labels_should_include__two_large_wareho.webp)
+    
+- Purchase
+    - Tesla Semi (20)
+    - Universal Trailers (20)
+        - https://www.expandable-trailers.com/na/products/trailer
+    - Fleet for film equipment
+        - https://rivian.com/fleet?gad_source=1&gclid=CjwKCAjw6c63BhAiEiwAF0EH1GZ4_s_R7gEgIzRgHeIXdEcPsI-r_pRpTXWQyx8VZnW3FG7nt3I40xoCat4QAvD_BwE
+
+[AMC Theaters (9B)](KodoFilms%20studios%2026f1e272155b4381b92c7056fff8eb99/AMC%20Theaters%20(9B)%20106e5e0bee6e803ab8c4c9bf229c39af.md)
+
+- Acquisition
+    - Theaters
+        - https://www.amctheatres.com/ (9B)
+    - KodoFilms Productions
+        
+        > KodoFilms Productions is a super group incorporating the best talent of 4 production companies
+        > 
+        - https://neonrated.com/ ****(100M-400M)
+            - **Sector**:
+                - Independent film distribution and production.
+            - **Why**:
+                - Known for distributing critically acclaimed films such as *Parasite* and *I, Tonya*, NEON has been rising as a major indie distributor.
+            - **Growth Potential**:
+                - Could grow significantly by expanding its production arm and leveraging streaming services.
+            - **Revenue**:
+                - Smaller, but its high-grossing films make it a valuable asset for expansion.
+        - https://a24films.com/ (400M)
+        - https://www.xyzfilms.com/ (400M)
+        - https://www.annapurna.com/ (400M)
+    - Streaming / Cable TV
+        - https://www.plex.tv/ (<$200M)
+            - **Sector**:
+                - Media streaming and personal media server.
+            - **Why**:
+                - Plex allows users to stream their own media content and offers ad-supported on-demand TV and movies. Its flexibility makes it popular for those who want more control over their media libraries.
+            - **Valuation**:
+                - Likely under $200M based on its growing but still niche user base.
+            - **Growth Potential**:
+                - With more people interested in cutting the cord and organizing personal libraries, Plex is well-positioned to expand further into the AVOD or subscription streaming space.
+            - https://www.plex.tv/
+        
+        ---
+        
+        - https://www.caffeine.tv/
+            - Dead company may be able to acquire under 100K - 5 Million
+        - https://www.brat.tv/
+    - Online
+    - Comics
+        - https://valiantentertainment.com/  (10M-50M)
+    - Advertising
+    - KodoFilms Productions 20+ subsidiaries for KDN+ & Theatrical (20)
+        - FilmRiot
+            - [https://www.youtube.com/user/filmriot](https://www.youtube.com/user/filmriot)
+        - RocketJump
+            - [https://www.youtube.com/user/RocketJump](https://www.youtube.com/user/RocketJump)
+        - Dust (to research)
+            - [https://www.youtube.com/c/watchdust](https://www.youtube.com/c/watchdust)
+        - PES Productions (to research)
+            - [https://www.youtube.com/user/PESfilm](https://www.youtube.com/user/PESfilm)
+        - Blinky Productions (to research)
+            - [https://www.youtube.com/c/Blinky500](https://www.youtube.com/c/Blinky500)
+        - Amuleto Film (to research)
+            - [https://www.youtube.com/c/Amuletofilm](https://www.youtube.com/c/Amuletofilm)
+        - RSA Shorts (to research)
+            - [https://www.youtube.com/channel/UCpkmFzFTg8b0MsBz4l5yKOw](https://www.youtube.com/channel/UCpkmFzFTg8b0MsBz4l5yKOw)
+        - ALTER (to research)
+            - [https://www.youtube.com/c/WatchAlter](https://www.youtube.com/c/WatchAlter)
+        - Red Giant Films (to research)
+            - [https://www.youtube.com/user/redgiantfilms](https://www.youtube.com/user/redgiantfilms)
+        - REBEL Films (to research)
+            - [https://www.youtube.com/channel/UCnRcJdpRV9BrOSvNqDZWxOQ](https://www.youtube.com/channel/UCnRcJdpRV9BrOSvNqDZWxOQ)
+        - Corridor Digital (to research)
+            - [https://www.youtube.com/c/Corridor](https://www.youtube.com/c/Corridor)
+        - Bat in the Sun Productions (to research)
+            - [https://www.youtube.com/c/batinthesun](https://www.youtube.com/c/batinthesun)
+        - The Slow Mo Guys (to research)
+            - [https://www.youtube.com/c/theslowmoguys](https://www.youtube.com/c/theslowmoguys)
+        - BlackBoxTV (to research)
+            - [https://www.youtube.com/c/blackboxtv](https://www.youtube.com/c/blackboxtv)
+        - Jack and Dean (OML) (to research)
+            - [https://www.youtube.com/user/omljackanddean](https://www.youtube.com/user/omljackanddean)
+        - Borderline Films (to research)
+            - [http://borderlinefilms.com/](http://borderlinefilms.com/)
+        - Tangerine Entertainment (to research)
+            - [http://tangerineentertainment.com/](http://tangerineentertainment.com/)
+        - Duplass Brothers Productions (to research)
+            - [https://duplassbrothers.com/](https://duplassbrothers.com/)
+        - Beachside Films (to research)
+            - [http://www.beachsidefilms.com/](http://www.beachsidefilms.com/)
+    - KodoFilms Animations 1 to be absorbed, some may be acquired to produce for KDN+ or discarded (shelved for later acquisition)
+        - **Toon Boom Animation**
+            - **Overview**:
+                - While more focused on providing animation software, Toon Boom has the infrastructure and experience to scale into a production powerhouse. With its globally recognized tools for 2D animation, the company could pivot into creating in-house content.
+            - **Potential**:
+                - By acquiring Toon Boom, you gain access to world-class software and a platform that other animators use. Expanding this into content production could create a unique hybrid of tech and content, potentially growing into a larger player.
+            - **Focus**:
+                - Animation software, potential for producing high-quality 2D animation.
+            - https://www.toonboom.com/
+        - **Blue Sky Studios** (Formerly)
+            - **Overview**:
+                - This studio, known for hits like *Ice Age* and *Rio*, was shut down by Disney in 2021, but its assets, talent, and legacy IP still carry significant weight. A purchase or revival of Blue Sky's assets could allow you to jumpstart a production company with immediate brand recognition and a strong portfolio.
+            - **Potential**:
+                - Reviving a studio with a track record for blockbusters.
+            - **Focus**:
+                - CGI animation, family films, potential to scale.
+            - https://blueskystudios.com/
+        - **Titmouse, Inc.**
+            - **Overview**:
+                - Titmouse has grown from a boutique animation studio into a strong player in adult and children’s animated content. They’ve worked on shows like *Big Mouth* (Netflix), *The Venture Bros.*, and *Star Wars: Galaxy of Adventures*. Their unique, bold style, combined with their expansion into feature films, makes them a strong contender.
+            - **Potential**:
+                - With the right financial backing, Titmouse could be scaled to rival larger studios, producing more mainstream, high-quality feature films and series.
+            - **Focus**:
+                - Bold, edgy animation; adult and children’s content.
+            - https://titmouse.net/
+        - **Laika**
+            - **Overview**:
+                - Known for its critically acclaimed stop-motion films like *Coraline*, *Kubo and the Two Strings*, and *Missing Link*, Laika is renowned for its artistic prowess and storytelling. While not a direct competitor to Disney in terms of CGI, its craftsmanship and potential for scaling into new forms of animation make it a solid investment.
+            - **Potential**:
+                - Laika’s strength lies in its unique visual storytelling. Investment could expand its capabilities into CGI and new media, making it a diversified animation company.
+            - **Focus**:
+                - Stop-motion animation, highly artistic films.
+            - https://www.laika.com/
+        - **Cartoon Saloon**
+            - **Overview**:
+                - Based in Ireland, Cartoon Saloon has been nominated for several Academy Awards for its stunning hand-drawn films such as *The Secret of Kells*, *Song of the Sea*, and *Wolfwalkers*. Known for their visual storytelling and artistry, they could be an ideal candidate for expanding into a larger market with proper funding.
+            - **Potential**:
+                - With funding, they could increase production scale and move into more mainstream or global audiences while maintaining their artistic vision.
+            - **Focus**:
+                - Hand-drawn, beautifully crafted animated films with strong narratives.
+            - https://www.cartoonsaloon.ie/
+        - **ShadowMachine**
+            - **Overview**:
+                - A growing studio known for producing *BoJack Horseman* and *Robot Chicken*, ShadowMachine has a strong portfolio of adult-focused animation. With proper backing, they could expand into family-friendly or blockbuster content.
+            - **Potential**:
+                - Building on their existing success in adult animation, ShadowMachine could grow into a competitive animation house with diversified content.
+            - **Focus**:
+                - Adult animation, dark humor, original series.
+            - https://www.shadowmachine.com/
+        - **Boulder Media**
+            - **Overview**:
+                - An Irish studio that has worked on both 2D and CGI animation for series like *My Little Pony: The Movie* and *Transformers: Cyberverse*. Boulder Media has the potential to scale into bigger projects with backing.
+            - **Potential**:
+                - Their experience in handling both 2D and 3D animation gives them flexibility for larger productions and could help them scale into a bigger global player.
+            - **Focus**:
+                - 2D and CGI animation, children’s content.
+            - https://www.bouldermedia.tv/
+        - **Powerhouse Animation Studios**
+            - **Overview**:
+                - This Texas-based animation studio has gained attention for shows like *Castlevania* on Netflix. With experience in both traditional and digital animation, Powerhouse is well-suited to expand into larger-scale productions.
+            - **Potential**:
+                - With a growing portfolio, Powerhouse could scale up to become a major force in animation, particularly with more adult or action-focused content.
+            - **Focus**:
+                - Adult animation, action/adventure series.
+            - https://www.powerhouseanimation.com/
+        - **Tonko House**
+            - **Overview**:
+                - This boutique studio is known for *The Dam Keeper* and other beautifully animated short films. While small, the studio has a deep passion for storytelling and craftsmanship. With proper investment, they could scale into a studio producing feature-length films.
+            - **Potential**:
+                - Expanding on their artistic approach, Tonko House could create feature films or series that rival larger animation studios.
+            - **Focus**:
+                - High-quality, hand-drawn animations, storytelling.
+            - https://tonkohouse.com/
+        - **Illumination Mac Guff** (or a smaller arm of it)
+            - **Overview**:
+                - Known for *Despicable Me*, *The Secret Life of Pets*, and *Minions*, Illumination is one of the few studios that regularly competes with Disney at the box office. While acquiring the whole company would be out of range, smaller parts of its operations or partnerships may be available.
+            - **Potential**:
+                - Scaling up a smaller arm of a successful studio could be a smart way to develop a Disney competitor.
+            - **Focus**:
+                - Blockbuster CGI family films.
+            - https://www.illuminationmacguff.com/
+    - KodoFilms Animations 10+ subsidiaries for KDN+ (all)
+        - Studio Yotta
+            - Overview
+                - Known for creating high-quality, fluid animations and working with creators on YouTube, Studio Yotta has built a reputation for unique and anime-inspired content.
+            - Focus
+                - Freelance animations, often anime-inspired.
+            - https://www.youtube.com/c/StudioYotta
+        - Echo Bridge Pictures
+            - Overview
+                - Echo Bridge is a small animation production house that works with various platforms and produces anime-inspired series and content.
+            - Focus
+                - TV series and web series, some anime-influenced works.
+            - https://www.echobridge.tv/
+        - Mashed
+            - Overview
+                - This animation channel produces humorous, action-packed animated shorts with an anime-like art style, and its popularity has grown due to viral content.
+            - Focus
+                - Short anime-style parodies and original series.
+            - https://www.youtube.com/c/Mashed
+        - Noodle Studio
+            - Overview
+                - Noodle creates animation for YouTube and other media platforms, often producing short anime-influenced original content and parodies.
+            - Focus
+                - Original content, anime parodies, animation shorts.
+            - https://www.youtube.com/c/noodlesworks
+        - Hyun’s Dojo
+            - Overview
+                - Hyun’s Dojo specializes in stick-figure animation and anime-style fight scenes, with a large community of animators contributing to projects.
+            - Focus
+                - Fight animations with anime influence.
+            - https://www.youtube.com/c/HyunsDojoCommunity
+        - SpindleHorse Toons
+            - Overview
+                - Best known for creating *Hazbin Hotel*, this studio has grown into a small powerhouse in indie animation with anime-inspired aesthetics.
+            - Focus
+                - Dark humor, anime-inspired animation.
+            - https://www.youtube.com/c/Vivziepop
+        - Studio FOW
+            - Overview
+                - Studio FOW is a small indie studio that specializes in producing narrative-driven, anime-styled animated films and series with mature themes.
+            - Focus
+                - Original, anime-style animated projects.
+            - https://studiofow.com/
+        - Strange Company
+            - Overview
+                - This indie animation studio produces anime-influenced animated shorts and web series, often focusing on fantasy and sci-fi genres.
+            - Focus
+                - Anime-inspired series and shorts.
+            - https://strangecompany.org/
+        - Riot Games Animation (Arcane-related)
+            - Overview
+                - While larger, Riot's animation wing works on YouTube content for *League of Legends* and *Arcane*. They also support smaller creators and partner with indie animators.
+            - Focus
+                - Anime-style gaming animations.
+            - https://www.youtube.com/user/RiotGamesInc
+        - Pixel Lords Animation
+            - Overview
+                - This smaller studio produces pixel-art animations and some anime-inspired content for YouTube, focusing on retro-inspired series.
+            - Focus
+                - Anime-inspired pixel animations and short films.
+            - https://www.youtube.com/channel/UCO_eIbFD5mZk4ug1ERkFAow
+    - KodoFilms Records (slow build) (TBA)
+        - To produce in-house music and sounds for films
+        - To produce OST’s including composed soundtracks, musicians & singers for film albums
+    - Companies
+        - Philosophy
+            - Can you name me companies to acquire film related companies under 100M to 200M that combined nets 1+Billion a year in profits after expenses, payroll etc. for KodoFilms Productions
+        - Equipment
+            
+            > To negotiate both under (20M-100M)
+            > 
+            - https://www.prg.com/en/ (600M+)
+            - https://onlocationproduction.com/
+        - Promo commercial for all Aviyon Corporation
+            - https://www.thesparkhouse.com/
+            - https://spacebarvideo.com/
+        - VFX
+            - https://www.methodstudios.com/
+            - https://www.rodeofx.com/
+        - News
+            - https://www.infowars.com/
+                - News show on KDN+
+            - https://ground.news/
+        - Liquid Holding
+            - Note:
+                - Investing will be related to film industry that are private & public
+            - Blue Chip Stocks
+                - Netflix
+            - Bonds
+            - Index Funds
+            - ETF’s
+            - Robo Advisiors
+        - Maybe
+            - http://Vibe.co
+- Staff
+    - Philosophy is to hire what is absolutely needed without causing strain on development quality, talent, and production team (minimalist hire philosophy)
+    - W2/4/9 (<1000)
+        - Board
+            - Rachel (CEO) (negotiated amount)
+                - Indefinitely
+            - Immanuel Taylor (COO / Creative Director)
+    - 1099 (<5,000 - 10,000)
+- Child companies
+    - NOTE: AMC Theaters will be under Avyion Co, but works along side sibling company Kodofilms Studios
+        - Staff doesn’t change
+    - KodoFilms productions
+        - High level production expensive shows for KDN, KDN+, and other networks
+            - Examples such as Euphuria, Breaking Bad, Game of Thrones, Shogun
+            - Includes the Bioverse, Androids & Zombies universe
+        - High level production movies for theatrical release.
+            - After course, films will show on KDN+
+        - To produce content with VR, and 36o* blackmagic cameras
+            - Filmed with VR / 360 in mind, but shown in regular 2D format
+            - Content shows as normal until VR headset is engaged
+        - Budget
+            - Shows ($5,000,000 - $10,000,000 an episode)
+            - Films ($20,000,000 - $200,000,000 a film)
+        - Quality
+            - Superior writing, production, acting, quality, sets (practical 1st)
+            - Flawless quality, VFX should be impossible to tell as the integration of practical sets, replicas, real fire, water, pyro tech, robots etc
+            - Modeled after A24 Films, HBO Max, Paramount, Legendary, Showtime
+    - Kodo-Animation Studios
+        - Team of 25 Freelance 100
+        - To acquire rights to manga (6) to be self produce
+            - Publish and produce original works not yet in development
+        - In house schedule
+            - Producing 4 original Kodoninja year 2025
+            - Producing 6 original Kodoninja year 2026
+            - Produce Animation film such as Pixar, & Disney
+                - 1-2 per year
+        - Anime Talk (Weekdays & Weekends)
+            - Weekday team
+            - Weekend team
+        - Weekday Anime (10)
+            - 
+        - Weekend Anime (10)
+        - 18+ Anime (10)
+        - 17+ Anime (10)
+- Cable / Online TV
+    
+    [[KDN.tv](http://KDN.tv)](KodoFilms%20studios%2026f1e272155b4381b92c7056fff8eb99/KDN%20tv%208bd56dda18e34c8394ec4bc28a33d5e5.md)
+    
+    [[REP.tv](http://REP.tv)](KodoFilms%20studios%2026f1e272155b4381b92c7056fff8eb99/REP%20tv%2011ee5e0bee6e8036a4cbfcd3fc97cf2a.md)
+    
+    - XPT, RPM,…
+        - After the success of [kdn.tv](http://kdn.tv) & [rep.tv](http://rep.tv) roll out slowly other channels to dominate new cable / streaming TV
+    - RedPill.tv
+    - STEM.tv
+    - Anime Guild
+    - MERRA.tv
+    - Entrepreneurs Nation
+    - Engineering Channel
+    
+    [[Nomad.tv](http://Nomad.tv)](KodoFilms%20studios%2026f1e272155b4381b92c7056fff8eb99/Nomad%20tv%2012ae5e0bee6e806a91f5fe435c3d3e0c.md)
+    
+    - Note all TV channels can be found on there own app to not alienate fans of  KDN etc.
+- Movies
+    - Ideas
+        - Mr Olympia
+            - A man who journeys to become Mr. Olympia but the dream never happens as he looses himself to the madness of what it takes to become a body builder of the .005%
+                - Whiplash meets The Fighter

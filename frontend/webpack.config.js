@@ -16,9 +16,33 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
+    })
+    // Enable SCSS support
+    .enableSassLoader()
+    // Enable PostCSS and Tailwind CSS
+    .enablePostCssLoader((options) => {
+        options.postcssOptions = {
+            plugins: [
+                require('tailwindcss'),
+                require('autoprefixer'),
+            ],
+        };
+    })
+    // Optimize for production
+    .configureTerserPlugin((options) => {
+        options.terserOptions = {
+            compress: {
+                drop_console: Encore.isProduction(), // Remove console.logs in production
+            },
+        };
+    })
+    // Add aliases for easier imports
+    .addAliases({
+        '@js': path.resolve(__dirname, 'assets/js'),
+        '@css': path.resolve(__dirname, 'assets/css'),
     });
 
-// Add CopyWebpackPlugin only if assets/images/ contains files
+// Add CopyWebpackPlugin for images and other static assets
 const imagesPath = path.resolve(__dirname, 'assets/images');
 if (fs.existsSync(imagesPath) && fs.readdirSync(imagesPath).length > 0) {
     Encore.addPlugin(new CopyWebpackPlugin({

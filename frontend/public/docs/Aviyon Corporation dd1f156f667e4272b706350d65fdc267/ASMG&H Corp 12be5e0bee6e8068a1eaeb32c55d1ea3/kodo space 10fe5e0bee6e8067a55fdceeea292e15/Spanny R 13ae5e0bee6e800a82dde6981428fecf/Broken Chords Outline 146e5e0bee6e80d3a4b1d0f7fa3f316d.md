@@ -1,0 +1,177 @@
+# Broken Chords Outline
+
+- Same name as band, lead actresses name (not the final name) - 1st full feature intended for Oscar consideration
+- For clarity this script & screenplay will be in the hands of the top writers in the world who have won Oscars
+- Actors (Multi instrumental band members)
+    - Spanny |  (Lead Actress)
+        - Executive Producer
+        - Bio
+            - Lead Singer
+            - Guitarist
+            - Viola
+            - Celo
+            - Love struck, Fucks both Colin & Lenny, both and separately and exclusively
+            - Drugs
+            - The glue between the band, as she desperately tries to keep her life together keeping past life a secret from the two men who she loves.
+                - Drug addiction
+                - Lead way into Oscar moments
+                    - Colin saved her life that night finding her in that bar hearing her sing as he pulled her away from a drug ridden life filled with broken dreams, horing (tarnished image, a rape) and failed suicide attempts. He got her away from that, should her how to love again including getting intimate, gave her passion a direction, supported her art dream. Colin is a photographer, he takes modeling shots for flyers, promo, a possible modeling career and the site.
+                    - Music is also a outlet for his troubles as well.
+                    - Lenny also supports her life, her singing and art passion, showed her how to be passionate during sex, how to trade, how the site is built & works (code), how to also love with flaws. They both have a fucked up past with suicide attempts and cry for helps. He encourages her to make the artwork for all the albums with her the focus of the band, the glue that brings them together. He’s her voice of wisdom, a seer of good judgement as they both are repairing their lives with love and music.
+                    - During sex, Lenny notices she tries to hide her wrist a lot and a few blade marks on her body.
+                        - Lenny: “So I see they’ve been clearing up”
+                        - Spanny: “What”
+                        - Lenny grabs her arm pulls her over to the bed putting his wrist under the light.
+                        - Lenny: “See… your not alone, I went through some shit to”
+                    - They both work to repair Spanny’s life as she helps repairing theirs as they make it in the indie music industry. They soon find out there lives are perfect together as they all work to make everyone's life a whole while following their dreams. Trials & tribulations, ups and downs, they work through it all together.
+                    - The end product is an album (real album for sale) with Spanny’s artwork, (all 3 are featured in the booklet). There lives are whole, joined, with success under the horizon.
+            - The attraction for the band, goes by her first name
+    - Famous Actor | Colin Greenheart (Lead Actor)
+        - Bio
+            - Former Lead Singer
+            - Backup Vocals
+            - Keyboard
+            - pays rent for the garage
+            - Put in about half the money into the equipment
+            - Sold his car to get more equipment
+            - Upgraded Lennys van with Lenny in the garage
+            - Upgraded the trailer
+            - Plans the gigs, manages the group
+    - Immanuel | Lenny Moore (Supporting Actor)
+        - Director
+        - Screenwriter
+        - Producer
+        - Executive Producer
+        - Bio
+            - Guitarist
+            - Drums
+            - Keyboard
+            - Backup Vocals
+            - Put most of his savings into his van that they use as a promo & tour vehicle and transportation to and between gigs
+            - Paid for about half the equipment
+            - bought the smaller trailer
+            - 
+- Credits
+    - Rachel
+        - Executive Producer
+    - Band listed in song credits
+- Music genre
+    - Alternative
+    - Soft Rock
+    - Soul / R&B
+    - Jazz
+    - Indie Pop, Dark pop, bedroom pop
+    - Electronic
+    - industrial
+    - trip-hop
+- Album
+    - Songs created in film will be made into an album under KodoRecords
+    - Vinyl / CD
+    - Intended to form actual band
+- Premise
+    - There's a group of band members looking to make it big in there rented garage space. They practice 7 days a week, 12 hours a day with very few breaks, with gigs here and there. During practice the lead singer gets fed up slams the mic, stating this isn’t working, “the sound, you know, the sound just isn’t right”… They eventually decide on getting a new lead singer to justify there urge of a different sound, something feminine and powerful to match there indie alternative sound. The search is underway, a few girls show up, but nothing’s perfect. 6 girls have tried out and the sound is all off. The current lead singer is drinking at a bar taken the edge of during a trip to visits his grandparents home. It’s there he notices a attractive girl taking the stage. And so it happens, that’s the sound they’ve been looking for, he stares at her she locks eyes with him and it’s as if she’s singing to him. The song is over she goes to go sit down, he heads over to the girl they began to conversate he orders her a drink. They conversate back in forth for what seems to be like for hours about his band her singing, and how she’ll be a good fit. She initiates you wanna get out of here, he responds yeah. There back at her home they have sex. A few days go by and she decides to leave to LA to go try out for the band.
+    - When introduced to the other band band member Lenny, he seem to like her, there’s immediate spark, she likes his hair, complements his body, goes on for a while about it. The lead singer pulls them apart and says “grab center we’ll back you in,… here take this sheet follow along to the ques” She grabs the sheet puts it on the stand, adjusts the mic and its electric pure & divine the best sound they could ask for the best sound period. She’s perfect.  The song is over she turns and looks back at Lenny & Colin “how was I?” Unanimous yea, hell yes, your in. The lead singer “So it’s settled your moving here to LA?” “Yeah, I'll have my roommates send over my stuff as soon as I find a place. The lead singer offers a room and his apartment, she accepts. She eventually is all moved in time goes by practice is going on as usual 7 days a week, 12 hours a day, until the guitarist makes a suggestion. “So I think we should record an album, yay, nay?” They all agree. Soon the guys began buying some sound proofing gear for the garage, and a few extra equipment they’ll be needing.
+    - As time progress the chemistry between (Spanny) & Lenny grows as she casually dates Colin. The band is doing great really great Colin has a gig lined up to play there song “brown eye’s” so they practice until then non stop. During a break (Spanny) casually ask
+    - Spanny: “So how is it that you two can afford all this nice equipment?”
+    - Colin: “we both chip in, but Lenny’s been doing a bit of trading during the day”..
+    - Spanny: “Oh really, how’s that?”
+    - Lenny: “Good, I lose a lot!, but I do make just enough for rent and my apartment, Although we’d have more money for better equipment, if moved back in my van”
+    - Colin: “”better” its all top of line”
+    - Lenny: “Yeah, but not the best in line”
+    - Spanny: “Well, its all in the talent anyway, but the best group needs the best equipment I guess”
+    - Lenny: “Exactly!”
+    - Spanny: “So you Trade, and you used to be a van lifer?”
+    - Lenny: “Used to be, nah, well still am kinda”
+    - Spanny: “So hows that work?”
+    - Lenny: “Vanlife?”
+    - Spanny: “No!, trading, how does it work? I mean I have a few friends who do it but I’ve never tried it”
+    - Lenny: “Come to my apartment tomorrow at 6am, i’ll show you”
+    - Spanny: “I’ll take you up on that”
+    - Lenny: “Then you can show me how you get your abs so deep”
+    - Spanny: “My abs!!, bro I can see your veins running through 12 pack through your shirt”
+    - Lenny: “Yeah but not deep as yours though…”
+    - Lenny: “Hey Collin take of your shit, check his out,… washboard”
+    - Colin: “Oh huh, Let’s go for 2 , we got two days left into we perform”
+    - The band perform most of night until Colin calls it.
+    - Lenny: “He don’t forget”
+    - Spanny: “I wont”
+    - The day is here Spanny texts Lenny “Open up” Lenny replies “what, your on your way?” Spanny: “Brah open the door” Lenny opens the door Spanny barges in throws her bag on the sofa.
+    - Spanny: “So is this your setup?… nice”
+    - Lenny: “Yeah come in, and yup that’s it”
+    - Spanny pulls up a chair
+    - Spanny: “So where do we start?”
+    - Lenny; “Yeah lets load up the program”
+    - Lenny walks over to sit in the chair, Spanny gets out the chair and sits in Lenny’s lap. Lenny looks at the empty chair then back at Spanny then to the screen. He reaches his hands around her as she sits in the center to type on the keyboard. He loads up the program
+    - Lenny: “So let’s find some stocks to trade on stocks to trade”
+    - Spanny: “Oh the program is literally called stocks to trade” she laughs
+    - Lenny: “yup… funny ain't it”
+    - Lenny looks down her neck into her chest basically seeing erect nipples this gets him hard, hard as hard can gets, he thinks about jumping up but notices Spanny angles herself directly on it as she makes her chest more easily seen. His heart races out of control, her perfume, her body, no brah nipples are erect for days. Lenny is rock hard at this point where his dick is coming out of his shorts Spanny is basically penetrated through her skirt as she wiggles deeper on it. Heart racing Lenny goes over trading as best as he could fighting for dear life to stay focused. He eventually make a trade, and she is with him 100% never loosing focus. They both look at the trade then Lenny’s eyes move back down her shirt.
+    - Unable to control himself Lenny puts his hands on her abs reaches up her crop top and plays with her breast and nipples. Spanny says nothing but moans, Lennys dick is rock hard and getting thicker. Spanny starts to grind on his cock while pushing her panties to the side. She pulls up his left shorts to reveal Lenny’s penis and its entirety. She continues to grind as Lenny plays with her nipples. Moaning continues Lenny can feel vaginal fluid dripping from her vagina onto his cock. This only makes him harder. Then she starts to stroke his dick while it sits directly in front of her, she eventually spits on hi cock gets up and starts to slide down on his dick.
+    - Spanny: “Fuck, I hope this red bull fits inside of me, I'm wet as fuck right now
+    - Lenny: “I noticed”
+    - Lenny puts his arms around her waist gripping the base of his penis as she grips the upper half slowly sliding in.
+    - Spanny: “Oh fuck that's deep… OMG This shit is huge”
+    - Lenny & Spanny fuck in that position for seemingly hours as they find new positions on the soaked chair until they eventually move to the sofa nearly slipping on the way. Lenny picks her up eating her out with her legs wrapped around his hand as she braces and places with his hair. Spanny squirts alot Lenny eventually places her on the sofa eats her out for what seems like days. Lenny eats Spanny squirts, Lenny fucks Spanny squirts. Lenny walks Spanny over to the bed fucking her own the way from behind. Night time comes, there going at it strong until day breaks
+    - Lenny: “Wait a second W…T…F… yo’ we've bin doing this for a day straight”
+    - Spanny is literally vibrating and kissing him to shut up as she says “Just keep fucking me”
+    - Lenny: “Now is a good time to be teaching you swing trading”
+    - Spanny: “I don’t care anymore”
+    - Lenny: “Good because I’m pretty sure those trades we made…”
+    - Spanny: “Spanny shhhh…..” As she rides him soaking the bed
+    - Time passes Lenny goes at it gripping her hard and pounding the wind out of her body as he sucks her tits until he pulls out and cums on her chest. Spanny vibrates harshly as she releases again with multiple orgasms.
+    - Spanny: “OMG, I’ve never been fucked like that ever, holy shit I'm done, I'm so done right now”
+    - Lenny: “Really Collin never turned the apartment until a water park.”
+    - Spanny: “Oh shit, rehearsal!… Hey where’s my phone?”
+    - Spanny runs around the apartment drenched nude titidies bouncing around the apartment looking for her phone. She finds it”
+    - Spanny: “120 missed messages… brah, he check your phone”
+    - Lenny: “I got 18… Bros before hoes brah really… all the shi…”
+    - Spanny: “Seriously we got to perform tonight”
+    - Lenny: “So who’s better?”
+    - Spanny: “I already told you”
+    - Lenny: “Man you are vibrating so hard”
+    - Spanny: “You fucked the life out of me, plus I'm still coming, I need to go calm down.
+    - Spanny goes to the bed and knocks out. 20 minutes later theres a loud bang at the door, it keeps repeating. Spanny wakes up. Lenny puts his hand around her mouth as he whispers Colin as at the fucking door” Spanny starts to look worried ad panicks.  Lenny whispers “He’ll go away just shhhhhhhhh…. don't move”… Kocks eventually stops. They wait 20 minutes to be sure then eventually here's his car drive off.
+    - Spanny: “Okay…. we need a story now”
+    - Lenny: “I’ll leave you too it, I need to mop up, before the water leaks down to the 2nd floor apartment’
+    - Spanny: “OMG shut the fuck up” as she laughs hysterically
+    - Spanny: “Yo’ Ive never squirted before that was insane”
+    - Lenny: “Your welcome, so hows that story”
+    - Spanny: “Idk, I'm hoping in the shower” Spanny grabs her back to get a change of clothes
+    - Lenny: “Seems like you had a mission when you came here”
+    - Spanny: “Those abs had a mission the first time I saw you, and I had a feeling black guys would be packing but damn”
+    - Spanny’s in the shower Lenny cleans up the place as best as he can, Lenny has only one comforter so he figures out a way to hang the sheets up as he cleans them. He grabs paper towels to wipe up using a whole roll, with his Swiffer mop. She pops out of the shower getting dress near the couch, even though she brought her clothes with her.
+    - Lenny: “So?”
+    - Spanny: “I think we should just tell him”
+    - Lenny: “I mean you don’t have a car yet, so”
+    - Spanny: “It’s no big deal, I can’t really explain this when I live with him.. so I tell him, and I haven’t made a single friend yet here” “Go get in the shower we need to go practice”
+    - Lenny: “ahhhh, yeah no, that story won’t work”
+    - Spanny: “Take a shower”
+    - Lenny hops in the shower, Shortly after Spanny comes in to use the bathroom with zero regard to privacy. Lenny doesn’t say anything. She finishes wipes, takes of her clothes again and hops in the shower. Lenny laughs “really lol” Spanny “move” She grabs soap and washes up again then starts to guide him inside herself, they go at it for an hour so. Spanny gets out of the shower, walking around the apartment nude to make a breakfast sandwich for two.
+    - Spanny: “Eat up, red bull, you need your wings for round 3”
+    - Lenny: “You and Collin go at it this much?”
+    - Spanny: “No comment”
+    - The two attempt to get dress as round 3 happens for 2 hours….
+    - They rush down to the garage in Lenny’s van, they arrive get out open the garage doors. As soon as they open Colin decks Lenny in the jaw and a fight breaks out. Spanny desperately tries to bring them up (… Mini Spanny Oscar moment…)
+    - Colin: “Yeah. It's been 2 days gigs tonight, I can’t fucking believe this.”
+    - Spanny grabs ice from the fridge to give to the both of them
+    - Spanny: “We need to practice, before we pack up for tonight”
+    - Colin: “That’s it hore, that’s all you have to say now”
+    - Colin: “Your going to have to decide right here and now, me or him, I can pack your shit tonight, you and your crystal can go live with him,… as that what you want bitch”
+    - (… Colin Oscar moment continues joining in Spanny’s Oscar moment kicks in as well as Lenny’s…)
+    - They argue back in forth tears rolling from Spanny as she grabs pills (Oxy) from her bag to calm down,
+    - Spanny: “There’s no him, there’s no you its us, I'm not choosing between you two when I have feelings for you both. I love you, I love the both of you, we complete each other…”
+    - Colin: “Le..” Spanny cuts him off
+    - Spanny: “Here me out, love connects us in through our music love connects us physically, intimately, sexually… Let our sexual rhythm and connection reflect through our music we make… I’m saying we’ll be in so much harmony, I bet we sound way better now that were deeply connected”
+    - Lenny & Colin bicker back in forth Spanny rips them apart and pushes them towards there instruments.
+    - Spanny: “Brown eyes from the top”
+    - Lenny starts off Colin joins Spanny brings in the vocals with the guitar. The music is perfect, so perfect, Colin, Lenny, & Spanny all have tears in there eyes. The contine to the other 3 songs there performing tonight. Perfect as perfect can get.
+    - Spanny: “From now on we do everything together… kapeech”
+    - Lenny & Colin look at each other
+    - Lenny: “Everything… So who was better?”
+    - Spanny throws the mic at Lenny. with a smirk
+    - Spanny: “See it all worked out,… We do everything, I mean everything”
+    - Colin: “Who was better?”
+    - Spanny: “I can’t…just lol omg” said with a smirk “Let’s practice then we need to pack our equipment in the trailer”
+    - Colin: “BTW I bought us a bigger trailer yesterday”
+    - Lenny: “Sweet man because I may be down in trades”
+    -

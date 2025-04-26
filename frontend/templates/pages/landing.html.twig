@@ -1,166 +1,74 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Nimbus.ai - The Ghost in the Cloud{% endblock %}
+{% block title %}Aviyon - Welcome to the Kodoverse{% endblock %}
 
 {% block body %}
-<section class="landing relative">
     <!-- Hero Section -->
-    <div class="hero relative bg-cover bg-center py-20 text-center" style="background-image: url('{{ asset('build/images/cyberpunk-city.jpg') }}')">
-        <div class="container">
-            <h1 class="text-5xl font-bold text-accent animate-pulse">Welcome to Nimbus.ai</h1>
-            <p class="text-xl text-secondary mt-4">The ultimate Web3 cloud platform for creators, coders, and innovators, powered by ASI.</p>
-            <canvas id="three-canvas" class="w-full h-64 mt-8 mx-auto"></canvas>
-            <div class="mt-6 flex justify-center space-x-4">
-                <button id="wallet-connect" class="btn">Connect Wallet</button>
-                <a href="{{ path('explore') }}" class="btn bg-secondary">Explore Now</a>
-                <a href="{{ path('marketplace') }}" class="btn bg-accent-hover">Join the NFT Bazaar</a>
-            </div>
-        </div>
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-    </div>
-
-    <!-- Features Section -->
-    <section class="features container py-12">
-        <h2 class="text-3xl font-bold text-accent text-center mb-8">Why Nimbus.ai?</h2>
-        <div class="flex flex-wrap justify-between gap-8">
-            <div class="feature-card w-1/3 profile-card">
-                <h3 class="text-2xl font-semibold text-accent">Decentralized Hosting</h3>
-                <p class="text-secondary mt-2">Host DApps with blockchain-backed security and 99.9% uptime on ICP.</p>
-            </div>
-            <div class="feature-card w-1/3 profile-card">
-                <h3 class="text-2xl font-semibold text-accent">AI-Powered Tools</h3>
-                <p class="text-secondary mt-2">Leverage Nimbus AI for code suggestions, smart contracts, and analytics.</p>
-            </div>
-            <div class="feature-card w-1/3 profile-card">
-                <h3 class="text-2xl font-semibold text-accent">Global Community</h3>
-                <p class="text-secondary mt-2">Connect with creators in the kodoverse via Threads-like feeds.</p>
-            </div>
+    <section class="text-center py-16 bg-gradient-to-b from-gray-800 to-gray-900">
+        <h1 class="text-5xl font-bold text-purple-400 mb-4">Welcome to Aviyon</h1>
+        <p class="text-xl text-gray-300 mb-8">The Kodoverse: Where DeFi Meets Cloud Computing and Social Innovation</p>
+        <div class="flex justify-center space-x-4">
+            <a href="{{ path('explore') }}" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Explore Now</a>
+            <a href="{{ path('platform', {'platformName': 'kodoninja'}) }}" class="bg-gray-700 text-gray-100 px-6 py-3 rounded-lg hover:bg-gray-600 transition">Visit KodoNinja</a>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats bg-secondary py-12">
-        <div class="container grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <h3 class="text-3xl text-accent">10K+</h3>
-                <p class="text-secondary">Active Users</p>
+    <!-- Platform Overview -->
+    <section class="py-16 text-center">
+        <h2 class="text-4xl font-bold text-gray-100 mb-4">Aviyon Platform</h2>
+        <p class="text-xl text-gray-300 mb-8">Scalable DeFi and Cloud Computing Infrastructure for the Kodoverse</p>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 py-12">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                <h3 class="text-2xl text-purple-400 mb-4">Decentralized Computing</h3>
+                <p class="text-gray-300">Run your applications on a decentralized network with high availability and security.</p>
             </div>
-            <div>
-                <h3 class="text-3xl text-accent">$5M+</h3>
-                <p class="text-secondary">NFT Volume</p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                <h3 class="text-2xl text-purple-400 mb-4">DeFi Integration</h3>
+                <p class="text-gray-300">Seamlessly integrate with DeFi protocols using AVY tokens for transactions and rewards.</p>
             </div>
-            <div>
-                <h3 class="text-3xl text-accent">50+</h3>
-                <p class="text-secondary">Kodoverse Platforms</p>
-            </div>
-            <div>
-                <h3 class="text-3xl text-accent">99.9%</h3>
-                <p class="text-secondary">Uptime</p>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                <h3 class="text-2xl text-purple-400 mb-4">Cloud IDE</h3>
+                <p class="text-gray-300">Code, deploy, and manage your projects directly in the browser with our integrated IDE.</p>
             </div>
         </div>
-    </section>
-
-    <!-- DeFi Showcase -->
-    <section class="defi-showcase container py-12">
-        <h2 class="text-3xl font-bold text-accent mb-8">DeFi Hub</h2>
-        <div class="flex flex-wrap justify-between gap-8">
-            <div class="profile-card w-1/2">
-                <h3 class="text-xl text-accent">Token Swap</h3>
-                <p class="text-secondary">Swap ETH, ICP, and more with low gas fees.</p>
-                <button class="btn mt-2">Start Swapping</button>
-            </div>
-            <div class="profile-card w-1/2">
-                <h3 class="text-xl text-accent">Stake & Earn</h3>
-                <p class="text-secondary">Stake tokens for up to 12% APY.</p>
-                <button class="btn mt-2">Stake Now</button>
-            </div>
+        <div class="text-center">
+            <a href="{{ path('np_plus_plus') }}" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Get Started with NP++</a>
         </div>
     </section>
 
     <!-- Global Feed -->
-    <section class="global-feed container py-12">
-        <h2 class="text-3xl font-bold text-accent mb-8">Global Feed</h2>
-        {% if global_posts is defined and global_posts|length > 0 %}
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-6">Global Feed</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {% for post in global_posts %}
-                <div class="post-card bg-secondary p-6 rounded-lg shadow-lg mb-6">
-                    <div class="post-header flex items-center">
-                        {% set profileImage = post.platform in ['kodonomad', 'kodoninja'] ? asset('build/images/' ~ post.platform ~ '-profile.jpg') : asset('build/images/user-placeholder.jpg') %}
-                        <img src="{{ profileImage }}" alt="{{ post.author }}" class="post-author-image w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <span class="post-author text-accent font-semibold">{{ post.author }}</span>
-                            <span class="post-timestamp text-secondary text-sm block">{{ post.timestamp|date('Y-m-d H:i') }}</span>
-                        </div>
-                    </div>
-                    <div class="post-content text-primary mt-4">
-                        {{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}
-                        {% if post.image %}
-                            <img src="{{ asset('build/images/' ~ post.image) }}" alt="Post image" class="post-image w-full mt-4 rounded">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center mb-4">
+                        {% if post.author == 'kodoninja' %}
+                            <img src="{{ asset('build/images/kodoninja-profile.jpg') }}" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
+                        {% elseif post.author == 'kodonomad' %}
+                            <img src="{{ asset('build/images/kodonomad-profile.jpg') }}" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
+                        {% else %}
+                            <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
                         {% endif %}
-                    </div>
-                    <div class="post-actions mt-4 flex space-x-4">
-                        <form action="{{ path('like_post') }}" method="POST" class="like-form">
-                            <input type="hidden" name="post_id" value="{{ loop.index }}">
-                            <button type="submit" class="btn like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes }}</span>)</button>
-                        </form>
-                        <button class="btn comment-toggle">Comment</button>
-                        <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
-                            <input type="hidden" name="post_id" value="{{ loop.index }}">
-                            <textarea name="content" placeholder="Add a comment, use #hashtags or @mentions" class="form-control"></textarea>
-                            <button type="submit" class="btn mt-2">Comment</button>
-                        </form>
-                    </div>
-                    {% for comment in post.comments %}
-                        <div class="comment mt-4 text-secondary">
-                            <span>{{ comment.author }}: {{ comment.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</span>
-                            <span class="block text-sm">{{ comment.timestamp|date('Y-m-d H:i') }}</span>
+                        <div>
+                            <p class="text-gray-300 font-semibold">{{ post.author }}</p>
+                            <p class="text-gray-500 text-sm">{{ post.timestamp|date('g:i A, M d, Y') }}</p>
                         </div>
-                    {% endfor %}
+                    </div>
+                    <h3 class="text-xl text-purple-400 mb-2">{{ post.content }}</h3>
+                    {% if post.image %}
+                        <img src="{{ asset('build/images/' ~ post.image) }}" alt="Post Image" class="w-full h-48 object-cover rounded-lg mb-4">
+                    {% endif %}
+                    <div class="flex space-x-3">
+                        <button class="text-gray-400 hover:text-purple-400">👍 {{ post.likes }}</button>
+                        <button class="text-gray-400 hover:text-purple-400">💬 {{ post.comments|length }}</button>
+                        <button class="text-gray-400 hover:text-purple-400">🔗 Share</button>
+                    </div>
                 </div>
             {% endfor %}
-            <button id="load-more" class="btn mx-auto block">Load More</button>
-        {% else %}
-            <p class="text-secondary">No posts available.</p>
-        {% endif %}
+        </div>
+        <div class="text-center mt-8">
+            <a href="{{ path('explore') }}" class="text-purple-400 hover:underline">Load More...</a>
+        </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="cta container py-12 text-center">
-        <h2 class="text-4xl font-bold text-accent mb-4">Join the Kodoverse</h2>
-        <p class="text-secondary mb-8">Create your Nimbus.ai agent and explore the future of AI and DeFi.</p>
-        <a href="{{ path('register') }}" class="btn text-lg px-8">Start Now</a>
-    </section>
-</section>
-
-{% block javascripts %}
-<script src="{{ asset('build/three.min.js') }}"></script>
-<script>
-    // Parallax effect for hero background
-    window.addEventListener('scroll', () => {
-        const hero = document.querySelector('.hero');
-        const scrollPosition = window.pageYOffset;
-        hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-    });
-
-    // Three.js Canvas (Placeholder)
-    const canvas = document.getElementById('three-canvas');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-    renderer.setSize(canvas.width, canvas.height);
-
-    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-    const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
-
-    camera.position.z = 30;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        torusKnot.rotation.x += 0.01;
-        torusKnot.rotation.y += 0.01;
-        renderer.render(scene, camera);
-    }
-    animate();
-</script>
 {% endblock %}

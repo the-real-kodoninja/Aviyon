@@ -1,0 +1,176 @@
+<div class="ticker bg-dark-light py-2 overflow-hidden shadow-lg">
+    <div class="ticker-container flex animate-ticker">
+        <div id="ticker-items" class="flex space-x-6">
+            <!-- Ticker items will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Ticker Detail Modal -->
+    <div id="ticker-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50 animate-fade-in">
+        <div class="bg-dark-light p-8 rounded-lg max-w-lg w-full shadow-lg">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="ticker-modal-title" class="text-2xl font-inter text-neon-purple"></h2>
+                <button id="ticker-modal-close" class="text-gray-400 hover:text-neon-purple transition">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <canvas id="ticker-modal-chart" class="w-full h-64 mb-6"></canvas>
+            <p id="ticker-modal-price" class="text-gray-400 mb-2"></p>
+            <p id="ticker-modal-change" class="text-gray-400 mb-2"></p>
+            <p id="ticker-modal-stoploss" class="text-gray-400"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Asset data
+const assets = [
+    { id: 'bitcoin', name: 'BTC', type: 'crypto', stopLoss: 30000 },
+    { id: 'ethereum', name: 'ETH', type: 'crypto', stopLoss: 1500 },
+    { id: 'internet-computer', name: 'ICP', type: 'crypto', stopLoss: 5 },
+    { id: 'bored-ape-yacht-club', name: 'BAYC', type: 'nft', stopLoss: 20 },
+    { id: 'kodoverse-nft', name: 'KodoNFT', type: 'nft', stopLoss: 0.5 }
+];
+
+// Historical price data for sparklines
+let priceHistory = {};
+
+// Fetch initial prices
+async function fetchPrices() {
+    const cryptoIds = assets.filter(a => a.type === 'crypto').map(a => a.id).join(',');
+    const cryptoResponse = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoIds}&vs_currencies=usd&include_24hr_change=true`)
+        .then(res => res.json())
+        .catch(err => {
+            console.error('Error fetching crypto prices:', err);
+            return {};
+        });
+
+    // Simulate NFT floor prices (replace with real API if available)
+    const nftPrices = {
+        'bored-ape-yacht-club': { usd: 50, usd_24h_change: 2.5 },
+        'kodoverse-nft': { usd: 1.2, usd_24h_change: -1.8 }
+    };
+
+    const prices = {};
+    assets.forEach(asset => {
+        if (asset.type === 'crypto') {
+            prices[asset.id] = cryptoResponse[asset.id] || { usd: 0, usd_24h_change: 0 };
+        } else {
+            prices[asset.id] = nftPrices[asset.id] || { usd: 0, usd_24h_change: 0 };
+        }
+
+        // Update price history for sparklines
+        if (!priceHistory[asset.id]) priceHistory[asset.id] = [];
+        priceHistory[asset.id].push(prices[asset.id].usd);
+        if (priceHistory[asset.id].length > 30) priceHistory[asset.id].shift();
+    });
+
+    return prices;
+}
+
+// Update Ticker
+async function updateTicker() {
+    const prices = await fetchPrices();
+    const tickerItems = document.getElementById('ticker-items');
+    tickerItems.innerHTML = '';
+
+    assets.forEach(asset => {
+        const price = prices[asset.id].usd;
+        const change = prices[asset.id].usd_24h_change;
+        const isBelowStopLoss = price < asset.stopLoss;
+
+        const item = document.createElement('div');
+        item.className = 'ticker-item flex items-center space-x-2 mx-4 cursor-pointer';
+        item.innerHTML = `
+            <span class="font-inter text-gray-300">${asset.name}:</span>
+            <span class="${isBelowStopLoss ? 'text-red-500' : 'text-gray-300'}">$${price.toFixed(2)}</span>
+            <span class="${change >= 0 ? 'text-green-500' : 'text-red-500'}">
+                (${change >= 0 ? '+' : ''}${change.toFixed(2)}%)
+                ${change >= 0 ? '↑' : '↓'}
+            </span>
+            <canvas id="sparkline-${asset.id}" class="w-24 h-8"></canvas>
+        `;
+        tickerItems.appendChild(item);
+
+        // Draw Sparkline
+        const sparklineData = priceHistory[asset.id] || Array(30).fill(price);
+        new Chart(document.getElementById(`sparkline-${asset.id}`), {
+            type: 'line',
+            data: {
+                labels: Array(30).fill(''),
+                datasets: [{
+                    data: sparklineData,
+                    borderColor: change >= 0 ? '#34d399' : '#ef4444',
+                    backgroundColor: 'transparent',
+                    borderWidth: 1,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { x: { display: false }, y: { display: false } },
+                plugins: { legend: { display: false }, tooltip: { enabled: false } }
+            }
+        });
+
+        // Modal on Click
+        item.addEventListener('click', () => {
+            document.getElementById('ticker-modal-title').textContent = `${asset.name} (${asset.type.toUpperCase()})`;
+            document.getElementById('ticker-modal-price').textContent = `Price: $${price.toFixed(2)}`;
+            document.getElementById('ticker-modal-change').textContent = `24h Change: ${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
+            document.getElementById('ticker-modal-stoploss').textContent = `Stop-Loss: $${asset.stopLoss.toFixed(2)} ${isBelowStopLoss ? '(Triggered)' : ''}`;
+            document.getElementById('ticker-modal').classList.remove('hidden');
+
+            // Draw Detailed Chart in Modal
+            const modalChartCanvas = document.getElementById('ticker-modal-chart');
+            new Chart(modalChartCanvas, {
+                type: 'line',
+                data: {
+                    labels: Array(30).fill('').map((_, i) => `-${29 - i}m`),
+                    datasets: [{
+                        label: 'Price (USD)',
+                        data: sparklineData,
+                        borderColor: change >= 0 ? '#34d399' : '#ef4444',
+                        backgroundColor: change >= 0 ? 'rgba(52, 211, 153, 0.2)' : 'rgba(239, 68, 68, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: false },
+                        x: { display: false }
+                    },
+                    plugins: { legend: { labels: { color: '#d1d5db' } } }
+                }
+            });
+        });
+    });
+}
+
+// Initialize Modal
+initModal('ticker-modal', '.ticker-item', '#ticker-modal-close');
+
+// Update ticker every 30 seconds
+updateTicker();
+setInterval(updateTicker, 30000);
+</script>
+
+<style>
+.ticker-container {
+    width: max-content;
+}
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.animate-ticker {
+    animation: ticker 30s linear infinite;
+}
+.ticker:hover .animate-ticker {
+    animation-play-state: paused;
+}
+</style>

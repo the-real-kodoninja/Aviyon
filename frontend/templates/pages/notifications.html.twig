@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Notifications{% endblock %}
+
+{% block body %}
+    <!-- Notifications Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4">Notifications</h1>
+        <p class="text-xl text-gray-300 mb-8">Stay updated with the latest activity in the Kodoverse.</p>
+    </section>
+
+    <!-- Notifications List -->
+    <section class="py-12">
+        {% if notifications|length > 0 %}
+            <div class="space-y-4">
+                {% for notification in notifications %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex items-center space-x-4 {{ notification.read ? '' : 'border-l-4 border-purple-400' }}">
+                        <div class="flex-shrink-0">
+                            {% if notification.type == 'like' %}
+                                <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                            {% elseif notification.type == 'comment' %}
+                                <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                                </svg>
+                            {% elseif notification.type == 'follow' %}
+                                <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            {% else %}
+                                <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm1-5H11V5h2v8z"/>
+                                </svg>
+                            {% endif %}
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-gray-300">
+                                {% if notification.type == 'like' %}
+                                    <a href="{{ path('user_profile', {'username': notification.user}) }}" class="text-purple-400 hover:underline">{{ notification.user }}</a> liked your post.
+                                {% elseif notification.type == 'comment' %}
+                                    <a href="{{ path('user_profile', {'username': notification.user}) }}" class="text-purple-400 hover:underline">{{ notification.user }}</a> commented on your post: "{{ notification.content|truncate(50) }}".
+                                {% elseif notification.type == 'follow' %}
+                                    <a href="{{ path('user_profile', {'username': notification.user}) }}" class="text-purple-400 hover:underline">{{ notification.user }}</a> followed you.
+                                {% else %}
+                                    System: {{ notification.content }}
+                                {% endif %}
+                            </p>
+                            <p class="text-gray-500 text-sm">{{ notification.timestamp|date('M d, Y h:i A') }}</p>
+                        </div>
+                        {% if not notification.read %}
+                            <form action="{{ path('mark_notification_read') }}" method="POST">
+                                <input type="hidden" name="notification_id" value="{{ notification.id }}">
+                                <button type="submit" class="text-gray-400 hover:text-purple-400">Mark as Read</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Pagination -->
+            <div class="flex justify-center mt-8 space-x-2">
+                {% if current_page > 1 %}
+                    <a href="{{ path('notifications', {'page': current_page - 1}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Previous</a>
+                {% endif %}
+                <span class="text-gray-300 px-4 py-2">Page {{ current_page }} of {{ total_pages }}</span>
+                {% if current_page < total_pages %}
+                    <a href="{{ path('notifications', {'page': current_page + 1}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Next</a>
+                {% endif %}
+            </div>
+        {% else %}
+            <p class="text-gray-300">No notifications at this time.</p>
+        {% endif %}
+    </section>
+{% endblock %}

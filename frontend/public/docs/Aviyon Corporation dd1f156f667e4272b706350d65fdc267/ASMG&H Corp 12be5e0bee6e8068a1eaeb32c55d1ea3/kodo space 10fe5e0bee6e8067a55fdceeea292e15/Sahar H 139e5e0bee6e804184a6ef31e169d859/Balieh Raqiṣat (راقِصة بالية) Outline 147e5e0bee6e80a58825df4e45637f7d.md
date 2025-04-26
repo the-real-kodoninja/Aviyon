@@ -1,0 +1,48 @@
+# Balieh Raqiṣat (راقِصة بالية) Outline
+
+- Female James Bond
+- Actor
+    - Sahar H.
+    - The “final” Villain offscreen
+        - notes
+            - Eventually finds out this is a defect experimental super soldier funded by ex Marines , war profiteers,… turned billionaires (money off creating a company to sell weapons to US & others) operating in Bangladesh who were testing a serum to sell to foreign militaries. Although completing missions, he went rogue completing them in his own way, mayhem & destruction. They scrapped the mission burning everything leaving no clues as so they thought. Only a tip for elimination to a foreign embassy to clean up their mess as they scrapped and went dark.
+            - He’s gathered a following, that follows an oath of silence instructed to burn evidence, self terminate if compromised or caught. If caught and unable to terminate they are eliminated by following assassins or himself when he wants to send a message.
+            - He’s mentally disturbed, hyper genius, 194 IQ, no friends, no family, a rumored lover who's equally psychotic, super soldier, experienced in every fighting style, kill craft (master in all weaponry including poison), war, a book-a-holic libraries counting tens of thousands all read, calculative, a perfect mastermind, a billionaire by offshore companies, Apex villain, homes & hideouts everywhere across the globe
+            - Known simply as “Biohazard”
+            - A biohacker of sorts using his Money to enhance every aspect of his being, mind & body
+            - Face, Body Type, Look
+                - Late 20’s Early 30’s
+                - 6’5
+                - Long black hair
+                - Handsome, model like
+                - European, Asian, African (multi racial)
+                - 0% body fat
+                - 245 lbs
+                - compressed lean muscle
+                - 10 pack abs
+                - Built like Gon Freecs / Red hood
+            - wardrobe
+                - Dawns a bulletproof black mask (helmet)
+                - Bullet proof armor head to toe
+                - A tan bulletproof jacket
+                - A black utility belt filled with ninja weapons
+                - A biohazard sign in the center of his chest made into the gear
+- Premise
+    - A well trained UAE Armed Forces Intelligence field officer works alongside the CIA & FBI for an investigative and eliminate mission. This mission involves an country that cannot be reached by the US without starting a war. Thus the intelligence agency’s are working with a UAE agent known in the field simply as Ballerina to one man (woman) the operation. The target is a ghost unseen by cameras, with few details known about him. She must travel a spiral of leads in various countries to hunt down the target for elimination. Privy to who is own him the unknown man whom they are searching for is sending assassin's after her, whom she eliminates. She must figure out who this person is, where he is, and how to kill him, while avoiding death.
+    - Eventually uncovering the “villain: boss” ballerina is brutality injured, believed to have been killed through the run in with the Villian, Ballerina goes through the traumatic woes, and struggles of getting back into peak condition, physiologically back into it, emotional scenes with devastation lows to fight against addaction, with the help of a newly met friend, as she was drugged against her will as it was used as a numbing agent to treat her wounds (note she is found nearly for dead in a 3rd world country), a story of strength after destruction, as she becomes stronger more lethal to apprehend the warmonger. No mission or details were shared with her friend, she had no ID (kept in Safety deposits around the world) only that she needed to get back in shape and return to her work, (after all his boss is a ghost, no Nation knows exist) which he assumed was a fighter of sorts, due to the fact she was eager to get in shape to fight underground. That was her testing ground of getting back in shape and prepared to complete the mission. Although he notices her build is lean and conditioned with years of training utilizing a fighting style native to UAE Krav Maga he didn’t think much of it. Fighters like her are a dime a dozen where she landed. She eventually leaves ensuring him they’ll never meet again, and a Thank You.
+    - The film ends with a definitive lead after defeating who they all thought was the guy behind it built from the leads, as she progressed from 3 agencies. He was only a higher up grunt unable to burn the data in time.
+- Inspiration
+    - Bourne Identity
+    - 007 - Casino Royale….
+    - Black Lagoon
+    - Homeland
+        - Claire Danes style of acting
+    - The Revenant
+        - Acting with minimal words Oscar won with mannerisms, facial expressions, body language. However a few Oscar moments while shine.
+        - Scene where
+    - Thanos, Joker, Slade Wilson “Deathstroke”, Red hood
+        - A Thanos level villian, with Joker level mayhem each film gives clues how to find and eliminate him. Although getting closer they feel the weight of his offscreen destruction and mayhem.
+- Unnamed Universe (tie-in)
+    - Notified (Sequel)
+        - A field agent hired by Abu Dhabi (UAE) “Ballerina” has becomes a serious target and threat to Biohazard, thus Taskrabbit is tasked with her elimination. When notified of the task he realizes it was the same woman he helped after realizing a crew of black market street doctors used meth as a tranquilizer numbing agent to do surgery on her. Taskrabbit isn’t on a task in awaiting orders from his boss a underling of Biohazard. He has no idea who she is, nor her mission, for her is off-grid awaiting missions. She’s just a woman in need who he helped. He knew little about her, she was a ghost herself. As she got better a romance built and they became intimate. She has been gone for awhile and the taskrabbit was sent on a mission elsewhere. After a few other task later he was eventually tasked with the mission he has now. Find & eliminate. Orders or orders thus he begins his search.
+        - Eventually tracked down they fight to near death taking 4% of the city ____ down with them. The fight ends in a aggressive sex scene later resuming to yet again end up in bed together. They fall in lust with one another afraid to love due to there work. Taskrabbit is officially defect, thus a hit has been set on him. The person she is looking for is such a mystery not even “Taskrabbit” knows much about him, only that he keeps moving, well funded in a ghost. Now defect they work together in finding and apprehending her target.

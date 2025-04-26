@@ -1,30 +1,64 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Sign Up{% endblock %}
+
 {% block body %}
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h3 class="card-title text-center mb-4">Sign Up</h3>
-          <form>
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" required>
+    <!-- Signup Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4 text-center">Join the Kodoverse</h1>
+        <p class="text-xl text-gray-300 mb-8 text-center">Create your account and start building in Web3.</p>
+    </section>
+
+    <!-- Signup Form -->
+    <section class="max-w-md mx-auto py-8">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+            <!-- Traditional Signup -->
+            <form action="{{ path('signup') }}" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-300 mb-2">Username</label>
+                    <input type="text" id="username" name="username" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-300 mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-300 mb-2">Password</label>
+                    <input type="password" id="password" name="password" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="avatar" class="block text-gray-300 mb-2">Profile Avatar (Optional)</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*" class="w-full p-2 bg-gray-700 rounded text-gray-100">
+                </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="terms" name="terms" class="mr-2" required>
+                    <label for="terms" class="text-gray-300">I agree to the <a href="{{ path('terms') }}" class="text-purple-400 hover:underline">Terms of Service</a></label>
+                </div>
+                <button type="submit" class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Sign Up</button>
+            </form>
+
+            <!-- Web3 Wallet Signup -->
+            <div class="my-6 text-center">
+                <p class="text-gray-300 mb-2">Or sign up with your Web3 wallet</p>
+                <button id="metamask-signup" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Connect with MetaMask</button>
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" required>
+
+            <!-- Links -->
+            <div class="text-center">
+                <p class="text-gray-300">
+                    Already have an account? <a href="{{ path('login') }}" class="text-purple-400 hover:underline">Login</a>
+                </p>
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-          </form>
-          <p class="text-center mt-3">
-            Already have an account? <a href="/login">Login</a>
-          </p>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Simulate Web3 Wallet Signup (MetaMask)
+        document.getElementById('metamask-signup').addEventListener('click', () => {
+            alert('Connecting to MetaMask for signup... (This is a simulation)');
+            // In a real implementation, this would integrate with MetaMask's API
+        });
+    </script>
 {% endblock %}

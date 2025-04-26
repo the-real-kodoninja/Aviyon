@@ -1,0 +1,103 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Careers - Aviyon{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-6">
+    <!-- Search Filter -->
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-4xl font-inter text-neon-purple">Careers at Aviyon</h1>
+        <div class="relative w-1/3">
+            <input type="text" id="jobs-filter" placeholder="Filter jobs (e.g., developer, marketing)" class="w-full p-3 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+            <svg class="absolute right-3 top-3 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Position Listings -->
+    <div class="space-y-6">
+        <!-- Open Position 1 -->
+        <div class="job-posting bg-dark-light p-6 rounded-lg shadow-lg animate-fade-in">
+            <h2 class="text-2xl font-inter text-neon-purple">Senior Blockchain Developer</h2>
+            <p class="text-gray-400 mt-2"><strong>Company:</strong> Aviyon Corporation S-Corp</p>
+            <p class="text-gray-400 mt-2"><strong>Description:</strong> Lead the development of our blockchain infrastructure, focusing on smart contracts, NFT marketplaces, and decentralized finance solutions. Must have 5+ years of experience with Solidity, Rust, and Web3.js.</p>
+            <p class="text-gray-400 mt-2"><strong>Details:</strong></p>
+            <ul class="list-disc ml-6 text-gray-400">
+                <li>Location: Remote</li>
+                <li>Salary: $150,000 - $200,000/yr</li>
+                <li>Benefits: Equity options, health insurance, unlimited PTO</li>
+            </ul>
+            <form action="{{ path('careers_apply') }}" method="POST" class="mt-4 space-y-3">
+                <input type="hidden" name="position" value="Senior Blockchain Developer">
+                <input type="text" name="applicant_name" placeholder="Your Name" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                <input type="email" name="applicant_email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                <textarea name="cover_letter" placeholder="Cover Letter" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
+                <input type="file" name="resume" class="text-gray-300">
+                <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Apply Now</button>
+            </form>
+        </div>
+
+        <!-- Open Position 2 -->
+        <div class="job-posting bg-dark-light p-6 rounded-lg shadow-lg animate-fade-in">
+            <h2 class="text-2xl font-inter text-neon-purple">AI Research Scientist</h2>
+            <p class="text-gray-400 mt-2"><strong>Company:</strong> Nimbus AI (Sibling Company)</p>
+            <p class="text-gray-400 mt-2"><strong>Description:</strong> Develop cutting-edge AI models for trading, predictive analytics, and natural language processing. PhD in Computer Science or related field required.</p>
+            <p class="text-gray-400 mt-2"><strong>Details:</strong></p>
+            <ul class="list-disc ml-6 text-gray-400">
+                <li>Location: San Francisco, CA</li>
+                <li>Salary: $180,000 - $250,000/yr</li>
+                <li>Benefits: Stock options, relocation assistance, 401k match</li>
+            </ul>
+            <form action="{{ path('careers_apply') }}" method="POST" class="mt-4 space-y-3">
+                <input type="hidden" name="position" value="AI Research Scientist">
+                <input type="text" name="applicant_name" placeholder="Your Name" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                <input type="email" name="applicant_email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                <textarea name="cover_letter" placeholder="Cover Letter" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
+                <input type="file" name="resume" class="text-gray-300">
+                <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Apply Now</button>
+            </form>
+        </div>
+
+        <!-- Filled Position 1 -->
+        <div class="job-posting bg-dark-light p-6 rounded-lg shadow-lg animate-fade-in opacity-75">
+            <h2 class="text-2xl font-inter text-gray-500">Product Manager (Filled)</h2>
+            <p class="text-gray-400 mt-2"><strong>Company:</strong> Aviyon Corporation S-Corp</p>
+            <p class="text-gray-400 mt-2"><strong>Description:</strong> Oversaw product development for the Stoploss trading platform.</p>
+            <p class="text-gray-400 mt-2"><strong>Details:</strong></p>
+            <ul class="list-disc ml-6 text-gray-400">
+                <li>Location: Remote</li>
+                <li>Hired: Q1 2025</li>
+            </ul>
+        </div>
+
+        <!-- Filled Position 2 -->
+        <div class="job-posting bg-dark-light p-6 rounded-lg shadow-lg animate-fade-in opacity-75">
+            <h2 class="text-2xl font-inter text-gray-500">Frontend Developer (Filled)</h2>
+            <p class="text-gray-400 mt-2"><strong>Company:</strong> Chess.social (Child Company)</p>
+            <p class="text-gray-400 mt-2"><strong>Description:</strong> Built the responsive UI for Chess.social using React and Tailwind CSS.</p>
+            <p class="text-gray-400 mt-2"><strong>Details:</strong></p>
+            <ul class="list-disc ml-6 text-gray-400">
+                <li>Location: New York, NY</li>
+                <li>Hired: Q4 2024</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Jobs Filter
+    const jobsFilter = document.getElementById('jobs-filter');
+    const jobPostings = document.querySelectorAll('.job-posting');
+    jobsFilter.addEventListener('input', () => {
+        const filter = jobsFilter.value.toLowerCase();
+        jobPostings.forEach(posting => {
+            const text = posting.textContent.toLowerCase();
+            posting.style.display = text.includes(filter) ? '' : 'none';
+        });
+    });
+});
+</script>
+{% endblock %}

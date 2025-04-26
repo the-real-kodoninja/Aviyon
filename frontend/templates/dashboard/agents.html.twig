@@ -1,11 +1,61 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - AI Agents{% endblock %}
+
 {% block body %}
-  <h1 class="mb-4">AI Agents</h1>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Manage AI Agents</h5>
-      <p class="card-text">Customize and deploy AI agents for coding assistance.</p>
-      <a href="#" class="btn btn-primary">Create Agent</a>
-    </div>
-  </div>
+    <!-- Agents Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4">AI Agents</h1>
+        <p class="text-xl text-gray-300 mb-8">Create and manage AI agents to assist with coding, analytics, and more.</p>
+    </section>
+
+    <!-- Create Agent -->
+    <section class="py-12">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl text-purple-400 mb-4">Create New Agent</h2>
+            <form action="{{ path('agent_create') }}" method="POST">
+                <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                        <label for="agent_name" class="block text-gray-300 mb-2">Agent Name</label>
+                        <input type="text" id="agent_name" name="agent_name" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                    </div>
+                    <div>
+                        <label for="agent_type" class="block text-gray-300 mb-2">Agent Type</label>
+                        <select id="agent_type" name="agent_type" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="coding">Coding Assistant</option>
+                            <option value="analytics">Analytics Bot</option>
+                            <option value="support">Support Agent</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="agent_description" class="block text-gray-300 mb-2">Description</label>
+                    <textarea id="agent_description" name="agent_description" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" rows="3"></textarea>
+                </div>
+                <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Create Agent</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Agent List -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Your Agents</h2>
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {% for agent in agents %}
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-2">{{ agent.name }}</h3>
+                    <p class="text-gray-300 mb-2"><strong>Type:</strong> {{ agent.type|capitalize }}</p>
+                    <p class="text-gray-300 mb-4">{{ agent.description|truncate(100) }}</p>
+                    <div class="flex space-x-2">
+                        <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Deploy</button>
+                        <a href="{{ path('agent_edit', {'id': agent.id}) }}" class="text-purple-400 hover:underline">Edit</a>
+                        <form action="{{ path('agent_delete') }}" method="POST">
+                            <input type="hidden" name="agent_id" value="{{ agent.id }}">
+                            <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to delete this agent?')">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

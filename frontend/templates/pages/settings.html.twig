@@ -1,16 +1,109 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Settings{% endblock %}
+
 {% block body %}
-  <h1 class="mb-4">Settings</h1>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Account Settings</h5>
-      <form>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" value="user@example.com">
+    <!-- Settings Header -->
+    <section class="py-12">
+        <h1 class="text-4xl font-bold text-purple-400 mb-4">Account Settings</h1>
+        <p class="text-xl text-gray-300 mb-8">Customize your Kodoverse experience.</p>
+    </section>
+
+    <!-- Profile Settings -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Profile</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <form action="{{ path('settings_profile_save') }}" method="POST" enctype="multipart/form-data">
+                <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                        <label for="username" class="block text-gray-300 mb-2">Username</label>
+                        <input type="text" id="username" name="username" value="{{ app.user.username }}" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-300 mb-2">Email</label>
+                        <input type="email" id="email" name="email" value="{{ app.user.email }}" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="avatar" class="block text-gray-300 mb-2">Profile Avatar</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*" class="w-full p-2 bg-gray-700 rounded text-gray-100">
+                </div>
+                <div class="mt-4">
+                    <label for="bio" class="block text-gray-300 mb-2">Bio</label>
+                    <textarea id="bio" name="bio" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" rows="3">{{ app.user.bio }}</textarea>
+                </div>
+                <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Save Profile</button>
+            </form>
         </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-      </form>
-    </div>
-  </div>
+    </section>
+
+    <!-- Security Settings -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Security</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <form action="{{ path('settings_security_save') }}" method="POST">
+                <div class="mb-4">
+                    <label for="current_password" class="block text-gray-300 mb-2">Current Password</label>
+                    <input type="password" id="current_password" name="current_password" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                        <label for="new_password" class="block text-gray-300 mb-2">New Password</label>
+                        <input type="password" id="new_password" name="new_password" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label for="confirm_password" class="block text-gray-300 mb-2">Confirm New Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <input type="checkbox" id="enable_2fa" name="enable_2fa" class="mr-2" {{ app.user.is_2fa_enabled ? 'checked' }}>
+                    <label for="enable_2fa" class="text-gray-300">Enable Two-Factor Authentication</label>
+                </div>
+                <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Save Security Settings</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Notification Preferences -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Notifications</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <form action="{{ path('settings_notifications_save') }}" method="POST">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="email_notifications" name="email_notifications" class="mr-2" {{ app.user.email_notifications ? 'checked' }}>
+                        <label for="email_notifications" class="text-gray-300">Email Notifications</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="push_notifications" name="push_notifications" class="mr-2" {{ app.user.push_notifications ? 'checked' }}>
+                        <label for="push_notifications" class="text-gray-300">Push Notifications</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="sms_notifications" name="sms_notifications" class="mr-2" {{ app.user.sms_notifications ? 'checked' }}>
+                        <label for="sms_notifications" class="text-gray-300">SMS Notifications</label>
+                    </div>
+                </div>
+                <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Save Notification Preferences</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Theme Customization -->
+    <section class="py-12">
+        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Theme</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <form action="{{ path('settings_theme_save') }}" method="POST">
+                <div class="mb-4">
+                    <label for="theme" class="block text-gray-300 mb-2">Select Theme</label>
+                    <select id="theme" name="theme" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="dark" {{ app.user.theme == 'dark' ? 'selected' }}>Dark (Default)</option>
+                        <option value="light" {{ app.user.theme == 'light' ? 'selected' }}>Light</option>
+                        <option value="cyberpunk" {{ app.user.theme == 'cyberpunk' ? 'selected' }}>Cyberpunk</option>
+                    </select>
+                </div>
+                <button type="submit" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Save Theme</button>
+            </form>
+        </div>
+    </section>
 {% endblock %}

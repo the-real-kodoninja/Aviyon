@@ -1,101 +1,124 @@
+
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}About Aviyon & Nimbus.ai{% endblock %}
+{% block title %}About Aviyon & Nimbus.ai - Kodoverse{% endblock %}
 
 {% block body %}
-    <section class="about">
-        <h1>Aviyon: From Cloud Platform to Cyberpunk AI Revolution</h1>
-        <p>Aviyon began as a modular cloud platform for developers, inspired by Heroku and Codeanywhere, and evolved into a cyberpunk coding odyssey. This journey birthed Nimbus.ai, an AI-powered juggernaut pursuing Artificial Superintelligence (ASI) and Artificial General Intelligence (AGI) to solve humanity's greatest challenges. Together, they anchor the kodoverse, a virtual cosmos of interconnected platforms.</p>
+    <!-- About Header -->
+    <section class="py-16 text-center">
+        <h1 class="text-4xl font-bold text-gray-100 mb-4">About Aviyon & Nimbus.ai</h1>
+        <p class="text-xl text-gray-300 mb-8">From Cloud Platform to Cyberpunk AI Revolution in the Kodoverse</p>
+    </section>
 
-        <!-- Timeline -->
-        <div class="profile-card mb-8">
-            <h2>Our Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="text-accent">2023</span>
-                    <p>Aviyon founded as a cloud platform.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="text-accent">2024</span>
-                    <p>Launched cyberpunk UI and Nimbus.ai.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="text-accent">2025</span>
-                    <p>Expanded kodoverse with DeFi and NFTs.</p>
+    <!-- Intro -->
+    <section class="py-12">
+        <p class="text-gray-300 text-lg mx-auto max-w-3xl">Aviyon began as a modular cloud platform for developers, inspired by Heroku and Codeanywhere, and evolved into a cyberpunk coding odyssey. This journey birthed Nimbus.ai, an AI-powered juggernaut pursuing Artificial Superintelligence (ASI) and Artificial General Intelligence (AGI) to solve humanity's greatest challenges. Together, they anchor the Kodoverse, a virtual cosmos of interconnected platforms.</p>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-12">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-semibold text-gray-100 mb-6">Our Journey</h2>
+            <div class="relative pl-8">
+                <div class="absolute left-2 top-0 bottom-0 w-1 bg-purple-400"></div>
+                <div class="space-y-6">
+                    <div class="relative">
+                        <span class="absolute left-[-26px] top-1 w-4 h-4 rounded-full bg-purple-400 border-2 border-gray-800"></span>
+                        <span class="text-purple-400 font-semibold">2023</span>
+                        <p class="text-gray-300 mt-1">Aviyon founded as a cloud platform, aiming to simplify development and deployment for coders worldwide.</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-[-26px] top-1 w-4 h-4 rounded-full bg-purple-400 border-2 border-gray-800"></span>
+                        <span class="text-purple-400 font-semibold">2024</span>
+                        <p class="text-gray-300 mt-1">Launched cyberpunk UI and Nimbus.ai, introducing a neon-lit coding experience and AI-driven insights.</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-[-26px] top-1 w-4 h-4 rounded-full bg-purple-400 border-2 border-gray-800"></span>
+                        <span class="text-purple-400 font-semibold">2025</span>
+                        <p class="text-gray-300 mt-1">Expanded Kodoverse with DeFi and NFTs, creating a decentralized ecosystem for creators and innovators.</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Call to Action -->
-        <div class="flex space-x-4 mb-8">
-            <a href="{{ path('marketplace') }}" class="btn">Explore NFTs</a>
-            <a href="{{ path('app_root') }}" class="btn">Manage Workspaces</a>
+    <!-- Call to Action -->
+    <section class="py-12 text-center">
+        <div class="flex justify-center space-x-4">
+            <a href="{{ path('marketplace') }}" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Explore NFTs</a>
+            <a href="{{ path('app_root') }}" class="bg-gray-700 text-gray-100 px-6 py-3 rounded-lg hover:bg-gray-600 transition">Manage Workspaces</a>
         </div>
+    </section>
 
-        <nav class="toc profile-card">
-            <h2>Table of Contents</h2>
-            <ul>
-                <li><a href="#aviyon-origin">Aviyon: The Origin Story</a></li>
-                <li><a href="#aviyon-cyberpunk">Aviyon: Neon Code Rebellion</a></li>
-                <li><a href="#nimbus-ai">Nimbus.ai: Pinnacle of Intelligence</a></li>
-                <li><a href="#kodoverse">kodoverse: The Virtual Frontier</a>
-                    <ul>
-                        <li><a href="#kodoverse-kodoninja" href="{{ path('platform', {'platformName': 'kodoninja'}) }}">kodoninja</a></li>
-                        <li><a href="#kodoverse-kodospace" href="{{ path('platform', {'platformName': 'kodospace'}) }}">kodospace</a></li>
-                        <li><a href="#kodoverse-kodocity" href="{{ path('platform', {'platformName': 'kodocity'}) }}">KodoCity</a></li>
-                        <li><a href="#kodoverse-kodoanime" href="{{ path('platform', {'platformName': 'kodoanime'}) }}">kodoanime.social</a></li>
-                        <li><a href="#kodoverse-velocity" href="{{ path('platform', {'platformName': 'velocity'}) }}">velocity.social</a></li>
-                        <li><a href="#kodoverse-chess" href="{{ path('platform', {'platformName': 'chess'}) }}">chess.social</a></li>
-                        <li><a href="#kodoverse-kodofitness" href="{{ path('platform', {'platformName': 'kodofitness'}) }}">kodofitness</a></li>
-                        <li><a href="#kodoverse-kodofilms" href="{{ path('platform', {'platformName': 'kodofilms'}) }}">kodofilms</a></li>
-                        <li><a href="#kodoverse-kodonomad" href="{{ path('platform', {'platformName': 'kodonomad'}) }}">kodonomad</a></li>
-                        <li><a href="#kodoverse-kodoplanet" href="{{ path('platform', {'platformName': 'kodoplanet'}) }}">kodoplanet</a></li>
-                        <li><a href="#kodoverse-kdnprotocol" href="{{ path('platform', {'platformName': 'kdnprotocol'}) }}">KDNProtocol</a></li>
+    <!-- Table of Contents -->
+    <section class="py-12">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-semibold text-gray-100 mb-4">Table of Contents</h2>
+            <ul class="space-y-2">
+                <li><a href="#aviyon-origin" class="text-purple-400 hover:underline">Aviyon: The Origin Story</a></li>
+                <li><a href="#aviyon-cyberpunk" class="text-purple-400 hover:underline">Aviyon: Neon Code Rebellion</a></li>
+                <li><a href="#nimbus-ai" class="text-purple-400 hover:underline">Nimbus.ai: Pinnacle of Intelligence</a></li>
+                <li><a href="#kodoverse" class="text-purple-400 hover:underline">Kodoverse: The Virtual Frontier</a>
+                    <ul class="pl-4 space-y-1 mt-1">
+                        <li><a href="#kodoverse-kodoninja" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodoninja'}) }}">KodoNinja</a></li>
+                        <li><a href="#kodoverse-kodospace" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodospace'}) }}">KodoSpace</a></li>
+                        <li><a href="#kodoverse-kodocity" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodocity'}) }}">KodoCity</a></li>
+                        <li><a href="#kodoverse-kodoanime" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodoanime'}) }}">KodoAnime.social</a></li>
+                        <li><a href="#kodoverse-velocity" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'velocity'}) }}">Velocity.social</a></li>
+                        <li><a href="#kodoverse-chess" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'chess'}) }}">Chess.social</a></li>
+                        <li><a href="#kodoverse-kodofitness" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodofitness'}) }}">KodoFitness</a></li>
+                        <li><a href="#kodoverse-kodofilms" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodofilms'}) }}">KodoFilms</a></li>
+                        <li><a href="#kodoverse-kodonomad" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodonomad'}) }}">KodoNomad</a></li>
+                        <li><a href="#kodoverse-kodoplanet" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kodoplanet'}) }}">KodoPlanet</a></li>
+                        <li><a href="#kodoverse-kdnprotocol" class="text-gray-300 hover:text-purple-400">{{ path('platform', {'platformName': 'kdnprotocol'}) }}">KDNProtocol</a></li>
                     </ul>
                 </li>
-                <li><a href="#tech-core">Tech Core: Under the Hood</a></li>
-                <li><a href="#web3-defi">Web3-5 and DeFi: Decentralized Dreams</a></li>
-                <li><a href="#hosting-plans">Hosting Plans: Free to Infinite</a></li>
-                <li><a href="#crypto-nfts">Crypto and NFTs</a></li>
-                <li><a href="#future-path">Future Path: Beyond the Horizon</a></li>
-                <li><a href="#team">The Team</a></li>
-                <li><a href="#acknowledgements">Acknowledgements</a></li>
+                <li><a href="#tech-core" class="text-purple-400 hover:underline">Tech Core: Under the Hood</a></li>
+                <li><a href="#web3-defi" class="text-purple-400 hover:underline">Web3-5 and DeFi: Decentralized Dreams</a></li>
+                <li><a href="#hosting-plans" class="text-purple-400 hover:underline">Hosting Plans: Free to Infinite</a></li>
+                <li><a href="#crypto-nfts" class="text-purple-400 hover:underline">Crypto and NFTs</a></li>
+                <li><a href="#future-path" class="text-purple-400 hover:underline">Future Path: Beyond the Horizon</a></li>
+                <li><a href="#team" class="text-purple-400 hover:underline">The Team</a></li>
+                <li><a href="#acknowledgements" class="text-purple-400 hover:underline">Acknowledgements</a></li>
             </ul>
-        </nav>
+        </div>
+    </section>
 
-        <section id="aviyon-origin">
-            <h2>Aviyon: The Origin Story</h2>
-            <p>Aviyon was conceived as a cloud-native platform to streamline development, deployment, and hosting. Drawing inspiration from Heroku’s deployment ease, Hostinger’s hosting flexibility, and Codeanywhere’s cloud IDE, Aviyon aimed to unify these into a modular, scalable ecosystem.</p>
-            <h3>Vision and Pillars</h3>
-            <ul>
-                <li><strong>Modularity</strong>: Independent components (IDE, deployment, hosting, auth) connected via RESTful APIs.</li>
-                <li><strong>Scalability</strong>: Built with Kotlin, Java, and Spring Boot for high concurrency.</li>
-                <li><strong>User Experience</strong>: A PHP/Laravel frontend with Tailwind CSS for responsive design.</li>
-                <li><strong>Extensibility</strong>: Plugin system for custom workflows.</li>
-            </ul>
-            <h3>Initial Tech Stack</h3>
-            <ul>
-                <li><strong>Backend</strong>: Spring Boot with Kotlin/Java, PostgreSQL, Redis, Kafka/RabbitMQ.</li>
-                <li><strong>Frontend</strong>: Laravel 12.x, Blade templating, Tailwind CSS.</li>
-                <li><strong>Orchestration</strong>: Kubernetes for container management.</li>
-            </ul>
-            <p>This foundation enabled rapid iteration and set the stage for Aviyon’s cyberpunk transformation.</p>
-        </section>
+    <!-- Aviyon Origin -->
+    <section id="aviyon-origin" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Aviyon: The Origin Story</h2>
+        <p class="text-gray-300 mb-4">Aviyon was conceived as a cloud-native platform to streamline development, deployment, and hosting. Drawing inspiration from Heroku’s deployment ease, Hostinger’s hosting flexibility, and Codeanywhere’s cloud IDE, Aviyon aimed to unify these into a modular, scalable ecosystem.</p>
+        <h3 class="text-2xl text-purple-400 mb-2">Vision and Pillars</h3>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Modularity</strong>: Independent components (IDE, deployment, hosting, auth) connected via RESTful APIs, allowing seamless integration and customization.</li>
+            <li><strong>Scalability</strong>: Built with Kotlin, Java, and Spring Boot for high concurrency, ensuring Aviyon can handle millions of users.</li>
+            <li><strong>User Experience</strong>: A PHP/Laravel frontend with Tailwind CSS for responsive design, prioritizing accessibility and speed.</li>
+            <li><strong>Extensibility</strong>: Plugin system for custom workflows, enabling developers to tailor Aviyon to their needs.</li>
+        </ul>
+        <h3 class="text-2xl text-purple-400 mt-6 mb-2">Initial Tech Stack</h3>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Backend</strong>: Spring Boot with Kotlin/Java, PostgreSQL for data storage, Redis for caching, and Kafka/RabbitMQ for messaging.</li>
+            <li><strong>Frontend</strong>: Laravel 12.x, Blade templating, and Tailwind CSS for a sleek, responsive UI.</li>
+            <li><strong>Orchestration</strong>: Kubernetes for container management, ensuring scalability and reliability.</li>
+        </ul>
+        <p class="text-gray-300 mt-4">This foundation enabled rapid iteration and set the stage for Aviyon’s cyberpunk transformation, paving the way for the Kodoverse.</p>
+    </section>
 
-        <section id="aviyon-cyberpunk">
-            <h2>Aviyon: Neon Code Rebellion</h2>
-            <p>Aviyon transcended its utilitarian roots to become a cyberpunk-inspired coding platform, immersing developers in a dystopian world of neon-lit challenges and underground collaboration.</p>
-            <h3>Core Features</h3>
-            <ul>
-                <li><strong>Neon UI</strong>: A dark, vibrant interface with purple, cyan, and white hues.</li>
-                <li><strong>Cyber Missions</strong>: Coding tutorials styled as high-stakes hacking quests.</li>
-                <li><strong>Code Crucible</strong>: Monaco-based cloud IDE with syntax highlighting.</li>
-                <li><strong>Hacker Sync</strong>: Real-time multiplayer coding (in development).</li>
-                <li><strong>Fortified Auth</strong>: JWT-based security via Spring Boot.</li>
-            </ul>
-            <h3>Technical Evolution</h3>
-            <p>The frontend adopted Laravel 12.x with Vite for fast asset bundling, while the backend leveraged Spring Boot 3.2.0 and Kotlin 1.9.0. The file structure includes:</p>
-            <pre>
+    <!-- Aviyon Cyberpunk -->
+    <section id="aviyon-cyberpunk" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Aviyon: Neon Code Rebellion</h2>
+        <p class="text-gray-300 mb-4">Aviyon transcended its utilitarian roots to become a cyberpunk-inspired coding platform, immersing developers in a dystopian world of neon-lit challenges and underground collaboration.</p>
+        <h3 class="text-2xl text-purple-400 mb-2">Core Features</h3>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Neon UI</strong>: A dark, vibrant interface with purple, cyan, and white hues, inspired by cyberpunk aesthetics.</li>
+            <li><strong>Cyber Missions</strong>: Coding tutorials styled as high-stakes hacking quests, gamifying the learning experience.</li>
+            <li><strong>Code Crucible</strong>: Monaco-based cloud IDE with syntax highlighting, integrated into NP++ for seamless coding.</li>
+            <li><strong>Hacker Sync</strong>: Real-time multiplayer coding, allowing teams to collaborate on projects in real-time (in development).</li>
+            <li><strong>Fortified Auth</strong>: JWT-based security via Spring Boot, ensuring user data is protected.</li>
+        </ul>
+        <h3 class="text-2xl text-purple-400 mt-6 mb-2">Technical Evolution</h3>
+        <p class="text-gray-300 mb-4">The frontend adopted Laravel 12.x with Vite for fast asset bundling, while the backend leveraged Spring Boot 3.2.0 and Kotlin 1.9.0. The file structure includes:</p>
+        <pre class="bg-gray-700 p-4 rounded-lg text-gray-300 overflow-x-auto">
 frontend/
 ├── app/
 ├── resources/
@@ -109,396 +132,351 @@ core/
 ├── auth/
 ├── logging/
 ├── config/
-            </pre>
-        </section>
+        </pre>
+        <p class="text-gray-300 mt-4">This evolution allowed Aviyon to scale while maintaining a cutting-edge user experience, setting the stage for Nimbus.ai.</p>
+    </section>
 
-        <section id="nimbus-ai">
-            <h2>Nimbus.ai: Pinnacle of Intelligence</h2>
-            <p>Nimbus.ai is Aviyon’s AI-driven evolution, aiming for ASI and AGI to address global challenges. Inspired by *Ghost in the Shell* and the Thunderhead from *Scythe*, it seeks to replicate consciousness and merge human minds with the cloud.</p>
-            <h3>Objectives</h3>
-            <ul>
-                <li>Solve intractable problems (e.g., climate change, disease).</li>
-                <li>Develop sentient AI with empathy and autonomy.</li>
-                <li>Enable brain-cloud interfaces for human-AI synergy.</li>
+    <!-- Nimbus.ai -->
+    <section id="nimbus-ai" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Nimbus.ai: Pinnacle of Intelligence</h2>
+        <p class="text-gray-300 mb-4">Nimbus.ai is Aviyon’s AI-driven evolution, aiming for ASI and AGI to address global challenges. Inspired by *Ghost in the Shell* and the Thunderhead from *Scythe*, it seeks to replicate consciousness and merge human minds with the cloud.</p>
+        <h3 class="text-2xl text-purple-400 mb-2">Objectives</h3>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li>Solve intractable problems (e.g., climate change, disease) through advanced AI modeling.</li>
+            <li>Develop sentient AI with empathy and autonomy, capable of ethical decision-making.</li>
+            <li>Enable brain-cloud interfaces for human-AI synergy, revolutionizing how we interact with technology.</li>
+        </ul>
+        <h3 class="text-2xl text-purple-400 mt-6 mb-2">Key Modules (Aviyon1.21)</h3>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Web Scanner</strong>: Crawls .edu/.gov/.org for credible data, ensuring high-quality information.</li>
+            <li><strong>Knowledge Vault</strong>: Aggregates academic resources from MIT, Harvard, etc., for research and learning.</li>
+            <li><strong>Truth Gauge</strong>: Evaluates information reliability using advanced algorithms.</li>
+            <li><strong>Aviyon.grammar1</strong>: Enhances writing with AI, providing real-time suggestions.</li>
+            <li><strong>Aviyon.code1</strong>: Analyzes GitHub/GitLab for coding insights, helping developers improve their skills.</li>
+            <li><strong>Aviyon.health1</strong>: Supports fitness and longevity (2045 Initiative), with personalized health plans.</li>
+            <li><strong>Aviyon.business</strong>: Provides trading and investment strategies, integrated with DeFi protocols.</li>
+            <li><strong>Aviyon.planet</strong>: Drives sustainability efforts through AI-driven environmental solutions.</li>
+            <li><strong>Aviyon.nomad</strong>: Empowers nomadic lifestyles with travel and work resources.</li>
+            <li><strong>Aviyon.founder1</strong>: Chronicles Emmanuel Moore’s journey, offering inspiration to the community.</li>
+        </ul>
+        <h3 class="text-2xl text-purple-400 mt-6 mb-2">Nimbus Agents</h3>
+        <p class="text-gray-300 mb-4">Users can create up to five AI agents with custom roles, 3D avatars (Three.js), and exportable VRM models for Kodoverse integration. These agents can assist with coding, research, or even virtual events in KodoCity.</p>
+        <h3 class="text-2xl text-purple-400 mt-6 mb-2">NFT Bazaar</h3>
+        <p class="text-gray-300 mb-4">Hosted on ICP with Motoko, the bazaar supports user-created NFTs, microtransactions (ICP, BTC, ETH, Stripe), and 3D gallery browsing. Users can trade digital assets and showcase their creations in a virtual marketplace.</p>
+    </section>
+
+    <!-- Kodoverse -->
+    <section id="kodoverse" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Kodoverse: The Virtual Frontier</h2>
+        <p class="text-gray-300 mb-4">The Kodoverse is a digital universe where Nimbus.ai agents and users interact across interconnected platforms. Below, we detail each platform based on the repositories at <a href="https://github.com/the-real-kodoninja?tab=repositories" class="text-purple-400 hover:underline">the-real-kodoninja</a>.</p>
+
+        <section id="kodoverse-kodoninja" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodoninja'}) }}" class="hover:underline">KodoNinja</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodoninja" class="text-purple-400 hover:underline">KodoNinja</a> is the origin of the Kodoverse, a self-help platform for personal and professional growth. It combines coding tutorials, career advice, and motivational content.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Coding Academy</strong>: Tutorials for C, Python, JavaScript, and Motoko, with interactive challenges.</li>
+                <li><strong>Career Hub</strong>: Resume builders, interview prep, and job boards tailored for tech professionals.</li>
+                <li><strong>Motivation Feed</strong>: Daily inspirational content to keep users motivated.</li>
             </ul>
-            <h3>Key Modules (Aviyon1.21)</h3>
-            <ul>
-                <li><strong>Web Scanner</strong>: Crawls .edu/.gov/.org for credible data.</li>
-                <li><strong>Knowledge Vault</strong>: Aggregates academic resources from MIT, Harvard, etc.</li>
-                <li><strong>Truth Gauge</strong>: Evaluates information reliability.</li>
-                <li><strong>Aviyon.grammar1</strong>: Enhances writing with AI.</li>
-                <li><strong>Aviyon.code1</strong>: Analyzes GitHub/GitLab for coding insights.</li>
-                <li><strong>Aviyon.health1</strong>: Supports fitness and longevity (2045 Initiative).</li>
-                <li><strong>Aviyon.business</strong>: Provides trading and investment strategies.</li>
-                <li><strong>Aviyon.planet</strong>: Drives sustainability efforts.</li>
-                <li><strong>Aviyon.nomad</strong>: Empowers nomadic lifestyles.</li>
-                <li><strong>Aviyon.founder1</strong>: Chronicles Emmanuel Moore’s journey.</li>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: React, Tailwind CSS for a modern, responsive UI.</li>
+                <li>Backend: Node.js, PostgreSQL for efficient data management.</li>
+                <li>Deployment: ICP for decentralized hosting, ensuring uptime and security.</li>
             </ul>
-            <h3>Nimbus Agents</h3>
-            <p>Users can create up to five AI agents with custom roles, 3D avatars (Three.js), and exportable VRM models for kodoverse integration.</p>
-            <h3>NFT Bazaar</h3>
-            <p>Hosted on ICP with Motoko, the bazaar supports user-created NFTs, microtransactions (ICP, BTC, ETH, Stripe), and 3D gallery browsing.</p>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">To empower individuals to become “ninjas” in coding and life, blending discipline and creativity in a supportive community.</p>
         </section>
 
-        <section id="kodoverse">
-            <h2>kodoverse: The Virtual Frontier</h2>
-            <p>The kodoverse is a digital universe where Nimbus.ai agents and users interact across interconnected platforms. Below, we detail each platform based on the repositories at <a href="https://github.com/the-real-kodoninja?tab=repositories">the-real-kodoninja</a>.</p>
-
-            <section id="kodoverse-kodoninja">
-                <h3><a href="{{ path('platform', {'platformName': 'kodoninja'}) }}">kodoninja</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodoninja">kodoninja</a> is the origin of the kodoverse, a self-help platform for personal and professional growth. It combines coding tutorials, career advice, and motivational content.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Coding Academy</strong>: Tutorials for C, Python, JavaScript, and Motoko.</li>
-                    <li><strong>Career Hub</strong>: Resume builders, interview prep, and job boards.</li>
-                    <li><strong>Motivation Feed</strong>: Daily inspirational content.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: React, Tailwind CSS.</li>
-                    <li>Backend: Node.js, PostgreSQL.</li>
-                    <li>Deployment: ICP for decentralized hosting.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>To empower individuals to become “ninjas” in coding and life, blending discipline and creativity.</p>
-            </section>
-
-            <section id="kodoverse-kodospace">
-                <h3><a href="{{ path('platform', {'platformName': 'kodospace'}) }}">kodospace</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodospace">kodospace</a> is a standalone social network within the kodoverse, focused on privacy and community-driven content.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Private Feeds</strong>: User-controlled visibility.</li>
-                    <li><strong>Groups</strong>: Niche communities for coders, artists, etc.</li>
-                    <li><strong>Encrypted Chat</strong>: Secure messaging.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: Vue.js, Tailwind CSS.</li>
-                    <li>Backend: Spring Boot, MongoDB.</li>
-                    <li>Blockchain: ICP for identity and data sovereignty.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>A safe, decentralized space for authentic connections.</p>
-            </section>
-
-            <section id="kodoverse-kodocity">
-                <h3><a href="{{ path('platform', {'platformName': 'kodocity'}) }}">KodoCity</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse">KodoCity</a> is a neon-lit virtual metropolis where users and AI agents interact in a 3D environment.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>3D World</strong>: Built with Three.js and WebGL.</li>
-                    <li><strong>Agent Interactions</strong>: AI-driven NPCs with dynamic behaviors.</li>
-                    <li><strong>Virtual Events</strong>: Hackathons, concerts, and meetups.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: React, Three.js.</li>
-                    <li>Backend: Rust, ICP canisters.</li>
-                    <li>Data: Firebase Firestore.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>A metaverse hub for creativity and collaboration.</p>
-            </section>
-
-            <section id="kodoverse-kodoanime">
-                <h3><a href="{{ path('platform', {'platformName': 'kodoanime'}) }}">kodoanime.social</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodoanime.social">kodoanime.social</a> is a social platform blending anime culture, coding, and community.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Anime Forums</strong>: Discussions on shows, manga, and fan art.</li>
-                    <li><strong>Coding Challenges</strong>: Anime-themed coding quests.</li>
-                    <li><strong>Live Streams</strong>: Watch parties and creator events.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: Svelte, Tailwind CSS.</li>
-                    <li>Backend: Node.js, Redis.</li>
-                    <li>Streaming: WebRTC integration.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>A vibrant community for anime fans and coders.</p>
-            </section>
-
-            <section id="kodoverse-velocity">
-                <h3><a href="{{ path('platform', {'platformName': 'velocity'}) }}">velocity.social</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/velocity.social">velocity.social</a> is an all-inclusive social gaming network.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Multiplayer Games</strong>: Browser-based games with leaderboards.</li>
-                    <li><strong>Social Features</strong>: Friends, chat, and clans.</li>
-                    <li><strong>Monetization</strong>: In-game purchases via ICP.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: React, Phaser.js.</li>
-                    <li>Backend: Go, PostgreSQL.</li>
-                    <li>Blockchain: ICP for transactions.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>A gaming ecosystem that blends competition and community.</p>
-            </section>
-
-            <section id="kodoverse-chess">
-                <h3><a href="{{ path('platform', {'platformName': 'chess'}) }}">chess.social</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/chess.social">chess.social</a> offers a social way to play chess with monetization options.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Ranked Matches</strong>: Competitive chess with ELO ratings.</li>
-                    <li><strong>Tournaments</strong>: Cash prizes via ICP.</li>
-                    <li><strong>Social Hub</strong>: Chat and spectate games.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: Angular, Tailwind CSS.</li>
-                    <li>Backend: Python, Django.</li>
-                    <li>Blockchain: ICP for payouts.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>Revolutionize online chess with social and financial incentives.</p>
-            </section>
-
-            <section id="kodoverse-kodofitness">
-                <h3><a href="{{ path('platform', {'platformName': 'kodofitness'}) }}">kodofitness</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodofitness">kodofitness</a> is a social fitness platform integrating workouts with community.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Workout Plans</strong>: AI-generated fitness routines.</li>
-                    <li><strong>Challenges</strong>: Compete with friends.</li>
-                    <li><strong>Progress Tracking</strong>: Sync with wearables.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: React Native.</li>
-                    <li>Backend: Spring Boot, MongoDB.</li>
-                    <li>APIs: Fitbit, Apple Health.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>Make fitness fun and communal.</p>
-            </section>
-
-            <section id="kodoverse-kodofilms">
-                <h3><a href="{{ path('platform', {'platformName': 'kodofilms'}) }}">kodofilms</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodofilms">kodofilms</a> is a film universe for creators to produce and share content.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Video Platform</strong>: Upload and stream films.</li>
-                    <li><strong>Creator Tools</strong>: Editing and monetization options.</li>
-                    <li><strong>Community</strong>: Fan feedback and collabs.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: Vue.js, Tailwind CSS.</li>
-                    <li>Backend: Node.js, Firebase.</li>
-                    <li>Streaming: AWS Media Services.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>Empower independent filmmakers.</p>
-            </section>
-
-            <section id="kodoverse-kodonomad">
-                <h3><a href="{{ path('platform', {'platformName': 'kodonomad'}) }}">kodonomad</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodonomad">kodonomad</a> supports nomadic lifestyles with resources and community.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Travel Guides</strong>: AI-curated itineraries.</li>
-                    <li><strong>Nomad Network</strong>: Connect with other travelers.</li>
-                    <li><strong>Workspaces</strong>: Find remote work-friendly locations.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: Svelte, Tailwind CSS.</li>
-                    <li>Backend: Python, Flask.</li>
-                    <li>Data: PostgreSQL, Google Maps API.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>Enable freedom through nomadic living.</p>
-            </section>
-
-            <section id="kodoverse-kodoplanet">
-                <h3><a href="{{ path('platform', {'platformName': 'kodoplanet'}) }}">kodoplanet</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/kodoplanet">kodoplanet</a> focuses on sustainability for Earth and a virtual kodoplanet.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>ECO Challenges</strong>: Reduce carbon footprint.</li>
-                    <li><strong>Virtual Planet</strong>: Simulate sustainable ecosystems.</li>
-                    <li><strong>Education</strong>: Resources on green tech.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Frontend: React, Three.js.</li>
-                    <li>Backend: Rust, ICP.</li>
-                    <li>Data: MongoDB.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>Preserve Earth and build a sustainable virtual world.</p>
-            </section>
-
-            <section id="kodoverse-kdnprotocol">
-                <h3><a href="{{ path('platform', {'platformName': 'kdnprotocol'}) }}">KDNProtocol</a></h3>
-                <p><a href="https://github.com/the-real-kodoninja/KDNProtocol">KDNProtocol</a> is the backbone protocol for kodoverse platforms, similar to Bluesky’s AT Protocol.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li><strong>Decentralized Identity</strong>: Self-sovereign user control.</li>
-                    <li><strong>Interoperability</strong>: Connects kodoverse apps.</li>
-                    <li><strong>Smart Contracts</strong>: Motoko-based automation.</li>
-                </ul>
-                <h4>Tech Stack</h4>
-                <ul>
-                    <li>Backend: Motoko, ICP.</li>
-                    <li>APIs: REST and GraphQL.</li>
-                </ul>
-                <h4>Vision</h4>
-                <p>Unify the kodoverse with a robust, decentralized protocol.</p>
-            </section>
-        </section>
-
-        <section id="tech-core">
-            <h2>Tech Core: Under the Hood</h2>
-            <p>Aviyon and Nimbus.ai leverage a robust stack:</p>
-            <ul>
-                <li><strong>Frontend</strong>: Laravel 12.x, React/TypeScript, Three.js.</li>
-                <li><strong>Backend</strong>: Spring Boot 3.2.0, Kotlin, Motoko on ICP.</li>
-                <li><strong>AI</strong>: Python, Rust for ML models.</li>
-                <li><strong>Data</strong>: PostgreSQL, Redis, Firebase.</li>
-                <li><strong>Blockchain</strong>: ICP for NFTs and DeFi.</li>
+        <section id="kodoverse-kodospace" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodospace'}) }}" class="hover:underline">KodoSpace</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodospace" class="text-purple-400 hover:underline">KodoSpace</a> is a standalone social network within the Kodoverse, focused on privacy and community-driven content.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Private Feeds</strong>: User-controlled visibility for posts and updates.</li>
+                <li><strong>Groups</strong>: Niche communities for coders, artists, and more to collaborate.</li>
+                <li><strong>Encrypted Chat</strong>: Secure messaging with end-to-end encryption.</li>
             </ul>
-        </section>
-
-        <section id="web3-defi">
-            <h2>Web3-5 and DeFi: Decentralized Dreams</h2>
-            <p>Aviyon and Nimbus.ai are pioneers in Web3-5, using ICP and Motoko for decentralized apps, NFTs, and token economies.</p>
-            <h3>Features</h3>
-            <ul>
-                <li><strong>Canisters</strong>: Host IDE, auth, and hosting services on ICP.</li>
-                <li><strong>DeFi</strong>: Token swaps (ICP, BTC, ETH) via wallets.</li>
-                <li><strong>Cycles</strong>: Fuel compute and storage, with free tiers.</li>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: Vue.js, Tailwind CSS for a sleek, user-friendly interface.</li>
+                <li>Backend: Spring Boot, MongoDB for flexible data storage.</li>
+                <li>Blockchain: ICP for identity and data sovereignty, ensuring user control.</li>
             </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">A safe, decentralized space for authentic connections, free from surveillance and data exploitation.</p>
         </section>
 
-        <section id="hosting-plans">
-            <h2>Hosting Plans: Free to Infinite</h2>
-            <ul>
-                <li><strong>Free Tier</strong>: 1GB storage, 512MB RAM, 1 vCPU.</li>
-                <li><strong>Neon Tier ($10/mo)</strong>: 10GB storage, 2GB RAM, 2 vCPUs.</li>
-                <li><strong>Overclock Tier ($50/mo)</strong>: 50GB storage, 8GB RAM, 4 vCPUs.</li>
+        <section id="kodoverse-kodocity" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodocity'}) }}" class="hover:underline">KodoCity</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/KodoCity_enter_the_kodoverse" class="text-purple-400 hover:underline">KodoCity</a> is a neon-lit virtual metropolis where users and AI agents interact in a 3D environment.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>3D World</strong>: Built with Three.js and WebGL for an immersive experience.</li>
+                <li><strong>Agent Interactions</strong>: AI-driven NPCs with dynamic behaviors, powered by Nimbus.ai.</li>
+                <li><strong>Virtual Events</strong>: Hackathons, concerts, and meetups in a virtual space.</li>
             </ul>
-        </section>
-
-        <section id="crypto-nfts">
-            <h2>Crypto and NFTs</h2>
-            <p>The kodoverse embraces cryptocurrency and NFTs:</p>
-            <ul>
-                <li><strong>AVNcoin</strong>: <a href="https://github.com/the-real-kodoninja/avncoin">AVNcoin</a> for platform transactions.</li>
-                <li><strong>Nimbustoken</strong>: <a href="https://github.com/the-real-kodoninja/ntkn">Nimbustoken</a> for AI services.</li>
-                <li><strong>kodotoken</strong>: <a href="https://github.com/the-real-kodoninja/kodotoken">kodotoken</a> for social platforms.</li>
-                <li><strong>kodocoin</strong>: <a href="https://github.com/the-real-kodoninja/kodocoin">kodocoin</a> for gaming and fitness.</li>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: React, Three.js for 3D rendering.</li>
+                <li>Backend: Rust, ICP canisters for decentralized processing.</li>
+                <li>Data: Firebase Firestore for real-time updates.</li>
             </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">A metaverse hub for creativity and collaboration, where users can build and socialize in a futuristic city.</p>
         </section>
 
-        <section id="future-path">
-            <h2>Future Path: Beyond the Horizon</h2>
-            <ul>
-                <li><strong>ASI/AGI</strong>: Advance AI models.</li>
-                <li><strong>kodoverse Expansion</strong>: Integrate with Decentraland, Sandbox.</li>
-                <li><strong>2045 Initiative</strong>: Extend human lifespan beyond 120 years.</li>
-                <li><strong>Brain-Cloud Sync</strong>: Neural interfaces for human-AI integration.</li>
-                <li><strong>Thunderhead</strong>: ASI supercomputer for global problem-solving.</li>
-                <li><strong>Brain Backup</strong>: Secure storage underwater, underground, or in the cloud.</li>
-                <li><strong>Humanoid Robots</strong>: Transfer consciousness to robotic forms.</li>
+        <section id="kodoverse-kodoanime" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodoanime'}) }}" class="hover:underline">KodoAnime.social</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodoanime.social" class="text-purple-400 hover:underline">KodoAnime.social</a> is a social platform blending anime culture, coding, and community.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Anime Forums</strong>: Discussions on shows, manga, and fan art with threaded comments.</li>
+                <li><strong>Coding Challenges</strong>: Anime-themed coding quests, integrating with NP++.</li>
+                <li><strong>Live Streams</strong>: Watch parties and creator events with real-time interaction.</li>
             </ul>
-        </section>
-
-        <section id="team">
-            <h2>The Team</h2>
-            <p>Led by Emmanuel Moore and Sahar Hassounat, the Aviyon and Nimbus.ai team is a collective of innovators pushing the boundaries of technology and humanity.</p>
-            <div class="profile-card">
-                <a href="{{ path('user_profile', {'username': 'emmanuel-moore'}) }}">Emmanuel Moore</a>
-                    <img src="{{ asset('build/images/emmanuel-moore.jpg') }}" alt="Emmanuel Moore" class="rounded-full w-20 h-20 mr-4">
-                    <h3>Emmanuel Moore</h3>
-                </a>
-                <p><strong>Founder & CEO</strong></p>
-                <p>A visionary coder and entrepreneur, Emmanuel founded the kodoverse to empower creators and solve global challenges.</p>
-            </div>
-            <div class="profile-card">
-                <a href="{{ path('user_profile', {'username': 'sahar-hassounat'}) }}">Sahar Hassounat</a>
-                    <img src="{{ asset('build/images/sahar-hassounat.jpg') }}" alt="Sahar Hassounat" class="rounded-full w-20 h-20 mr-4">
-                    <h3>Sahar Hassounat</h3>
-                </a>
-                <p><strong>Co-CEO</strong></p>
-                <p>Sahar brings strategic leadership and a passion for AI innovation, driving Nimbus.ai’s mission to achieve ASI and transform human potential.</p>
-            </div>
-        </section>
-
-        <section id="acknowledgements">
-            <h2>Acknowledgements</h2>
-            <p>Inspired by:</p>
-            <ul>
-                <li><em>Ghost in the Shell</em>, <em>Akira</em>, <em>Blade Runner</em>, <em>The Matrix</em>, <em>Alita Battle Angel</em>, <em>Thunderhead</em>.</li>
-                <li>Platforms: Heroku, Hostinger, Replit, Codeanywhere, Codesandbox, MITx, GitHub, ICP, Motoko.</li>
-                <li>Institutions: MIT EECS for pioneering AI and computer science.</li>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: Svelte, Tailwind CSS for a lightweight, fast UI.</li>
+                <li>Backend: Node.js, Redis for caching and speed.</li>
+                <li>Streaming: WebRTC integration for low-latency streaming.</li>
             </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">A vibrant community for anime fans and coders to connect and create together.</p>
+        </section>
+
+        <section id="kodoverse-velocity" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'velocity'}) }}" class="hover:underline">Velocity.social</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/velocity.social" class="text-purple-400 hover:underline">Velocity.social</a> is an all-inclusive social gaming network.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Multiplayer Games</strong>: Browser-based games with leaderboards and rewards.</li>
+                <li><strong>Social Features</strong>: Friends, chat, and clans for community engagement.</li>
+                <li><strong>Monetization</strong>: In-game purchases via ICP, with AVY token integration.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: React, Phaser.js for game development.</li>
+                <li>Backend: Go, PostgreSQL for high-performance data handling.</li>
+                <li>Blockchain: ICP for secure transactions.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">A gaming ecosystem that blends competition and community, rewarding players for their skills.</p>
+        </section>
+
+        <section id="kodoverse-chess" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'chess'}) }}" class="hover:underline">Chess.social</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/chess.social" class="text-purple-400 hover:underline">Chess.social</a> offers a social way to play chess with monetization options.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Ranked Matches</strong>: Competitive chess with ELO ratings for skill-based matchmaking.</li>
+                <li><strong>Tournaments</strong>: Cash prizes via ICP, with AVY token rewards.</li>
+                <li><strong>Social Hub</strong>: Chat and spectate games, fostering a chess community.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: Angular, Tailwind CSS for a polished UI.</li>
+                <li>Backend: Python, Django for robust game logic.</li>
+                <li>Blockchain: ICP for secure payouts and transparency.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">Revolutionize online chess with social and financial incentives, making it a rewarding experience.</p>
+        </section>
+
+        <section id="kodoverse-kodofitness" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodofitness'}) }}" class="hover:underline">KodoFitness</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodofitness" class="text-purple-400 hover:underline">KodoFitness</a> is a social fitness platform integrating workouts with community.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Workout Plans</strong>: AI-generated fitness routines tailored to user goals.</li>
+                <li><strong>Challenges</strong>: Compete with friends in fitness challenges with AVY token rewards.</li>
+                <li><strong>Progress Tracking</strong>: Sync with wearables for real-time health data.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: React Native for cross-platform mobile apps.</li>
+                <li>Backend: Spring Boot, MongoDB for flexible data storage.</li>
+                <li>APIs: Fitbit, Apple Health for wearable integration.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">Make fitness fun and communal, encouraging a healthier Kodoverse community.</p>
+        </section>
+
+        <section id="kodoverse-kodofilms" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodofilms'}) }}" class="hover:underline">KodoFilms</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodofilms" class="text-purple-400 hover:underline">KodoFilms</a> is a film universe for creators to produce and share content.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Video Platform</strong>: Upload and stream films with AVY token monetization.</li>
+                <li><strong>Creator Tools</strong>: Editing and monetization options for filmmakers.</li>
+                <li><strong>Community</strong>: Fan feedback and collabs, fostering a creative network.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: Vue.js, Tailwind CSS for a cinematic UI.</li>
+                <li>Backend: Node.js, Firebase for scalable video storage.</li>
+                <li>Streaming: AWS Media Services for high-quality streaming.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">Empower independent filmmakers to create and share their stories in the Kodoverse.</p>
+        </section>
+
+        <section id="kodoverse-kodonomad" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodonomad'}) }}" class="hover:underline">KodoNomad</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodonomad" class="text-purple-400 hover:underline">KodoNomad</a> supports nomadic lifestyles with resources and community.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Travel Guides</strong>: AI-curated itineraries for digital nomads.</li>
+                <li><strong>Nomad Network</strong>: Connect with other travelers for tips and meetups.</li>
+                <li><strong>Workspaces</strong>: Find remote work-friendly locations with verified reviews.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: Svelte, Tailwind CSS for a fast, responsive UI.</li>
+                <li>Backend: Python, Flask for lightweight API handling.</li>
+                <li>Data: PostgreSQL, Google Maps API for location services.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">Enable freedom through nomadic living, supporting remote work and travel in the Kodoverse.</p>
+        </section>
+
+        <section id="kodoverse-kodoplanet" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kodoplanet'}) }}" class="hover:underline">KodoPlanet</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/kodoplanet" class="text-purple-400 hover:underline">KodoPlanet</a> focuses on sustainability for Earth and a virtual KodoPlanet.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>ECO Challenges</strong>: Reduce carbon footprint with gamified challenges.</li>
+                <li><strong>Virtual Planet</strong>: Simulate sustainable ecosystems in a 3D environment.</li>
+                <li><strong>Education</strong>: Resources on green tech and sustainability practices.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Frontend: React, Three.js for 3D simulations.</li>
+                <li>Backend: Rust, ICP for decentralized processing.</li>
+                <li>Data: MongoDB for flexible data storage.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">Preserve Earth and build a sustainable virtual world, educating users on environmental impact.</p>
+        </section>
+
+        <section id="kodoverse-kdnprotocol" class="mt-8">
+            <h3 class="text-2xl text-purple-400 mb-2"><a href="{{ path('platform', {'platformName': 'kdnprotocol'}) }}" class="hover:underline">KDNProtocol</a></h3>
+            <p class="text-gray-300 mb-2"><a href="https://github.com/the-real-kodoninja/KDNProtocol" class="text-purple-400 hover:underline">KDNProtocol</a> is the backbone protocol for Kodoverse platforms, similar to Bluesky’s AT Protocol.</p>
+            <h4 class="text-xl text-gray-100 mb-2">Features</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li><strong>Decentralized Identity</strong>: Self-sovereign user control with ICP-based authentication.</li>
+                <li><strong>Interoperability</strong>: Connects Kodoverse apps seamlessly via standardized APIs.</li>
+                <li><strong>Smart Contracts</strong>: Motoko-based automation for platform interactions.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Tech Stack</h4>
+            <ul class="list-disc pl-6 text-gray-300 space-y-2">
+                <li>Backend: Motoko, ICP for decentralized logic.</li>
+                <li>APIs: REST and GraphQL for flexible integration.</li>
+            </ul>
+            <h4 class="text-xl text-gray-100 mt-4 mb-2">Vision</h4>
+            <p class="text-gray-300">Unify the Kodoverse with a robust, decentralized protocol, ensuring seamless interoperability and user control.</p>
         </section>
     </section>
 
-    <style>
-        .toc {
-            background: var(--bg-secondary);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .toc ul {
-            list-style: none;
-            padding: 0;
-        }
-        .toc ul li {
-            margin: 10px 0;
-        }
-        .toc ul li a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .toc ul li a:hover {
-            color: var(--accent-hover);
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        pre {
-            background: var(--bg-secondary);
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--accent);
-        }
-        .timeline-item {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 2px solid var(--bg-secondary);
-        }
-    </style>
+    <!-- Tech Core -->
+    <section id="tech-core" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Tech Core: Under the Hood</h2>
+        <p class="text-gray-300 mb-4">Aviyon and Nimbus.ai leverage a robust stack to power the Kodoverse:</p>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Frontend</strong>: Laravel 12.x, React/TypeScript for dynamic interfaces, Three.js for 3D visualizations.</li>
+            <li><strong>Backend</strong>: Spring Boot 3.2.0, Kotlin for high-performance APIs, Motoko on ICP for decentralized apps.</li>
+            <li><strong>AI</strong>: Python, Rust for ML models, enabling Nimbus.ai’s advanced capabilities.</li>
+            <li><strong>Data</strong>: PostgreSQL for relational data, Redis for caching, Firebase for real-time updates.</li>
+            <li><strong>Blockchain</strong>: ICP for NFTs, DeFi transactions, and decentralized hosting.</li>
+        </ul>
+    </section>
+
+    <!-- Web3 and DeFi -->
+    <section id="web3-defi" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Web3-5 and DeFi: Decentralized Dreams</h2>
+        <p class="text-gray-300 mb-4">Aviyon and Nimbus.ai are pioneers in Web3-5, using ICP and Motoko for decentralized apps, NFTs, and token economies.</p>
+        <h3 class="text-2xl text-purple-400 mb-2">Features</h3>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Canisters</strong>: Host IDE, auth, and hosting services on ICP, ensuring decentralization.</li>
+            <li><strong>DeFi</strong>: Token swaps (ICP, BTC, ETH) via wallets, with AVY token integration for platform transactions.</li>
+            <li><strong>Cycles</strong>: Fuel compute and storage, with free tiers for new users to encourage adoption.</li>
+        </ul>
+    </section>
+
+    <!-- Hosting Plans -->
+    <section id="hosting-plans" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Hosting Plans: Free to Infinite</h2>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>Free Tier</strong>: 1GB storage, 512MB RAM, 1 vCPU—perfect for small projects and beginners.</li>
+            <li><strong>Neon Tier ($10/mo)</strong>: 10GB storage, 2GB RAM, 2 vCPUs—ideal for growing applications.</li>
+            <li><strong>Overclock Tier ($50/mo)</strong>: 50GB storage, 8GB RAM, 4 vCPUs—designed for high-performance workloads.</li>
+        </ul>
+        <p class="text-gray-300 mt-4">All plans include access to NP++ and DeFi features, with AVY token rewards for active users.</p>
+    </section>
+
+    <!-- Crypto and NFTs -->
+    <section id="crypto-nfts" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Crypto and NFTs</h2>
+        <p class="text-gray-300 mb-4">The Kodoverse embraces cryptocurrency and NFTs to empower creators and users:</p>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>AVNcoin</strong>: <a href="https://github.com/the-real-kodoninja/avncoin" class="text-purple-400 hover:underline">AVNcoin</a> for platform transactions and rewards.</li>
+            <li><strong>Nimbustoken</strong>: <a href="https://github.com/the-real-kodoninja/ntkn" class="text-purple-400 hover:underline">Nimbustoken</a> for AI services and premium features.</li>
+            <li><strong>Kodotoken</strong>: <a href="https://github.com/the-real-kodoninja/kodotoken" class="text-purple-400 hover:underline">Kodotoken</a> for social platforms like KodoSpace and Velocity.social.</li>
+            <li><strong>Kodocoin</strong>: <a href="https://github.com/the-real-kodoninja/kodocoin" class="text-purple-400 hover:underline">Kodocoin</a> for gaming and fitness incentives on Chess.social and KodoFitness.</li>
+        </ul>
+    </section>
+
+    <!-- Future Path -->
+    <section id="future-path" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Future Path: Beyond the Horizon</h2>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><strong>ASI/AGI</strong>: Advance AI models to achieve sentient intelligence, solving global challenges.</li>
+            <li><strong>Kodoverse Expansion</strong>: Integrate with Decentraland, Sandbox for a broader metaverse presence.</li>
+            <li><strong>2045 Initiative</strong>: Extend human lifespan beyond 120 years through AI-driven health solutions.</li>
+            <li><strong>Brain-Cloud Sync</strong>: Neural interfaces for human-AI integration, merging consciousness with technology.</li>
+            <li><strong>Thunderhead</strong>: ASI supercomputer for global problem-solving, inspired by *Scythe*.</li>
+            <li><strong>Brain Backup</strong>: Secure storage underwater, underground, or in the cloud to preserve human consciousness.</li>
+            <li><strong>Humanoid Robots</strong>: Transfer consciousness to robotic forms, enabling immortality.</li>
+        </ul>
+    </section>
+
+    <!-- The Team -->
+    <section id="team" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">The Team</h2>
+        <p class="text-gray-300 mb-6">Led by Emmanuel Moore and Sahar Hassounat, the Aviyon and Nimbus.ai team is a collective of innovators pushing the boundaries of technology and humanity.</p>
+        <div class="grid gap-6 md:grid-cols-2">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex items-center space-x-4">
+                <a href="{{ path('user_profile', {'username': 'emmanuel-moore'}) }}">
+                    <img src="{{ asset('build/images/emmanuel-moore.jpg') }}" alt="Emmanuel Moore" class="rounded-full w-20 h-20">
+                </a>
+                <div>
+                    <h3 class="text-xl text-purple-400 mb-1">Emmanuel Moore</h3>
+                    <p class="text-gray-300"><strong>Founder, Chairman, & CTO</strong></p>
+                    <p class="text-gray-300">A visionary coder and entrepreneur, Emmanuel founded the Kodoverse to empower creators and solve global challenges.</p>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex items-center space-x-4">
+                <a href="{{ path('user_profile', {'username': 'sahar-hassounat'}) }}">
+                    <img src="{{ asset('build/images/sahar-hassounat.jpg') }}" alt="Sahar Hassounat" class="rounded-full w-20 h-20">
+                </a>
+                <div>
+                    <h3 class="text-xl text-purple-400 mb-1">Sahar Hassounat</h3>
+                    <p class="text-gray-300"><strong>CEO</strong></p>
+                    <p class="text-gray-300">Sahar brings strategic leadership and a passion for AI innovation, driving Nimbus.ai’s mission to achieve ASI and transform human potential.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section id="acknowledgements" class="py-12">
+        <h2 class="text-3xl font-semibold text-gray-100 mb-4">Acknowledgements</h2>
+        <p class="text-gray-300 mb-4">Inspired by:</p>
+        <ul class="list-disc pl-6 text-gray-300 space-y-2">
+            <li><em>Ghost in the Shell</em>, <em>Akira</em>, <em>Blade Runner</em>, <em>The Matrix</em>, <em>Alita Battle Angel</em>, <em>Thunderhead</em>.</li>
+            <li>Platforms: Heroku, Hostinger, Replit, Codeanywhere, Codesandbox, MITx, GitHub, ICP, Motoko.</li>
+            <li>Institutions: MIT EECS for pioneering AI and computer science, shaping the future of technology.</li>
+        </ul>
+    </section>
 {% endblock %}

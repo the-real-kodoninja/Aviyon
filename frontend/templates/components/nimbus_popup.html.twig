@@ -1,43 +1,17 @@
-{% block nimbus_popup %}
-<div id="chat-popup" class="fixed bottom-4 right-4 bg-secondary p-4 rounded-lg shadow-lg hidden max-h-96 overflow-y-auto z-50">
-    <div class="flex justify-between items-center mb-2">
-        <h3 class="text-accent">Nimbus AI Chat</h3>
-        <button id="chat-close" class="text-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 6L6 18M6 6l12 12"></path>
-            </svg>
+<div id="chat-popup" class="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-lg shadow-lg hidden max-h-96 w-80 overflow-y-auto z-50">
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl text-purple-400">Nimbus AI Chat</h3>
+        <button id="chat-close" class="text-gray-300 hover:text-purple-400 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
     </div>
-    <div class="chat-messages">
-        <!-- Messages will be populated by JavaScript -->
+    <div class="chat-messages space-y-2 mb-4">
+        <div class="message user-message bg-purple-500 text-white p-2 rounded-lg self-end">Hello, Nimbus!</div>
+        <div class="message ai-message bg-gray-700 text-gray-100 p-2 rounded-lg self-start">Hi there! How can I assist you today?</div>
     </div>
-    <form class="comment-form mt-2">
-        <input type="text" class="form-control w-full" id="chat-input" placeholder="Ask Nimbus...">
-        <button type="submit" class="btn mt-2">Send</button>
+    <div class="typing-indicator hidden text-gray-400 text-sm mb-2">Nimbus is typing...</div>
+    <form id="chat-form" class="flex space-x-2">
+        <input type="text" id="chat-input" placeholder="Ask Nimbus..." class="flex-1 p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+        <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Send</button>
     </form>
 </div>
-
-{% block javascripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const chat = document.getElementById('chat-popup');
-        const chatClose = document.getElementById('chat-close');
-        const chatToggle = document.getElementById('chat-toggle'); // Ensure this exists in base.html.twig
-
-        if (chatToggle) {
-            chatToggle.addEventListener('click', () => {
-                chat.classList.toggle('hidden');
-                chat.classList.toggle('max-h-96');
-                chat.classList.toggle('max-h-screen');
-            });
-        }
-
-        if (chatClose) {
-            chatClose.addEventListener('click', () => {
-                chat.classList.add('hidden');
-            });
-        }
-    });
-</script>
-{% endblock %}
-{% endblock %}

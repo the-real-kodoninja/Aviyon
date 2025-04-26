@@ -1,97 +1,85 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Aviyon - {{ user.username }}{% endblock %}
+{% block title %}{{ user.username }} - Aviyon{% endblock %}
 
 {% block body %}
-    <section class="user-profile container py-12">
-        <div class="profile-card flex items-center">
-            <img src="{{ asset(user.avatar) }}" alt="{{ user.username }}" class="rounded-full w-24 h-24 mr-4">
+    <!-- Profile Header -->
+    <section class="py-12">
+        <div class="flex items-center space-x-6">
+            <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-24 h-24 rounded-full border-2 border-purple-400">
             <div>
-                <h1 class="text-3xl text-accent">{{ user.username }}</h1>
-                <p class="text-secondary">{{ user.bio }}</p>
-                <p class="text-secondary">Wallet: 0.8 ETH | 200 ICP</p>
-                <p class="text-secondary">Followers: {{ user.followers|default(100) }} | Following: {{ user.following|default(50) }}</p>
-                <button class="btn mt-2">Follow</button>
-            </div>
-        </div>
-
-        <div class="tabs flex space-x-4 mb-4">
-            <button class="btn tab-active" data-tab="posts">Posts</button>
-            <button class="btn" data-tab="repos">Repos</button>
-            <button class="btn" data-tab="nfts">NFTs</button>
-            <button class="btn" data-tab="activity">Activity</button>
-        </div>
-
-        <div class="tab-content posts">
-            {% for post in user.posts %}
-                <div class="profile-card">
-                    <div class="flex items-center">
-                        <img src="{{ asset(user.avatar) }}" alt="{{ user.username }}" class="rounded-full w-12 h-12 mr-2">
-                        <div>
-                            <span class="text-accent font-semibold">{{ user.username }}</span>
-                            <span class="text-secondary text-sm block">{{ post.timestamp|date('Y-m-d H:i') }}</span>
-                        </div>
-            </div>
-            <p class="text-primary">{{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</p>
-            <div class="flex space-x-4 mt-2">
-                <form action="{{ path('like_post') }}" method="POST">
-                    <input type="hidden" name="post_id" value="{{ loop.index }}">
-                    <button type="submit" class="btn like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes }}</span>)</button>
-                </form>
-                <button class="btn comment-toggle">Comment</button>
-                <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
-                    <input type="hidden" name="post_id" value="{{ loop.index }}">
-                    <textarea name="content" class="form-control" placeholder="Add a comment, use #hashtags or @mentions"></textarea>
-                    <button type="submit" class="btn mt-2">Comment</button>
-                </form>
-            </div>
-            {% for comment in post.comments %}
-                <div class="ml-4 mt-2 text-secondary">
-                    <span>{{ comment.author }}: {{ comment.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</span>
-                    <span class="block text-sm">{{ comment.timestamp|date('Y-m-d H:i') }}</span>
+                <h1 class="text-3xl font-bold text-gray-100">{{ user.username }}</h1>
+                <p class="text-gray-400">@{{ user.handle }}</p>
+                <p class="text-gray-300 mt-2">{{ user.bio }}</p>
+                <div class="flex space-x-4 mt-4">
+                    <span class="text-gray-400">Projects: <span class="text-purple-400">{{ user.projects_count }}</span></span>
+                    <span class="text-gray-400">Followers: <span class="text-purple-400">{{ user.followers_count }}</span></span>
+                    <span class="text-gray-400">Following: <span class="text-purple-400">{{ user.following_count }}</span></span>
                 </div>
-            {% endfor %}
+            </div>
         </div>
-    {% endfor %}
-</div>
-
-<div class="tab-content repos hidden">
-    {% for repo in user.repos %}
-        <div class="profile-card">
-            <a href="{{ repo.url }}" class="text-accent font-semibold">{{ repo.name }}</a>
-            <p class="text-secondary">Stars: {{ repo.stars }}</p>
-            <button class="btn mt-2">Fork</button>
+        <div class="mt-6">
+            <button class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Follow</button>
         </div>
-    {% endfor %}
-</div>
+    </section>
 
-<div class="tab-content nfts hidden">
-    {% for nft in user.nfts|default([{'id': 1, 'name': 'Cyberpunk Avatar #1'}]) %}
-        <div class="profile-card">
-            <canvas id="nft-{{ nft.id }}-preview" class="w-full h-48 mb-2"></canvas>
-            <p class="text-primary">{{ nft.name }}</p>
-            <a href="{{ path('marketplace') }}" class="btn">View on Marketplace</a>
+    <!-- Tabs for Profile Sections -->
+    <section class="border-t border-gray-700">
+        <div class="flex space-x-6 text-gray-400 border-b border-gray-700">
+            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="projects">Projects</button>
+            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="activity">Activity</button>
+            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">NFTs</button>
         </div>
-    {% endfor %}
-</div>
-
-<div class="tab-content activity hidden">
-    <div class="profile-card">
-        <p class="text-secondary">Deployed smart contract - {{ 'now'|date('Y-m-d H:i') }}</p>
-        <p class="text-secondary">Commented on @kodoninja post - {{ 'yesterday'|date('Y-m-d H:i') }}</p>
-    </div>
-</div>
-</section>
+        <!-- Projects Tab -->
+        <div id="projects" class="py-6 hidden">
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {% for project in user.projects %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <h3 class="text-xl text-purple-400 mb-2">{{ project.name }}</h3>
+                        <p class="text-gray-300 mb-4">{{ project.description }}</p>
+                        <div class="flex space-x-3">
+                            <a href="{{ path('project_view', {'id': project.id}) }}" class="text-gray-400 hover:text-purple-400">View</a>
+                            <span class="text-gray-400">Stars: {{ project.stars }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Activity Tab -->
+        <div id="activity" class="py-6 hidden">
+            <ul class="space-y-4">
+                {% for activity in user.activities %}
+                    <li class="bg-gray-800 p-4 rounded-lg">
+                        <p class="text-gray-300">{{ activity.description }} <span class="text-gray-500 text-sm">{{ activity.time }}</span></p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- NFTs Tab -->
+        <div id="nfts" class="py-6 hidden">
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {% for nft in user.nfts %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <img src="{{ asset('build/images/nfts/' ~ nft.id ~ '.png') }}" alt="{{ nft.name }}" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl text-purple-400 mb-2">{{ nft.name }}</h3>
+                        <p class="text-gray-300">Value: {{ nft.value }} AVY</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
 
 {% block javascripts %}
-<script>
-    document.querySelectorAll('.tabs .btn').forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelectorAll('.tabs .btn').forEach(btn => btn.classList.remove('tab-active'));
-            button.classList.add('tab-active');
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            document.querySelector(`.tab-content.${button.dataset.tab}`).classList.remove('hidden');
+    <script>
+        document.querySelectorAll('[data-tab]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('text-purple-400', 'border-purple-400'));
+                tab.classList.add('text-purple-400', 'border-purple-400');
+                document.querySelectorAll('#projects, #activity, #nfts').forEach(content => content.classList.add('hidden'));
+                document.getElementById(tab.dataset.tab).classList.remove('hidden');
+            });
         });
-    });
-</script>
+        document.querySelector('[data-tab="projects"]').click();
+    </script>
 {% endblock %}

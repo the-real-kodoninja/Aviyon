@@ -1,0 +1,5 @@
+// Version: 1.0.0
+type Message = {content : Text; timestamp : Int; user : Text};
+actor {
+  stable var messageStore : [Message]
+};

@@ -1,3 +1,4 @@
+# Authentication Routes
 app_root:
     path: /
     controller: App\Controller\AuthController::root
@@ -14,37 +15,283 @@ signup:
     path: /signup
     controller: App\Controller\AuthController::signup
 
-marketplace:
-    path: /marketplace
-    controller: App\Controller\AuthController::marketplace
+logout:
+    path: /logout
+    controller: App\Controller\AuthController::logout
 
+password_reset:
+    path: /password/reset
+    controller: App\Controller\AuthController::passwordReset
+
+2fa_verify:
+    path: /2fa/verify
+    controller: App\Controller\AuthController::verify2FA
+    methods: [POST]
+
+# Dashboard Routes
+dashboard:
+    path: /dashboard
+    controller: App\Controller\DashboardController::index
+
+dashboard_deployments:
+    path: /dashboard/deployments
+    controller: App\Controller\DashboardController::deployments
+
+dashboard_hosting:
+    path: /dashboard/hosting
+    controller: App\Controller\DashboardController::hosting
+
+dashboard_agents:
+    path: /dashboard/agents
+    controller: App\Controller\DashboardController::agents
+
+dashboard_virtual_world:
+    path: /dashboard/virtual-world
+    controller: App\Controller\DashboardController::virtualWorld
+
+dashboard_messages:
+    path: /dashboard/messages
+    controller: App\Controller\DashboardController::messages
+
+dashboard_nimbus_ai:
+    path: /dashboard/nimbus-ai
+    controller: App\Controller\DashboardController::nimbusAi
+
+marketplace:
+    path: /dashboard/marketplace
+    controller: App\Controller\AuthController::marketplace  # Updated to use AuthController
+
+deploy_app:
+    path: /dashboard/deploy
+    controller: App\Controller\AuthController::deployApp  # Updated to use AuthController
+    methods: [POST]
+
+deployment_logs:
+    path: /dashboard/deployment/{id}/logs
+    controller: App\Controller\DeploymentController::viewLogs
+
+deployment_restart:
+    path: /dashboard/deployment/restart
+    controller: App\Controller\DeploymentController::restart
+    methods: [POST]
+
+deployment_delete:
+    path: /dashboard/deployment/delete
+    controller: App\Controller\DeploymentController::delete
+    methods: [POST]
+
+agent_create:
+    path: /dashboard/agent/create
+    controller: App\Controller\AgentController::create
+    methods: [POST]
+
+agent_edit:
+    path: /dashboard/agent/{id}/edit
+    controller: App\Controller\AgentController::edit
+
+agent_delete:
+    path: /dashboard/agent/delete
+    controller: App\Controller\AgentController::delete
+    methods: [POST]
+
+virtual_world_enter:
+    path: /dashboard/virtual-world/enter
+    controller: App\Controller\VirtualWorldController::enter
+
+virtual_world_project:
+    path: /dashboard/virtual-world/project/{id}
+    controller: App\Controller\VirtualWorldController::viewProject
+
+resource_analytics:
+    path: /dashboard/hosting/analytics
+    controller: App\Controller\HostingController::analytics
+
+quick_deploy:
+    path: /dashboard/hosting/quick-deploy
+    controller: App\Controller\HostingController::quickDeploy
+    methods: [POST]
+
+# User Routes
 user_profile:
     path: /user/{username}
-    controller: App\Controller\AuthController::userProfile
+    controller: App\Controller\AuthController::userProfile  # Updated to use AuthController
 
+# Page Routes
 about:
     path: /about
-    controller: App\Controller\AuthController::about
+    controller: App\Controller\AuthController::about  # Updated to use AuthController
 
+features:
+    path: /features
+    controller: App\Controller\PagesController::features
+
+explore:
+    path: /explore
+    controller: App\Controller\AuthController::explore  # Updated to use AuthController
+
+platform:
+    path: /platform/{platformName}
+    controller: App\Controller\AuthController::platform  # Added platform route
+    methods: [GET]
+
+notifications:
+    path: /notifications
+    controller: App\Controller\NotificationsController::index
+
+settings:
+    path: /settings
+    controller: App\Controller\SettingsController::index
+
+settings_profile_save:
+    path: /settings/profile/save
+    controller: App\Controller\SettingsController::saveProfile
+    methods: [POST]
+
+settings_security_save:
+    path: /settings/security/save
+    controller: App\Controller\SettingsController::saveSecurity
+    methods: [POST]
+
+settings_notifications_save:
+    path: /settings/notifications/save
+    controller: App\Controller\SettingsController::saveNotifications
+    methods: [POST]
+
+settings_theme_save:
+    path: /settings/theme/save
+    controller: App\Controller\SettingsController::saveTheme
+    methods: [POST]
+
+checkout:
+    path: /checkout
+    controller: App\Controller\CheckoutController::index
+
+checkout_process:
+    path: /checkout/process
+    controller: App\Controller\CheckoutController::process
+    methods: [POST]
+
+investing:
+    path: /investing
+    controller: App\Controller\InvestingController::index
+
+investing_non_equity_submit:
+    path: /investing/non-equity/submit
+    controller: App\Controller\InvestingController::submitNonEquity
+    methods: [POST]
+
+investing_equity_submit:
+    path: /investing/equity/submit
+    controller: App\Controller\InvestingController::submitEquity
+    methods: [POST]
+
+careers:
+    path: /careers
+    controller: App\Controller\CareersController::index
+
+careers_apply:
+    path: /careers/apply
+    controller: App\Controller\CareersController::apply
+    methods: [POST]
+
+# IDE Routes
 ide:
     path: /ide
-    controller: App\Controller\AuthController::ide
+    controller: App\Controller\AuthController::ide  # Updated to use AuthController
 
+np_plus_plus:
+    path: /np-plus-plus
+    controller: App\Controller\IdeController::index
+
+# Social Routes
 search:
     path: /search
-    controller: App\Controller\AuthController::search
+    controller: App\Controller\AuthController::search  # Updated to use AuthController
     methods: [GET]
 
 add_comment:
     path: /comment
-    controller: App\Controller\AuthController::addComment
+    controller: App\Controller\AuthController::addComment  # Updated to use AuthController
     methods: [POST]
 
 like_post:
     path: /like
-    controller: App\Controller\AuthController::likePost
+    controller: App\Controller\AuthController::likePost  # Updated to use AuthController
     methods: [POST]
 
-explore:
-    path: /explore
-    controller: App\Controller\AuthController::explore
+register_domain:
+    path: /domain/register
+    controller: App\Controller\AuthController::registerDomain  # Added register_domain route
+    methods: [POST]
+
+# Admin Routes
+admin:
+    path: /admin
+    controller: App\Controller\AdminController::index
+
+admin_users_new:
+    path: /admin/users/new
+    controller: App\Controller\AdminController::newUser
+
+admin_user_edit:
+    path: /admin/user/{id}/edit
+    controller: App\Controller\AdminController::editUser
+
+admin_user_delete:
+    path: /admin/user/delete
+    controller: App\Controller\AdminController::deleteUser
+    methods: [POST]
+
+admin_platforms_new:
+    path: /admin/platforms/new
+    controller: App\Controller\AdminController::newPlatform
+
+admin_platform_edit:
+    path: /admin/platform/{id}/edit
+    controller: App\Controller\AdminController::editPlatform
+
+admin_platform_delete:
+    path: /admin/platform/delete
+    controller: App\Controller\AdminController::deletePlatform
+    methods: [POST]
+
+admin_report_view:
+    path: /admin/report/{id}/view
+    controller: App\Controller\AdminController::viewReport
+
+admin_report_dismiss:
+    path: /admin/report/dismiss
+    controller: App\Controller\AdminController::dismissReport
+    methods: [POST]
+
+admin_report_remove_content:
+    path: /admin/report/remove-content
+    controller: App\Controller\AdminController::removeContent
+    methods: [POST]
+
+admin_settings_save:
+    path: /admin/settings/save
+    controller: App\Controller\AdminController::saveSettings
+    methods: [POST]
+
+# Footer Routes
+newsletter_subscribe:
+    path: /newsletter/subscribe
+    controller: App\Controller\PagesController::subscribeNewsletter
+    methods: [POST]
+
+terms:
+    path: /terms
+    controller: App\Controller\PagesController::terms
+
+privacy:
+    path: /privacy
+    controller: App\Controller\PagesController::privacy
+
+contact:
+    path: /contact
+    controller: App\Controller\PagesController::contact
+
+docs:
+    path: /docs
+    controller: App\Controller\AuthController::docs

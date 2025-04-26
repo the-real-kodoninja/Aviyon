@@ -1,143 +1,147 @@
 import '../css/base.css';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { initLanding } from './pages/landing.js';
-import { initMarketplace } from './pages/dashboard.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'; // Added .js extension
+import Chart from 'chart.js/auto';
+import { initLanding } from './pages/landing';
+import { initMarketplace } from './pages/dashboard';
+import { initHeader } from './components/header';
+import { initFooter } from './components/footer';
+import { initSidebar } from './components/sidebar';
+import { initAbout } from './pages/about';
+import { initAuth } from './pages/auth';
+import { initFeatures } from './pages/features';
+import { initTicker } from './ticker';
 
-// Debug
-console.log('Three.js version:', THREE.REVISION);
-if (!window.WebGLRenderingContext) {
-    console.error('WebGL is not supported!');
-} else {
-    console.log('WebGL is supported.');
-}
+// Expose libraries to global scope for inline scripts
+window.THREE = THREE;
+window.GLTFLoader = GLTFLoader;
+window.Chart = Chart;
 
-// Three.js Background
-function initBackground() {
-    const canvas = document.getElementById('bg-canvas');
+// Utility Functions
+function initThreeCanvas(canvasId, geometryType = 'box', color = 0x6b48ff, wireframe = true, autoRotate = true) {
+    const canvas = document.getElementById(canvasId);
     if (!canvas) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     camera.position.z = 5;
 
-    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-    const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
+    const light = new THREE.DirectionalLight(0xffffff, 0.8);
+    light.position.set(0, 1, 1);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040, 0.5));
+
+    let object;
+    if (geometryType === 'box') {
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color, wireframe });
+        object = new THREE.Mesh(geometry, material);
+    } else if (geometryType === 'sphere') {
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshBasicMaterial({ color, wireframe });
+        object = new THREE.Mesh(geometry, material);
+    } else if (geometryType === 'torus') {
+        const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+        const material = new THREE.MeshBasicMaterial({ color, wireframe });
+        object = new THREE.Mesh(geometry, material);
+    }
+
+    scene.add(object);
 
     function animate() {
         requestAnimationFrame(animate);
-        torusKnot.rotation.x += 0.01;
-        torusKnot.rotation.y += 0.01;
+        if (autoRotate) {
+            object.rotation.x += 0.01;
+            object.rotation.y += 0.01;
+        }
         renderer.render(scene, camera);
     }
     animate();
 
     window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     });
 }
 
-// Three.js Hero Animation
-function initHeroCanvas() {
-    const canvas = document.getElementById('three-canvas');
-    if (!canvas) return;
-
+function initNFTPreview(canvas, modelUrl) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     camera.position.z = 5;
 
-    const geometry = new THREE.IcosahedronGeometry(1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff, wireframe: true });
-    const icosahedron = new THREE.Mesh(geometry, material);
-    scene.add(icosahedron);
+    const light = new THREE.DirectionalLight(0xffffff, 0.8);
+    light.position.set(0, 1, 1);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040, 0.5));
 
-    function animate() {
-        requestAnimationFrame(animate);
-        icosahedron.rotation.x += 0.01;
-        icosahedron.rotation.y += 0.01;
-        renderer.render(scene, camera);
-    }
-    animate();
-}
+    if (modelUrl) {
+        const loader = new GLTFLoader();
+        loader.load(modelUrl, (gltf) => {
+            scene.add(gltf.scene);
+            gltf.scene.scale.set(1, 1, 1);
+            gltf.scene.position.set(0, 0, 0);
 
-// Nimbus AI Popup Animation
-function initNimbusPopup() {
-    const canvas = document.getElementById('nimbus-cloud');
-    if (!canvas) return;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    camera.position.z = 5;
-
-    const geometry = new THREE.SphereGeometry(1, 32, 32);
-    const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true });
-    const sphere = new THREE.Mesh(geometry, material);
-    scene.add(sphere);
-
-    function animate() {
-        requestAnimationFrame(animate);
-        sphere.rotation.y += 0.02;
-        renderer.render(scene, camera);
-    }
-    animate();
-}
-
-// 3D NFT Previews with GLTFLoader
-function initNFTPreviews() {
-    document.querySelectorAll('[id^="nft-"]').forEach(canvas => {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        camera.position.z = 5;
-
-        const light = new THREE.DirectionalLight(0xffffff, 0.8);
-        light.position.set(0, 1, 1);
-        scene.add(light);
-
-        const modelUrl = canvas.dataset.model;
-        if (modelUrl) {
-            const loader = new GLTFLoader();
-            loader.load(modelUrl, (gltf) => {
-                scene.add(gltf.scene);
-                gltf.scene.scale.set(1, 1, 1);
-                gltf.scene.position.set(0, 0, 0);
-            }, undefined, (error) => {
-                console.error('Error loading GLTF model:', error);
-                // Fallback to cube
-                const geometry = new THREE.BoxGeometry(1, 1, 1);
-                const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff, wireframe: true });
-                const cube = new THREE.Mesh(geometry, material);
-                scene.add(cube);
-            });
-        } else {
+            const animate = () => {
+                requestAnimationFrame(animate);
+                gltf.scene.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            };
+            animate();
+        }, undefined, (error) => {
+            console.error('Error loading GLTF model:', error);
             const geometry = new THREE.BoxGeometry(1, 1, 1);
-            const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff, wireframe: true });
+            const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff });
             const cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
-        }
 
-        function animate() {
+            const animate = () => {
+                requestAnimationFrame(animate);
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            };
+            animate();
+        });
+    } else {
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x6b48ff });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        const animate = () => {
             requestAnimationFrame(animate);
+            cube.rotation.y += 0.01;
             renderer.render(scene, camera);
-        }
+        };
         animate();
+    }
+}
+
+function initModal(modalId, openSelector, closeSelector) {
+    const modal = document.getElementById(modalId);
+    const openButtons = document.querySelectorAll(openSelector);
+    const closeButton = document.querySelector(closeSelector);
+
+    openButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
     });
+
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    }
 }
 
 // Theme Toggle
 function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.getElementById('dark-mode-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -191,104 +195,84 @@ function initNotifications() {
     }
 }
 
-// Nimbus AI Suggestions
-function initNimbusTrigger() {
-    const nimbusTrigger = document.getElementById('nimbus-trigger');
-    const nimbusPopup = document.getElementById('nimbus-popup');
-    const nimbusClose = document.getElementById('nimbus-close');
-    const nimbusSubmit = document.getElementById('nimbus-submit');
-    const nimbusQuery = document.getElementById('nimbus-query');
-    const nimbusSuggestions = document.getElementById('nimbus-suggestions');
-    if (nimbusTrigger && nimbusPopup && nimbusClose && nimbusSubmit && nimbusQuery && nimbusSuggestions) {
-        nimbusTrigger.addEventListener('click', () => nimbusPopup.classList.toggle('hidden'));
-        nimbusClose.addEventListener('click', () => nimbusPopup.classList.add('hidden'));
-        nimbusSubmit.addEventListener('click', () => {
-            const query = nimbusQuery.value;
-            window.location.href = `/search?q=${encodeURIComponent(query)}`;
+// Nimbus AI Chat
+function initNimbusChat() {
+    const chat = document.getElementById('chat-popup');
+    const chatClose = document.getElementById('chat-close');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.querySelector('.chat-messages');
+    const typingIndicator = document.querySelector('.typing-indicator');
+    const chatToggle = document.getElementById('chat-toggle');
+
+    if (chatToggle && chat) {
+        chatToggle.addEventListener('click', () => {
+            chat.classList.toggle('hidden');
         });
-        nimbusQuery.addEventListener('input', () => {
-            const query = nimbusQuery.value.toLowerCase();
-            const suggestions = [
-                '@kodoninja', '@kodonomad', '#Web3', '#DeFi', '#AI',
-                'Deploy smart contract', 'Swap tokens', 'Search NFTs'
-            ].filter(s => s.toLowerCase().includes(query));
-            nimbusSuggestions.innerHTML = suggestions.map(s => `<li class="cursor-pointer hover:text-accent">${s}</li>`).join('');
-            nimbusSuggestions.querySelectorAll('li').forEach(item => {
-                item.addEventListener('click', () => {
-                    nimbusQuery.value = item.textContent;
-                    nimbusSuggestions.innerHTML = '';
-                });
-            });
+    }
+
+    if (chatClose && chat) {
+        chatClose.addEventListener('click', () => {
+            chat.classList.add('hidden');
+        });
+    }
+
+    if (chatForm && chatInput && chatMessages && typingIndicator) {
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message bg-purple-500 text-white p-2 rounded-lg self-end';
+            userMessage.textContent = message;
+            chatMessages.appendChild(userMessage);
+            chatInput.value = '';
+
+            typingIndicator.classList.remove('hidden');
+            setTimeout(() => {
+                typingIndicator.classList.add('hidden');
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message ai-message bg-gray-700 text-gray-100 p-2 rounded-lg self-start';
+                aiMessage.textContent = 'I’m here to help! What would you like to do next?';
+                chatMessages.appendChild(aiMessage);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
         });
     }
 }
 
-// Infinite Scroll
-function initInfiniteScroll() {
-    const loadMore = document.getElementById('load-more');
-    if (loadMore) {
-        loadMore.addEventListener('click', async () => {
-            try {
-                const response = await fetch('/landing?page=' + (parseInt(loadMore.dataset.page || 1) + 1));
-                const data = await response.json();
-                console.log('Load more posts:', data);
-                loadMore.dataset.page = parseInt(loadMore.dataset.page || 1) + 1;
-            } catch (error) {
-                console.error('Error loading posts:', error);
-            }
-        });
-    }
-}
-
-// Page-Specific Initialization
-const path = window.location.pathname;
-if (path === '/' || path === '/index.html') {
-    initLanding();
-}
-if (path === '/dashboard/marketplace') {
-    initMarketplace();
-}
-
-// Social Interactions
-document.querySelectorAll('.like-btn').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const postId = btn.getAttribute('data-post-id');
-        const count = btn.querySelector('span');
-        try {
-            const response = await fetch('/post/like', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `post_id=${postId}`,
-            });
-            const data = await response.json();
-            count.textContent = data.likes;
-        } catch (error) {
-            console.error('Error liking post:', error);
-        }
-    });
-});
-
-document.querySelectorAll('.comment-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const form = btn.closest('.post-card').querySelector('.comment-form');
-        form.classList.toggle('hidden');
-    });
-});
-
-// Initialize
+// Initialize Functions Conditionally Based on Page
 document.addEventListener('DOMContentLoaded', () => {
-    initBackground();
-    initHeroCanvas();
-    initNimbusPopup();
-    initNFTPreviews();
+    const path = window.location.pathname;
+
+    if (path === '/' || path === '/landing') {
+        initThreeCanvas('bg-canvas', 'torus', 0x8b5cf6);
+        initThreeCanvas('three-canvas', 'icosahedron', 0x6b48ff);
+        initLanding();
+    }
+    if (path === '/dashboard/marketplace') {
+        document.querySelectorAll('[id^="nft-"]').forEach(canvas => {
+            initNFTPreview(canvas, canvas.dataset.model);
+        });
+        initMarketplace();
+    }
+    if (path.includes('/dashboard')) {
+        initNimbusChat();
+    }
+
+    initHeader();
+    initFooter();
+    initSidebar();
     initThemeToggle();
     initWalletStatus();
     initNotifications();
-    initNimbusTrigger();
-    initInfiniteScroll();
-    initLanding();
-    initMarketplace();
+
+    // Initialize other page-specific modules
+    if (path === '/about') initAbout();
+    if (path === '/login' || path === '/signup') initAuth();
+    if (path === '/features') initFeatures();
+    if (path.includes('/ticker')) initTicker();
 });
 
 console.log('Aviyon: Web3 Cloud Platform initialized');
