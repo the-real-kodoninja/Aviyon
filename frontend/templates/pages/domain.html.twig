@@ -10,7 +10,7 @@
             <h1 class="text-5xl font-bold text-white mb-4 animate-fade-in">Get Your Free Domain & Hosting</h1>
             <p class="text-xl text-secondary mb-8">Launch your Web3 project with a custom subdomain like <span class="text-accent">yourname.aviyon.com</span> — powered by the Internet Computer.</p>
             <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
-                <form action="{{ path('register_domain') }}" method="POST" class="flex flex-col gap-4">
+                <form action="{{ path('register_domain') }}" method="POST" class="flex flex-col gap-4" id="domain-form">
                     <div class="flex items-center gap-4">
                         <input type="text" name="subdomain" placeholder="yourname" class="form-control flex-1" required>
                         <span class="text-primary font-semibold">.aviyon.com</span>
@@ -76,7 +76,7 @@
     <section class="cta container mx-auto py-12 px-4 text-center">
         <h2 class="text-4xl font-bold text-accent mb-4">Ready to Launch?</h2>
         <p class="text-secondary mb-8">Join thousands of creators building on Aviyon today.</p>
-        <a href="{{ path('register') }}" class="btn bg-accent text-white hover:bg-accent-hover transition text-lg px-8">Get Started</a>
+        <a href="{{ path('signup') }}" class="btn bg-accent text-white hover:bg-accent-hover transition text-lg px-8">Get Started</a>
     </section>
 </section>
 
@@ -101,4 +101,22 @@
         transition: background-color 0.3s ease;
     }
 </style>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('domain-form');
+    form.addEventListener('submit', (e) => {
+        const subdomainInput = form.querySelector('input[name="subdomain"]');
+        const subdomain = subdomainInput.value.trim();
+        const subdomainRegex = /^[a-zA-Z0-9-]{3,}$/;
+        if (!subdomainRegex.test(subdomain)) {
+            e.preventDefault();
+            alert('Subdomain must be at least 3 characters long and can only contain letters, numbers, and hyphens.');
+        }
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}

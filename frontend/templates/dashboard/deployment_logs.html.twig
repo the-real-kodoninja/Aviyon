@@ -3,266 +3,66 @@
 {% block title %}Deployment Logs - Aviyon{% endblock %}
 
 {% block body %}
-<section class="deployment-logs container mx-auto py-12 px-4">
-    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4 animate-fade-in">Deployment Logs (ID: {{ id }})</h1>
-    <p class="text-gray-400 mb-8 animate-fade-in-delayed">View detailed logs for deployment {{ id }} with real-time insights.</p>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Deployment Logs</h1>
+            <p class="text-gray-300 mb-8">
+                View logs for your deployments in the Kodoverse. Every action—deploying a smart contract, launching a DApp, or managing virtual assets—is logged on our decentralized network for transparency and debugging.
+            </p>
 
-    <!-- Filters -->
-    <div class="flex flex-wrap justify-between gap-4 mb-8 bg-dark-light p-4 rounded-lg shadow-lg animate-slide-up">
-        <div class="flex space-x-4">
-            <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="log-level">
-                <option value="all">Log Level: All</option>
-                <option value="info">Info</option>
-                <option value="warning">Warning</option>
-                <option value="error">Error</option>
-            </select>
-            <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="time-range">
-                <option value="1h">Last 1 Hour</option>
-                <option value="24h">Last 24 Hours</option>
-                <option value="7d">Last 7 Days</option>
-            </select>
-        </div>
-        <input type="text" class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 flex-1 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="log-search" placeholder="Search logs...">
-    </div>
-
-    <!-- Overview Card -->
-    <div class="bg-dark-light p-6 rounded-lg shadow-lg mb-8 animate-slide-up">
-        <h3 class="text-xl font-inter text-neon-purple mb-4">Deployment Status</h3>
-        <div class="flex space-x-6">
-            <div>
-                <p class="text-gray-400">Status: <span id="deploy-status" class="text-neon-purple">Running</span></p>
-                <p class="text-gray-400">Uptime: <span id="deploy-uptime">2h 15m</span></p>
-            </div>
-            <div>
-                <p class="text-gray-400">Errors: <span id="deploy-errors" class="text-red-500">3</span></p>
-                <p class="text-gray-400">Warnings: <span id="deploy-warnings" class="text-yellow-500">5</span></p>
+            <!-- Log Viewer -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl text-purple-400">Log Viewer</h2>
+                    <input type="text" id="log-search" class="p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Search logs...">
+                </div>
+                <div id="log-container" class="h-96 overflow-y-auto bg-gray-900 p-4 rounded-lg text-gray-300"></div>
             </div>
         </div>
     </div>
-
-    <!-- Log Events Chart -->
-    <div class="bg-dark-light p-6 rounded-lg shadow-lg mb-8 animate-slide-up">
-        <h3 class="text-xl font-inter text-neon-purple mb-4">Log Events Over Time</h3>
-        <canvas id="log-chart" class="w-full h-64"></canvas>
-    </div>
-
-    <!-- Logs Table -->
-    <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-        <h3 class="text-xl font-inter text-neon-purple mb-4">Log Entries</h3>
-        <div class="overflow-x-auto">
-            <table class="w-full text-gray-300">
-                <thead>
-                    <tr class="border-b border-gray-600">
-                        <th class="py-2 px-4 text-left">Timestamp</th>
-                        <th class="py-2 px-4 text-left">Level</th>
-                        <th class="py-2 px-4 text-left">Message</th>
-                        <th class="py-2 px-4 text-left">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="logs-table">
-                    <!-- Logs will be populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Log Detail Modal -->
-    <div id="log-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50 animate-fade-in">
-        <div class="bg-dark-light p-8 rounded-lg max-w-lg w-full shadow-lg">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-inter text-neon-purple">Log Details</h2>
-                <button id="log-modal-close" class="text-gray-400 hover:text-neon-purple transition">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <p id="log-timestamp" class="text-gray-400 mb-2"></p>
-            <p id="log-level" class="text-gray-400 mb-2"></p>
-            <p id="log-message" class="text-gray-400"></p>
-        </div>
-    </div>
-</section>
+</div>
 {% endblock %}
 
 {% block javascripts %}
-<script src="{{ asset('build/chart.min.js') }}"></script>
 <script>
-// Simulated log data
-let logs = [
-    { timestamp: new Date().toISOString(), level: 'info', message: 'Deployment started successfully.' },
-    { timestamp: new Date(Date.now() - 5 * 60 * 1000).toISOString(), level: 'warning', message: 'High memory usage detected.' },
-    { timestamp: new Date(Date.now() - 10 * 60 * 1000).toISOString(), level: 'error', message: 'Failed to connect to database.' }
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const logContainer = document.getElementById('log-container');
+    const logSearch = document.getElementById('log-search');
 
-// Chart data
-let logEvents = { info: Array(60).fill(0), warning: Array(60).fill(0), error: Array(60).fill(0) };
-logs.forEach(log => {
-    const index = Math.floor((new Date() - new Date(log.timestamp)) / (60 * 1000));
-    if (index < 60) logEvents[log.level][59 - index]++;
-});
+    // Mock log data
+    const logs = [
+        '[2025-04-29 08:00:01] INFO: Deploying NFT Marketplace smart contract...',
+        '[2025-04-29 08:00:05] SUCCESS: Smart contract deployed at 0x123...',
+        '[2025-04-29 08:01:12] ERROR: Failed to initialize DeFi App - Invalid credentials',
+        '[2025-04-29 08:02:30] INFO: Virtual Gallery asset upload started...',
+        '[2025-04-29 08:02:45] SUCCESS: Virtual Gallery asset uploaded successfully'
+    ];
 
-const logChart = new Chart(document.getElementById('log-chart'), {
-    type: 'line',
-    data: {
-        labels: Array(60).fill(0).map((_, i) => `-${60 - i}m`),
-        datasets: [
-            {
-                label: 'Info',
-                data: logEvents.info,
-                borderColor: '#34d399',
-                backgroundColor: 'rgba(52, 211, 153, 0.2)',
-                fill: true,
-                tension: 0.4
-            },
-            {
-                label: 'Warning',
-                data: logEvents.warning,
-                borderColor: '#f59e0b',
-                backgroundColor: 'rgba(245, 158, 11, 0.2)',
-                fill: true,
-                tension: 0.4
-            },
-            {
-                label: 'Error',
-                data: logEvents.error,
-                borderColor: '#ef4444',
-                backgroundColor: 'rgba(239, 68, 68, 0.2)',
-                fill: true,
-                tension: 0.4
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: { beginAtZero: true },
-            x: { display: false }
-        },
-        plugins: { legend: { labels: { color: '#d1d5db' } } }
-    }
-});
-
-// Update Logs Table
-function updateLogsTable(filteredLogs) {
-    const logsTable = document.getElementById('logs-table');
-    logsTable.innerHTML = filteredLogs.map(log => `
-        <tr class="border-b border-gray-600 hover:bg-gray-700 transition">
-            <td class="py-2 px-4">${new Date(log.timestamp).toLocaleString()}</td>
-            <td class="py-2 px-4 ${log.level === 'error' ? 'text-red-500' : log.level === 'warning' ? 'text-yellow-500' : 'text-green-400'}">${log.level}</td>
-            <td class="py-2 px-4">${log.message}</td>
-            <td class="py-2 px-4">
-                <button class="view-log btn text-neon-purple hover:underline" data-timestamp="${log.timestamp}">View</button>
-            </td>
-        </tr>
-    `).join('');
-
-    document.querySelectorAll('.view-log').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const timestamp = btn.dataset.timestamp;
-            const log = logs.find(l => l.timestamp === timestamp);
-            document.getElementById('log-timestamp').textContent = `Timestamp: ${new Date(log.timestamp).toLocaleString()}`;
-            document.getElementById('log-level').textContent = `Level: ${log.level}`;
-            document.getElementById('log-message').textContent = `Message: ${log.message}`;
-            document.getElementById('log-modal').classList.remove('hidden');
+    // Function to render logs
+    function renderLogs(filter = '') {
+        logContainer.innerHTML = '';
+        const filteredLogs = logs.filter(log => log.toLowerCase().includes(filter.toLowerCase()));
+        filteredLogs.forEach(log => {
+            const logEntry = document.createElement('div');
+            logEntry.classList.add('mb-2');
+            if (log.includes('ERROR')) logEntry.classList.add('text-red-400');
+            else if (log.includes('SUCCESS')) logEntry.classList.add('text-green-400');
+            else logEntry.classList.add('text-gray-300');
+            logEntry.textContent = log;
+            logContainer.appendChild(logEntry);
         });
+        logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    // Initial render
+    renderLogs();
+
+    // Search handler
+    logSearch.addEventListener('input', () => {
+        renderLogs(logSearch.value);
     });
-}
-
-// Filter Logs
-function filterLogs() {
-    const logLevel = document.getElementById('log-level').value;
-    const timeRange = document.getElementById('time-range').value;
-    const search = document.getElementById('log-search').value.toLowerCase();
-
-    let filteredLogs = [...logs];
-    if (logLevel !== 'all') {
-        filteredLogs = filteredLogs.filter(log => log.level === logLevel);
-    }
-
-    const now = new Date();
-    let timeLimit;
-    if (timeRange === '1h') timeLimit = 60 * 60 * 1000;
-    else if (timeRange === '24h') timeLimit = 24 * 60 * 60 * 1000;
-    else timeLimit = 7 * 24 * 60 * 60 * 1000;
-
-    filteredLogs = filteredLogs.filter(log => (now - new Date(log.timestamp)) <= timeLimit);
-
-    if (search) {
-        filteredLogs = filteredLogs.filter(log => log.message.toLowerCase().includes(search));
-    }
-
-    updateLogsTable(filteredLogs);
-}
-
-document.getElementById('log-level').addEventListener('change', filterLogs);
-document.getElementById('time-range').addEventListener('change', filterLogs);
-document.getElementById('log-search').addEventListener('input', filterLogs);
-
-// Initial table render
-filterLogs();
-
-// Modal Close
-document.getElementById('log-modal-close').addEventListener('click', () => {
-    document.getElementById('log-modal').classList.add('hidden');
 });
-
-// Simulate real-time log updates
-setInterval(() => {
-    const levels = ['info', 'warning', 'error'];
-    const messages = {
-        info: ['Processed request successfully.', 'Cache updated.', 'User authenticated.'],
-        warning: ['High latency detected.', 'Memory usage at 85%.', 'Rate limit approaching.'],
-        error: ['Failed to connect to database.', 'API request timed out.', 'Internal server error.']
-    };
-    if (Math.random() < 0.2) {
-        const level = levels[Math.floor(Math.random() * levels.length)];
-        const message = messages[level][Math.floor(Math.random() * messages[level].length)];
-        logs.unshift({ timestamp: new Date().toISOString(), level, message });
-        if (logs.length > 50) logs.pop();
-
-        // Update chart
-        const index = 59;
-        logEvents[level][index]++;
-        logChart.data.datasets.forEach(dataset => {
-            if (dataset.label.toLowerCase() === level) {
-                dataset.data = logEvents[level];
-            }
-        });
-        logChart.update();
-
-        // Update stats
-        document.getElementById('deploy-errors').textContent = logs.filter(l => l.level === 'error').length;
-        document.getElementById('deploy-warnings').textContent = logs.filter(l => l.level === 'warning').length;
-
-        filterLogs();
-    }
-
-    // Update uptime
-    const startTime = new Date(Date.now() - 2 * 60 * 60 * 1000 - 15 * 60 * 1000);
-    const diff = new Date() - startTime;
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById('deploy-uptime').textContent = `${hours}h ${minutes}m`;
-}, 2000);
 </script>
-<style>
-/* Custom Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes fadeInDelayed {
-    0% { opacity: 0; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-}
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-.animate-fade-in { animation: fadeIn 0.5s ease-out; }
-.animate-fade-in-delayed { animation: fadeInDelayed 1s ease-out; }
-.animate-slide-up { animation: slideUp 0.5s ease-out; }
-</style>
 {% endblock %}

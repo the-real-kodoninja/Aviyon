@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Virtual World - Aviyon{% endblock %}
+
+{% block body %}
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Kodoverse Virtual World</h1>
+            <p class="text-gray-300 mb-8">
+                Welcome to the Kodoverse Virtual World, a decentralized 3D space where you can explore NFT galleries, trade in DeFi hubs, and collaborate on projects. Nimbus AI enhances your experience with personalized guidance.
+            </p>
+
+            <!-- Virtual World Overview -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+                <h2 class="text-2xl text-purple-400 mb-4">Overview</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300">Active Locations</p>
+                        <p class="text-3xl text-purple-400">5</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300">Owned Assets</p>
+                        <p class="text-3xl text-purple-400">12</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300">Collaborators</p>
+                        <p class="text-3xl text-purple-400">8</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Locations -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl text-purple-400 mb-4">Popular Locations</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <h3 class="text-xl text-purple-400 mb-2">NFT Gallery</h3>
+                        <p class="text-gray-300 mb-4">Showcase and trade your NFT collections.</p>
+                        <button data-location="nft-gallery" class="visit-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Visit</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <h3 class="text-xl text-purple-400 mb-2">DeFi Hub</h3>
+                        <p class="text-gray-300 mb-4">Manage your decentralized finance activities.</p>
+                        <button data-location="defi-hub" class="visit-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Visit</button>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <h3 class="text-xl text-purple-400 mb-2">Collaborative Space</h3>
+                        <p class="text-gray-300 mb-4">Work with others in a shared 3D space.</p>
+                        <button data-location="collab-space" class="visit-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Visit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const visitButtons = document.querySelectorAll('.visit-btn');
+
+    // Visit button handler
+    visitButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const location = btn.dataset.location;
+            alert(`Visiting the Kodoverse ${location.replace('-', ' ').toUpperCase()}! (Placeholder functionality)`);
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}Documentation - Aviyon{% endblock %}
 
 {% block body %}
-<div class="flex relative">
+<div class="flex abban relative">
     <!-- Sidebar Navigation -->
     <aside class="w-64 bg-dark-light h-screen fixed top-0 left-0 pt-16 overflow-y-auto shadow-lg">
         <nav class="p-4">
@@ -132,7 +132,6 @@
                                 </svg>
                             </button>
                             <ul class="section-content hidden ml-4 space-y-1">
-                                <!-- Images are present but no Markdown files to link -->
                                 <li><p class="text-gray-400 italic">Blueprints available in Kodocity section</p></li>
                             </ul>
                         </li>
@@ -283,21 +282,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const markdown = await response.text();
             const html = marked.parse(markdown, {
                 baseUrl: `/docs/${file.substring(0, file.lastIndexOf('/'))}/`,
-                breaks: true
+                breaks: true,
+                gfm: true
             });
             docContent.innerHTML = html;
 
             // Update active link
             docLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`.doc-link[data-md-file="${file}"]`);
+            const activeLink = Array.from(docLinks).find(link => link.dataset.mdFile === file);
             if (activeLink) activeLink.classList.add('active');
-
-            // Update heading
-            const h1 = docContent.querySelector('h1');
-            document.querySelector('h1.text-4xl').textContent = h1 ? h1.textContent : 'Aviyon Documentation';
         } catch (error) {
             console.error('Error loading Markdown:', error);
-            docContent.innerHTML = '<p class="text-red-400">Error loading documentation. Please try again later.</p>';
+            docContent.innerHTML = '<p class="text-red-500">Failed to load documentation.</p>';
         }
     }
 
@@ -306,55 +302,24 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const file = link.dataset.mdFile;
             loadMarkdown(file);
-
-            // Update URL without reloading
-            history.pushState({ file }, '', `/docs/${file.replace('.md', '')}`);
         });
     });
 
-    // Load initial Markdown file
-    loadMarkdown('Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267.md');
-
-    // Handle browser back/forward
-    window.addEventListener('popstate', (e) => {
-        if (e.state && e.state.file) {
-            loadMarkdown(e.state.file);
-        }
-    });
-
-    // Style Markdown content with Tailwind prose
-    docContent.classList.add('prose', 'prose-invert', 'max-w-none');
+    // Load the first document by default
+    const firstLink = docLinks[0];
+    if (firstLink) {
+        loadMarkdown(firstLink.dataset.mdFile);
+    }
 });
 </script>
 <style>
-/* Active link styling */
-.doc-link.active {
-    @apply text-neon-purple font-bold;
+.active {
+    font-weight: bold;
+    color: #8b5cf6;
 }
-
-/* Custom prose styles for Markdown content */
-.prose-invert {
-    --tw-prose-body: #d1d5db;
-    --tw-prose-headings: #8b5cf6;
-    --tw-prose-links: #a78bfa;
-    --tw-prose-bold: #ffffff;
-    --tw-prose-counters: #9ca3af;
-    --tw-prose-bullets: #9ca3af;
-    --tw-prose-hr: #374151;
-    --tw-prose-quotes: #d1d5db;
-    --tw-prose-quote-borders: #8b5cf6;
-    --tw-prose-captions: #9ca3af;
-    --tw-prose-code: #f3f4f6;
-    --tw-prose-pre-code: #e5e7eb;
-    --tw-prose-pre-bg: #1f2937;
-    --tw-prose-th-borders: #374151;
-    --tw-prose-td-borders: #374151;
-}
-
-/* Ensure images are responsive */
-.prose img {
-    max-width: 100%;
-    height: auto;
+.rotate-180 {
+    transform: rotate(180deg);
 }
 </style>
+{% endblock %}
 {% endblock %}

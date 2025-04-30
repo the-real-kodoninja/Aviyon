@@ -1,0 +1,168 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Sitemap - Aviyon{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-12 bg-gray-900 min-h-screen">
+    <h1 class="text-4xl font-inter font-bold text-purple-400 mb-8 animate-fade-in">Sitemap</h1>
+
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-inter text-purple-400">Site Structure</h2>
+            <input type="text" id="sitemap-search" placeholder="Search pages..." class="p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500 w-64">
+        </div>
+        <ul class="space-y-4 text-gray-300" id="sitemap-list">
+            <!-- Root Pages -->
+            <li class="sitemap-item">
+                <a href="{{ path('app_root') }}" class="text-purple-400 hover:underline">Home</a>
+            </li>
+
+            <!-- Admin Section -->
+            <li class="sitemap-item">
+                <button class="flex items-center w-full text-left font-bold text-gray-300 hover:text-purple-400" onclick="toggleSection('admin-section')">
+                    Admin
+                    <svg class="w-4 h-4 ml-2 transform" id="admin-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="admin-section" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('admin') }}" class="hover:text-purple-400 transition">Admin Dashboard</a></li>
+                    <li>
+                        {% try %}
+                            <a href="{{ path('admin_manage_platforms') }}" class="hover:text-purple-400 transition">Manage Platforms</a>
+                        {% catch %}
+                            <span class="text-gray-500">Manage Platforms (Route not available)</span>
+                        {% endtry %}
+                    </li>
+                    <li>
+                        {% try %}
+                            <a href="{{ path('admin_manage_users') }}" class="hover:text-purple-400 transition">Manage Users</a>
+                        {% catch %}
+                            <span class="text-gray-500">Manage Users (Route not available)</span>
+                        {% endtry %}
+                    </li>
+                    <li>
+                        {% try %}
+                            <a href="{{ path('admin_manage_reports') }}" class="hover:text-purple-400 transition">Manage Reports</a>
+                        {% catch %}
+                            <span class="text-gray-500">Manage Reports (Route not available)</span>
+                        {% endtry %}
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Auth Section -->
+            <li class="sitemap-item">
+                <button class="flex items-center w-full text-left font-bold text-gray-300 hover:text-purple-400" onclick="toggleSection('auth-section')">
+                    Authentication
+                    <svg class="w-4 h-4 ml-2 transform" id="auth-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="auth-section" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('login') }}" class="hover:text-purple-400 transition">Login</a></li>
+                    <li><a href="{{ path('signup') }}" class="hover:text-purple-400 transition">Signup</a></li>
+                </ul>
+            </li>
+
+            <!-- Dashboard Section -->
+            <li class="sitemap-item">
+                <button class="flex items-center w-full text-left font-bold text-gray-300 hover:text-purple-400" onclick="toggleSection('dashboard-section')">
+                    Dashboard
+                    <svg class="w-4 h-4 ml-2 transform" id="dashboard-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="dashboard-section" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('dashboard') }}" class="hover:text-purple-400 transition">Dashboard Home</a></li>
+                    <li><a href="{{ path('dashboard_agents') }}" class="hover:text-purple-400 transition">Agents</a></li>
+                    <li><a href="{{ path('dashboard_deployments') }}" class="hover:text-purple-400 transition">Deployments</a></li>
+                    <li><a href="{{ path('dashboard_deployment_logs') }}" class="hover:text-purple-400 transition">Deployment Logs</a></li>
+                    <li><a href="{{ path('dashboard_hosting') }}" class="hover:text-purple-400 transition">Hosting</a></li>
+                    <li><a href="{{ path('dashboard_hosting_analytics') }}" class="hover:text-purple-400 transition">Hosting Analytics</a></li>
+                    <li><a href="{{ path('marketplace') }}" class="hover:text-purple-400 transition">Marketplace</a></li>
+                    <li><a href="{{ path('dashboard_messages') }}" class="hover:text-purple-400 transition">Messages</a></li>
+                    <li><a href="{{ path('dashboard_nimbus_ai') }}" class="hover:text-purple-400 transition">Nimbus AI</a></li>
+                    <li><a href="{{ path('dashboard_virtual_world') }}" class="hover:text-purple-400 transition">Virtual World</a></li>
+                    <li><a href="{{ path('dashboard_virtual_world_enter') }}" class="hover:text-purple-400 transition">Enter Virtual World</a></li>
+                    <li><span class="hover:text-purple-400 transition">Virtual Project (Requires ID)</span></li>
+                </ul>
+            </li>
+
+            <!-- IDE Section -->
+            <li class="sitemap-item">
+                <button class="flex items-center w-full text-left font-bold text-gray-300 hover:text-purple-400" onclick="toggleSection('ide-section')">
+                    IDE
+                    <svg class="w-4 h-4 ml-2 transform" id="ide-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="ide-section" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('ide') }}" class="hover:text-purple-400 transition">IDE Home</a></li>
+                    <li><a href="{{ path('np_plus_plus') }}" class="hover:text-purple-400 transition">Nimbuspad++</a></li>
+                </ul>
+            </li>
+
+            <!-- Pages Section -->
+            <li class="sitemap-item">
+                <button class="flex items-center w-full text-left font-bold text-gray-300 hover:text-purple-400" onclick="toggleSection('pages-section')">
+                    Pages
+                    <svg class="w-4 h-4 ml-2 transform" id="pages-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="pages-section" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('about') }}" class="hover:text-purple-400 transition">About</a></li>
+                    <li><a href="{{ path('careers') }}" class="hover:text-purple-400 transition">Careers</a></li>
+                    <li><a href="{{ path('checkout') }}" class="hover:text-purple-400 transition">Checkout</a></li>
+                    <li><a href="{{ path('docs') }}" class="hover:text-purple-400 transition">Documentation</a></li>
+                    <li><a href="{{ path('domain') }}" class="hover:text-purple-400 transition">Domain</a></li>
+                    <li><a href="{{ path('explore') }}" class="hover:text-purple-400 transition">Explore</a></li>
+                    <li><a href="{{ path('features') }}" class="hover:text-purple-400 transition">Features</a></li>
+                    <li><a href="{{ path('investing') }}" class="hover:text-purple-400 transition">Investing</a></li>
+                    <li><a href="{{ path('landing') }}" class="hover:text-purple-400 transition">Landing</a></li>
+                    <li><a href="{{ path('notifications') }}" class="hover:text-purple-400 transition">Notifications</a></li>
+                    <li><a href="{{ path('search') }}" class="hover:text-purple-400 transition">Search</a></li>
+                    <li><a href="{{ path('settings') }}" class="hover:text-purple-400 transition">Settings</a></li>
+                    <li><a href="{{ path('terms') }}" class="hover:text-purple-400 transition">Terms of Service</a></li>
+                    <li><a href="{{ path('privacy') }}" class="hover:text-purple-400 transition">Privacy Policy</a></li>
+                    <li><a href="{{ path('contact') }}" class="hover:text-purple-400 transition">Contact</a></li>
+                    <li><a href="{{ path('sitemap') }}" class="hover:text-purple-400 transition">Sitemap</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    const arrow = document.getElementById(sectionId.replace('section', 'arrow'));
+    section.classList.toggle('hidden');
+    arrow.classList.toggle('rotate-180');
+}
+
+document.getElementById('sitemap-search').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const items = document.querySelectorAll('.sitemap-item');
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
+</script>
+{% endblock %}

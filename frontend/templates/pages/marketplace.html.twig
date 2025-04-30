@@ -1,0 +1,237 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Public NFT Marketplace{% endblock %}
+
+{% block body %}
+<section class="marketplace container mx-auto py-12 px-4">
+    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4 animate-fade-in">Aviyon Public NFT Marketplace</h1>
+    <p class="text-gray-400 mb-8 animate-fade-in-delayed">Discover, buy,.AD and trade unique NFTs in the Kodoverse – your global NFT store inspired by OpenSea.</p>
+
+    <!-- Filters and Sorting -->
+    <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <!-- Filters -->
+        <div class="flex space-x-4 mb-4 md:mb-0">
+            <select id="category-filter" class="p-2 bg-gray-800 text-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple">
+                <option value="">All Categories</option>
+                <option value="art">Art</option>
+                <option value="avatars">Avatars</option>
+                <option value="collectibles">Collectibles</option>
+                <option value="virtual-land">Virtual Land</option>
+            </select>
+            <select id="blockchain-filter" class="p-2 bg-gray-800 text-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple">
+                <option value="">All Blockchains</option>
+                <option value="ethereum">Ethereum</option>
+                <option value="icp">Internet Computer (ICP)</option>
+                <option value="polygon">Polygon</option>
+            </select>
+            <select id="price-filter" class="p-2 bg-gray-800 text-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple">
+                <option value="">All Prices</option>
+                <option value="low-to-high">Price: Low to High</option>
+                <option value="high-to-low">Price: High to Low</option>
+            </select>
+        </div>
+        <!-- Search -->
+        <div class="relative">
+            <input type="text" id="search-nfts" placeholder="Search NFTs..." class="p-2 bg-gray-800 text-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple">
+            <svg class="absolute right-3 top-2.5 w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- NFT Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="nft-grid">
+        {% if nfts is defined and nfts is not empty %}
+            {% for nft in nfts %}
+                <div class="profile-card nft-card bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" data-nft-id="{{ nft.id }}" data-category="{{ nft.category|default('') }}" data-blockchain="{{ nft.blockchain|default('') }}" data-price="{{ nft.price|replace({' ETH': ''})|default('0') }}">
+                    <canvas id="nft-{{ nft.id }}-preview" class="w-full h-48 mb-4 rounded-lg" data-model="{{ nft.modelUrl }}"></canvas>
+                    <h3 class="text-xl font-inter text-neon-purple">{{ nft.name }}</h3>
+                    <p class="text-gray-400">Creator: <a href="{{ path('user_profile', {'username': nft.creator}) }}" class="hover:text-neon-purple transition">{{ nft.creator }}</a></p>
+                    <p class="text-gray-400">Price: {{ nft.price }} {{ nft.currency|default('ETH') }}</p>
+                    <p class="text-gray-400 text-sm">Category: {{ nft.category|default('N/A')|capitalize }}</p>
+                    <p class="text-gray-400 text-sm">Blockchain: {{ nft.blockchain|default('N/A')|capitalize }}</p>
+                    <p class="text-gray-400 text-sm">Created: {{ nft.createdAt|date('Y-m-d') }}</p>
+                    <div class="flex space-x-3 mt-4">
+                        <a href="{{ path('checkout') }}" class="btn bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">Buy Now</a>
+                        <button class="btn bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition font-inter add-to-cart" data-nft-id="{{ nft.id }}">Add to Cart</button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-400 col-span-full text-center">No NFTs available at the moment.</p>
+        {% endif %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-8">
+        <div class="flex space-x-2">
+            <button id="prev-page" class="p-2 bg-gray-800 text-gray-300 rounded-lg disabled:opacity-50" disabled>Previous</button>
+            <span id="page-info" class="p-2 text-gray-300">Page 1</span>
+            <button id="next-page" class="p-2 bg-gray-800 text-gray-300 rounded-lg">Next</button>
+        </div>
+    </div>
+</section>
+
+{% block javascripts %}
+<script>
+// Mock initNFTPreview function for NFT items
+function initNFTPreview(canvas, modelUrl) {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#8b5cf6';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '16px Arial';
+    ctx.fillText('NFT Preview Placeholder', 10, 50);
+    ctx.fillText(`Model: ${modelUrl || 'N/A'}`, 10, 80);
+}
+
+// Initialize NFT previews on page load
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[id^="nft-"]').forEach(canvas => {
+        if (canvas.dataset.initialized) return;
+        canvas.dataset.initialized = true;
+        initNFTPreview(canvas, canvas.dataset.model);
+    });
+
+    // Filter and Sort Logic
+    const nftCards = document.querySelectorAll('.nft-card');
+    const categoryFilter = document.getElementById('category-filter');
+    const blockchainFilter = document.getElementById('blockchain-filter');
+    const priceFilter = document.getElementById('price-filter');
+    const searchInput = document.getElementById('search-nfts');
+
+    function filterNFTs() {
+        const category = categoryFilter.value;
+        const blockchain = blockchainFilter.value;
+        const searchText = searchInput.value.toLowerCase();
+
+        nftCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            const cardBlockchain = card.dataset.blockchain;
+            const cardName = card.querySelector('h3').textContent.toLowerCase();
+
+            const matchesCategory = !category || cardCategory === category;
+            const matchesBlockchain = !blockchain || cardBlockchain === blockchain;
+            const matchesSearch = !searchText || cardName.includes(searchText);
+
+            if (matchesCategory && matchesBlockchain && matchesSearch) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        updatePagination();
+    }
+
+    function sortNFTs() {
+        const sortOption = priceFilter.value;
+        const cardsArray = Array.from(nftCards);
+
+        if (sortOption === 'low-to-high') {
+            cardsArray.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+        } else if (sortOption === 'high-to-low') {
+            cardsArray.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+        }
+
+        const nftGrid = document.getElementById('nft-grid');
+        cardsArray.forEach(card => nftGrid.appendChild(card));
+
+        updatePagination();
+    }
+
+    // Pagination Logic
+    let currentPage = 1;
+    const itemsPerPage = 8;
+
+    function updatePagination() {
+        const visibleCards = Array.from(nftCards).filter(card => card.style.display !== 'none');
+        const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
+
+        currentPage = Math.min(currentPage, totalPages);
+        if (currentPage < 1) currentPage = 1;
+
+        visibleCards.forEach((card, index) => {
+            const page = Math.floor(index / itemsPerPage) + 1;
+            if (page === currentPage) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+        document.getElementById('prev-page').disabled = currentPage === 1;
+        document.getElementById('next-page').disabled = currentPage === totalPages || totalPages === 0;
+    }
+
+    document.getElementById('prev-page').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePagination();
+        }
+    });
+
+    document.getElementById('next-page').addEventListener('click', () => {
+        const visibleCards = Array.from(nftCards).filter(card => card.style.display !== 'none');
+        const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePagination();
+        }
+    });
+
+    // Event Listeners for Filters and Search
+    categoryFilter.addEventListener('change', () => {
+        currentPage = 1;
+        filterNFTs();
+    });
+
+    blockchainFilter.addEventListener('change', () => {
+        currentPage = 1;
+        filterNFTs();
+    });
+
+    priceFilter.addEventListener('change', () => {
+        currentPage = 1;
+        sortNFTs();
+    });
+
+    searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        filterNFTs();
+    });
+
+    // Initial Pagination
+    updatePagination();
+
+    // Add to Cart (Placeholder)
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const nftId = button.dataset.nftId;
+            alert(`NFT #${nftId} added to cart!`);
+        });
+    });
+});
+</script>
+<style>
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+.animate-fade-in-delayed {
+    animation: fadeIn 0.5s ease-in 0.2s;
+}
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+</style>
+{% endblock %}
+{% endblock %}

@@ -1,4 +1,4 @@
-<div id="chat-popup" class="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-lg shadow-lg hidden max-h-96 w-80 overflow-y-auto z-50">
+<div id="chat-popup" class="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-lg shadow-lg max-h-96 w-80 overflow-y-auto z-50">
     <div class="flex justify-between items-center mb-4">
         <h3 class="text-xl text-purple-400">Nimbus AI Chat</h3>
         <button id="chat-close" class="text-gray-300 hover:text-purple-400 transition">
@@ -15,3 +15,52 @@
         <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Send</button>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const chatPopup = document.getElementById('chat-popup');
+    const chatClose = document.getElementById('chat-close');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.querySelector('.chat-messages');
+    const typingIndicator = document.querySelector('.typing-indicator');
+
+    // Show the popup by default
+    chatPopup.classList.remove('hidden');
+
+    // Close the popup
+    chatClose.addEventListener('click', () => {
+        chatPopup.classList.add('hidden');
+    });
+
+    // Handle form submission
+    chatForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // Add user message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user-message bg-purple-500 text-white p-2 rounded-lg self-end';
+        userMessage.textContent = message;
+        chatMessages.appendChild(userMessage);
+        chatInput.value = '';
+
+        // Scroll to the bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Show typing indicator
+        typingIndicator.classList.remove('hidden');
+
+        // Simulate AI response (replace with actual API call)
+        setTimeout(() => {
+            typingIndicator.classList.add('hidden');
+            const aiMessage = document.createElement('div');
+            aiMessage.className = 'message ai-message bg-gray-700 text-gray-100 p-2 rounded-lg self-start';
+            aiMessage.textContent = 'I’m here to help! What would you like to know about?';
+            chatMessages.appendChild(aiMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+    });
+});
+</script>

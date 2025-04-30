@@ -1,55 +1,78 @@
-<div class="bg-gray-900 text-gray-300 w-64 h-screen fixed">
-    <div class="p-4">
-        <h3 class="text-xl text-purple-400 mb-4">Dashboard Menu</h3>
-        <ul class="space-y-2">
-            <li>
-                <a href="{{ path('dashboard') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-                    Overview
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_deployments') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-                    Deployments
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_hosting') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14h-1v6l5.2 3.2.8-1.3-4-2.6V6z"/></svg>
-                    Hosting
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_agents') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16h-2v-2h2v2zm4 0h-2v-2h2v2zm-4-4H9V9h2v5zm4 0h-2V9h2v5z"/></svg>
-                    AI Agents
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_marketplace') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16h-2v-2h2v2zm4 0h-2v-2h2v2zm-4-4H9V9h2v5zm4 0h-2V9h2v5z"/></svg>
-                    Marketplace
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_virtual_world') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16h-2v-2h2v2zm4 0h-2v-2h2v2zm-4-4H9V9h2v5zm4 0h-2V9h2v5z"/></svg>
-                    Virtual World
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_messages') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
-                    Messages
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard_nimbus_ai') }}" class="flex items-center p-2 hover:bg-gray-700 rounded transition">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16h-2v-2h2v2zm4 0h-2v-2h2v2zm-4-4H9V9h2v5zm4 0h-2V9h2v5z"/></svg>
-                    Nimbus AI
-                </a>
-            </li>
-        </ul>
+{% if app.user %}
+<aside class="sidebar w-64 bg-dark-light h-screen fixed top-0 left-0 p-6 flex flex-col justify-between">
+    <div>
+        <!-- Logo -->
+        <div class="mb-8">
+            <a href="{{ path('app_root') }}">
+                <img src="{{ asset('build/images/logo.png') }}" alt="Aviyon Logo" class="w-32">
+            </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-4">
+            <a href="{{ path('dashboard') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7m-9 2v6a2 2 0 002 2h4a2 2 0 002-2v-6m-9 2l-7-7-2 2"></path>
+                </svg>
+                <span class="font-inter">Dashboard</span>
+            </a>
+            <a href="{{ path('dashboard_deployments') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard_deployments' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4l4 4"></path>
+                </svg>
+                <span class="font-inter">Deployments</span>
+            </a>
+            <a href="{{ path('dashboard_hosting') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard_hosting' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h10a4 4 0 004-4v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2z"></path>
+                </svg>
+                <span class="font-inter">Hosting</span>
+            </a>
+            <a href="{{ path('dashboard_agents') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard_agents' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 7l-9-5 9-5 9 5-9 5z"></path>
+                </svg>
+                <span class="font-inter">Agents</span>
+            </a>
+            <a href="{{ path('marketplace') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'marketplace' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"></path>
+                </svg>
+                <span class="font-inter">Marketplace</span>
+            </a>
+            <a href="{{ path('dashboard_virtual_world') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard_virtual_world' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18v18H3V3z"></path>
+                </svg>
+                <span class="font-inter">Virtual World</span>
+            </a>
+            <a href="{{ path('dashboard_messages') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard_messages' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-5-5h12a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h1l5 5z"></path>
+                </svg>
+                <span class="font-inter">Messages</span>
+            </a>
+            <a href="{{ path('dashboard_nimbus_ai') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition {% if app.request.attributes.get('_route') == 'dashboard_nimbus_ai' %}text-neon-purple font-bold{% endif %}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="font-inter">Nimbus AI</span>
+            </a>
+        </nav>
     </div>
-</div>
+
+    <!-- User Profile -->
+    <div class="mt-auto">
+        <a href="{{ path('settings') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition">
+            <img src="{{ asset('build/images/user-profile.png') }}" alt="User Profile" class="w-10 h-10 rounded-full">
+            <span class="font-inter">{{ app.user.username ?? 'Guest' }}</span>
+        </a>
+        <a href="{{ path('logout') }}" class="flex items-center space-x-3 text-gray-300 hover:text-neon-purple transition mt-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
+            <span class="font-inter">Logout</span>
+        </a>
+    </div>
+</aside>
+{% endif %}

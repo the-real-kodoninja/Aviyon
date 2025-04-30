@@ -3,166 +3,184 @@
 {% block title %}Aviyon - Command Center{% endblock %}
 
 {% block body %}
-    <!-- Dashboard Header -->
-    <section class="py-12">
-        <h1 class="text-4xl font-bold text-purple-400 mb-4">Command Center</h1>
-        <p class="text-xl text-gray-300">Manage your projects, assets, and DeFi activities in the Kodoverse.</p>
-    </section>
+<div class="dashboard-container">
+    <!-- Include the sidebar -->
+    {% include 'dashboard/sidebar.html.twig' %}
 
-    <!-- Stats Overview (Merged from Updated Version) -->
-    <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 py-12">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">Projects</h3>
-            <p class="text-3xl text-gray-100">{{ user.projects_count }}</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">AVY Balance</h3>
-            <p class="text-3xl text-gray-100">{{ user.avy_balance }} AVY</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">NFTs Owned</h3>
-            <p class="text-3xl text-gray-100">{{ user.nfts_count }}</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">Active Instances</h3>
-            <p class="text-3xl text-gray-100">{{ user.instances_count }}</p>
-        </div>
-    </section>
+    <div class="main-content">
+        <!-- Dashboard Header -->
+        <section class="py-12">
+            <h1 class="text-4xl font-bold text-purple-400 mb-4">Command Center</h1>
+            <p class="text-xl text-gray-300">Manage your projects, assets, and DeFi activities in the Kodoverse.</p>
+        </section>
 
-    <!-- Wallet and Resource Usage (From Previous Version, Enhanced) -->
-    <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 py-12">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-2">Wallet</h3>
-            <p class="text-gray-300">Balance: 1.2 ETH | 500 ICP | {{ user.avy_balance }} AVY</p>
-            <div class="flex space-x-3 mt-4">
-                <button id="swap-tokens" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Swap Tokens</button>
-                <button id="stake-tokens" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Stake Tokens</button>
+        <!-- Stats Overview -->
+        <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 py-12">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">Projects</h3>
+                <p class="text-3xl text-gray-100">{{ user.projects_count }}</p>
             </div>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-2">Resource Usage</h3>
-            <p class="text-gray-300">CPU: {{ usage.cpu }} cores</p>
-            <p class="text-gray-300">RAM: {{ usage.ram }} GB</p>
-            <p class="text-gray-300">Storage: {{ usage.storage }} GB</p>
-            <canvas id="resource-chart" class="w-full h-32 mt-4"></canvas>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-2">Quick Actions</h3>
-            <div class="space-y-2">
-                <a href="{{ path('np_plus_plus') }}" class="block bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition text-center">Open NP++</a>
-                <button class="block w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Deploy App</button>
-                <button class="block w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">New Workspace</button>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">AVY Balance</h3>
+                <p class="text-3xl text-gray-100">{{ user.avy_balance }} AVY</p>
             </div>
-        </div>
-    </section>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">NFTs Owned</h3>
+                <p class="text-3xl text-gray-100">{{ user.nfts_count }}</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">Active Instances</h3>
+                <p class="text-3xl text-gray-100">{{ user.instances_count }}</p>
+            </div>
+        </section>
 
-    <!-- Workspaces (From Previous Version, Enhanced) -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Workspaces</h2>
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {% for workspace in workspaces %}
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-6 h-6 text-purple-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.22-1.79L9 14v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                        </svg>
-                        <a href="{{ workspace.repo }}" class="text-purple-400 font-semibold hover:underline">{{ workspace.name }}</a>
-                    </div>
-                    <p class="text-gray-300"><strong>ID:</strong> {{ workspace.id }}</p>
-                    <p class="text-gray-300"><strong>Class:</strong> {{ workspace.class }}</p>
-                    <p class="text-gray-300"><strong>Last Worked:</strong> {{ workspace.lastWorked|date('Y-m-d H:i') }}</p>
-                    <div class="flex space-x-2 mt-4">
-                        <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Start</button>
-                        <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">Delete</button>
-                        <a href="{{ path('np_plus_plus') }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Open NP++</a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </section>
-
-    <!-- Recent Projects (From Updated Version) -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Recent Projects</h2>
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {% for project in user.recent_projects %}
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
-                    <h3 class="text-xl text-purple-400 mb-2">{{ project.name }}</h3>
-                    <p class="text-gray-300 mb-4">{{ project.description }}</p>
-                    <a href="{{ path('project_view', {'id': project.id}) }}" class="text-gray-400 hover:text-purple-400">View Project</a>
-                </div>
-            {% endfor %}
-        </div>
-    </section>
-
-    <!-- Social Feed and DeFi Activity (Merged) -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Platform Updates & DeFi Activity</h2>
-        <div class="grid gap-6 md:grid-cols-2">
-            <!-- Social Feed (From Previous Version) -->
+        <!-- Wallet and Resource Usage -->
+        <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 py-12">
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl text-purple-400 mb-4">Platform Updates</h3>
-                <div class="space-y-4">
-                    {% for post in social_posts|default([]) %}
-                        <div class="bg-gray-900 p-4 rounded-lg">
-                            <p class="text-gray-300 mb-2">{{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-purple-400">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-purple-400">@'})|raw }}</p>
-                            <p class="text-gray-500 text-sm">{{ post.timestamp|date('Y-m-d H:i') }}</p>
-                            <div class="flex space-x-3 mt-2">
-                                <form action="{{ path('like_post') }}" method="POST">
-                                    <input type="hidden" name="post_id" value="{{ loop.index }}">
-                                    <button type="submit" class="text-gray-400 hover:text-purple-400 like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes|default(0) }}</span>)</button>
-                                </form>
-                                <button class="text-gray-400 hover:text-purple-400 comment-toggle">Comment</button>
-                                <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
-                                    <input type="hidden" name="post_id" value="{{ loop.index }}">
-                                    <textarea name="content" class="w-full p-2 bg-gray-700 rounded text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Add a comment"></textarea>
-                                    <button type="submit" class="mt-2 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Comment</button>
-                                </form>
-                            </div>
+                <h3 class="text-xl text-purple-400 mb-2">Wallet</h3>
+                <p class="text-gray-300">Balance: 1.2 ETH | 500 ICP | {{ user.avy_balance }} AVY</p>
+                <div class="flex space-x-3 mt-4">
+                    <button id="swap-tokens" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Swap Tokens</button>
+                    <button id="stake-tokens" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Stake Tokens</button>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl text-purple-400 mb-2">Resource Usage</h3>
+                <p class="text-gray-300">CPU: {{ usage.cpu }} cores</p>
+                <p class="text-gray-300">RAM: {{ usage.ram }} GB</p>
+                <p class="text-gray-300">Storage: {{ usage.storage }} GB</p>
+                <canvas id="resource-chart" class="w-full h-32 mt-4"></canvas>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl text-purple-400 mb-2">Quick Actions</h3>
+                <div class="space-y-2">
+                    <a href="{{ path('np_plus_plus') }}" class="block bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition text-center">Open NP++</a>
+                    <button class="block w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Deploy App</button>
+                    <button class="block w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">New Workspace</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workspaces -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Workspaces</h2>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {% for workspace in workspaces %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-6 h-6 text-purple-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.22-1.79L9 14v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                            <a href="{{ workspace.repo }}" class="text-purple-400 font-semibold hover:underline">{{ workspace.name }}</a>
                         </div>
-                    {% endfor %}
+                        <p class="text-gray-300"><strong>ID:</strong> {{ workspace.id }}</p>
+                        <p class="text-gray-300"><strong>Class:</strong> {{ workspace.class }}</p>
+                        <p class="text-gray-300"><strong>Last Worked:</strong> {{ workspace.lastWorked|date('Y-m-d H:i') }}</p>
+                        <div class="flex space-x-2 mt-4">
+                            <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Start</button>
+                            <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">Delete</button>
+                            <a href="{{ path('np_plus_plus', {'workspace': workspace.id}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Open in NP++</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Recent Projects -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Recent Projects</h2>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {% for project in user.recent_projects %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <h3 class="text-xl text-purple-400 mb-2">{{ project.name }}</h3>
+                        <p class="text-gray-300 mb-4">{{ project.description }}</p>
+                        <a href="{{ path('dashboard_virtual_project', {'id': project.id}) }}" class="text-gray-400 hover:text-purple-400">View Project</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Social Feed and DeFi Activity -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Platform Updates & DeFi Activity</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <!-- Social Feed -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Platform Updates</h3>
+                    <div class="space-y-4">
+                        {% for post in social_posts|default([]) %}
+                            <div class="bg-gray-900 p-4 rounded-lg">
+                                <p class="text-gray-300 mb-2">{{ post.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-purple-400">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-purple-400">@'})|raw }}</p>
+                                <p class="text-gray-500 text-sm">{{ post.timestamp|date('Y-m-d H:i') }}</p>
+                                <div class="flex space-x-3 mt-2">
+                                    <form action="{{ path('like_post') }}" method="POST">
+                                        <input type="hidden" name="post_id" value="{{ loop.index }}">
+                                        <button type="submit" class="text-gray-400 hover:text-purple-400 like-btn" data-post-id="{{ loop.index }}">Like (<span>{{ post.likes|default(0) }}</span>)</button>
+                                    </form>
+                                    <button class="text-gray-400 hover:text-purple-400 comment-toggle">Comment</button>
+                                    <form action="{{ path('add_comment') }}" method="POST" class="comment-form flex-1 hidden">
+                                        <input type="hidden" name="post_id" value="{{ loop.index }}">
+                                        <textarea name="content" class="w-full p-2 bg-gray-700 rounded text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Add a comment"></textarea>
+                                        <button type="submit" class="mt-2 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ path('landing') }}" class="block mt-4 text-purple-400 hover:underline text-center">View All</a>
                 </div>
-                <a href="{{ path('landing') }}" class="block mt-4 text-purple-400 hover:underline text-center">View All</a>
+                <!-- DeFi Activity -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Recent DeFi Activity</h3>
+                    <ul class="space-y-4">
+                        {% for activity in user.defi_activities %}
+                            <li class="flex justify-between items-center">
+                                <span class="text-gray-300">{{ activity.description }}</span>
+                                <span class="text-gray-500 text-sm">{{ activity.timestamp|date('M d, Y h:i A') }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-            <!-- DeFi Activity (From Updated Version) -->
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl text-purple-400 mb-4">Recent DeFi Activity</h3>
-                <ul class="space-y-4">
-                    {% for activity in user.defi_activities %}
-                        <li class="flex justify-between items-center">
-                            <span class="text-gray-300">{{ activity.description }}</span>
-                            <span class="text-gray-500 text-sm">{{ activity.timestamp|date('M d, Y h:i A') }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        display: flex;
+    }
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        width: 100%;
+    }
+</style>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Resource Chart
-        const ctx = document.getElementById('resource-chart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['5m', '4m', '3m', '2m', '1m'],
-                datasets: [
-                    { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
-                    { label: 'RAM', data: [2, 3, 4, 3.5, 4], borderColor: '#6b48ff', fill: false },
-                ],
-            },
-            options: { scales: { y: { beginAtZero: true } } },
-        });
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Resource Chart
+    const ctx = document.getElementById('resource-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['5m', '4m', '3m', '2m', '1m'],
+            datasets: [
+                { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
+                { label: 'RAM', data: [2, 3, 4, 3.5, 4], borderColor: '#6b48ff', fill: false },
+            ],
+        },
+        options: { scales: { y: { beginAtZero: true } } },
+    });
 
-        // Comment Toggle
-        document.querySelectorAll('.comment-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const commentForm = button.nextElementSibling;
-                commentForm.classList.toggle('hidden');
-            });
+    // Comment Toggle
+    document.querySelectorAll('.comment-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const commentForm = button.nextElementSibling;
+            commentForm.classList.toggle('hidden');
         });
-    </script>
+    });
+</script>
 {% endblock %}

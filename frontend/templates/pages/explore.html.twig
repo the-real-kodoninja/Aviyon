@@ -3,35 +3,77 @@
 {% block title %}Aviyon - Explore{% endblock %}
 
 {% block body %}
-<section class="explore container py-12">
-    <h1 class="text-4xl font-bold text-accent">Explore Aviyon</h1>
-    <p class="text-secondary mt-4">Discover trending projects, NFTs, and community posts.</p>
+<section class="explore container mx-auto py-12 px-4">
+    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4">Explore Aviyon</h1>
+    <p class="text-gray-400 mb-8">Discover trending projects, NFTs, and community posts.</p>
 
     <div class="trending mt-8">
-        <h2 class="text-3xl text-accent mb-4">Trending Now</h2>
-        <div class="flex flex-wrap justify-between gap-8">
-            {% for item in trending %}
-                <div class="profile-card w-1/3">
-                    <p class="text-secondary capitalize">{{ item.type }}</p>
-                    {% if item.type == 'project' %}
-                        <h3 class="text-accent">{{ item.name }}</h3>
-                        <p class="text-secondary">By {{ item.creator }}</p>
-                        <p class="text-secondary">Stars: {{ item.stars }}</p>
-                        <button class="btn mt-2">Star</button>
-                    {% elseif item.type == 'nft' %}
-                        <canvas id="nft-{{ loop.index }}-preview" class="w-full h-48 mb-2"></canvas>
-                        <h3 class="text-accent">{{ item.name }}</h3>
-                        <p class="text-secondary">By {{ item.creator }}</p>
-                        <p class="text-secondary">Price: {{ item.price }}</p>
-                        <a href="{{ path('marketplace') }}" class="btn mt-2">View</a>
-                    {% elseif item.type == 'post' %}
-                        <p class="text-primary">{{ item.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-accent">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-accent">@'})|raw }}</p>
-                        <p class="text-secondary">By {{ item.author }}</p>
-                        <a href="{{ path('landing') }}" class="btn mt-2">View Post</a>
-                    {% endif %}
-                </div>
-            {% endfor %}
+        <h2 class="text-3xl font-inter text-neon-purple mb-4">Trending Now</h2>
+        <div class="flex flex-wrap justify-between gap-8" id="trending-items">
+            {% if trending is defined and trending is not empty %}
+                {% for item in trending %}
+                    <div class="profile-card w-full sm:w-1/2 md:w-1/3 p-6 bg-dark-light rounded-lg shadow-lg">
+                        <p class="text-gray-400 capitalize">{{ item.type|default('project') }}</p>
+                        {% if item.type == 'project' %}
+                            <h3 class="text-neon-purple text-xl font-inter">{{ item.name|default('Project Title') }}</h3>
+                            <p class="text-gray-400">By {{ item.creator|default('Unknown') }}</p>
+                            <p class="text-gray-400">Stars: {{ item.stars|default(0) }}</p>
+                            <button class="btn mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">Star</button>
+                        {% elseif item.type == 'nft' %}
+                            <canvas id="nft-{{ loop.index }}-preview" class="w-full h-48 mb-2 rounded-lg" data-model="{{ item.modelUrl|default('') }}"></canvas>
+                            <h3 class="text-neon-purple text-xl font-inter">{{ item.name|default('NFT Title') }}</h3>
+                            <p class="text-gray-400">By {{ item.creator|default('Unknown') }}</p>
+                            <p class="text-gray-400">Price: {{ item.price|default('N/A') }}</p>
+                            <a href="{{ path('marketplace') }}" class="btn mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">View</a>
+                        {% elseif item.type == 'post' %}
+                            <p class="text-gray-300">{{ item.content|default('')|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-neon-purple">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-neon-purple">@'})|raw }}</p>
+                            <p class="text-gray-400">By {{ item.author|default('Unknown') }}</p>
+                            <a href="{{ path('landing') }}" class="btn mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">View Post</a>
+                        {% else %}
+                            <h3 class="text-neon-purple text-xl font-inter">{{ item.title|default('Trending Item') }}</h3>
+                            <p class="text-gray-400">By {{ item.author|default('Unknown') }}</p>
+                            <p class="text-gray-400">Likes: {{ item.likes|default(0) }}</p>
+                            <p class="text-gray-400">Platform: {{ item.platform|default('Unknown') }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-gray-400">No trending items available at the moment.</p>
+            {% endif %}
         </div>
     </div>
 </section>
+
+{% block javascripts %}
+<script>
+// Mock initNFTPreview function for NFT items
+function initNFTPreview(canvas, modelUrl) {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#8b5cf6';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '16px Arial';
+    ctx.fillText('NFT Preview Placeholder', 10, 50);
+    ctx.fillText(`Model: ${modelUrl || 'N/A'}`, 10, 80);
+}
+
+// Initialize NFT previews on page load
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[id^="nft-"]').forEach(canvas => {
+        if (canvas.dataset.initialized) return;
+        canvas.dataset.initialized = true;
+        initNFTPreview(canvas, canvas.dataset.model);
+    });
+
+    // Star button functionality (placeholder)
+    document.querySelectorAll('.btn').forEach(btn => {
+        if (btn.textContent === 'Star') {
+            btn.addEventListener('click', () => {
+                alert('Starred project!');
+            });
+        }
+    });
+});
+</script>
+{% endblock %}
 {% endblock %}

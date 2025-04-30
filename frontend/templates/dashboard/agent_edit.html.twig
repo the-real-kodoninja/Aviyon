@@ -3,8 +3,110 @@
 {% block title %}Edit Agent - Aviyon{% endblock %}
 
 {% block body %}
-<div class="container mx-auto px-4 py-6">
-    <h1 class="text-4xl font-inter text-neon-purple">Edit Agent (ID: {{ id }})</h1>
-    <p class="text-gray-300 mt-4">Edit form for agent {{ id }} will be displayed here.</p>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Edit Agent (ID: {{ id }})</h1>
+            <p class="text-gray-300 mb-8">
+                In the Kodoverse, AI agents are your decentralized companions, powered by Nimbus AI. They assist with coding, analytics, and virtual world interactions. Edit this agent to customize its role in your Kodoverse journey.
+            </p>
+
+            <!-- Agent Edit Form -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <form id="agent-edit-form" action="{{ path('agent_update', {'id': id}) }}" method="POST">
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div>
+                            <label for="agent_name" class="block text-gray-300 mb-2">Agent Name</label>
+                            <input type="text" id="agent_name" name="agent_name" value="{{ agent.name }}" class="w-full p-3 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                        </div>
+                        <div>
+                            <label for="agent_type" class="block text-gray-300 mb-2">Agent Type</label>
+                            <select id="agent_type" name="agent_type" class="w-full p-3 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <option value="coding" {{ agent.type == 'coding' ? 'selected' : '' }}>Coding Assistant</option>
+                                <option value="analytics" {{ agent.type == 'analytics' ? 'selected' : '' }}>Analytics Bot</option>
+                                <option value="support" {{ agent.type == 'support' ? 'selected' : '' }}>Support Agent</option>
+                                <option value="virtual" {{ agent.type == 'virtual' ? 'selected' : '' }}>Virtual World Guide</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="agent_description" class="block text-gray-300 mb-2">Description</label>
+                        <textarea id="agent_description" name="agent_description" class="w-full p-3 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" rows="4">{{ agent.description }}</textarea>
+                    </div>
+                    <div class="mt-6">
+                        <label for="agent_specialization" class="block text-gray-300 mb-2">Specialization (Kodoverse Role)</label>
+                        <input type="text" id="agent_specialization" name="agent_specialization" value="{{ agent.specialization }}" class="w-full p-3 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., DeFi Analyst, NFT Curator">
+                    </div>
+                    <div class="mt-6 flex space-x-4">
+                        <button type="submit" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Update Agent</button>
+                        <a href="{{ path('dashboard_agents') }}" class="bg-gray-600 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-500 transition">Cancel</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Agent Status -->
+            <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl text-purple-400 mb-4">Agent Status</h2>
+                <p class="text-gray-300">Status: <span id="agent-status" class="text-purple-400">{{ agent.status|capitalize }}</span></p>
+                <p class="text-gray-300">Last Active: <span id="agent-last-active">{{ agent.last_active|date('Y-m-d H:i') }}</span></p>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('agent-edit-form');
+    const agentNameInput = document.getElementById('agent_name');
+    const agentTypeSelect = document.getElementById('agent_type');
+    const agentDescriptionInput = document.getElementById('agent_description');
+    const agentSpecializationInput = document.getElementById('agent_specialization');
+    const agentStatus = document.getElementById('agent-status');
+
+    // Form validation and dynamic updates
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const agentName = agentNameInput.value.trim();
+        const agentDescription = agentDescriptionInput.value.trim();
+        const agentSpecialization = agentSpecializationInput.value.trim();
+
+        if (agentName.length < 3) {
+            alert('Agent name must be at least 3 characters long.');
+            return;
+        }
+
+        if (agentDescription.length < 10) {
+            alert('Agent description must be at least 10 characters long.');
+            return;
+        }
+
+        // Simulate form submission
+        console.log('Updating agent:', {
+            name: agentName,
+            type: agentTypeSelect.value,
+            description: agentDescription,
+            specialization: agentSpecialization
+        });
+
+        agentStatus.textContent = 'Updated';
+        alert('Agent updated successfully!');
+    });
+
+    // Dynamic agent type description
+    const typeDescriptions = {
+        coding: 'Assists with coding tasks in the Kodoverse, optimizing your Web3 projects.',
+        analytics: 'Analyzes data and provides insights for your DeFi and NFT activities.',
+        support: 'Offers support for your interactions in the Kodoverse ecosystem.',
+        virtual: 'Guides you through the Kodoverse virtual world, enhancing your experience.'
+    };
+
+    agentTypeSelect.addEventListener('change', () => {
+        const description = typeDescriptions[agentTypeSelect.value] || 'Select an agent type to see its role.';
+        agentDescriptionInput.placeholder = description;
+    });
+});
+</script>
 {% endblock %}

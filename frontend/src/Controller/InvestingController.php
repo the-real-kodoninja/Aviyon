@@ -12,7 +12,7 @@ class InvestingController extends AbstractController
     #[Route('/investing', name: 'investing')]
     public function index(): Response
     {
-        return $this->render('investing.html.twig');
+        return $this->render('pages/investing.html.twig');
     }
 
     #[Route('/investing/non-equity/submit', name: 'investing_non_equity_submit', methods: ['POST'])]

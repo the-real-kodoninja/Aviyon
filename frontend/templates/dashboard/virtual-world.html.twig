@@ -3,66 +3,151 @@
 {% block title %}Aviyon - Virtual World{% endblock %}
 
 {% block body %}
-    <!-- Virtual World Header -->
-    <section class="py-12">
-        <h1 class="text-4xl font-bold text-purple-400 mb-4">Kodoverse Virtual World</h1>
-        <p class="text-xl text-gray-300 mb-8">Collaborate, showcase projects, and connect with creators in our immersive virtual world.</p>
-    </section>
+<div class="dashboard-container">
+    <!-- Include the sidebar -->
+    {% include 'dashboard/sidebar.html.twig' %}
 
-    <!-- World Preview -->
-    <section class="py-12">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h2 class="text-2xl text-purple-400 mb-4">Enter the Kodoverse</h2>
-            <div class="relative h-64 bg-gray-900 rounded-lg overflow-hidden">
-                <!-- Placeholder for 3D World Preview -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <p class="text-gray-300">3D World Preview (Integration Coming Soon)</p>
+    <div class="main-content">
+        <section class="virtual-world container mx-auto py-12 px-4">
+            <!-- Virtual World Header -->
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-2 animate-fade-in">Kodoverse Virtual World</h1>
+                    <p class="text-gray-400 animate-fade-in-delayed">Collaborate, showcase projects, and connect with creators in our immersive virtual world.</p>
+                </div>
+                <div class="text-gray-400">
+                    <span id="live-users" class="font-inter text-neon-purple">0</span> users online
                 </div>
             </div>
-            <a href="{{ path('virtual_world_enter') }}" class="mt-4 inline-block bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Enter Now</a>
-        </div>
-    </section>
 
-    <!-- Collaboration Tools -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Collaboration Tools</h2>
-        <div class="grid gap-4 md:grid-cols-3">
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-                <svg class="w-12 h-12 text-purple-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-                <h3 class="text-xl text-purple-400 mb-2">Live Chat</h3>
-                <p class="text-gray-300">Communicate with team members in real-time within the virtual world.</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-                <svg class="w-12 h-12 text-purple-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                </svg>
-                <h3 class="text-xl text-purple-400 mb-2">Video Meetings</h3>
-                <p class="text-gray-300">Host virtual meetings with video and screen sharing.</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-                <svg class="w-12 h-12 text-purple-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <h3 class="text-xl text-purple-400 mb-2">Shared Workspaces</h3>
-                <p class="text-gray-300">Collaborate on projects with shared 3D workspaces.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Showcase -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Featured Projects</h2>
-        <div class="grid gap-4 md:grid-cols-3">
-            {% for project in featured_projects %}
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <img src="{{ asset('build/images/' ~ project.image) }}" alt="{{ project.title }}" class="w-full h-40 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl text-purple-400 mb-2">{{ project.title }}</h3>
-                    <p class="text-gray-300 mb-4">{{ project.description|truncate(100) }}</p>
-                    <a href="{{ path('virtual_world_project', {'id': project.id}) }}" class="text-purple-400 hover:underline">View in Kodoverse</a>
+            <!-- World Preview -->
+            <div class="bg-dark-light p-6 rounded-lg shadow-lg text-center mb-12">
+                <h2 class="text-2xl font-inter text-neon-purple mb-4">Enter the Kodoverse</h2>
+                <div class="relative h-96 bg-dark rounded-lg overflow-hidden">
+                    <!-- Placeholder for 3D World Preview -->
+                    <canvas id="world-preview" class="w-full h-full"></canvas>
+                    <div class="absolute bottom-4 left-4 text-gray-400">
+                        <span>Preview powered by WebGL</span>
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
-    </section>
+                <a href="{{ path('dashboard_virtual_world_enter') }}" class="mt-4 inline-block bg-neon-purple text-white px-6 py-3 rounded-lg hover:bg-neon-purple/80 transition font-inter">Enter Now</a>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-inter text-neon-purple mb-6">Active Users Leaderboard</h2>
+                <div class="bg-dark-light p-6 rounded-lg shadow-lg">
+                    <div class="space-y-4">
+                        {% for user in leaderboard %}
+                            <div class="flex items-center space-x-4">
+                                <img src="{{ asset('images/' ~ user.avatar) }}" alt="{{ user.username }}" class="w-12 h-12 rounded-full">
+                                <div class="flex-1">
+                                    <a href="{{ path('user_profile', {'username': user.username}) }}" class="text-neon-purple font-inter hover:underline">{{ user.username }}</a>
+                                    <p class="text-gray-400">Score: {{ user.score }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collaboration Tools -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-inter text-neon-purple mb-6">Collaboration Tools</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 text-center">
+                        <svg class="w-12 h-12 text-neon-purple mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        <h3 class="text-xl font-inter text-neon-purple mb-2">Live Chat</h3>
+                        <p class="text-gray-400">Communicate with team members in real-time within the virtual world.</p>
+                    </div>
+                    <div class="bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 text-center">
+                        <svg class="w-12 h-12 text-neon-purple mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        <h3 class="text-xl font-inter text-neon-purple mb-2">Video Meetings</h3>
+                        <p class="text-gray-400">Host virtual meetings with video and screen sharing.</p>
+                    </div>
+                    <div class="bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 text-center">
+                        <svg class="w-12 h-12 text-neon-purple mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <h3 class="text-xl font-inter text-neon-purple mb-2">Shared Workspaces</h3>
+                        <p class="text-gray-400">Collaborate on projects with shared 3D workspaces.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Showcase -->
+            <div>
+                <h2 class="text-3xl font-inter text-neon-purple mb-6">Featured Projects</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {% for project in featured_projects %}
+                        <div class="bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300">
+                            <img src="{{ asset('images/' ~ project.image) }}" alt="{{ project.title }}" class="w-full h-40 object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-inter text-neon-purple mb-2">{{ project.title }}</h3>
+                            <p class="text-gray-400 mb-4">{{ project.description|length > 100 ? project.description|slice(0, 100) ~ '...' : project.description }}</p>
+                            <a href="{{ path('dashboard_virtual_project', {'id': project.id}) }}" class="text-neon-purple hover:underline font-inter">View in Kodoverse</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        display: flex;
+    }
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        width: 100%;
+    }
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+    .animate-fade-in-delayed {
+        animation: fadeIn 0.5s ease-in 0.2s;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    // Mock WebGL preview for the virtual world
+    function initWorldPreview(canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#8b5cf6';
+        ctx.font = '24px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText('Kodoverse World Preview', canvas.width / 2, canvas.height / 2);
+        ctx.fillText('(WebGL Placeholder)', canvas.width / 2, canvas.height / 2 + 30);
+    }
+
+    // Simulate live user count
+    function updateLiveUsers() {
+        const liveUsers = document.getElementById('live-users');
+        let count = 50; // Starting mock count
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5) - 2; // Random fluctuation
+            if (count < 0) count = 0;
+            liveUsers.textContent = count;
+        }, 5000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('world-preview');
+        initWorldPreview(canvas);
+        updateLiveUsers();
+    });
+</script>
 {% endblock %}

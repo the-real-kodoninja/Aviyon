@@ -1,62 +1,103 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Aviyon - Messages{% endblock %}
+{% block title %}Messages - Aviyon{% endblock %}
 
 {% block body %}
-    <!-- Messages Header -->
-    <section class="py-12">
-        <h1 class="text-4xl font-bold text-purple-400 mb-4">Messages</h1>
-        <p class="text-xl text-gray-300 mb-8">Connect with others in the Kodoverse through secure messaging.</p>
-    </section>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Messages</h1>
+            <p class="text-gray-300 mb-8">
+                Communicate with other Kodoverse users or Nimbus AI agents. Whether you’re collaborating on a project, trading NFTs, or seeking AI assistance, our decentralized messaging system ensures privacy and security.
+            </p>
 
-    <!-- Messages Interface -->
-    <section class="py-12">
-        <div class="grid md:grid-cols-3 gap-6">
-            <!-- Conversations List -->
+            <!-- Messaging Interface -->
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-purple-400 mb-4">Conversations</h2>
-                <div class="space-y-2">
-                    {% for conversation in conversations %}
-                        <a href="{{ path('messages', {'conversation_id': conversation.id}) }}" class="flex items-center space-x-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition {{ conversation.id == selected_conversation.id ? 'bg-gray-600' : '' }}">
-                            <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="{{ conversation.user }}" class="w-10 h-10 rounded-full">
-                            <div>
-                                <p class="text-gray-300 font-semibold">{{ conversation.user }}</p>
-                                <p class="text-gray-500 text-sm">{{ conversation.last_message|truncate(30) }}</p>
+                <div class="flex space-x-6">
+                    <!-- Contacts List -->
+                    <div class="w-1/4 bg-gray-900 p-4 rounded-lg">
+                        <h2 class="text-xl text-purple-400 mb-4">Contacts</h2>
+                        <ul id="contacts-list" class="space-y-2">
+                            <li data-contact="Nimbus AI" class="contact-item p-2 bg-gray-700 rounded text-gray-300 hover:bg-purple-600 hover:text-white cursor-pointer">Nimbus AI</li>
+                            <li data-contact="User1" class="contact-item p-2 bg-gray-700 rounded text-gray-300 hover:bg-purple-600 hover:text-white cursor-pointer">User1</li>
+                            <li data-contact="User2" class="contact-item p-2 bg-gray-700 rounded text-gray-300 hover:bg-purple-600 hover:text-white cursor-pointer">User2</li>
+                        </ul>
+                    </div>
+                    <!-- Chat Area -->
+                    <div class="w-3/4">
+                        <h2 class="text-xl text-purple-400 mb-4">Chat with <span id="current-contact">Nimbus AI</span></h2>
+                        <div id="chat-container" class="h-96 overflow-y-auto bg-gray-900 p-4 rounded-lg mb-4">
+                            <div class="mb-2">
+                                <span class="text-purple-400">[Nimbus AI]:</span>
+                                <span class="text-gray-300">Hello! How can I assist you today?</span>
                             </div>
-                            {% if conversation.unread_count > 0 %}
-                                <span class="ml-auto bg-purple-500 text-white text-xs px-2 py-1 rounded-full">{{ conversation.unread_count }}</span>
-                            {% endif %}
-                        </a>
-                    {% endfor %}
+                        </div>
+                        <div class="flex space-x-3">
+                            <input type="text" id="message-input" class="flex-1 p-3 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Type a message...">
+                            <button id="send-message" class="bg-purple-500 text-white px-4 py-3 rounded-lg hover:bg-purple-600 transition">Send</button>
+                        </div>
+                    </div>
                 </div>
-                <a href="{{ path('new_message') }}" class="block mt-4 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition text-center">New Message</a>
-            </div>
-            <!-- Chat Window -->
-            <div class="md:col-span-2 bg-gray-800 p-6 rounded-lg shadow-lg">
-                {% if selected_conversation %}
-                    <div class="flex items-center space-x-3 mb-4">
-                        <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="{{ selected_conversation.user }}" class="w-10 h-10 rounded-full">
-                        <h2 class="text-2xl font-semibold text-purple-400">{{ selected_conversation.user }}</h2>
-                    </div>
-                    <div class="h-96 overflow-y-auto bg-gray-900 p-4 rounded-lg mb-4">
-                        {% for message in selected_conversation.messages %}
-                            <div class="mb-4 {{ message.sender == current_user ? 'text-right' : 'text-left' }}">
-                                <div class="inline-block p-3 rounded-lg {{ message.sender == current_user ? 'bg-purple-500 text-white' : 'bg-gray-700 text-gray-100' }}">
-                                    <p>{{ message.content }}</p>
-                                    <p class="text-xs text-gray-400 mt-1">{{ message.timestamp|date('M d, Y h:i A') }}</p>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <form action="{{ path('send_message') }}" method="POST" class="flex space-x-3">
-                        <input type="hidden" name="conversation_id" value="{{ selected_conversation.id }}">
-                        <textarea name="content" class="flex-1 p-2 bg-gray-700 rounded text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Type your message..." required></textarea>
-                        <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Send</button>
-                    </form>
-                {% else %}
-                    <p class="text-gray-300 text-center">Select a conversation to start messaging.</p>
-                {% endif %}
             </div>
         </div>
-    </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const contactsList = document.getElementById('contacts-list');
+    const currentContact = document.getElementById('current-contact');
+    const chatContainer = document.getElementById('chat-container');
+    const messageInput = document.getElementById('message-input');
+    const sendMessageBtn = document.getElementById('send-message');
+    let selectedContact = 'Nimbus AI';
+
+    // Function to add a message to the chat
+    function addMessage(sender, message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('mb-2');
+        messageDiv.innerHTML = `<span class="text-purple-400">[${sender}]:</span> <span class="text-gray-300">${message}</span>`;
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Simulate response from contact
+    function getResponse(contact, message) {
+        if (contact === 'Nimbus AI') {
+            return message.toLowerCase().includes('help') ? 
+                'I can assist with coding, analytics, or virtual world navigation. What do you need help with?' : 
+                'I’m here to assist! What would you like to discuss?';
+        }
+        return `Hey, I received your message: "${message}". How can I help?`;
+    }
+
+    // Contact selection handler
+    contactsList.addEventListener('click', (e) => {
+        const contactItem = e.target.closest('.contact-item');
+        if (contactItem) {
+            selectedContact = contactItem.dataset.contact;
+            currentContact.textContent = selectedContact;
+            chatContainer.innerHTML = `<div class="mb-2"><span class="text-purple-400">[${selectedContact}]:</span> <span class="text-gray-300">Hello! How can I assist you today?</span></div>`;
+        }
+    });
+
+    // Send message handler
+    sendMessageBtn.addEventListener('click', () => {
+        const message = messageInput.value.trim();
+        if (!message) return;
+
+        addMessage('You', message);
+        const response = getResponse(selectedContact, message);
+        setTimeout(() => addMessage(selectedContact, response), 1000);
+        messageInput.value = '';
+    });
+
+    messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessageBtn.click();
+    });
+});
+</script>
 {% endblock %}

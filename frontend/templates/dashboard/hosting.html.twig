@@ -1,89 +1,100 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Aviyon - Hosting Management{% endblock %}
+{% block title %}Hosting - Aviyon{% endblock %}
 
 {% block body %}
-    <!-- Hosting Header -->
-    <section class="py-12">
-        <h1 class="text-4xl font-bold text-purple-400 mb-4">Manage Your Hosting</h1>
-        <p class="text-xl text-gray-300 mb-8">Deploy and manage your Web3 applications on Aviyon’s decentralized infrastructure.</p>
-    </section>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Hosting</h1>
+            <p class="text-gray-300 mb-8">
+                Host your Web3 projects, DApps, and virtual assets on Kodoverse’s decentralized hosting network. Powered by distributed nodes and optimized by Nimbus AI, your projects are always accessible and secure.
+            </p>
 
-    <!-- Hosting Plans -->
-    <section class="grid gap-6 md:grid-cols-2 py-12">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-2">Free Hosting Plan</h3>
-            <p class="text-gray-300 mb-4">Perfect for getting started with your Web3 project.</p>
-            <ul class="text-gray-300 mb-4 space-y-2">
-                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 100 GB Storage</li>
-                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 4 GB RAM</li>
-                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Decentralized Infrastructure</li>
-            </ul>
-            <a href="{{ path('deploy_app') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Deploy Now</a>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-2">Advanced Hosting</h3>
-            <p class="text-gray-300 mb-4">Scale your project with enhanced resources (coming soon).</p>
-            <ul class="text-gray-300 mb-4 space-y-2">
-                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 500 GB Storage</li>
-                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 16 GB RAM</li>
-                <li class="flex items-center"><svg class="w-5 h-5 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Priority Support</li>
-            </ul>
-            <button class="bg-gray-700 text-gray-300 px-4 py-2 rounded-lg cursor-not-allowed">Coming Soon</button>
-        </div>
-    </section>
-
-    <!-- Resource Usage -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Resource Usage</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <div class="grid gap-4 md:grid-cols-3 mb-4">
-                <div>
-                    <p class="text-gray-300"><strong>CPU:</strong> {{ usage.cpu }} cores</p>
-                    <p class="text-gray-300"><strong>RAM:</strong> {{ usage.ram }} GB</p>
-                    <p class="text-gray-300"><strong>Storage:</strong> {{ usage.storage }} GB</p>
-                </div>
-                <div class="md:col-span-2">
-                    <canvas id="resource-chart" class="w-full h-32"></canvas>
-                </div>
+            <!-- Hosted Projects -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl text-purple-400 mb-4">Hosted Projects</h2>
+                <table class="w-full text-gray-300">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="py-3 px-4 text-left">Project</th>
+                            <th class="py-3 px-4 text-left">Domain</th>
+                            <th class="py-3 px-4 text-left">Status</th>
+                            <th class="py-3 px-4 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hosting-table">
+                        <!-- Placeholder data will be populated by JS -->
+                    </tbody>
+                </table>
             </div>
-            <a href="{{ path('resource_analytics') }}" class="text-purple-400 hover:underline">View Detailed Analytics</a>
         </div>
-    </section>
-
-    <!-- Deployment Wizard -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Quick Deploy Wizard</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <form action="{{ path('quick_deploy') }}" method="POST">
-                <div class="mb-4">
-                    <label for="app_name" class="block text-gray-300 mb-2">Application Name</label>
-                    <input type="text" id="app_name" name="app_name" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
-                </div>
-                <div class="mb-4">
-                    <label for="repo_url" class="block text-gray-300 mb-2">Repository URL</label>
-                    <input type="url" id="repo_url" name="repo_url" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="https://github.com/username/repo" required>
-                </div>
-                <button type="submit" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Start Deployment</button>
-            </form>
-        </div>
-    </section>
+    </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('resource-chart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['5m', '4m', '3m', '2m', '1m'],
-                datasets: [
-                    { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
-                    { label: 'RAM', data: [2, 3, 4, 3.5, 4], borderColor: '#6b48ff', fill: false }
-                ]
-            },
-            options: { scales: { y: { beginAtZero: true } } }
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const hostingTable = document.getElementById('hosting-table');
+
+    // Mock hosting data
+    const hostedProjects = [
+        { id: 1, project: 'NFT Marketplace', domain: 'nftmarket.kodoverse.io', status: 'Active' },
+        { id: 2, project: 'DeFi App', domain: 'defiapp.kodoverse.io', status: 'Suspended' },
+        { id: 3, project: 'Virtual Gallery', domain: 'gallery.kodoverse.io', status: 'Active' }
+    ];
+
+    // Function to render hosted projects
+    function renderHostedProjects() {
+        hostingTable.innerHTML = '';
+        hostedProjects.forEach(project => {
+            const row = document.createElement('tr');
+            row.classList.add('border-b', 'border-gray-700');
+            row.innerHTML = `
+                <td class="py-3 px-4">${project.project}</td>
+                <td class="py-3 px-4"><a href="#" class="text-purple-400 hover:underline">${project.domain}</a></td>
+                <td class="py-3 px-4">
+                    <span class="${project.status === 'Active' ? 'text-green-400' : 'text-red-400'}">
+                        ${project.status}
+                    </span>
+                </td>
+                <td class="py-3 px-4">
+                    <button data-id="${project.id}" class="toggle-btn bg-purple-500 text-white px-3 py-1 rounded-lg hover:bg-purple-600 transition mr-2">
+                        ${project.status === 'Active' ? 'Suspend' : 'Activate'}
+                    </button>
+                    <button data-id="${project.id}" class="delete-btn bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition">
+                        Delete
+                    </button>
+                </td>
+            `;
+            hostingTable.appendChild(row);
         });
-    </script>
+    }
+
+    // Initial render
+    renderHostedProjects();
+
+    // Action buttons handler
+    hostingTable.addEventListener('click', (e) => {
+        const btn = e.target;
+        const id = parseInt(btn.dataset.id);
+
+        if (btn.classList.contains('toggle-btn')) {
+            const project = hostedProjects.find(p => p.id === id);
+            project.status = project.status === 'Active' ? 'Suspended' : 'Active';
+            renderHostedProjects();
+        }
+
+        if (btn.classList.contains('delete-btn')) {
+            if (confirm('Are you sure you want to delete this hosted project?')) {
+                const index = hostedProjects.findIndex(p => p.id === id);
+                hostedProjects.splice(index, 1);
+                renderHostedProjects();
+            }
+        }
+    });
+});
+</script>
 {% endblock %}

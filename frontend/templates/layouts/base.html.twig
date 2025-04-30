@@ -6,6 +6,8 @@
     <title>{% block title %}Aviyon{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('build/base.css') }}">
     <script src="{{ asset('build/app.js') }}" defer></script>
+    <!-- Add Chart.js for ticker sparklines and modal chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
     {% block stylesheets %}{% endblock %}
 </head>
 <body class="bg-dark text-gray-300 font-inter">

@@ -1,0 +1,75 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Reset Password{% endblock %}
+
+{% block body %}
+<section class="signup container mx-auto py-12 px-4">
+    <div class="max-w-md mx-auto bg-dark-light rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-inter font-bold text-neon-purple mb-6 text-center">Reset Your Password</h1>
+        <p class="text-gray-400 mb-8 text-center">Enter your new password below.</p>
+
+        <form action="{{ path('reset') }}" method="POST" id="reset-form" class="space-y-6">
+            <!-- New Password -->
+            <div>
+                <label for="password" class="block text-gray-300 font-inter mb-2">New Password</label>
+                <input type="password" id="password" name="password" class="form-control w-full bg-dark text-gray-300 border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" required>
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+                <label for="confirm-password" class="block text-gray-300 font-inter mb-2">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm_password" class="form-control w-full bg-dark text-gray-300 border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn w-full bg-neon-purple text-white py-3 rounded-lg hover:bg-neon-purple/80 transition font-inter">Reset Password</button>
+        </form>
+
+        <!-- Back to Login -->
+        <p class="text-gray-400 mt-6 text-center">
+            Remember your password? <a href="{{ path('login') }}" class="text-neon-purple hover:underline transition">Log In</a>
+        </p>
+    </div>
+</section>
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('reset-form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+
+    form.addEventListener('submit', (e) => {
+        const passwordValue = password.value.trim();
+        const confirmPasswordValue = confirmPassword.value.trim();
+
+        // Password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordRegex.test(passwordValue)) {
+            e.preventDefault();
+            alert('Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.');
+            return;
+        }
+
+        // Confirm password match
+        if (passwordValue !== confirmPasswordValue) {
+            e.preventDefault();
+            alert('Passwords do not match.');
+            return;
+        }
+    });
+});
+</script>
+<style>
+.form-control {
+    transition: all 0.3s ease;
+}
+.form-control:focus {
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+}
+.btn {
+    transition: background-color 0.3s ease;
+}
+</style>
+{% endblock %}
+{% endblock %}

@@ -15,40 +15,34 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig');
     }
 
-    #[Route('/admin/users/new', name: 'admin_users_new')]
-    public function newUser(): Response
+    #[Route('/admin/platforms', name: 'admin_manage_platforms')]
+    public function managePlatforms(): Response
     {
-        return $this->render('admin/user_new.html.twig');
+        return $this->render('admin/manage_platforms.html.twig');
     }
 
-    #[Route('/admin/user/{id}/edit', name: 'admin_user_edit')]
-    public function editUser(string $id): Response
+    #[Route('/admin/users', name: 'admin_manage_users')]
+    public function manageUsers(): Response
     {
-        return $this->render('admin/user_edit.html.twig', ['id' => $id]);
+        return $this->render('admin/manage_users.html.twig');
     }
 
-    #[Route('/admin/user/delete', name: 'admin_user_delete', methods: ['POST'])]
-    public function deleteUser(Request $request): Response
+    #[Route('/admin/reports', name: 'admin_manage_reports')]
+    public function manageReports(): Response
     {
-        return $this->redirectToRoute('admin');
-    }
-
-    #[Route('/admin/platforms/new', name: 'admin_platforms_new')]
-    public function newPlatform(): Response
-    {
-        return $this->render('admin/platform_new.html.twig');
-    }
-
-    #[Route('/admin/platform/{id}/edit', name: 'admin_platform_edit')]
-    public function editPlatform(string $id): Response
-    {
-        return $this->render('admin/platform_edit.html.twig', ['id' => $id]);
+        return $this->render('admin/manage_reports.html.twig');
     }
 
     #[Route('/admin/platform/delete', name: 'admin_platform_delete', methods: ['POST'])]
     public function deletePlatform(Request $request): Response
     {
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('admin_manage_platforms');
+    }
+
+    #[Route('/admin/user/delete', name: 'admin_user_delete', methods: ['POST'])]
+    public function deleteUser(Request $request): Response
+    {
+        return $this->redirectToRoute('admin_manage_users');
     }
 
     #[Route('/admin/report/{id}/view', name: 'admin_report_view')]
@@ -60,13 +54,13 @@ class AdminController extends AbstractController
     #[Route('/admin/report/dismiss', name: 'admin_report_dismiss', methods: ['POST'])]
     public function dismissReport(Request $request): Response
     {
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('admin_manage_reports');
     }
 
     #[Route('/admin/report/remove-content', name: 'admin_report_remove_content', methods: ['POST'])]
     public function removeContent(Request $request): Response
     {
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('admin_manage_reports');
     }
 
     #[Route('/admin/settings/save', name: 'admin_settings_save', methods: ['POST'])]

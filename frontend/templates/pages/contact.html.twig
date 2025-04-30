@@ -1,0 +1,71 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Contact Us - Aviyon{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-8">Contact Us</h1>
+
+    <div class="bg-dark-light p-8 rounded-lg shadow-lg text-gray-300">
+        <p class="mb-4">We’re here to assist you with any questions or concerns. For the fastest and most efficient support, please use our AI assistant, Nimbus AI, integrated into the Aviyon platform.</p>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-inter text-neon-purple mb-4">How to Get Help</h2>
+            <p>Aviyon uses Nimbus AI to provide support for various needs. Please use the following commands in the Nimbus AI chat area on the Aviyon platform:</p>
+            <ul class="list-disc ml-6 space-y-4 mt-4">
+                <li>
+                    <strong>For Platform Help:</strong><br>
+                    Type <code class="bg-dark p-1 rounded">&lt;-platform help/&gt;</code> into the Nimbus AI chat area.
+                </li>
+                <li>
+                    <strong>For Customer Service Help:</strong><br>
+                    Type <code class="bg-dark p-1 rounded">&lt;-customer service help/&gt;</code> into the Nimbus AI chat area.
+                </li>
+                <li>
+                    <strong>For Dashboard Help:</strong><br>
+                    Type <code class="bg-dark p-1 rounded">&lt;-dashboard help/&gt;</code> into the Nimbus AI chat area.
+                </li>
+                <li>
+                    <strong>For Investing Help:</strong><br>
+                    Type <code class="bg-dark p-1 rounded">&lt;-platform help/&gt;</code> into the Nimbus AI chat area.
+                </li>
+            </ul>
+            <p class="mt-4 text-gray-400 italic">Note: These commands are only functional within the Aviyon platform using Nimbus AI.</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-inter text-neon-purple mb-4">Accessing Nimbus AI</h2>
+            <p>To access Nimbus AI:</p>
+            <ol class="list-decimal ml-6 space-y-2">
+                <li>Log in to your Aviyon account.</li>
+                <li>Navigate to the <a href="{{ path('dashboard_nimbus_ai') }}" class="text-neon-purple hover:underline">Nimbus AI</a> section in the dashboard.</li>
+                <li>Enter the appropriate command in the chat area to receive assistance.</li>
+            </ol>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-inter text-neon-purple mb-4">Other Inquiries</h2>
+            <p>For inquiries that cannot be addressed through Nimbus AI, such as partnership opportunities or media requests, please submit your message below. We will respond as soon as possible.</p>
+            <form action="{{ path('contact_submit') }}" method="POST" class="space-y-4 mt-4">
+                <div>
+                    <label for="name" class="block text-gray-300 font-inter">Name</label>
+                    <input type="text" id="name" name="name" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-300 font-inter">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required>
+                </div>
+                <div>
+                    <label for="subject" class="block text-gray-300 font-inter">Subject</label>
+                    <input type="text" id="subject" name="subject" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-300 font-inter">Message</label>
+                    <textarea id="message" name="message" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="bg-neon-purple text-white px-6 py-3 rounded-lg hover:bg-neon-purple/80 transition font-inter">Submit</button>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}

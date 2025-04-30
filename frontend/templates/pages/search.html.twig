@@ -3,111 +3,252 @@
 {% block title %}Aviyon - Search{% endblock %}
 
 {% block body %}
+<div class="min-h-screen bg-gray-900">
     <!-- Search Header -->
-    <section class="py-12">
-        <h1 class="text-4xl font-bold text-purple-400 mb-4">Search the Kodoverse</h1>
-        <p class="text-xl text-gray-300 mb-8">Find users, platforms, posts, NFTs, and more across the Kodoverse.</p>
-    </section>
+    <header class="py-6 px-4 bg-gray-800 shadow-lg">
+        <div class="container mx-auto flex items-center space-x-4">
+            <h1 class="text-3xl font-bold text-purple-400">Aviyon Search</h1>
+            <form action="{{ path('search') }}" method="GET" class="flex-1">
+                <div class="relative">
+                    <input type="text" name="q" value="{{ app.request.query.get('q')|default('') }}" id="search-input" class="w-full p-3 bg-gray-700 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Search users, platforms, NFTs, posts, and more..." autocomplete="off">
+                    <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Search Suggestions -->
+                <div id="search-suggestions" class="absolute z-10 w-full bg-gray-800 rounded-lg shadow-lg mt-2 hidden">
+                    <ul class="text-gray-300">
+                        <li class="p-3 hover:bg-gray-700 cursor-pointer">kodonomad platform</li>
+                        <li class="p-3 hover:bg-gray-700 cursor-pointer">Sahar H profile</li>
+                        <li class="p-3 hover:bg-gray-700 cursor-pointer">Emmanuel M developer</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </header>
 
-    <!-- Search Form (Enhanced) -->
-    <section class="py-8">
-        <form action="{{ path('search') }}" method="GET" class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <!-- Query Input -->
-                <div class="col-span-2">
-                    <input type="text" name="q" value="{{ query|default('') }}" class="w-full p-2 bg-gray-700 rounded text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Search users, platforms, posts, NFTs, #hashtags, @mentions">
-                </div>
-                <!-- Type Filter -->
-                <div>
-                    <select name="type" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option value="">All Types</option>
-                        <option value="user" {{ type == 'user' ? 'selected' }}>Users</option>
-                        <option value="platform" {{ type == 'platform' ? 'selected' }}>Platforms</option>
-                        <option value="post" {{ type == 'post' ? 'selected' }}>Posts</option>
-                        <option value="nft" {{ type == 'nft' ? 'selected' }}>NFTs</option>
-                        <option value="project" {{ type == 'project' ? 'selected' }}>Projects</option>
-                    </select>
-                </div>
-                <!-- Date Range Filter -->
-                <div>
-                    <select name="date_range" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option value="">All Time</option>
-                        <option value="24h" {{ date_range == '24h' ? 'selected' }}>Last 24 Hours</option>
-                        <option value="7d" {{ date_range == '7d' ? 'selected' }}>Last 7 Days</option>
-                        <option value="30d" {{ date_range == '30d' ? 'selected' }}>Last 30 Days</option>
-                    </select>
-                </div>
-            </div>
-            <div class="flex justify-between items-center mt-4">
-                <div>
-                    <label class="text-gray-300 mr-2">Sort by:</label>
-                    <select name="sort" class="p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option value="relevance" {{ sort == 'relevance' ? 'selected' }}>Relevance</option>
-                        <option value="newest" {{ sort == 'newest' ? 'selected' }}>Newest</option>
-                        <option value="popularity" {{ sort == 'popularity' ? 'selected' }}>Popularity</option>
-                    </select>
-                </div>
-                <button type="submit" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Search</button>
-            </div>
-        </form>
-    </section>
+    <!-- Search Tabs -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex space-x-4 border-b border-gray-700">
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition active" data-tab="all">All</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="users">Users</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="platforms">Platforms</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="posts">Posts</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">NFTs</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="images">Images</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="videos">Videos</button>
+            <button class="tab-btn px-4 py-2 text-gray-300 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="news">News</button>
+        </div>
+    </div>
 
     <!-- Search Results -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Results for "{{ query|default('All') }}"</h2>
-        {% if results|length > 0 %}
-            <div class="space-y-4">
-                {% for result in results %}
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <p class="text-gray-300 capitalize mb-2">{{ result.type }}</p>
-                        {% if result.type == 'user' %}
-                            <div class="flex items-center space-x-3">
-                                <img src="{{ asset('build/images/user-placeholder.jpg') }}" alt="{{ result.name }}" class="w-10 h-10 rounded-full">
-                                <div>
-                                    <a href="{{ result.url }}" class="text-purple-400 font-semibold hover:underline">{{ result.name }}</a>
-                                    <p class="text-gray-400 text-sm">{{ result.bio|default('No bio available') }}</p>
-                                </div>
-                            </div>
-                        {% elseif result.type == 'platform' %}
-                            <div class="flex items-center space-x-3">
-                                <img src="{{ asset('build/images/' ~ result.name ~ '-profile.jpg') }}" alt="{{ result.name }}" class="w-10 h-10 rounded-full">
-                                <div>
-                                    <a href="{{ result.url }}" class="text-purple-400 font-semibold hover:underline">{{ result.name }}</a>
-                                    <p class="text-gray-400 text-sm">{{ result.description|default('No description available') }}</p>
-                                </div>
-                            </div>
-                        {% elseif result.type == 'post' %}
-                            <p class="text-gray-300 mb-2">{{ result.content|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-purple-400">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-purple-400">@'})|raw }}</p>
-                            <a href="{{ result.url }}" class="text-purple-400 hover:underline">View Post</a>
-                        {% elseif result.type == 'nft' %}
-                            <div class="flex items-center space-x-3">
-                                <img src="{{ asset('build/images/' ~ result.image) }}" alt="{{ result.name }}" class="w-16 h-16 rounded-lg">
-                                <div>
-                                    <p class="text-gray-300">{{ result.name }}</p>
-                                    <a href="{{ result.url }}" class="text-purple-400 hover:underline">View on Marketplace</a>
-                                </div>
-                            </div>
-                        {% elseif result.type == 'project' %}
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex space-x-6">
+            <!-- Main Results -->
+            <div class="flex-1">
+                <div class="mb-4 text-gray-400">
+                    About {{ total_results|default(123456) }} results ({{ search_time|default(0.23) }} seconds)
+                </div>
+
+                <!-- People Card (Nimbus AI) -->
+                {% if app.request.query.get('q')|lower in ['sahar h', 'emmanuel m'] %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
+                        <div class="flex space-x-4">
+                            <img src="{{ asset('build/images/' ~ (app.request.query.get('q')|lower == 'sahar h' ? 'sahar-h.jpg' : 'emmanuel-m.jpg')) }}" alt="{{ app.request.query.get('q') }}" class="w-24 h-24 rounded-full">
                             <div>
-                                <a href="{{ result.url }}" class="text-purple-400 font-semibold hover:underline">{{ result.name }}</a>
-                                <p class="text-gray-400 text-sm">{{ result.description|default('No description available') }}</p>
+                                <h2 class="text-2xl font-bold text-purple-400">{{ app.request.query.get('q') }}</h2>
+                                <p class="text-gray-300">{{ app.request.query.get('q')|lower == 'sahar h' ? 'AI Researcher and Kodoverse Innovator' : 'Blockchain Developer and Aviyon Contributor' }}</p>
+                                <p class="text-gray-400 mt-2">{{ app.request.query.get('q')|lower == 'sahar h' ? 'Sahar H is a leading AI researcher in the Kodoverse, known for her work on Nimbus AI.' : 'Emmanuel M is a blockchain developer who has contributed to Aviyon’s DeFi integrations.' }}</p>
+                                <div class="mt-4 flex space-x-3">
+                                    <a href="#" class="text-purple-400 hover:underline">Twitter</a>
+                                    <a href="#" class="text-purple-400 hover:underline">LinkedIn</a>
+                                    <a href="#" class="text-purple-400 hover:underline">Kodoverse Profile</a>
+                                </div>
                             </div>
-                        {% endif %}
+                        </div>
                     </div>
-                {% endfor %}
-            </div>
-            <!-- Pagination -->
-            <div class="flex justify-center mt-8 space-x-2">
-                {% if current_page > 1 %}
-                    <a href="{{ path('search', {'q': query, 'type': type, 'date_range': date_range, 'sort': sort, 'page': current_page - 1}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Previous</a>
                 {% endif %}
-                <span class="text-gray-300 px-4 py-2">Page {{ current_page }} of {{ total_pages }}</span>
-                {% if current_page < total_pages %}
-                    <a href="{{ path('search', {'q': query, 'type': type, 'date_range': date_range, 'sort': sort, 'page': current_page + 1}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Next</a>
+
+                <!-- Platform Knowledge Panel (Nimbus AI) -->
+                {% if app.request.query.get('q')|lower == 'kodonomad' %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
+                        <h2 class="text-2xl font-bold text-purple-400">Kodonomad Platform</h2>
+                        <div class="flex space-x-4 mt-4">
+                            <img src="{{ asset('build/images/kodonomad-profile.jpg') }}" alt="Kodonomad" class="w-32 h-32 rounded-lg">
+                            <div>
+                                <p class="text-gray-300"><strong>Description:</strong> Kodonomad is a decentralized platform in the Kodoverse, focusing on NFT trading and virtual world development.</p>
+                                <p class="text-gray-300 mt-2"><strong>Founded:</strong> 2023</p>
+                                <p class="text-gray-300"><strong>Users:</strong> 50,000+</p>
+                                <p class="text-gray-300"><strong>Website:</strong> <a href="https://kodonomad.com" class="text-purple-400 hover:underline">kodonomad.com</a></p>
+                            </div>
+                        </div>
+                        <!-- Image Carousel -->
+                        <div class="mt-4">
+                            <h3 class="text-xl text-purple-400 mb-2">Images</h3>
+                            <div class="flex space-x-2 overflow-x-auto">
+                                <img src="{{ asset('build/images/kodonomad-1.jpg') }}" alt="Kodonomad 1" class="w-24 h-24 rounded-lg">
+                                <img src="{{ asset('build/images/kodonomad-2.jpg') }}" alt="Kodonomad 2" class="w-24 h-24 rounded-lg">
+                                <img src="{{ asset('build/images/kodonomad-3.jpg') }}" alt="Kodonomad 3" class="w-24 h-24 rounded-lg">
+                            </div>
+                        </div>
+                        <!-- Video Carousel -->
+                        <div class="mt-4">
+                            <h3 class="text-xl text-purple-400 mb-2">Videos</h3>
+                            <div class="flex space-x-2 overflow-x-auto">
+                                <div class="w-48">
+                                    <video controls class="w-full rounded-lg">
+                                        <source src="{{ asset('build/videos/kodonomad-intro.mp4') }}" type="video/mp4">
+                                    </video>
+                                    <p class="text-gray-300 text-sm mt-1">Kodonomad Intro</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- News -->
+                        <div class="mt-4">
+                            <h3 class="text-xl text-purple-400 mb-2">News</h3>
+                            <div class="space-y-2">
+                                <div>
+                                    <a href="#" class="text-purple-400 hover:underline">Kodonomad Launches New NFT Marketplace</a>
+                                    <p class="text-gray-400 text-sm">April 2025 - Kodoverse News</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
+
+                <!-- Search Results -->
+                <div id="tab-all" class="tab-content">
+                    {% if results|default([])|length > 0 %}
+                        <div class="space-y-4">
+                            {% for result in results %}
+                                <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                                    <a href="{{ result.url }}" class="text-purple-400 text-lg font-semibold hover:underline">{{ result.title }}</a>
+                                    <p class="text-gray-400 text-sm">{{ result.url }}</p>
+                                    <p class="text-gray-300 mt-1">{{ result.description|length > 150 ? result.description|slice(0, 150) ~ '...' : result.description }}</p>
+                                    {% if result.type == 'nft' or result.type == 'platform' %}
+                                        <img src="{{ asset('build/images/' ~ result.image|default('placeholder.jpg')) }}" alt="{{ result.title }}" class="mt-2 w-16 h-16 rounded-lg">
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-gray-300">No results found. Try adjusting your search query.</p>
+                    {% endif %}
+                </div>
+
+                <!-- Users Tab -->
+                <div id="tab-users" class="tab-content hidden">
+                    <!-- Filter users dynamically via JS -->
+                </div>
+
+                <!-- Platforms Tab -->
+                <div id="tab-platforms" class="tab-content hidden">
+                    <!-- Filter platforms dynamically via JS -->
+                </div>
+
+                <!-- Posts Tab -->
+                <div id="tab-posts" class="tab-content hidden">
+                    <!-- Filter posts dynamically via JS -->
+                </div>
+
+                <!-- NFTs Tab -->
+                <div id="tab-nfts" class="tab-content hidden">
+                    <!-- Filter NFTs dynamically via JS -->
+                </div>
+
+                <!-- Images Tab -->
+                <div id="tab-images" class="tab-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="{{ asset('build/images/sample-1.jpg') }}" alt="Sample 1" class="w-full h-32 object-cover rounded-lg">
+                        <img src="{{ asset('build/images/sample-2.jpg') }}" alt="Sample 2" class="w-full h-32 object-cover rounded-lg">
+                        <img src="{{ asset('build/images/sample-3.jpg') }}" alt="Sample 3" class="w-full h-32 object-cover rounded-lg">
+                        <img src="{{ asset('build/images/sample-4.jpg') }}" alt="Sample 4" class="w-full h-32 object-cover rounded-lg">
+                    </div>
+                </div>
+
+                <!-- Videos Tab -->
+                <div id="tab-videos" class="tab-content hidden">
+                    <div class="flex space-x-4 overflow-x-auto">
+                        <div class="w-48">
+                            <video controls class="w-full rounded-lg">
+                                <source src="{{ asset('build/videos/sample-video.mp4') }}" type="video/mp4">
+                            </video>
+                            <p class="text-gray-300 text-sm mt-1">Sample Video</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Tab -->
+                <div id="tab-news" class="tab-content hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <a href="#" class="text-purple-400 hover:underline">Latest Kodoverse Update</a>
+                            <p class="text-gray-400 text-sm">April 2025 - Kodoverse News</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    {% set current_page = app.request.query.get('page')|default(1)|number_format %}
+                    {% set total_pages = total_pages|default(10) %}
+                    {% if current_page > 1 %}
+                        <a href="{{ path('search', {'q': app.request.query.get('q'), 'page': current_page - 1}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Previous</a>
+                    {% endif %}
+                    <span class="text-gray-300 px-4 py-2">Page {{ current_page }} of {{ total_pages }}</span>
+                    {% if current_page < total_pages %}
+                        <a href="{{ path('search', {'q': app.request.query.get('q'), 'page': current_page + 1}) }}" class="bg-gray-700 text-gray-100 px-4 py-2 rounded-lg hover:bg-gray-600 transition">Next</a>
+                    {% endif %}
+                </div>
             </div>
-        {% else %}
-            <p class="text-gray-300">No results found. Try adjusting your search query or filters.</p>
-        {% endif %}
-    </section>
+
+            <!-- Sidebar (Related Searches, Stats) -->
+            <div class="w-1/3 hidden lg:block">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Related Searches</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ path('search', {'q': 'kodonomad nfts'}) }}" class="text-purple-400 hover:underline">Kodonomad NFTs</a></li>
+                        <li><a href="{{ path('search', {'q': 'sahar h research'}) }}" class="text-purple-400 hover:underline">Sahar H Research</a></li>
+                        <li><a href="{{ path('search', {'q': 'emmanuel m blockchain'}) }}" class="text-purple-400 hover:underline">Emmanuel M Blockchain</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    // Search Suggestions
+    const searchInput = document.getElementById('search-input');
+    const suggestions = document.getElementById('search-suggestions');
+    searchInput.addEventListener('input', function() {
+        if (this.value.length > 2) {
+            suggestions.classList.remove('hidden');
+        } else {
+            suggestions.classList.add('hidden');
+        }
+    });
+
+    // Tab Switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            tabButtons.forEach(btn => btn.classList.remove('active', 'border-purple-400', 'text-purple-400'));
+            tabContents.forEach(content => content.classList.add('hidden'));
+            
+            this.classList.add('active', 'border-purple-400', 'text-purple-400');
+            document.getElementById(`tab-${this.dataset.tab}`).classList.remove('hidden');
+        });
+    });
+
+    // Lazy Load Images
+    document.querySelectorAll('img').forEach(img => {
+        img.setAttribute('loading', 'lazy');
+    });
+</script>
 {% endblock %}

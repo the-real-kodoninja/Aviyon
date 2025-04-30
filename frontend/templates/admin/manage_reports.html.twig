@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Manage Reports{% endblock %}
+
+{% block body %}
+<div class="flex min-h-screen bg-gray-900">
+    <!-- Include the sidebar -->
+    {% include 'admin/sidebar.html.twig' %}
+
+    <div class="flex-1 p-6 ml-64">
+        <!-- Header -->
+        <section class="py-12">
+            <h1 class="text-4xl font-bold text-purple-400 mb-4">Manage Reports</h1>
+            <p class="text-xl text-gray-300 mb-8">Review and manage reported content in the Kodoverse.</p>
+        </section>
+
+        <!-- Reports List -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Reported Content</h2>
+            <div class="mb-4">
+                <input type="text" id="report-search" placeholder="Search reports..." class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
+            <div class="space-y-4" id="report-list">
+                {% for report in reports %}
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg report-item">
+                        <p class="text-gray-300 mb-2"><strong>Type:</strong> {{ report.type|capitalize }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Content:</strong> {{ report.content|length > 100 ? report.content|slice(0, 100) ~ '...' : report.content }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Reported By:</strong> {{ report.reported_by }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Reason:</strong> {{ report.reason }}</p>
+                        <p class="text-gray-300 mb-2"><strong>Timestamp:</strong> {{ report.timestamp|date('Y-m-d H:i') }}</p>
+                        <div class="flex space-x-2">
+                            <a href="{{ path('admin_report_view', {'id': report.id}) }}" class="text-purple-400 hover:underline">View Details</a>
+                            <form action="{{ path('admin_report_dismiss') }}" method="POST">
+                                <input type="hidden" name="report_id" value="{{ report.id }}">
+                                <button type="submit" class="text-green-400 hover:underline">Dismiss</button>
+                            </form>
+                            <form action="{{ path('admin_report_remove_content') }}" method="POST">
+                                <input type="hidden" name="report_id" value="{{ report.id }}">
+                                <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to remove this content?')">Remove Content</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+document.getElementById('report-search').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const items = document.querySelectorAll('.report-item');
+    items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
+</script>
+{% endblock %}

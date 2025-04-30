@@ -25,6 +25,27 @@
 </div>
 
 <script>
+// Function to initialize modal
+function initModal(modalId, triggerSelector, closeSelector) {
+    const modal = document.getElementById(modalId);
+    const triggers = document.querySelectorAll(triggerSelector);
+    const closeButton = document.querySelector(closeSelector);
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+    });
+
+    closeButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+}
+
 // Asset data
 const assets = [
     { id: 'bitcoin', name: 'BTC', type: 'crypto', stopLoss: 30000 },
@@ -149,6 +170,9 @@ async function updateTicker() {
             });
         });
     });
+
+    // Duplicate items to create a seamless loop
+    tickerItems.innerHTML += tickerItems.innerHTML;
 }
 
 // Initialize Modal
@@ -162,10 +186,11 @@ setInterval(updateTicker, 30000);
 <style>
 .ticker-container {
     width: max-content;
+    min-height: 40px; /* Ensure visibility */
 }
 @keyframes ticker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 .animate-ticker {
     animation: ticker 30s linear infinite;

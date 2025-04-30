@@ -3,156 +3,333 @@
 {% block title %}Aviyon - Admin Panel{% endblock %}
 
 {% block body %}
-    <!-- Admin Header -->
-    <section class="py-12">
-        <h1 class="text-4xl font-bold text-purple-400 mb-4">Admin Control Center</h1>
-        <p class="text-xl text-gray-300 mb-8">Oversee and manage all aspects of the Kodoverse platform.</p>
-    </section>
+<div class="flex min-h-screen bg-gray-900">
+    <!-- Include the sidebar -->
+    {% include 'admin/sidebar.html.twig' %}
 
-    <!-- System Metrics -->
-    <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 py-12">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">Total Users</h3>
-            <p class="text-3xl text-gray-100">{{ system_metrics.total_users }}</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">Active Platforms</h3>
-            <p class="text-3xl text-gray-100">{{ system_metrics.active_platforms }}</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">Total Transactions</h3>
-            <p class="text-3xl text-gray-100">{{ system_metrics.total_transactions }}</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-            <h3 class="text-xl text-purple-400 mb-2">System Uptime</h3>
-            <p class="text-3xl text-gray-100">{{ system_metrics.uptime }}%</p>
-        </div>
-    </section>
+    <div class="flex-1 p-6 ml-64">
+        <!-- Admin Header -->
+        <section class="py-12">
+            <h1 class="text-4xl font-bold text-purple-400 mb-4">Admin Control Center</h1>
+            <p class="text-xl text-gray-300 mb-8">Oversee and manage all aspects of the Kodoverse platform.</p>
+        </section>
 
-    <!-- Manage Users -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Manage Users</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl text-purple-400">User Overview</h3>
-                <a href="{{ path('admin_users_new') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Add New User</a>
+        <!-- System Metrics -->
+        <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 py-12">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">Total Users</h3>
+                <p class="text-3xl text-gray-100">{{ system_metrics.total_users }}</p>
             </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-gray-300">
-                    <thead>
-                        <tr class="border-b border-gray-700">
-                            <th class="p-3 text-left">Username</th>
-                            <th class="p-3 text-left">Email</th>
-                            <th class="p-3 text-left">Role</th>
-                            <th class="p-3 text-left">Status</th>
-                            <th class="p-3 text-left">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                            <tr class="border-b border-gray-700">
-                                <td class="p-3">{{ user.username }}</td>
-                                <td class="p-3">{{ user.email }}</td>
-                                <td class="p-3">{{ user.role }}</td>
-                                <td class="p-3">
-                                    <span class="px-2 py-1 rounded {{ user.status == 'active' ? 'bg-green-500' : 'bg-red-500' }} text-white text-sm">
-                                        {{ user.status|capitalize }}
-                                    </span>
-                                </td>
-                                <td class="p-3 flex space-x-2">
-                                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="text-purple-400 hover:underline">Edit</a>
-                                    <form action="{{ path('admin_user_delete') }}" method="POST">
-                                        <input type="hidden" name="user_id" value="{{ user.id }}">
-                                        <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">Active Platforms</h3>
+                <p class="text-3xl text-gray-100">{{ system_metrics.active_platforms }}</p>
             </div>
-        </div>
-    </section>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">Total Transactions</h3>
+                <p class="text-3xl text-gray-100">{{ system_metrics.total_transactions }}</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl text-purple-400 mb-2">System Uptime</h3>
+                <p class="text-3xl text-gray-100">{{ system_metrics.uptime }}%</p>
+            </div>
+        </section>
 
-    <!-- Manage Platforms -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Manage Platforms</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl text-purple-400">Platform Overview</h3>
-                <a href="{{ path('admin_platforms_new') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Add New Platform</a>
-            </div>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {% for platform in platforms %}
-                    <div class="bg-gray-900 p-4 rounded-lg">
-                        <div class="flex items-center space-x-3 mb-2">
-                            <img src="{{ asset('build/images/' ~ platform.name ~ '-profile.jpg') }}" alt="{{ platform.name }}" class="w-10 h-10 rounded-full">
-                            <h4 class="text-purple-400 font-semibold">{{ platform.name }}</h4>
-                        </div>
-                        <p class="text-gray-300 mb-2">{{ platform.description|truncate(100) }}</p>
-                        <div class="flex space-x-2">
-                            <a href="{{ path('admin_platform_edit', {'id': platform.id}) }}" class="text-purple-400 hover:underline">Edit</a>
-                            <form action="{{ path('admin_platform_delete') }}" method="POST">
-                                <input type="hidden" name="platform_id" value="{{ platform.id }}">
-                                <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to delete this platform?')">Delete</button>
-                            </form>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- Reported Content -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Reported Content</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-4">Review Reported Items</h3>
-            <div class="space-y-4">
-                {% for report in reports %}
-                    <div class="bg-gray-900 p-4 rounded-lg">
-                        <p class="text-gray-300 mb-2"><strong>Type:</strong> {{ report.type|capitalize }}</p>
-                        <p class="text-gray-300 mb-2"><strong>Content:</strong> {{ report.content|truncate(100) }}</p>
-                        <p class="text-gray-300 mb-2"><strong>Reported By:</strong> {{ report.reported_by }}</p>
-                        <p class="text-gray-300 mb-2"><strong>Reason:</strong> {{ report.reason }}</p>
-                        <div class="flex space-x-2">
-                            <a href="{{ path('admin_report_view', {'id': report.id}) }}" class="text-purple-400 hover:underline">View Details</a>
-                            <form action="{{ path('admin_report_dismiss') }}" method="POST">
-                                <input type="hidden" name="report_id" value="{{ report.id }}">
-                                <button type="submit" class="text-green-400 hover:underline">Dismiss</button>
-                            </form>
-                            <form action="{{ path('admin_report_remove_content') }}" method="POST">
-                                <input type="hidden" name="report_id" value="{{ report.id }}">
-                                <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to remove this content?')">Remove Content</button>
-                            </form>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- Platform Settings -->
-    <section class="py-12">
-        <h2 class="text-3xl font-semibold text-purple-400 mb-6">Platform Settings</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h3 class="text-xl text-purple-400 mb-4">Configure System Settings</h3>
-            <form action="{{ path('admin_settings_save') }}" method="POST">
-                <div class="grid gap-4 md:grid-cols-2">
-                    <div>
-                        <label for="site_name" class="block text-gray-300 mb-2">Site Name</label>
-                        <input type="text" id="site_name" name="site_name" value="{{ settings.site_name }}" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                    </div>
-                    <div>
-                        <label for="maintenance_mode" class="block text-gray-300 mb-2">Maintenance Mode</label>
-                        <select id="maintenance_mode" name="maintenance_mode" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                            <option value="off" {{ settings.maintenance_mode == 'off' ? 'selected' }}>Off</option>
-                            <option value="on" {{ settings.maintenance_mode == 'on' ? 'selected' }}>On</option>
-                        </select>
-                    </div>
+        <!-- Analytics Dashboard -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Analytics Dashboard</h2>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- User Growth -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">User Growth</h3>
+                    <canvas id="userGrowthChart" class="w-full h-64"></canvas>
                 </div>
-                <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Save Settings</button>
-            </form>
-        </div>
-    </section>
+                <!-- Platform Activity -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Platform Activity</h3>
+                    <canvas id="platformActivityChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- Transaction Volume -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Transaction Volume</h3>
+                    <canvas id="transactionVolumeChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- AVY Balance Distribution -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">AVY Balance Distribution</h3>
+                    <canvas id="avyBalanceChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- NFT Trading Activity -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">NFT Trading Activity</h3>
+                    <canvas id="nftTradingChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- Resource Usage -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Resource Usage</h3>
+                    <canvas id="resourceUsageChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- Active Instances -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Active Instances</h3>
+                    <canvas id="activeInstancesChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- DeFi Activity -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">DeFi Activity</h3>
+                    <canvas id="defiActivityChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- User Engagement -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">User Engagement</h3>
+                    <canvas id="userEngagementChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- Error Rates -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">Error Rates</h3>
+                    <canvas id="errorRatesChart" class="w-full h-64"></canvas>
+                </div>
+                <!-- API Usage -->
+                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl text-purple-400 mb-4">API Usage</h3>
+                    <canvas id="apiUsageChart" class="w-full h-64"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manage Platforms -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Manage Platforms</h2>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl text-purple-400">Platform Overview</h3>
+                    {% try %}
+                        <a href="{{ path('admin_manage_platforms') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Manage Platforms</a>
+                    {% catch %}
+                        <span class="text-gray-500">Manage Platforms (Route not available)</span>
+                    {% endtry %}
+                </div>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {% for platform in platforms %}
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <img src="{{ asset('build/images/' ~ platform.name ~ '-profile.jpg') }}" alt="{{ platform.name }}" class="w-10 h-10 rounded-full">
+                                <h4 class="text-purple-400 font-semibold">{{ platform.name }}</h4>
+                            </div>
+                            <p class="text-gray-300 mb-2">{{ platform.description|length > 100 ? platform.description|slice(0, 100) ~ '...' : platform.description }}</p>
+                            <div class="flex space-x-2">
+                                {% try %}
+                                    <a href="{{ path('admin_manage_platforms') }}" class="text-purple-400 hover:underline">View Details</a>
+                                {% catch %}
+                                    <span class="text-gray-500">View Details (Route not available)</span>
+                                {% endtry %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Reported Content -->
+        <section class="py-12">
+            <h2 class="text-3xl font-semibold text-purple-400 mb-6">Reported Content</h2>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl text-purple-400 mb-4">Review Reported Items</h3>
+                <div class="space-y-4">
+                    {% for report in reports %}
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <p class="text-gray-300 mb-2"><strong>Type:</strong> {{ report.type|capitalize }}</p>
+                            <p class="text-gray-300 mb-2"><strong>Content:</strong> {{ report.content|length > 100 ? report.content|slice(0, 100) ~ '...' : report.content }}</p>
+                            <p class="text-gray-300 mb-2"><strong>Reported By:</strong> {{ report.reported_by }}</p>
+                            <p class="text-gray-300 mb-2"><strong>Reason:</strong> {{ report.reason }}</p>
+                            <div class="flex space-x-2">
+                                <a href="{{ path('admin_report_view', {'id': report.id}) }}" class="text-purple-400 hover:underline">View Details</a>
+                                <form action="{{ path('admin_report_dismiss') }}" method="POST">
+                                    <input type="hidden" name="report_id" value="{{ report.id }}">
+                                    <button type="submit" class="text-green-400 hover:underline">Dismiss</button>
+                                </form>
+                                <form action="{{ path('admin_report_remove_content') }}" method="POST">
+                                    <input type="hidden" name="report_id" value="{{ report.id }}">
+                                    <button type="submit" class="text-red-400 hover:underline" onclick="return confirm('Are you sure you want to remove this content?')">Remove Content</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// User Growth Chart
+const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+new Chart(userGrowthCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'New Users',
+            data: [120, 190, 300, 500, 800],
+            borderColor: '#8b5cf6',
+            fill: false
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// Platform Activity Chart
+const platformActivityCtx = document.getElementById('platformActivityChart').getContext('2d');
+new Chart(platformActivityCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+            label: 'Active Platforms',
+            data: [15, 22, 18, 25, 30],
+            backgroundColor: '#8b5cf6'
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// Transaction Volume Chart
+const transactionVolumeCtx = document.getElementById('transactionVolumeChart').getContext('2d');
+new Chart(transactionVolumeCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'Transactions (ETH)',
+            data: [50, 75, 120, 200, 300],
+            borderColor: '#8b5cf6',
+            fill: false
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// AVY Balance Distribution Chart
+const avyBalanceCtx = document.getElementById('avyBalanceChart').getContext('2d');
+new Chart(avyBalanceCtx, {
+    type: 'pie',
+    data: {
+        labels: ['<100 AVY', '100-500 AVY', '>500 AVY'],
+        datasets: [{
+            data: [40, 35, 25],
+            backgroundColor: ['#8b5cf6', '#6b48ff', '#a78bfa']
+        }]
+    }
+});
+
+// NFT Trading Activity Chart
+const nftTradingCtx = document.getElementById('nftTradingChart').getContext('2d');
+new Chart(nftTradingCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+            label: 'NFT Trades',
+            data: [10, 15, 12, 20, 25],
+            backgroundColor: '#8b5cf6'
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// Resource Usage Chart
+const resourceUsageCtx = document.getElementById('resourceUsageChart').getContext('2d');
+new Chart(resourceUsageCtx, {
+    type: 'line',
+    data: {
+        labels: ['5m', '4m', '3m', '2m', '1m'],
+        datasets: [
+            { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
+            { label: 'RAM', data: [2, 3, 4, 3.5, 4'alto], borderColor: '#6b48ff', fill: false }
+        ]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// Active Instances Chart
+const activeInstancesCtx = document.getElementById('activeInstancesChart').getContext('2d');
+new Chart(activeInstancesCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'Active Instances',
+            data: [50, 60, 80, 90, 110],
+            borderColor: '#8b5cf6',
+            fill: false
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// DeFi Activity Chart
+const defiActivityCtx = document.getElementById('defiActivityChart').getContext('2d');
+new Chart(defiActivityCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+            label: 'DeFi Transactions',
+            data: [20, 30, 25, 40, 50],
+            backgroundColor: '#8b5cf6'
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// User Engagement Chart
+const userEngagementCtx = document.getElementById('userEngagementChart').getContext('2d');
+new Chart(userEngagementCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'Engagement Hours',
+            data: [200, 250, 300, 400, 500],
+            borderColor: '#8b5cf6',
+            fill: false
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// Error Rates Chart
+const errorRatesCtx = document.getElementById('errorRatesChart').getContext('2d');
+new Chart(errorRatesCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'Error Rate (%)',
+            data: [0.5, 0.3, 0.7, 0.4, 0.2],
+            borderColor: '#8b5cf6',
+            fill: false
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+
+// API Usage Chart
+const apiUsageCtx = document.getElementById('apiUsageChart').getContext('2d');
+new Chart(apiUsageCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            label: 'API Calls',
+            data: [1000, 1500, 2000, 2500, 3000],
+            borderColor: '#8b5cf6',
+            fill: false
+        }]
+    },
+    options: { scales: { y: { beginAtZero: true } } }
+});
+</script>
 {% endblock %}

@@ -1,0 +1,110 @@
+<div class="fixed top-0 left-0 h-full w-64 bg-gray-800 shadow-lg">
+    <div class="p-6">
+        <h2 class="text-2xl font-bold text-purple-400">Aviyon Admin</h2>
+        <p class="text-gray-400 text-sm mt-2">Manage the Kodoverse platform</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="px-6 mb-4">
+        <input type="text" id="admin-search" placeholder="Search admin tools..." class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="px-6">
+        <ul class="space-y-2">
+            <li>
+                <a href="{{ path('admin') }}" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 hover:text-purple-400 rounded-lg transition">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <!-- Platforms (Collapsible) -->
+            <li>
+                <button class="flex items-center w-full p-3 text-gray-300 hover:bg-gray-700 hover:text-purple-400 rounded-lg transition" onclick="toggleMenu('platforms-menu')">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Platforms
+                    <svg class="w-4 h-4 ml-auto transform" id="platforms-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="platforms-menu" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('admin_manage_platforms') }}" class="block p-2 text-gray-400 hover:text-purple-400">Manage Platforms</a></li>
+                </ul>
+            </li>
+            <!-- Users (Collapsible) -->
+            <li>
+                <button class="flex items-center w-full p-3 text-gray-300 hover:bg-gray-700 hover:text-purple-400 rounded-lg transition" onclick="toggleMenu('users-menu')">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    Users
+                    <svg class="w-4 h-4 ml-auto transform" id="users-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="users-menu" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('admin_manage_users') }}" class="block p-2 text-gray-400 hover:text-purple-400">Manage Users</a></li>
+                </ul>
+            </li>
+            <!-- Reports (Collapsible) -->
+            <li>
+                <button class="flex items-center w-full p-3 text-gray-300 hover:bg-gray-700 hover:text-purple-400 rounded-lg transition" onclick="toggleMenu('reports-menu')">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Reports
+                    <svg class="w-4 h-4 ml-auto transform" id="reports-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <ul id="reports-menu" class="ml-6 space-y-2 hidden">
+                    <li><a href="{{ path('admin_manage_reports') }}" class="block p-2 text-gray-400 hover:text-purple-400">Manage Reports</a></li>
+                </ul>
+            </li>
+            <!-- Settings -->
+            <li>
+                <a href="{{ path('admin_settings_save') }}" class="flex items-center p-3 text-gray-300 hover:bg-gray-700 hover:text-purple-400 rounded-lg transition">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path>
+                    </svg>
+                    Settings
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Notifications -->
+    <div class="absolute bottom-6 px-6 w-full">
+        <div class="bg-gray-700 p-4 rounded-lg">
+            <h3 class="text-gray-300 font-semibold mb-2">Notifications</h3>
+            <p class="text-gray-400 text-sm">New reports: <span class="text-purple-400">3</span></p>
+            <p class="text-gray-400 text-sm">Pending actions: <span class="text-purple-400">5</span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    const arrow = document.getElementById(menuId.replace('menu', 'arrow'));
+    menu.classList.toggle('hidden');
+    arrow.classList.toggle('rotate-180');
+}
+
+document.getElementById('admin-search').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const menuItems = document.querySelectorAll('nav ul li');
+    menuItems.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchTerm)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+</script>

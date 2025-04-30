@@ -12,7 +12,24 @@ class CareersController extends AbstractController
     #[Route('/careers', name: 'careers')]
     public function index(): Response
     {
-        return $this->render('pages/careers.html.twig');
+        $jobs = [
+            [
+                'title' => 'Blockchain Developer',
+                'department' => 'Engineering',
+                'location' => 'Remote',
+                'description' => 'Develop and maintain blockchain-based applications for the Kodoverse.',
+            ],
+            [
+                'title' => 'AI Specialist',
+                'department' => 'AI Development',
+                'location' => 'Remote',
+                'description' => 'Enhance Nimbus AI with advanced machine learning capabilities.',
+            ],
+        ];
+
+        return $this->render('pages/careers.html.twig', [
+            'jobs' => $jobs,
+        ]);
     }
 
     #[Route('/careers/apply', name: 'careers_apply', methods: ['POST'])]

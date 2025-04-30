@@ -1,224 +1,177 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Aviyon - NFT Marketplace{% endblock %}
+{% block title %}Aviyon - Dashboard Marketplace{% endblock %}
 
 {% block body %}
+<div class="dashboard-container">
+    <!-- Include the sidebar -->
+    {% include 'dashboard/sidebar.html.twig' %}
+
+    <div class="main-content">
 <section class="marketplace container mx-auto py-12 px-4">
-    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4 animate-fade-in">Aviyon NFT Bazaar</h1>
-    <p class="text-gray-400 mb-8 animate-fade-in-delayed">Discover, buy, and bid on unique NFTs in the kodoverse.</p>
+    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4 animate-fade-in">Dashboard Marketplace</h1>
+    <p class="text-gray-400 mb-8 animate-fade-in-delayed">Manage and explore your NFTs in the Kodoverse.</p>
 
     <!-- Filters -->
-    <div class="flex flex-wrap justify-between gap-4 mb-8 bg-dark-light p-4 rounded-lg shadow-lg animate-slide-up">
-        <select class="form-control w-48 bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="sort-by">
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="newest">Newest</option>
-            <option value="popularity">Popularity</option>
-        </select>
-        <select class="form-control w-48 bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="category">
-            <option value="all">Category: All</option>
-            <option value="art">Art</option>
-            <option value="collectibles">Collectibles</option>
-            <option value="gaming">Gaming</option>
-            <option value="avatars">Avatars</option>
-        </select>
-        <select class="form-control w-48 bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="blockchain">
-            <option value="all">Blockchain: All</option>
-            <option value="icp">Internet Computer</option>
-            <option value="ethereum">Ethereum</option>
-        </select>
-        <input type="text" class="form-control flex-1 bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="nft-search" placeholder="Search NFTs by name, creator, or description">
+    <div class="mb-8">
+        <div class="flex flex-wrap gap-4">
+            <select id="category-filter" class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                <option value="">All Categories</option>
+                <option value="avatars">Avatars</option>
+                <option value="art">Art</option>
+            </select>
+            <select id="blockchain-filter" class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                <option value="">All Blockchains</option>
+                <option value="icp">ICP</option>
+                <option value="ethereum">Ethereum</option>
+            </select>
+        </div>
     </div>
 
     <!-- NFT Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8" id="nft-grid">
-        {% for nft in nfts %}
-            <div class="profile-card nft-card bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" data-nft-id="{{ nft.id }}" data-category="{{ nft.category|default('art') }}" data-blockchain="{{ nft.blockchain|default('icp') }}">
-                <canvas id="nft-{{ nft.id }}-preview" class="w-full h-48 mb-4 rounded-lg" data-model="{{ nft.modelUrl }}"></canvas>
-                <h3 class="text-xl font-inter text-neon-purple">{{ nft.name }}</h3>
-                <p class="text-gray-400">Creator: <a href="{{ path('user_profile', {'username': nft.creator}) }}" class="hover:text-neon-purple transition">{{ nft.creator }}</a></p>
-                <p class="text-gray-400">Price: {{ nft.price }} {{ nft.currency|default('ETH') }}</p>
-                <p class="text-gray-400 text-sm">Created: {{ nft.createdAt|date('Y-m-d') }}</p>
-                <div class="flex space-x-3 mt-4">
-                    <button class="btn buy-now bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter" data-nft-id="{{ nft.id }}">Buy Now</button>
-                    <button class="btn place-bid bg-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-500 transition font-inter" data-nft-id="{{ nft.id }}">Place Bid</button>
+        {% if nfts is defined and nfts is not empty %}
+            {% for nft in nfts %}
+                <div class="profile-card nft-card bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" data-nft-id="{{ nft.id }}" data-category="{{ nft.category }}" data-blockchain="{{ nft.blockchain }}">
+                    <canvas id="nft-{{ nft.id }}-preview" class="w-full h-48 mb-4 rounded-lg" data-model="{{ nft.modelUrl }}"></canvas>
+                    <h3 class="text-xl font-inter text-neon-purple">{{ nft.name }}</h3>
+                    <p class="text-gray-400">Creator: <a href="{{ path('user_profile', {'username': nft.creator}) }}" class="hover:text-neon-purple transition">{{ nft.creator }}</a></p>
+                    <p class="text-gray-400">Price: {{ nft.price }}</p>
+                    <p class="text-gray-400 text-sm">Created: {{ nft.createdAt|date('Y-m-d') }}</p>
+                    <div class="flex space-x-3 mt-4">
+                        <button class="btn bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter view-details">View Details</button>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <!-- NFT Detail Modal -->
-    <div id="nft-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50 animate-fade-in">
-        <div class="bg-dark-light p-8 rounded-lg max-w-2xl w-full shadow-lg">
-            <div class="flex justify-between items-center mb-6">
-                <h2 id="modal-title" class="text-2xl font-inter text-neon-purple"></h2>
-                <button id="modal-close" class="text-gray-400 hover:text-neon-purple transition">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <canvas id="modal-nft-preview" class="w-full h-64 mb-6 rounded-lg"></canvas>
-            <p id="modal-creator" class="text-gray-400 mb-2"></p>
-            <p id="modal-price" class="text-gray-400 mb-2"></p>
-            <p id="modal-description" class="text-gray-400 mb-6"></p>
-            <div class="flex space-x-4">
-                <button id="modal-buy" class="btn bg-neon-purple text-white px-6 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">Buy Now</button>
-                <div class="flex items-center">
-                    <input type="number" id="modal-bid" class="form-control w-32 bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 mr-3 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" placeholder="Enter bid" step="0.01">
-                    <button id="modal-bid-submit" class="btn bg-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-500 transition font-inter">Place Bid</button>
-                </div>
-            </div>
-        </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-400">No NFTs available at the moment.</p>
+        {% endif %}
     </div>
 </section>
-{% endblock %}
+
+<!-- Modal for NFT Details -->
+<div id="nft-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+    <div class="bg-dark-light p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <h3 class="text-2xl font-inter text-neon-purple mb-4" id="modal-title"></h3>
+        <canvas id="modal-preview" class="w-full h-64 mb-4 rounded-lg"></canvas>
+        <p class="text-gray-400 mb-2" id="modal-creator"></p>
+        <p class="text-gray-400 mb-2" id="modal-price"></p>
+        <p class="text-gray-400 mb-4" id="modal-created"></p>
+        <div class="flex justify-end space-x-3">
+            <button id="modal-close" class="text-gray-400 hover:underline">Close</button>
+            <a href="{{ path('checkout') }}" class="btn bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">Buy Now</a>
+        </div>
+    </div>
+</div>
+	</div>
+</div>
 
 {% block javascripts %}
 <script>
-const nfts = {{ nfts|json_encode|raw }};
+// Mock initNFTPreview function for NFT items
+function initNFTPreview(canvas, modelUrl) {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#8b5cf6';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '16px Arial';
+    ctx.fillText('NFT Preview Placeholder', 10, 50);
+    ctx.fillText(`Model: ${modelUrl || 'N/A'}`, 10, 80);
+}
 
-// Modal Functionality
-initModal('nft-modal', '.nft-card', '#modal-close');
-
-// Populate Modal on NFT Card Click
-document.querySelectorAll('.nft-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-        if (e.target.closest('.btn')) return;
-        const nftId = card.dataset.nftId;
-        const nft = nfts.find(n => n.id == nftId);
-        document.getElementById('modal-title').textContent = nft.name;
-        document.getElementById('modal-creator').textContent = `Creator: ${nft.creator}`;
-        document.getElementById('modal-price').textContent = `Price: ${nft.price} ${nft.currency || 'ETH'}`;
-        document.getElementById('modal-description').textContent = nft.description || 'A unique NFT in the kodoverse.';
-
-        // Render NFT in Modal
-        const modalCanvas = document.getElementById('modal-nft-preview');
-        initNFTPreview(modalCanvas, nft.modelUrl);
-    });
-});
-
-// Buy Now and Place Bid Logic
-document.querySelectorAll('.buy-now').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        const nftId = btn.dataset.nftId;
-        alert(`Initiating purchase for NFT ID: ${nftId}`);
-    });
-});
-
-document.querySelectorAll('.place-bid').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const nftId = btn.dataset.nftId;
-        const nft = nfts.find(n => n.id == nftId);
-        document.getElementById('modal-title').textContent = nft.name;
-        document.getElementById('modal-creator').textContent = `Creator: ${nft.creator}`;
-        document.getElementById('modal-price').textContent = `Price: ${nft.price} ${nft.currency || 'ETH'}`;
-        document.getElementById('modal-description').textContent = nft.description || 'A unique NFT in the kodoverse.';
-        document.getElementById('nft-modal').classList.remove('hidden');
-        document.getElementById('modal-bid').focus();
-
-        const modalCanvas = document.getElementById('modal-nft-preview');
-        initNFTPreview(modalCanvas, nft.modelUrl);
-    });
-});
-
-document.getElementById('modal-bid-submit').addEventListener('click', () => {
-    const bid = document.getElementById('modal-bid').value;
-    if (bid <= 0) {
-        alert('Please enter a valid bid amount.');
-        return;
-    }
-    alert(`Bid placed: ${bid} ETH`);
-    document.getElementById('nft-modal').classList.add('hidden');
-});
-
-// Filter and Search Functionality
-const sortBy = document.getElementById('sort-by');
-const category = document.getElementById('category');
-const blockchain = document.getElementById('blockchain');
-const searchInput = document.getElementById('nft-search');
-const nftGrid = document.getElementById('nft-grid');
-
+// Filter NFTs based on category and blockchain
 function filterNFTs() {
-    const sortValue = sortBy.value;
-    const categoryValue = category.value;
-    const blockchainValue = blockchain.value;
-    const searchValue = searchInput.value.toLowerCase();
+    const category = document.getElementById('category-filter').value;
+    const blockchain = document.getElementById('blockchain-filter').value;
+    const nftCards = document.querySelectorAll('.nft-card');
 
-    let filteredNFTs = [...nfts];
+    nftCards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        const cardBlockchain = card.dataset.blockchain;
 
-    if (categoryValue !== 'all') {
-        filteredNFTs = filteredNFTs.filter(nft => nft.category === categoryValue);
-    }
+        const categoryMatch = !category || cardCategory === category;
+        const blockchainMatch = !blockchain || cardBlockchain === blockchain;
 
-    if (blockchainValue !== 'all') {
-        filteredNFTs = filteredNFTs.filter(nft => nft.blockchain === blockchainValue);
-    }
+        if (categoryMatch && blockchainMatch) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
 
-    if (searchValue) {
-        filteredNFTs = filteredNFTs.filter(nft =>
-            nft.name.toLowerCase().includes(searchValue) ||
-            nft.creator.toLowerCase().includes(searchValue) ||
-            (nft.description && nft.description.toLowerCase().includes(searchValue))
-        );
-    }
+// Show NFT details in modal
+function showNFTDetails(nftCard) {
+    const modal = document.getElementById('nft-modal');
+    const title = document.getElementById('modal-title');
+    const preview = document.getElementById('modal-preview');
+    const creator = document.getElementById('modal-creator');
+    const price = document.getElementById('modal-price');
+    const created = document.getElementById('modal-created');
 
-    if (sortValue === 'price-asc') {
-        filteredNFTs.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    } else if (sortValue === 'price-desc') {
-        filteredNFTs.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-    } else if (sortValue === 'newest') {
-        filteredNFTs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    } else if (sortValue === 'popularity') {
-        filteredNFTs.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-    }
+    title.textContent = nftCard.querySelector('h3').textContent;
+    creator.textContent = `Creator: ${nftCard.querySelector('a').textContent}`;
+    price.textContent = nftCard.querySelector('p:nth-of-type(2)').textContent;
+    created.textContent = nftCard.querySelector('p:nth-of-type(3)').textContent;
 
-    nftGrid.innerHTML = filteredNFTs.map(nft => `
-        <div class="profile-card nft-card bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300 transform hover:-translate-y-1 animate-slide-up" data-nft-id="${nft.id}" data-category="${nft.category || 'art'}" data-blockchain="${nft.blockchain || 'icp'}">
-            <canvas id="nft-${nft.id}-preview" class="w-full h-48 mb-4 rounded-lg" data-model="${nft.modelUrl}"></canvas>
-            <h3 class="text-xl font-inter text-neon-purple">${nft.name}</h3>
-            <p class="text-gray-400">Creator: <a href="${path('user_profile', {'username': nft.creator})}" class="hover:text-neon-purple transition">${nft.creator}</a></p>
-            <p class="text-gray-400">Price: ${nft.price} ${nft.currency || 'ETH'}</p>
-            <p class="text-gray-400 text-sm">Created: ${new Date(nft.createdAt).toISOString().split('T')[0]}</p>
-            <div class="flex space-x-3 mt-4">
-                <button class="btn buy-now bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter" data-nft-id="${nft.id}">Buy Now</button>
-                <button class="btn place-bid bg-gray-600 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-500 transition font-inter" data-nft-id="${nft.id}">Place Bid</button>
-            </div>
-        </div>
-    `).join('');
+    const modelUrl = nftCard.querySelector('canvas').dataset.model;
+    initNFTPreview(preview, modelUrl);
 
+    modal.classList.remove('hidden');
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize NFT previews
     document.querySelectorAll('[id^="nft-"]').forEach(canvas => {
         if (canvas.dataset.initialized) return;
         canvas.dataset.initialized = true;
         initNFTPreview(canvas, canvas.dataset.model);
     });
-}
 
-sortBy.addEventListener('change', filterNFTs);
-category.addEventListener('change', filterNFTs);
-blockchain.addEventListener('change', filterNFTs);
-searchInput.addEventListener('input', filterNFTs);
+    // Filter functionality
+    document.getElementById('category-filter').addEventListener('change', filterNFTs);
+    document.getElementById('blockchain-filter').addEventListener('change', filterNFTs);
 
-filterNFTs();
+    // Modal functionality
+    document.querySelectorAll('.view-details').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const nftCard = btn.closest('.nft-card');
+            showNFTDetails(nftCard);
+        });
+    });
+
+    document.getElementById('modal-close').addEventListener('click', () => {
+        document.getElementById('nft-modal').classList.add('hidden');
+    });
+});
 </script>
 <style>
+.dashboard-container {
+    display: flex;
+}
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+}
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+.animate-fade-in-delayed {
+    animation: fadeIn 0.5s ease-in 0.2s;
+}
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-@keyframes fadeInDelayed {
-    0% { opacity: 0; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
 }
 @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
-.animate-fade-in { animation: fadeIn 0.5s ease-out; }
-.animate-fade-in-delayed { animation: fadeInDelayed 1s ease-out; }
-.animate-slide-up { animation: slideUp 0.5s ease-out; }
 </style>
+{% endblock %}
 {% endblock %}

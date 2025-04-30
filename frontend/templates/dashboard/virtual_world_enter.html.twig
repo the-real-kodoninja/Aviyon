@@ -3,8 +3,107 @@
 {% block title %}Enter Virtual World - Aviyon{% endblock %}
 
 {% block body %}
-<div class="container mx-auto px-4 py-6">
-    <h1 class="text-4xl font-inter text-neon-purple">Enter Virtual World</h1>
-    <p class="text-gray-300 mt-4">Virtual world entry page will be displayed here.</p>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Enter the Kodoverse Virtual World</h1>
+            <p class="text-gray-300 mb-8">
+                Step into the Kodoverse, a decentralized virtual realm where creators, developers, and dreamers collaborate. Choose your destination and let Nimbus AI guide you through immersive 3D spaces filled with NFT galleries, DeFi hubs, and collaborative projects.
+            </p>
+
+            <!-- Environment Selection -->
+            <div class="mb-12">
+                <h2 class="text-2xl text-purple-400 mb-4">Choose Your Destination</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-purple-400/50 transition-all duration-300">
+                        <h3 class="text-xl text-purple-400 mb-2">NFT Gallery</h3>
+                        <p class="text-gray-300 mb-4">Explore and showcase your NFT collections in a vibrant gallery space.</p>
+                        <button data-environment="nft-gallery" class="preview-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Preview</button>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-purple-400/50 transition-all duration-300">
+                        <h3 class="text-xl text-purple-400 mb-2">DeFi Hub</h3>
+                        <p class="text-gray-300 mb-4">Trade, stake, and manage your DeFi assets in a futuristic hub.</p>
+                        <button data-environment="defi-hub" class="preview-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Preview</button>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-purple-400/50 transition-all duration-300">
+                        <h3 class="text-xl text-purple-400 mb-2">Collaborative Space</h3>
+                        <p class="text-gray-300 mb-4">Work with others on projects in a shared 3D workspace.</p>
+                        <button data-environment="collab-space" class="preview-btn bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Canvas -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-12">
+                <h2 class="text-2xl text-purple-400 mb-4">Environment Preview</h2>
+                <canvas id="environment-preview" class="w-full h-96 rounded-lg"></canvas>
+                <div class="mt-4 flex space-x-4">
+                    <button id="enter-world" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Enter World</button>
+                    <button id="customize-avatar" class="bg-gray-600 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-500 transition">Customize Avatar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('environment-preview');
+    const ctx = canvas.getContext('2d');
+    const previewButtons = document.querySelectorAll('.preview-btn');
+    const enterWorldBtn = document.getElementById('enter-world');
+    const customizeAvatarBtn = document.getElementById('customize-avatar');
+    let selectedEnvironment = '';
+
+    // Mock environment preview
+    function updatePreview(environment) {
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#8b5cf6';
+        ctx.font = '24px Inter';
+        ctx.textAlign = 'center';
+
+        const descriptions = {
+            'nft-gallery': 'NFT Gallery: A vibrant space with floating holograms displaying your NFT collections.',
+            'defi-hub': 'DeFi Hub: A futuristic trading floor with interactive DeFi charts and staking stations.',
+            'collab-space': 'Collaborative Space: A 3D workspace with shared screens and virtual whiteboards.'
+        };
+
+        ctx.fillText(
+            descriptions[environment] || 'Select an environment to preview.',
+            canvas.width / 2,
+            canvas.height / 2
+        );
+        selectedEnvironment = environment;
+    }
+
+    // Initial preview
+    updatePreview('');
+
+    // Preview button handlers
+    previewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const environment = btn.dataset.environment;
+            updatePreview(environment);
+        });
+    });
+
+    // Enter world handler
+    enterWorldBtn.addEventListener('click', () => {
+        if (!selectedEnvironment) {
+            alert('Please select an environment to enter the Kodoverse.');
+            return;
+        }
+        alert(`Entering the Kodoverse: ${selectedEnvironment.replace('-', ' ').toUpperCase()}! (Placeholder functionality)`);
+    });
+
+    // Customize avatar handler
+    customizeAvatarBtn.addEventListener('click', () => {
+        alert('Customize your Kodoverse avatar with NFT accessories and styles! (Placeholder functionality)');
+    });
+});
+</script>
 {% endblock %}

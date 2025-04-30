@@ -292,6 +292,7 @@
 </div>
 
 {% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -334,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="text-gray-400 text-sm">${post.timestamp}</p>
                     <button class="like-btn text-gray-300 hover:text-neon-purple transition mt-2" data-post-id="${post.id}"><span>${post.likes}</span> Likes</button>
                     <button class="comment-toggle text-gray-300 hover:text-neon-purple transition ml-4">Comment</button>
-                    <form class="comment-form hidden mt-2" action="/comment" method="POST">
+                    <form class="comment-form hidden mt-2" action="{{ path('add_comment') }}" method="POST">
                         <input type="hidden" name="post_id" value="${post.id}">
                         <textarea name="comment" placeholder="Add a comment..." class="w-full p-2 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
                         <button type="submit" class="mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
@@ -445,4 +446,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+{% endblock %}
 {% endblock %}

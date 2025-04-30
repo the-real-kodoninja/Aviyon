@@ -1,11 +1,111 @@
 {% extends 'layouts/base.html.twig' %}
+
+{% block title %}Nimbus AI - Aviyon{% endblock %}
+
 {% block body %}
-  <h1 class="mb-4">Nimbus AI</h1>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">AI Assistance</h5>
-      <p class="card-text">Interact with Nimbus AI for coding and project support.</p>
-      <a href="#" class="btn btn-primary">Start Session</a>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-inter text-purple-600 mb-4">Nimbus AI</h1>
+            <p class="text-gray-300 mb-8">
+                Nimbus AI is the heart of the Kodoverse’s intelligent systems. Powered by advanced decentralized algorithms, Nimbus agents assist with coding, analytics, and virtual world navigation. Start a session to collaborate with your AI companion!
+            </p>
+
+            <!-- Nimbus AI Chat Interface -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl text-purple-400 mb-4">AI Assistance Chat</h2>
+                <div id="chat-container" class="h-96 overflow-y-auto bg-gray-900 p-4 rounded-lg mb-4">
+                    <div class="mb-2">
+                        <span class="text-purple-400 font-inter">[Nimbus AI]:</span>
+                        <span class="text-gray-300">Hello! I’m your Nimbus AI agent. How can I assist you today?</span>
+                    </div>
+                </div>
+                <div class="flex space-x-3">
+                    <input type="text" id="chat-input" class="flex-1 p-3 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Ask Nimbus AI anything...">
+                    <button id="chat-send" class="bg-purple-500 text-white px-4 py-3 rounded-lg hover:bg-purple-600 transition">Send</button>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl text-purple-400 mb-4">Quick Actions</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <button id="code-assist" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Request Code Assistance</button>
+                    <button id="analytics-report" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Generate Analytics Report</button>
+                    <button id="virtual-tour" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Start Virtual World Tour</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const chatContainer = document.getElementById('chat-container');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const codeAssistBtn = document.getElementById('code-assist');
+    const analyticsReportBtn = document.getElementById('analytics-report');
+    const virtualTourBtn = document.getElementById('virtual-tour');
+
+    // Function to add a message to the chat
+    function addMessage(sender, message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('mb-2');
+        messageDiv.innerHTML = `<span class="text-purple-400 font-inter">[${sender}]:</span> <span class="text-gray-300">${message}</span>`;
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Simulate Nimbus AI response
+    function getNimbusResponse(userMessage) {
+        const responses = {
+            'code': 'I can help with that! What kind of coding assistance do you need? For example, I can help with Solidity smart contracts or JavaScript for your Web3 app.',
+            'analytics': 'I’ll generate an analytics report for you. What data would you like to analyze? DeFi transactions, NFT sales, or virtual world activity?',
+            'virtual': 'Let’s explore the Kodoverse virtual world! I can guide you to collaborative spaces, NFT galleries, or DeFi hubs. Where would you like to go?',
+            'default': 'I’m here to help! You can ask me about coding, analytics, or the Kodoverse virtual world. What’s on your mind?'
+        };
+
+        userMessage = userMessage.toLowerCase();
+        if (userMessage.includes('code')) return responses.code;
+        if (userMessage.includes('analytics')) return responses.analytics;
+        if (userMessage.includes('virtual')) return responses.virtual;
+        return responses.default;
+    }
+
+    // Handle chat input
+    chatSend.addEventListener('click', () => {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        addMessage('You', message);
+        const response = getNimbusResponse(message);
+        setTimeout(() => addMessage('Nimbus AI', response), 1000);
+        chatInput.value = '';
+    });
+
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') chatSend.click();
+    });
+
+    // Quick action buttons
+    codeAssistBtn.addEventListener('click', () => {
+        addMessage('You', 'I need help with coding.');
+        setTimeout(() => addMessage('Nimbus AI', getNimbusResponse('code')), 1000);
+    });
+
+    analyticsReportBtn.addEventListener('click', () => {
+        addMessage('You', 'Generate an analytics report.');
+        setTimeout(() => addMessage('Nimbus AI', getNimbusResponse('analytics')), 1000);
+    });
+
+    virtualTourBtn.addEventListener('click', () => {
+        addMessage('You', 'Start a virtual world tour.');
+        setTimeout(() => addMessage('Nimbus AI', getNimbusResponse('virtual')), 1000);
+    });
+});
+</script>
 {% endblock %}

@@ -3,313 +3,380 @@
 {% block title %}Hosting Analytics - Aviyon{% endblock %}
 
 {% block body %}
-<section class="hosting-analytics container mx-auto py-12 px-4">
-    <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4 animate-fade-in">Hosting Analytics Dashboard</h1>
-    <p class="text-gray-400 mb-8 animate-fade-in-delayed">Monitor your hosting resources with real-time insights and analytics.</p>
+<div class="dashboard-container flex">
+    {% include 'dashboard/sidebar.html.twig' %}
+    <div class="main-content ml-64 p-6 w-full">
+        <section class="hosting-analytics container mx-auto py-12 px-4">
+            <h1 class="text-4xl font-inter font-bold text-purple-600 mb-4 animate-fade-in">Hosting Analytics Dashboard</h1>
+            <p class="text-gray-400 mb-8 animate-fade-in-delayed">
+                Analyze the performance of your hosted projects in the Kodoverse. Nimbus AI provides real-time insights into traffic, uptime, and resource usage across our decentralized hosting network.
+            </p>
 
-    <!-- Filters and Controls -->
-    <div class="flex flex-wrap justify-between gap-4 mb-8 bg-dark-light p-4 rounded-lg shadow-lg animate-slide-up">
-        <div class="flex space-x-4">
-            <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="time-range">
-                <option value="1h">Last 1 Hour</option>
-                <option value="24h">Last 24 Hours</option>
-                <option value="7d">Last 7 Days</option>
-                <option value="30d">Last 30 Days</option>
-            </select>
-            <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-neon-purple transition" id="server-select">
-                <option value="all">All Servers</option>
-                <option value="server1">Server 1 (US-East)</option>
-                <option value="server2">Server 2 (EU-West)</option>
-                <option value="server3">Server 3 (Asia-Pacific)</option>
-            </select>
-        </div>
-        <label class="flex items-center space-x-2 text-gray-300">
-            <input type="checkbox" id="real-time-toggle" class="form-checkbox h-5 w-5 text-neon-purple" checked>
-            <span>Real-Time Updates</span>
-        </label>
-    </div>
-
-    <!-- Overview Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-            <h3 class="text-xl font-inter text-neon-purple mb-2">CPU Usage</h3>
-            <p id="cpu-usage" class="text-3xl font-bold text-gray-300">45%</p>
-            <div class="w-full bg-gray-600 h-2 rounded-full mt-4">
-                <div id="cpu-bar" class="bg-neon-purple h-2 rounded-full" style="width: 45%"></div>
+            <!-- Analytics Overview -->
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8 animate-slide-up">
+                <h2 class="text-2xl text-purple-400 mb-4">Analytics Overview</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300">Total Visitors</p>
+                        <p class="text-3xl text-purple-400">12,345</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300">Uptime</p>
+                        <p class="text-3xl text-purple-400">99.9%</p>
+                    </div>
+                    <div class="bg-gray-900 p-4 rounded-lg">
+                        <p class="text-gray-300">Resource Usage</p>
+                        <p class="text-3xl text-purple-400">72%</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-            <h3 class="text-xl font-inter text-neon-purple mb-2">Memory Usage</h3>
-            <p id="memory-usage" class="text-3xl font-bold text-gray-300">3.2 GB / 8 GB</p>
-            <div class="w-full bg-gray-600 h-2 rounded-full mt-4">
-                <div id="memory-bar" class="bg-neon-purple h-2 rounded-full" style="width: 40%"></div>
+
+            <!-- Resource Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
+                    <h3 class="text-xl font-inter text-purple-400 mb-2">CPU Usage</h3>
+                    <p id="cpu-usage" class="text-3xl font-bold text-gray-300">45%</p>
+                    <div class="w-full bg-gray-600 h-2 rounded-full mt-4">
+                        <div id="cpu-bar" class="bg-purple-400 h-2 rounded-full" style="width: 45%"></div>
+                    </div>
+                </div>
+                <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
+                    <h3 class="text-xl font-inter text-purple-400 mb-2">Memory Usage</h3>
+                    <p id="memory-usage" class="text-3xl font-bold text-gray-300">3.2 GB / 8 GB</p>
+                    <div class="w-full bg-gray-600 h-2 rounded-full mt-4">
+                        <div id="memory-bar" class="bg-purple-400 h-2 rounded-full" style="width: 40%"></div>
+                    </div>
+                </div>
+                <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
+                    <h3 class="text-xl font-inter text-purple-400 mb-2">Bandwidth</h3>
+                    <p id="bandwidth-usage" class="text-3xl font-bold text-gray-300">1.5 TB / 10 TB</p>
+                    <div class="w-full bg-gray-600 h-2 rounded-full mt-4">
+                        <div id="bandwidth-bar" class="bg-purple-400 h-2 rounded-full" style="width: 15%"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-            <h3 class="text-xl font-inter text-neon-purple mb-2">Bandwidth</h3>
-            <p id="bandwidth-usage" class="text-3xl font-bold text-gray-300">1.5 TB / 10 TB</p>
-            <div class="w-full bg-gray-600 h-2 rounded-full mt-4">
-                <div id="bandwidth-bar" class="bg-neon-purple h-2 rounded-full" style="width: 15%"></div>
+
+            <!-- Filters and Controls -->
+            <div class="flex flex-wrap justify-between gap-4 mb-8 bg-dark-light p-4 rounded-lg shadow-lg animate-slide-up">
+                <div class="flex space-x-4">
+                    <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" id="time-range">
+                        <option value="1h">Last 1 Hour</option>
+                        <option value="24h">Last 24 Hours</option>
+                        <option value="7d">Last 7 Days</option>
+                        <option value="30d">Last 30 Days</option>
+                    </select>
+                    <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" id="server-select">
+                        <option value="all">All Servers</option>
+                        <option value="server1">Server 1 (US-East)</option>
+                        <option value="server2">Server 2 (EU-West)</option>
+                        <option value="server3">Server 3 (Asia-Pacific)</option>
+                    </select>
+                    <select class="bg-dark text-gray-300 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" id="analytics-type">
+                        <option value="cpu">CPU Usage</option>
+                        <option value="bandwidth">Bandwidth</option>
+                        <option value="traffic">Traffic</option>
+                        <option value="uptime">Uptime</option>
+                        <option value="resources">Resource Usage</option>
+                    </select>
+                </div>
+                <label class="flex items-center space-x-2 text-gray-300">
+                    <input type="checkbox" id="real-time-toggle" class="form-checkbox h-5 w-5 text-purple-400" checked>
+                    <span>Real-Time Updates</span>
+                </label>
             </div>
-        </div>
-    </div>
 
-    <!-- Charts Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <!-- CPU Usage Chart -->
-        <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-            <h3 class="text-xl font-inter text-neon-purple mb-4">CPU Usage Over Time</h3>
-            <canvas id="cpu-chart" class="w-full h-64"></canvas>
-        </div>
-        <!-- Bandwidth Chart -->
-        <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-            <h3 class="text-xl font-inter text-neon-purple mb-4">Bandwidth Usage Over Time</h3>
-            <canvas id="bandwidth-chart" class="w-full h-64"></canvas>
-        </div>
-    </div>
-
-    <!-- 3D Server Visualization (Optional) -->
-    <div class="bg-dark-light p-6 rounded-lg shadow-lg mb-8 animate-slide-up">
-        <h3 class="text-xl font-inter text-neon-purple mb-4">Server Node Visualization</h3>
-        <canvas id="server-visualization" class="w-full h-64 rounded-lg"></canvas>
-    </div>
-
-    <!-- Detailed Logs Table -->
-    <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
-        <h3 class="text-xl font-inter text-neon-purple mb-4">Recent Activity Logs</h3>
-        <div class="overflow-x-auto">
-            <table class="w-full text-gray-300">
-                <thead>
-                    <tr class="border-b border-gray-600">
-                        <th class="py-2 px-4 text-left">Timestamp</th>
-                        <th class="py-2 px-4 text-left">Server</th>
-                        <th class="py-2 px-4 text-left">Event</th>
-                        <th class="py-2 px-4 text-left">Details</th>
-                        <th class="py-2 px-4 text-left">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="logs-table">
-                    <!-- Logs will be populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Log Detail Modal -->
-    <div id="log-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50 animate-fade-in">
-        <div class="bg-dark-light p-8 rounded-lg max-w-lg w-full shadow-lg">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-inter text-neon-purple">Log Details</h2>
-                <button id="log-modal-close" class="text-gray-400 hover:text-neon-purple transition">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"></path>
-                    </svg>
-                </button>
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
+                    <h3 class="text-xl font-inter text-purple-400 mb-4" id="chart-title">CPU Usage Over Time</h3>
+                    <canvas id="analytics-chart" class="w-full h-64"></canvas>
+                </div>
+                <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
+                    <h3 class="text-xl font-inter text-purple-400 mb-4">Server Node Visualization</h3>
+                    <canvas id="server-visualization" class="w-full h-64 rounded-lg"></canvas>
+                </div>
             </div>
-            <p id="log-timestamp" class="text-gray-400 mb-2"></p>
-            <p id="log-server" class="text-gray-400 mb-2"></p>
-            <p id="log-event" class="text-gray-400 mb-2"></p>
-            <p id="log-details" class="text-gray-400"></p>
-        </div>
+
+            <!-- Detailed Logs Table -->
+            <div class="bg-dark-light p-6 rounded-lg shadow-lg animate-slide-up">
+                <h3 class="text-xl font-inter text-purple-400 mb-4">Recent Activity Logs</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-gray-300">
+                        <thead>
+                            <tr class="border-b border-gray-600">
+                                <th class="py-2 px-4 text-left">Timestamp</th>
+                                <th class="py-2 px-4 text-left">Server</th>
+                                <th class="py-2 px-4 text-left">Event</th>
+                                <th class="py-2 px-4 text-left">Details</th>
+                                <th class="py-2 px-4 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-table">
+                            <!-- Logs populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Log Detail Modal -->
+            <div id="log-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50 animate-fade-in">
+                <div class="bg-dark-light p-8 rounded-lg max-w-lg w-full shadow-lg">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-inter text-purple-400">Log Details</h2>
+                        <button id="log-modal-close" class="text-gray-400 hover:text-purple-400 transition">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <p id="log-timestamp" class="text-gray-400 mb-2"></p>
+                    <p id="log-server" class="text-gray-400 mb-2"></p>
+                    <p id="log-event" class="text-gray-400 mb-2"></p>
+                    <p id="log-details" class="text-gray-400"></p>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
+</div>
 {% endblock %}
 
 {% block javascripts %}
 <script src="{{ asset('build/chart.min.js') }}"></script>
 <script src="{{ asset('build/three.min.js') }}"></script>
 <script>
-// Simulated real-time data
-let cpuData = Array(60).fill(0).map(() => Math.random() * 100);
-let bandwidthData = Array(60).fill(0).map(() => Math.random() * 1000);
-let logs = [
-    { timestamp: new Date().toISOString(), server: 'Server 1', event: 'High CPU Usage', details: 'CPU usage exceeded 80%.' },
-    { timestamp: new Date(Date.now() - 5 * 60 * 1000).toISOString(), server: 'Server 2', event: 'Bandwidth Spike', details: 'Bandwidth usage spiked to 900 MB/s.' }
-];
+document.addEventListener('DOMContentLoaded', () => {
+    // Simulated real-time data
+    let cpuData = Array(60).fill(0).map(() => Math.random() * 100);
+    let bandwidthData = Array(60).fill(0).map(() => Math.random() * 1000);
+    let trafficData = Array(60).fill(0).map(() => Math.random() * 10000);
+    let uptimeData = Array(60).fill(0).map(() => 99 + Math.random() * 0.5);
+    let resourceData = Array(60).fill(0).map(() => Math.random() * 100);
+    let logs = [
+        { timestamp: new Date().toISOString(), server: 'Server 1', event: 'High CPU Usage', details: 'CPU usage exceeded 80%.' },
+        { timestamp: new Date(Date.now() - 5 * 60 * 1000).toISOString(), server: 'Server 2', event: 'Bandwidth Spike', details: 'Bandwidth usage spiked to 900 MB/s.' }
+    ];
 
-// Initialize Charts
-const cpuChart = new Chart(document.getElementById('cpu-chart'), {
-    type: 'line',
-    data: {
-        labels: Array(60).fill(0).map((_, i) => `-${60 - i}s`),
-        datasets: [{
-            label: 'CPU Usage (%)',
-            data: cpuData,
-            borderColor: '#6b48ff',
-            backgroundColor: 'rgba(107, 72, 255, 0.2)',
-            fill: true,
-            tension: 0.4
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: { beginAtZero: true, max: 100 },
-            x: { display: false }
+    // Mock chart data for text-based fallback
+    const textChartData = {
+        traffic: 'Traffic (Visitors/Day):\n[██████████ 5,000] Day 1\n[████████████ 6,500] Day 2\n[████████ 4,200] Day 3\n[███████████ 5,800] Day 4\n[█████████████ 7,000] Day 5',
+        uptime: 'Uptime (%):\n[██████████ 99.8%] Day 1\n[██████████ 99.9%] Day 2\n[██████████ 99.7%] Day 3\n[██████████ 99.9%] Day 4\n[██████████ 99.9%] Day 5',
+        resources: 'Resource Usage (%):\n[████████ 72%] Day 1\n[█████████ 80%] Day 2\n[███████ 65%] Day 3\n[██████████ 85%] Day 4\n[████████ 70%] Day 5'
+    };
+
+    // Initialize Chart
+    const analyticsChart = new Chart(document.getElementById('analytics-chart'), {
+        type: 'line',
+        data: {
+            labels: Array(60).fill(0).map((_, i) => `-${60 - i}s`),
+            datasets: [{
+                label: 'CPU Usage (%)',
+                data: cpuData,
+                borderColor: '#6b48ff',
+                backgroundColor: 'rgba(107, 72, 255, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
         },
-        plugins: { legend: { labels: { color: '#d1d5db' } } }
-    }
-});
-
-const bandwidthChart = new Chart(document.getElementById('bandwidth-chart'), {
-    type: 'line',
-    data: {
-        labels: Array(60).fill(0).map((_, i) => `-${60 - i}s`),
-        datasets: [{
-            label: 'Bandwidth (MB/s)',
-            data: bandwidthData,
-            borderColor: '#6b48ff',
-            backgroundColor: 'rgba(107, 72, 255, 0.2)',
-            fill: true,
-            tension: 0.4
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: { beginAtZero: true },
-            x: { display: false }
-        },
-        plugins: { legend: { labels: { color: '#d1d5db' } } }
-    }
-});
-
-// 3D Server Visualization
-const serverCanvas = document.getElementById('server-visualization');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, serverCanvas.clientWidth / serverCanvas.clientHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: serverCanvas, alpha: true });
-renderer.setSize(serverCanvas.clientWidth, serverCanvas.clientHeight);
-camera.position.z = 5;
-
-const light = new THREE.DirectionalLight(0xffffff, 0.8);
-light.position.set(0, 1, 1);
-scene.add(light);
-scene.add(new THREE.AmbientLight(0x404040, 0.5));
-
-// Create server nodes (simplified as spheres)
-const servers = [
-    { x: -2, y: 0, z: 0, color: 0x6b48ff },
-    { x: 0, y: 0, z: 0, color: 0x9333ea },
-    { x: 2, y: 0, z: 0, color: 0x4f46e5 }
-];
-servers.forEach(server => {
-    const geometry = new THREE.SphereGeometry(0.5, 32, 32);
-    const material = new THREE.MeshPhongMaterial({ color: server.color });
-    const sphere = new THREE.Mesh(geometry, material);
-    sphere.position.set(server.x, server.y, server.z);
-    scene.add(sphere);
-});
-
-function animateServers() {
-    requestAnimationFrame(animateServers);
-    servers.forEach((server, i) => {
-        const sphere = scene.children[i + 2]; // Skip lights
-        sphere.rotation.y += 0.01;
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true, max: 100 },
+                x: { display: false }
+            },
+            plugins: { legend: { labels: { color: '#d1d5db' } } }
+        }
     });
-    renderer.render(scene, camera);
-}
-animateServers();
 
-// Real-time Updates
-let realTimeEnabled = true;
-document.getElementById('real-time-toggle').addEventListener('change', (e) => {
-    realTimeEnabled = e.target.checked;
-});
+    // 3D Server Visualization
+    const serverCanvas = document.getElementById('server-visualization');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, serverCanvas.clientWidth / serverCanvas.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: serverCanvas, alpha: true });
+    renderer.setSize(serverCanvas.clientWidth, serverCanvas.clientHeight);
+    camera.position.z = 5;
 
-function updateAnalytics() {
-    if (!realTimeEnabled) return;
+    const light = new THREE.DirectionalLight(0xffffff, 0.8);
+    light.position.set(0, 1, 1);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040, 0.5));
 
-    // Update CPU Usage
-    const cpuUsage = Math.random() * 100;
-    cpuData.shift();
-    cpuData.push(cpuUsage);
-    document.getElementById('cpu-usage').textContent = `${Math.round(cpuUsage)}%`;
-    document.getElementById('cpu-bar').style.width = `${cpuUsage}%`;
-    cpuChart.data.datasets[0].data = cpuData;
-    cpuChart.update();
+    const servers = [
+        { x: -2, y: 0, z: 0, color: 0x6b48ff },
+        { x: 0, y: 0, z: 0, color: 0x9333ea },
+        { x: 2, y: 0, z: 0, color: 0x4f46e5 }
+    ];
+    servers.forEach(server => {
+        const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        const material = new THREE.MeshPhongMaterial({ color: server.color });
+        const sphere = new THREE.Mesh(geometry, material);
+        sphere.position.set(server.x, server.y, server.z);
+        scene.add(sphere);
+    });
 
-    // Update Memory Usage
-    const memoryUsage = (Math.random() * 4 + 2).toFixed(1);
-    document.getElementById('memory-usage').textContent = `${memoryUsage} GB / 8 GB`;
-    document.getElementById('memory-bar').style.width = `${(memoryUsage / 8) * 100}%`;
-
-    // Update Bandwidth Usage
-    const bandwidthUsage = (Math.random() * 2 + 0.5).toFixed(1);
-    bandwidthData.shift();
-    bandwidthData.push(bandwidthUsage * 500);
-    document.getElementById('bandwidth-usage').textContent = `${bandwidthUsage} TB / 10 TB`;
-    document.getElementById('bandwidth-bar').style.width = `${(bandwidthUsage / 10) * 100}%`;
-    bandwidthChart.data.datasets[0].data = bandwidthData;
-    bandwidthChart.update();
-
-    // Add random log
-    if (Math.random() < 0.1) {
-        const newLog = {
-            timestamp: new Date().toISOString(),
-            server: `Server ${Math.floor(Math.random() * 3) + 1}`,
-            event: cpuUsage > 80 ? 'High CPU Usage' : 'Normal Operation',
-            details: cpuUsage > 80 ? 'CPU usage exceeded 80%.' : 'All systems normal.'
-        };
-        logs.unshift(newLog);
-        if (logs.length > 10) logs.pop();
-        updateLogsTable();
-    }
-}
-
-setInterval(updateAnalytics, 1000);
-
-// Update Logs Table
-function updateLogsTable() {
-    const logsTable = document.getElementById('logs-table');
-    logsTable.innerHTML = logs.map(log => `
-        <tr class="border-b border-gray-600 hover:bg-gray-700 transition">
-            <td class="py-2 px-4">${new Date(log.timestamp).toLocaleString()}</td>
-            <td class="py-2 px-4">${log.server}</td>
-            <td class="py-2 px-4">${log.event}</td>
-            <td class="py-2 px-4">${log.details}</td>
-            <td class="py-2 px-4">
-                <button class="view-log btn text-neon-purple hover:underline" data-timestamp="${log.timestamp}">View</button>
-            </td>
-        </tr>
-    `).join('');
-
-    // Add event listeners for log details
-    document.querySelectorAll('.view-log').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const timestamp = btn.dataset.timestamp;
-            const log = logs.find(l => l.timestamp === timestamp);
-            document.getElementById('log-timestamp').textContent = `Timestamp: ${new Date(log.timestamp).toLocaleString()}`;
-            document.getElementById('log-server').textContent = `Server: ${log.server}`;
-            document.getElementById('log-event').textContent = `Event: ${log.event}`;
-            document.getElementById('log-details').textContent = `Details: ${log.details}`;
-            document.getElementById('log-modal').classList.remove('hidden');
+    function animateServers() {
+        requestAnimationFrame(animateServers);
+        servers.forEach((server, i) => {
+            const sphere = scene.children[i + 2];
+            sphere.rotation.y += 0.01;
         });
+        renderer.render(scene, camera);
+    }
+    animateServers();
+
+    // Real-time Updates
+    let realTimeEnabled = true;
+    document.getElementById('real-time-toggle').addEventListener('change', (e) => {
+        realTimeEnabled = e.target.checked;
     });
-}
 
-updateLogsTable();
+    // Analytics Type Switching
+    const analyticsType = document.getElementById('analytics-type');
+    function updateChart(type) {
+        let data, label, max;
+        switch (type) {
+            case 'cpu':
+                data = cpuData;
+                label = 'CPU Usage (%)';
+                max = 100;
+                break;
+            case 'bandwidth':
+                data = bandwidthData;
+                label = 'Bandwidth (MB/s)';
+                max = 1000;
+                break;
+            case 'traffic':
+                data = trafficData;
+                label = 'Traffic (Visitors)';
+                max = 10000;
+                break;
+            case 'uptime':
+                data = uptimeData;
+                label = 'Uptime (%)';
+                max = 100;
+                break;
+            case 'resources':
+                data = resourceData;
+                label = 'Resource Usage (%)';
+                max = 100;
+                break;
+            default:
+                return;
+        }
+        analyticsChart.data.datasets[0].data = data;
+        analyticsChart.data.datasets[0].label = label;
+        analyticsChart.options.scales.y.max = max;
+        analyticsChart.update();
+        document.getElementById('chart-title').textContent = `${label} Over Time`;
+    }
 
-// Modal Close
-document.getElementById('log-modal-close').addEventListener('click', () => {
-    document.getElementById('log-modal').classList.add('hidden');
-});
+    analyticsType.addEventListener('change', () => {
+        updateChart(analyticsType.value);
+    });
+    updateChart('cpu');
 
-// Filter by Time Range and Server
-document.getElementById('time-range').addEventListener('change', (e) => {
-    const range = e.target.value;
-    // Placeholder for adjusting data based on time range
-    console.log(`Time range changed to: ${range}`);
-});
+    function updateAnalytics() {
+        if (!realTimeEnabled) return;
 
-document.getElementById('server-select').addEventListener('change', (e) => {
-    const server = e.target.value;
-    // Placeholder for filtering data by server
-    console.log(`Server filter changed to: ${server}`);
+        // Update CPU Usage
+        const cpuUsage = Math.random() * 100;
+        cpuData.shift();
+        cpuData.push(cpuUsage);
+        document.getElementById('cpu-usage').textContent = `${Math.round(cpuUsage)}%`;
+        document.getElementById('cpu-bar').style.width = `${cpuUsage}%`;
+
+        // Update Memory Usage
+        const memoryUsage = (Math.random() * 4 + 2).toFixed(1);
+        document.getElementById('memory-usage').textContent = `${memoryUsage} GB / 8 GB`;
+        document.getElementById('memory-bar').style.width = `${(memoryUsage / 8) * 100}%`;
+
+        // Update Bandwidth Usage
+        const bandwidthUsage = (Math.random() * 2 + 0.5).toFixed(1);
+        bandwidthData.shift();
+        bandwidthData.push(bandwidthUsage * 500);
+        document.getElementById('bandwidth-usage').textContent = `${bandwidthUsage} TB / 10 TB`;
+        document.getElementById('bandwidth-bar').style.width = `${(bandwidthUsage / 10) * 100}%`;
+
+        // Update Traffic, Uptime, Resources
+        trafficData.shift();
+        trafficData.push(Math.random() * 10000);
+        uptimeData.shift();
+        uptimeData.push(99 + Math.random() * 0.5);
+        resourceData.shift();
+        resourceData.push(Math.random() * 100);
+
+        // Update chart based on current selection
+        updateChart(analyticsType.value);
+
+        // Add random log
+        if (Math.random() < 0.1) {
+            const newLog = {
+                timestamp: new Date().toISOString(),
+                server: `Server ${Math.floor(Math.random() * 3) + 1}`,
+                event: cpuUsage > 80 ? 'High CPU Usage' : 'Normal Operation',
+                details: cpuUsage > 80 ? 'CPU usage exceeded 80%.' : 'All systems normal.'
+            };
+            logs.unshift(newLog);
+            if (logs.length > 10) logs.pop();
+            updateLogsTable();
+        }
+    }
+
+    setInterval(updateAnalytics, 1000);
+
+    // Update Logs Table
+    function updateLogsTable() {
+        const logsTable = document.getElementById('logs-table');
+        logsTable.innerHTML = logs.map(log => `
+            <tr class="border-b border-gray-600 hover:bg-gray-700 transition">
+                <td class="py-2 px-4">${new Date(log.timestamp).toLocaleString()}</td>
+                <td class="py-2 px-4">${log.server}</td>
+                <td class="py-2 px-4">${log.event}</td>
+                <td class="py-2 px-4">${log.details}</td>
+                <td class="py-2 px-4">
+                    <button class="view-log btn text-purple-400 hover:underline" data-timestamp="${log.timestamp}">View</button>
+                </td>
+            </tr>
+        `).join('');
+
+        document.querySelectorAll('.view-log').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const timestamp = btn.dataset.timestamp;
+                const log = logs.find(l => l.timestamp === timestamp);
+                document.getElementById('log-timestamp').textContent = `Timestamp: ${new Date(log.timestamp).toLocaleString()}`;
+                document.getElementById('log-server').textContent = `Server: ${log.server}`;
+                document.getElementById('log-event').textContent = `Event: ${log.event}`;
+                document.getElementById('log-details').textContent = `Details: ${log.details}`;
+                document.getElementById('log-modal').classList.remove('hidden');
+            });
+        });
+    }
+
+    updateLogsTable();
+
+    // Modal Close
+    document.getElementById('log-modal-close').addEventListener('click', () => {
+        document.getElementById('log-modal').classList.add('hidden');
+    });
+
+    // Filter by Time Range and Server
+    document.getElementById('time-range').addEventListener('change', (e) => {
+        const range = e.target.value;
+        console.log(`Time range changed to: ${range}`);
+    });
+
+    document.getElementById('server-select').addEventListener('change', (e) => {
+        const server = e.target.value;
+        console.log(`Server filter changed to: ${server}`);
+    });
 });
 </script>
 <style>
-/* Custom Animations */
+.bg-dark { background-color: #1f2937; }
+.bg-dark-light { background-color: #2d3748; }
+.text-neon-purple { color: #6b48ff; }
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+.animate-fade-in-delayed { animation: fadeInDelayed 1s ease-out; }
+.animate-slide-up { animation: slideUp 0.5s ease-out; }
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -323,8 +390,5 @@ document.getElementById('server-select').addEventListener('change', (e) => {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
-.animate-fade-in { animation: fadeIn 0.5s ease-out; }
-.animate-fade-in-delayed { animation: fadeInDelayed 1s ease-out; }
-.animate-slide-up { animation: slideUp 0.5s ease-out; }
 </style>
 {% endblock %}

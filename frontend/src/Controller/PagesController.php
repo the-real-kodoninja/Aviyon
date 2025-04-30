@@ -33,6 +33,18 @@ class PagesController extends AbstractController
         return $this->redirectToRoute('app_root');
     }
 
+    #[Route('/checkout', name: 'checkout')]
+    public function checkout(): Response
+    {
+        return $this->render('pages/checkout.html.twig');
+    }
+
+    #[Route('/domain', name: 'domain')]
+    public function domain(): Response
+    {
+        return $this->render('pages/domain.html.twig');
+    }
+
     #[Route('/terms', name: 'terms')]
     public function terms(): Response
     {
@@ -49,5 +61,18 @@ class PagesController extends AbstractController
     public function contact(): Response
     {
         return $this->render('pages/contact.html.twig');
+    }
+
+    #[Route('/contact/submit', name: 'contact_submit', methods: ['POST'])]
+    public function contactSubmit(Request $request): Response
+    {
+        // Placeholder for contact form submission logic
+        return $this->redirectToRoute('contact');
+    }
+
+    #[Route('/sitemap', name: 'sitemap')]
+    public function sitemap(): Response
+    {
+        return $this->render('pages/sitemap.html.twig');
     }
 }
