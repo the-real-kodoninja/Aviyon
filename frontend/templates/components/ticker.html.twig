@@ -1,9 +1,9 @@
-<div class="ticker bg-gray-800 py-1 shadow-lg h-[50px] overflow-x-auto z-40">
+<div class="ticker bg-gray-800 py-1 shadow-lg h-[50px] overflow-x-auto z-40 scrollbar-invisible">
     <div class="container mx-auto px-2">
         <div class="flex space-x-2">
             <!-- Stock: AAPL -->
             <div class="relative ticker-item" data-symbol="AAPL" data-type="stock">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <span class="text-gray-300 font-semibold">AAPL</span>
                     <canvas id="chart-aapl" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -23,7 +23,7 @@
             </div>
             <!-- Exchange: NYSE -->
             <div class="relative ticker-item" data-symbol="NYSE" data-type="exchange">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <span class="text-gray-300 font-semibold">NYSE</span>
                     <canvas id="chart-nyse" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -43,7 +43,7 @@
             </div>
             <!-- REIT: VNQ -->
             <div class="relative ticker-item" data-symbol="VNQ" data-type="reit">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <span class="text-gray-300 font-semibold">VNQ</span>
                     <canvas id="chart-vnq" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -63,7 +63,7 @@
             </div>
             <!-- Commodity: GOLD -->
             <div class="relative ticker-item" data-symbol="GOLD" data-type="commodity">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <span class="text-gray-300 font-semibold">GOLD</span>
                     <canvas id="chart-gold" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -83,7 +83,7 @@
             </div>
             <!-- Index: SPY -->
             <div class="relative ticker-item" data-symbol="SPY" data-type="index">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <span class="text-gray-300 font-semibold">SPY</span>
                     <canvas id="chart-spy" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -103,7 +103,7 @@
             </div>
             <!-- Crypto: BTC -->
             <div class="relative ticker-item" data-symbol="BTC" data-type="crypto">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <span class="text-gray-300 font-semibold">BTC</span>
                     <canvas id="chart-btc" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -123,7 +123,7 @@
             </div>
             <!-- NFT: BAYC -->
             <div class="relative ticker-item" data-symbol="BAYC" data-type="nft">
-                <div class="flex items-center space-x-1 bg-gray-900 p-1 rounded-lg cursor-pointer text-xs h-10 w-48">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
                     <img src="{{ asset('build/images/nfts/bayc.jpg') }}" alt="BAYC" class="w-6 h-6 rounded">
                     <canvas id="chart-bayc" class="w-12 h-6"></canvas>
                     <div class="flex flex-col items-center">
@@ -222,3 +222,18 @@
 <!-- Include Chart.js and the compiled ticker script -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{{ asset('build/ticker.js') }}"></script>
+
+<style>
+/* Hide scrollbar but keep scrolling functionality */
+.scrollbar-invisible {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.scrollbar-invisible::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+/* Ensure hidden class works even if Tailwind fails */
+.hidden {
+    display: none !important;
+}
+</style>

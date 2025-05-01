@@ -80,38 +80,4 @@
     </div>
 </div>
 
-<script>
-(function() {
-    const Search = {
-        getElement: function(id) {
-            try {
-                const element = document.getElementById(id);
-                if (!element) throw new Error(`Element with ID ${id} not found`);
-                return element;
-            } catch (e) {
-                console.error('[Search] Error:', e.message);
-                return null;
-            }
-        },
-
-        init: function() {
-            const searchBar = this.getElement('aviyon-search-bar');
-            const searchDropdown = this.getElement('aviyon-search-dropdown');
-            if (searchBar && searchDropdown) {
-                searchBar.addEventListener('focus', () => searchDropdown.classList.remove('hidden'));
-                searchBar.addEventListener('blur', () => setTimeout(() => searchDropdown.classList.add('hidden'), 100));
-
-                document.addEventListener('click', (e) => {
-                    if (!searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
-                        searchDropdown.classList.add('hidden');
-                    }
-                });
-            }
-        }
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-        Search.init();
-    });
-})();
-</script>
+<script src="{{ asset('build/search.js') }}"></script>

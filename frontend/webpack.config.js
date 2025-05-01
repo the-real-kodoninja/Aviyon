@@ -7,7 +7,9 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('app', './assets/js/app.js')
-    .addEntry('ticker', './assets/js/components/ticker.coffee') // Add ticker entry
+    .addEntry('ticker', './assets/js/components/ticker.coffee')
+    .addEntry('nimbus_popup', './assets/js/components/nimbus_popup.coffee')
+    .addEntry('newsletter', './assets/js/components/footer/newsletter.coffee') // Add newsletter entry
     .addStyleEntry('base', './assets/css/base.css')
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()

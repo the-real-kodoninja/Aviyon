@@ -1,3 +1,10 @@
+# Import Chart.js and candlestick chart
+Chart = require 'chart.js'
+{ CandlestickController, CandlestickElement } = require 'chartjs-chart-financial'
+
+# Register the candlestick chart type
+Chart.register CandlestickController, CandlestickElement
+
 # Constants
 UPDATE_INTERVAL = 45000  # 45 seconds
 SYMBOLS = [
@@ -135,14 +142,18 @@ updatePrice = (symbolData) ->
 
 # Initialize Charts
 initializeCharts = ->
+  console.log "Initializing charts for #{SYMBOLS.length} symbols"
   for symbolData in SYMBOLS
     ctx = document.getElementById("chart-#{symbolData.symbol.toLowerCase()}")
-    chartData = Array(5).fill(0).map((_, i) -> symbolData.basePrice * (1 + (Math.random() * 0.02 - 0.01)))
-    color = if symbolData.change >= 0 then '#34d399' else '#ef4444'
-    if symbolData.type is 'nft'
-      createLineChart(ctx, chartData, color)
+    if ctx
+      chartData = Array(5).fill(0).map((_, i) -> symbolData.basePrice * (1 + (Math.random() * 0.02 - 0.01)))
+      color = if symbolData.change >= 0 then '#34d399' else '#ef4444'
+      if symbolData.type is 'nft'
+        createLineChart(ctx, chartData, color)
+      else
+        createCandlestickChart(ctx, chartData.map((price, i) -> { t: i, o: price * 0.99, h: price * 1.01, l: price * 0.98, c: price }), color)
     else
-      createCandlestickChart(ctx, chartData.map((price, i) -> { t: i, o: price * 0.99, h: price * 1.01, l: price * 0.98, c: price }), color)
+      console.error "Canvas element for #{symbolData.symbol} not found!"
 
 # Update All Tickers
 updateAllTickers = ->
@@ -152,7 +163,10 @@ updateAllTickers = ->
 
 # Popup Functionality
 setupPopup = ->
+  console.log "Setting up popup functionality"
   tickerItems = document.querySelectorAll('.ticker-item')
+  console.log "Found #{tickerItems.length} ticker items"
+
   modal = document.getElementById('ticker-modal')
   modalTitle = document.getElementById('modal-title')
   modalClose = document.getElementById('modal-close')
@@ -167,19 +181,22 @@ setupPopup = ->
   modalSpecific = document.getElementById('modal-specific')
   modalStoplossLink = document.getElementById('modal-stoploss-link')
 
+  if !modal
+    console.error "Modal element not found!"
+    return
+
   # Ensure modal is initially hidden
   modal.classList.add('hidden')
 
   for item in tickerItems
-    # Add click event listener to each ticker item
     item.addEventListener 'click', (event) ->
-      event.stopPropagation()  # Prevent event bubbling
-      symbol = @getAttribute('data-symbol')
-      type = @getAttribute('data-type')
+      event.stopPropagation()
+      console.log "Ticker item clicked: #{item.getAttribute('data-symbol')}"
+      symbol = item.getAttribute('data-symbol')
+      type = item.getAttribute('data-type')
       symbolData = SYMBOLS.find((s) -> s.symbol is symbol)
 
       if symbolData
-        # Populate modal content
         modalTitle.textContent = switch type
           when 'stock' then "Apple Inc. (#{symbol})"
           when 'exchange' then "NYSE Composite (#{symbol})"
@@ -258,16 +275,19 @@ setupPopup = ->
           indicators2.innerHTML += "<p>#{indicators[i]}</p>"
 
         # Show the modal
+        console.log "Showing modal for #{symbol}"
         modal.classList.remove('hidden')
 
   # Close modal when clicking the close button
   modalClose.addEventListener 'click', (event) ->
     event.stopPropagation()
+    console.log "Closing modal via close button"
     modal.classList.add('hidden')
 
   # Close modal when clicking outside
   modal.addEventListener 'click', (event) ->
     if event.target is modal
+      console.log "Closing modal by clicking outside"
       modal.classList.add('hidden')
 
   # Tab Switching
@@ -276,16 +296,18 @@ setupPopup = ->
   for button in tabButtons
     button.addEventListener 'click', (event) ->
       event.stopPropagation()
-      tab = @getAttribute('data-tab')
+      tab = button.getAttribute('data-tab')
+      console.log "Switching to tab: #{tab}"
       for btn in tabButtons
         btn.classList.remove('active')
-      @classList.add('active')
+      button.classList.add('active')
       for content in tabContents
         content.classList.add('hidden')
       document.getElementById("tab-#{tab}").classList.remove('hidden')
 
 # Initialize on DOM Load
 document.addEventListener 'DOMContentLoaded', ->
+  console.log "DOM fully loaded, initializing ticker"
   initializeCharts()
   updateAllTickers()
   setupPopup()

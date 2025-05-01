@@ -1,35 +1,23 @@
-<footer class="bg-dark-light py-8">
+<footer class="bg-dark-gray text-gray-300 py-8">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Company Info -->
-            <div>
-                <h3 class="text-xl font-inter text-neon-purple mb-4">Aviyon</h3>
-                <p class="text-gray-400">A self-investment firm focused on trading, crypto, and Web3 innovation. Join us in shaping the future of finance.</p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Left Panel -->
+            <div class="col-span-1">
+                {% include 'components/footer/leftpanel.html.twig' %}
             </div>
-
-            <!-- Navigation Links -->
-            <div>
-                <h3 class="text-xl font-inter text-neon-purple mb-4">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="{{ path('terms') }}" class="text-gray-300 hover:text-neon-purple transition">Terms</a></li>
-                    <li><a href="{{ path('privacy') }}" class="text-gray-300 hover:text-neon-purple transition">Privacy</a></li>
-                    <li><a href="{{ path('contact') }}" class="text-gray-300 hover:text-neon-purple transition">Contact</a></li>
-                    <li><a href="{{ path('careers') }}" class="text-gray-300 hover:text-neon-purple transition">Careers</a></li>
-                    <li><a href="{{ path('sitemap') }}" class="text-gray-300 hover:text-neon-purple transition">Sitemap</a></li>
-                </ul>
+            <!-- Quick Links -->
+            <div class="col-span-1 md:col-span-2">
+                {% include 'components/footer/quicklinks.html.twig' %}
             </div>
-
-            <!-- Newsletter -->
-            <div>
-                <h3 class="text-xl font-inter text-neon-purple mb-4">Newsletter</h3>
-                <form action="{{ path('newsletter_subscribe') }}" method="POST" class="space-y-3">
-                    <input type="email" name="email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-                    <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Subscribe</button>
-                </form>
+            <!-- Newsletter and Social Media -->
+            <div class="col-span-1">
+                {% include 'components/footer/newsletter.html.twig' %}
+                {% include 'components/footer/socialmedia.html.twig' %}
             </div>
         </div>
-        <div class="mt-8 text-center text-gray-400">
-            © 2025 Aviyon Corporation S-Corp. All rights reserved.
+        <!-- Bottom Section -->
+        <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+            <p>&copy; {{ "now"|date("Y") }} Aviyon Corporation S-Corp. All rights reserved.</p>
         </div>
     </div>
 </footer>
