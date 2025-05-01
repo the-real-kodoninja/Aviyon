@@ -1,0 +1,284 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Wallet{% endblock %}
+
+{% block body %}
+<div class="dashboard-container">
+    <!-- Include the sidebar -->
+    {% include 'dashboard/sidebar.html.twig' %}
+
+    <div class="main-content">
+        <!-- Wallet Header -->
+        <section class="py-12">
+            <!-- Notification Banner -->
+            <div id="wallet-notification" class="bg-purple-600 text-white p-4 rounded-lg mb-6 flex justify-between items-center">
+                <div>
+                    <p class="font-semibold">Aviyon Wallet - Demo View</p>
+                    <p class="text-sm">Please note: The Aviyon Wallet, tokens, and coins are coming soon. This is a demo view showcasing upcoming features.</p>
+                </div>
+                <button id="close-notification" class="text-white hover:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg p-6 mb-6 shadow-lg">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-4xl font-bold text-purple-400 mb-4">Aviyon Wallet</h1>
+                    <div class="flex space-x-3">
+                        <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Connect Wallet</button>
+                        <button class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition">Import Tokens</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wallet Overview -->
+        <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 py-12">
+            <!-- Balances -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg col-span-2">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Token Balances</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {% for token, balance in wallet.balances %}
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300">{{ token }}</span>
+                                <span class="text-white font-semibold">{{ balance|number_format(2) }}</span>
+                            </div>
+                            <div class="mt-2">
+                                <button class="text-purple-400 text-sm hover:underline">Send</button>
+                                <button class="text-purple-400 text-sm hover:underline ml-3">Receive</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Quick Actions</h2>
+                <div class="space-y-3">
+                    <button class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Swap Tokens</button>
+                    <button class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Stake Tokens</button>
+                    <button class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Bridge Assets</button>
+                    <button class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Buy Crypto</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts and Analytics -->
+        <section class="grid gap-6 md:grid-cols-2 py-12">
+            <!-- Portfolio Distribution -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Portfolio Distribution</h2>
+                <canvas id="portfolioChart" class="w-full h-64"></canvas>
+            </div>
+
+            <!-- Price History -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Price History</h2>
+                <select id="tokenSelect" class="mb-4 p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    {% for token in wallet.balances|keys %}
+                        <option value="{{ token }}">{{ token }}</option>
+                    {% endfor %}
+                </select>
+                <canvas id="priceChart" class="w-full h-64"></canvas>
+            </div>
+        </section>
+
+        <!-- Transaction History -->
+        <section class="py-12">
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-3xl font-semibold text-purple-400 mb-6">Transaction History</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-gray-400">
+                                <th class="p-3">ID</th>
+                                <th class="p-3">Type</th>
+                                <th class="p-3">Amount</th>
+                                <th class="p-3">Date</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transaction in wallet.transactions %}
+                                <tr class="border-t border-gray-700">
+                                    <td class="p-3">{{ transaction.id }}</td>
+                                    <td class="p-3">{{ transaction.type }}</td>
+                                    <td class="p-3">{{ transaction.amount }}</td>
+                                    <td class="p-3">{{ transaction.date }}</td>
+                                    <td class="p-3">
+                                        <span class="px-2 py-1 rounded {{ transaction.status == 'Completed' ? 'bg-green-500' : 'bg-yellow-500' }} text-white text-sm">
+                                            {{ transaction.status }}
+                                        </span>
+                                    </td>
+                                    <td class="p-3">
+                                        <button class="text-purple-400 hover:underline">Details</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Features -->
+        <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 py-12">
+            <!-- NFT Integration -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">NFT Holdings</h2>
+                <p class="text-gray-400">Coming soon: View and manage your NFTs directly from your Aviyon Wallet.</p>
+                <button class="mt-3 text-purple-400 hover:underline">Learn More</button>
+            </div>
+
+            <!-- Gas Fee Tracker -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Gas Fee Tracker</h2>
+                <p class="text-gray-400">Monitor gas fees for transactions.</p>
+                <div class="mt-3">
+                    <p class="text-white">Current Gas Fee: <span class="text-green-400">Low (20 Gwei)</span></p>
+                    <button class="mt-2 text-purple-400 hover:underline">Optimize Fees</button>
+                </div>
+            </div>
+
+            <!-- Multi-Chain Support -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Multi-Chain Support</h2>
+                <p class="text-gray-400">Switch between networks.</p>
+                <select class="mt-3 w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option>Ethereum</option>
+                    <option>Polygon</option>
+                    <option>Binance Smart Chain</option>
+                </select>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Security Settings</h2>
+                <p class="text-gray-400">Manage wallet security.</p>
+                <div class="mt-3 space-y-2">
+                    <button class="w-full text-purple-400 hover:underline text-left">Backup Wallet</button>
+                    <button class="w-full text-purple-400 hover:underline text-left">View Private Key</button>
+                </div>
+            </div>
+
+            <!-- DeFi Integrations -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">DeFi Integrations</h2>
+                <p class="text-gray-400">Access DeFi protocols.</p>
+                <div class="mt-3 space-y-2">
+                    <button class="w-full text-purple-400 hover:underline text-left">Uniswap</button>
+                    <button class="w-full text-purple-400 hover:underline text-left">Aave</button>
+                </div>
+            </div>
+
+            <!-- Wallet Analytics -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h2 class="text-xl font-semibold text-purple-400 mb-4">Wallet Analytics</h2>
+                <p class="text-gray-400">Track your wallet's performance.</p>
+                <div class="mt-3">
+                    <p class="text-white">Total Transactions: 15</p>
+                    <p class="text-white">Avg. Gas Spent: 0.05 ETH</p>
+                    <button class="mt-2 text-purple-400 hover:underline">View Report</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        display: flex;
+    }
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Notification Close Functionality
+document.getElementById('close-notification').addEventListener('click', () => {
+    document.getElementById('wallet-notification').classList.add('hidden');
+});
+
+// Portfolio Chart
+const portfolioCtx = document.getElementById('portfolioChart').getContext('2d');
+new Chart(portfolioCtx, {
+    type: 'pie',
+    data: {
+        labels: {{ wallet.portfolio|map(item => item.coin)|json_encode|raw }},
+        datasets: [{
+            data: {{ wallet.portfolio|map(item => item.percentage)|json_encode|raw }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40'
+            ],
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: { color: '#e5e7eb' }
+            }
+        }
+    }
+});
+
+// Price History Chart
+const priceCtx = document.getElementById('priceChart').getContext('2d');
+const priceChart = new Chart(priceCtx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+        datasets: [{
+            label: 'Price (USD)',
+            data: [0, 0, 0, 0], // Placeholder data
+            borderColor: '#36a2eb',
+            fill: false
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: { ticks: { color: '#e5e7eb' } },
+            y: { ticks: { color: '#e5e7eb' } }
+        },
+        plugins: {
+            legend: { labels: { color: '#e5e7eb' } }
+        }
+    }
+});
+
+// Update Price Chart based on Token Selection
+document.getElementById('tokenSelect').addEventListener('change', (e) => {
+    const token = e.target.value;
+    // Mock price data for demo
+    const priceData = {
+        'AviyonCoin': [0, 0, 0, 0],
+        'NimbusCoin': [0, 0, 0, 0],
+        'Kodotoken': [0, 0, 0, 0],
+        'KodoTOken': [0, 0, 0, 0],
+        'VelocityCoin': [0, 0, 0, 0],
+        'VelocityToken': [0, 0, 0, 0]
+    };
+    priceChart.data.datasets[0].data = priceData[token];
+    priceChart.data.datasets[0].label = `${token} Price (USD)`;
+    priceChart.update();
+});
+</script>
+{% endblock %}

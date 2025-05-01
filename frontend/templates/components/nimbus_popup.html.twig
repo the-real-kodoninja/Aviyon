@@ -1,66 +1,602 @@
-<div id="chat-popup" class="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-lg shadow-lg max-h-96 w-80 overflow-y-auto z-50">
-    <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl text-purple-400">Nimbus AI Chat</h3>
+<style>
+    #chat-icon {
+        background: purple !important; /* Fallback color */
+    }
+    #chat-send {
+        background: purple !important; /* Fallback color */
+    }
+    .message:hover .message-actions {
+        opacity: 1;
+    }
+</style>
+
+<!-- Gradient Icon (Initial State) -->
+<div id="chat-icon" class="fixed bottom-4 right-4 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center cursor-pointer z-50">
+    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16.5c-1.93 0-3.5-1.57-3.5-3.5 0-.55.45-1 1-1s1 .45 1 1c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5c0-2.76-3.5-2.5-3.5-5 0-1.38 1.12-2.5 2.5-2.5 1.93 0 3.5 1.57 3.5 3.5 0 .55-.45 1-1 1s-1-.45-1-1c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5c0 2.76 3.5 2.5 3.5 5 0 1.38-1.12 2.5-2.5 2.5z"/>
+    </svg>
+</div>
+
+<!-- Chat Popup -->
+<div id="chat-popup" class="hidden fixed w-80 h-96 bg-gray-900 rounded-lg shadow-lg overflow-hidden z-50 flex flex-col" style="min-width: 320px; min-height: 384px; max-width: 90vw; max-height: 90vh; resize: both;">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-3 bg-gray-800 border-b border-gray-700">
+        <div class="flex items-center space-x-2">
+            <!-- Menu Icon -->
+            <button id="nimbusPopupMenu-toggle" class="text-gray-300 hover:text-purple-400 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Menu Dropdown -->
+            <div id="menu-dropdown" class="absolute top-12 left-3 w-64 bg-gray-800 rounded-lg shadow-lg hidden z-50">
+                <div class="p-4">
+                    <!-- Default Menu Options -->
+                    <div id="menu-main">
+                        <ul class="space-y-2">
+                            <li><button id="nimbus-agent-btn" class="text-gray-400 hover:text-purple-400 transition w-full text-left">Nimbus Agent</button></li>
+                            <li><button id="settings-btn" class="text-gray-400 hover:text-purple-400 transition w-full text-left">Settings</button></li>
+                            <li><button id="threads-btn" class="text-gray-400 hover:text-purple-400 transition w-full text-left">Threads</button></li>
+                        </ul>
+                    </div>
+                    <!-- Nimbus Agent Section -->
+                    <div id="nimbus-agent-section" class="hidden">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-gray-300 font-semibold">Nimbus Agent</h3>
+                            <button id="nimbus-agent-back" class="text-gray-400 hover:text-purple-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-1">Agent Mode</label>
+                                <select class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    <option>Conversational</option>
+                                    <option>Analytical</option>
+                                    <option>Creative</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-1">Response Length</label>
+                                <select class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    <option>Short</option>
+                                    <option>Medium</option>
+                                    <option>Long</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Settings Section -->
+                    <div id="settings-section" class="hidden">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-gray-300 font-semibold">Settings</h3>
+                            <button id="settings-back" class="text-gray-400 hover:text-purple-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-1">Theme</label>
+                                <select class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    <option>Dark</option>
+                                    <option>Light</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                                    <span class="text-gray-400 text-sm">Enable Notifications</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Threads Section -->
+                    <div id="threads-section" class="hidden">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-gray-300 font-semibold">Threads</h3>
+                            <button id="threads-back" class="text-gray-400 hover:text-purple-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <ul class="space-y-2 max-h-40 overflow-y-auto">
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Thread DXj5o8WS | 4/7/2025, 5:49:54 PM</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Thread EZ4u6xBV | 4/7/2025, 5:50:03 PM</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Thread QTeoeNTL | 4/7/2025, 5:49:57 PM</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 transition">Thread Yo8Px3aG | 4/7/2025, 5:50:00 PM</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-xl text-purple-400">Nimbus.ai</h3>
+        </div>
+        <!-- Close Button -->
         <button id="chat-close" class="text-gray-300 hover:text-purple-400 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
         </button>
     </div>
-    <div class="chat-messages space-y-2 mb-4">
-        <div class="message user-message bg-purple-500 text-white p-2 rounded-lg self-end">Hello, Nimbus!</div>
-        <div class="message ai-message bg-gray-700 text-gray-100 p-2 rounded-lg self-start">Hi there! How can I assist you today?</div>
+    <!-- Chat Messages -->
+    <div class="chat-messages flex-1 p-3 space-y-4 overflow-y-auto">
+        <div class="message user-message flex justify-end items-start space-x-2">
+            <div class="relative bg-purple-500 text-white p-2 rounded-lg max-w-xs">
+                Hello, Nimbus!
+                <div class="message-actions absolute top-0 right-0 flex space-x-1 p-1 opacity-0 transition-opacity">
+                    <button class="edit-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </button>
+                    <button class="copy-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <img src="/build/images/users/current_user.png" alt="User" class="w-8 h-8 rounded-full">
+        </div>
+        <div class="message ai-message flex justify-start items-start space-x-2">
+            <img src="/build/images/nimbus-ai.png" alt="Nimbus AI" class="w-8 h-8 rounded-full">
+            <div class="relative bg-gray-700 text-gray-100 p-2 rounded-lg max-w-xs">
+                Hi there! How can I assist you today?
+                <div class="message-actions absolute top-0 right-0 flex space-x-1 p-1 opacity-0 transition-opacity">
+                    <button class="refresh-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9H3m17 8h-5.582a8.001 8.001 0 001.356-8H21"></path>
+                        </svg>
+                    </button>
+                    <button class="continue-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <button class="copy-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                    <button class="share-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="typing-indicator hidden text-gray-400 text-sm mb-2">Nimbus is typing...</div>
-    <form id="chat-form" class="flex space-x-2">
-        <input type="text" id="chat-input" placeholder="Ask Nimbus..." class="flex-1 p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
-        <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Send</button>
-    </form>
+    <!-- Response Indicator -->
+    <div id="response-indicator" class="hidden p-2 text-gray-400 text-sm bg-gray-800 border-t border-gray-700"></div>
+    <!-- Bottom Bar -->
+    <div class="p-3 bg-gray-800 border-t border-gray-700">
+        <div class="flex items-center space-x-2 mb-2">
+            <!-- Input -->
+            <input type="text" id="chat-input" placeholder="Hey, Nimbus.ai..." class="flex-1 p-2 bg-transparent border border-purple-500 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <!-- Send Button -->
+            <button id="chat-send" class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center hover:from-purple-600 hover:to-purple-800 transition">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex items-center justify-between">
+            <!-- Bottom Left: Model and Word Count -->
+            <div class="flex items-center space-x-2">
+                <select class="p-1 bg-gray-700 rounded text-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option>Aviyon1.2</option>
+                    <option>Aviyon2.0</option>
+                </select>
+                <span id="word-count" class="text-gray-400 text-sm">Word Count: 0</span>
+            </div>
+            <!-- Bottom Right: Upload and Thunderhead -->
+            <div class="flex items-center space-x-2">
+                <button id="upload-btn" class="text-gray-300 hover:text-purple-400 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                    </svg>
+                </button>
+                <button id="thunderhead-btn" class="text-gray-300 hover:text-purple-400 transition flex items-center space-x-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span class="text-sm">Thunderhead</span>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+    const chatIcon = document.getElementById('chat-icon');
     const chatPopup = document.getElementById('chat-popup');
     const chatClose = document.getElementById('chat-close');
-    const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
     const chatMessages = document.querySelector('.chat-messages');
-    const typingIndicator = document.querySelector('.typing-indicator');
+    const responseIndicator = document.getElementById('response-indicator');
+    const wordCount = document.getElementById('word-count');
+    const menuToggle = document.getElementById('nimbusPopupMenu-toggle');
+    const menuDropdown = document.getElementById('menu-dropdown');
+    const nimbusAgentBtn = document.getElementById('nimbus-agent-btn');
+    const settingsBtn = document.getElementById('settings-btn');
+    const threadsBtn = document.getElementById('threads-btn');
+    const nimbusAgentSection = document.getElementById('nimbus-agent-section');
+    const settingsSection = document.getElementById('settings-section');
+    const threadsSection = document.getElementById('threads-section');
+    const menuMain = document.getElementById('menu-main');
+    const nimbusAgentBack = document.getElementById('nimbus-agent-back');
+    const settingsBack = document.getElementById('settings-back');
+    const threadsBack = document.getElementById('threads-back');
+    const thunderheadBtn = document.getElementById('thunderhead-btn');
 
-    // Show the popup by default
-    chatPopup.classList.remove('hidden');
+    let thunderheadActive = false;
 
-    // Close the popup
-    chatClose.addEventListener('click', () => {
-        chatPopup.classList.add('hidden');
+    // Make Chat Icon Draggable
+    let iconDragging = false;
+    let iconX = 0, iconY = 0;
+    chatIcon.addEventListener('mousedown', (e) => {
+        iconDragging = true;
+        const rect = chatIcon.getBoundingClientRect();
+        iconX = e.clientX - rect.left;
+        iconY = e.clientY - rect.top;
+        document.addEventListener('mousemove', onIconDrag);
+        document.addEventListener('mouseup', stopIconDrag);
+    });
+    function onIconDrag(e) {
+        if (iconDragging) {
+            const newX = e.clientX - iconX;
+            const newY = e.clientY - iconY;
+            chatIcon.style.left = `${newX}px`;
+            chatIcon.style.top = `${newY}px`;
+            chatIcon.style.right = 'auto';
+            chatIcon.style.bottom = 'auto';
+        }
+    }
+    function stopIconDrag() {
+        iconDragging = false;
+        document.removeEventListener('mousemove', onIconDrag);
+        document.removeEventListener('mouseup', stopIconDrag);
+    }
+
+    // Open Chat Popup with Dynamic Positioning
+    chatIcon.addEventListener('click', () => {
+        const iconRect = chatIcon.getBoundingClientRect();
+        const popupWidth = chatPopup.offsetWidth;
+        const popupHeight = chatPopup.offsetHeight;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        // Determine position based on icon location
+        const isTopHalf = iconRect.top < viewportHeight / 2;
+        const isLeftHalf = iconRect.left < viewportWidth / 2;
+
+        if (isTopHalf) {
+            // Open below the icon
+            chatPopup.style.top = `${iconRect.bottom + 16}px`;
+            chatPopup.style.bottom = 'auto';
+        } else {
+            // Open above the icon
+            chatPopup.style.bottom = `${viewportHeight - iconRect.top + 16}px`;
+            chatPopup.style.top = 'auto';
+        }
+
+        if (isLeftHalf) {
+            // Open to the right of the icon
+            chatPopup.style.left = `${iconRect.right + 16}px`;
+            chatPopup.style.right = 'auto';
+        } else {
+            // Open to the left of the icon
+            chatPopup.style.right = `${viewportWidth - iconRect.left + 16}px`;
+            chatPopup.style.left = 'auto';
+        }
+
+        chatPopup.classList.remove('hidden');
+        chatIcon.classList.add('hidden');
     });
 
-    // Handle form submission
-    chatForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    // Close Chat Popup
+    chatClose.addEventListener('click', () => {
+        chatPopup.classList.add('hidden');
+        chatIcon.classList.remove('hidden');
+        menuDropdown.classList.add('hidden');
+        menuMain.classList.remove('hidden');
+        nimbusAgentSection.classList.add('hidden');
+        settingsSection.classList.add('hidden');
+        threadsSection.classList.add('hidden');
+        thunderheadActive = false;
+    });
+
+    // Make Chat Popup Draggable
+    let popupDragging = false;
+    let popupX = 0, popupY = 0;
+    chatPopup.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.p-3.bg-gray-800.border-b.border-gray-700')) { // Only drag from header
+            popupDragging = true;
+            const rect = chatPopup.getBoundingClientRect();
+            popupX = e.clientX - rect.left;
+            popupY = e.clientY - rect.top;
+            document.addEventListener('mousemove', onPopupDrag);
+            document.addEventListener('mouseup', stopPopupDrag);
+        }
+    });
+    function onPopupDrag(e) {
+        if (popupDragging) {
+            const newX = e.clientX - popupX;
+            const newY = e.clientY - popupY;
+            chatPopup.style.left = `${newX}px`;
+            chatPopup.style.top = `${newY}px`;
+            chatPopup.style.right = 'auto';
+            chatPopup.style.bottom = 'auto';
+        }
+    }
+    function stopPopupDrag() {
+        popupDragging = false;
+        document.removeEventListener('mousemove', onPopupDrag);
+        document.removeEventListener('mouseup', stopPopupDrag);
+    }
+
+    // Update Word Count
+    chatInput.addEventListener('input', () => {
+        const words = chatInput.value.trim().split(/\s+/).filter(word => word.length > 0);
+        wordCount.textContent = `Word Count: ${words.length}`;
+    });
+
+    // Handle Chat Submission
+    chatSend.addEventListener('click', async () => {
         const message = chatInput.value.trim();
         if (!message) return;
 
         // Add user message
         const userMessage = document.createElement('div');
-        userMessage.className = 'message user-message bg-purple-500 text-white p-2 rounded-lg self-end';
-        userMessage.textContent = message;
+        userMessage.className = 'message user-message flex justify-end items-start space-x-2';
+        userMessage.innerHTML = `
+            <div class="relative bg-purple-500 text-white p-2 rounded-lg max-w-xs">
+                ${message}
+                <div class="message-actions absolute top-0 right-0 flex space-x-1 p-1 opacity-0 transition-opacity">
+                    <button class="edit-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </button>
+                    <button class="copy-btn text-gray-200 hover:text-purple-300">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <img src="/build/images/users/current_user.png" alt="User" class="w-8 h-8 rounded-full">
+        `;
         chatMessages.appendChild(userMessage);
         chatInput.value = '';
+        wordCount.textContent = 'Word Count: 0';
 
         // Scroll to the bottom
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        // Show typing indicator
-        typingIndicator.classList.remove('hidden');
+        // Show response indicator
+        const responseMessages = [
+            'nimbus.ai is responding',
+            'nimbus.ai is researching',
+            'nimbus.ai is thinking',
+            'nimbus.ai is analyzing'
+        ];
+        const indicatorText = thunderheadActive
+            ? 'nimbus.ai is asking the Thunderhead'
+            : responseMessages[Math.floor(Math.random() * responseMessages.length)];
+        responseIndicator.textContent = indicatorText;
+        responseIndicator.classList.remove('hidden');
 
-        // Simulate AI response (replace with actual API call)
+        // Simulate AI response (replace with API call later)
         setTimeout(() => {
-            typingIndicator.classList.add('hidden');
+            responseIndicator.classList.add('hidden');
             const aiMessage = document.createElement('div');
-            aiMessage.className = 'message ai-message bg-gray-700 text-gray-100 p-2 rounded-lg self-start';
-            aiMessage.textContent = 'I’m here to help! What would you like to know about?';
+            aiMessage.className = 'message ai-message flex justify-start items-start space-x-2';
+            aiMessage.innerHTML = `
+                <img src="/build/images/nimbus-ai.png" alt="Nimbus AI" class="w-8 h-8 rounded-full">
+                <div class="relative bg-gray-700 text-gray-100 p-2 rounded-lg max-w-xs">
+                    I’m here to help! What would you like to know about?
+                    <div class="message-actions absolute top-0 right-0 flex space-x-1 p-1 opacity-0 transition-opacity">
+                        <button class="refresh-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9H3m17 8h-5.582a8.001 8.001 0 001.356-8H21"></path>
+                            </svg>
+                        </button>
+                        <button class="continue-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <button class="copy-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </button>
+                        <button class="share-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
             chatMessages.appendChild(aiMessage);
             chatMessages.scrollTop = chatMessages.scrollHeight;
+            thunderheadActive = false;
         }, 1000);
+
+        // Add event listeners for message actions
+        userMessage.querySelector('.copy-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(message);
+            alert('Message copied to clipboard!');
+        });
+        userMessage.querySelector('.edit-btn').addEventListener('click', () => {
+            const newMessage = prompt('Edit your message:', message);
+            if (newMessage) {
+                userMessage.querySelector('div > div').childNodes[0].textContent = newMessage;
+            }
+        });
+
+        setTimeout(() => {
+            const aiMessage = chatMessages.lastElementChild;
+            aiMessage.querySelector('.copy-btn').addEventListener('click', () => {
+                navigator.clipboard.writeText(aiMessage.querySelector('div > div').childNodes[0].textContent);
+                alert('Response copied to clipboard!');
+            });
+            aiMessage.querySelector('.refresh-btn').addEventListener('click', () => {
+                responseIndicator.textContent = 'nimbus.ai is refreshing';
+                responseIndicator.classList.remove('hidden');
+                setTimeout(() => {
+                    responseIndicator.classList.add('hidden');
+                    aiMessage.querySelector('div > div').childNodes[0].textContent = 'Refreshed response!';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            });
+            aiMessage.querySelector('.continue-btn').addEventListener('click', () => {
+                responseIndicator.textContent = 'nimbus.ai is continuing';
+                responseIndicator.classList.remove('hidden');
+                setTimeout(() => {
+                    responseIndicator.classList.add('hidden');
+                    const continueMessage = document.createElement('div');
+                    continueMessage.className = 'message ai-message flex justify-start items-start space-x-2';
+                    continueMessage.innerHTML = `
+                        <img src="/build/images/nimbus-ai.png" alt="Nimbus AI" class="w-8 h-8 rounded-full">
+                        <div class="relative bg-gray-700 text-gray-100 p-2 rounded-lg max-w-xs">
+                            Continuing the conversation...
+                            <div class="message-actions absolute top-0 right-0 flex space-x-1 p-1 opacity-0 transition-opacity">
+                                <button class="refresh-btn text-gray-200 hover:text-purple-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9H3m17 8h-5.582a8.001 8.001 0 001.356-8H21"></path>
+                                    </svg>
+                                </button>
+                                <button class="continue-btn text-gray-200 hover:text-purple-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <button class="copy-btn text-gray-200 hover:text-purple-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                                <button class="share-btn text-gray-200 hover:text-purple-300">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    chatMessages.appendChild(continueMessage);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            });
+            aiMessage.querySelector('.share-btn').addEventListener('click', () => {
+                alert('Share functionality not implemented yet.');
+            });
+        }, 1000);
+    });
+
+    // Thunderhead Button
+    thunderheadBtn.addEventListener('click', () => {
+        thunderheadActive = true;
+        responseIndicator.textContent = 'nimbus.ai is asking the Thunderhead';
+        responseIndicator.classList.remove('hidden');
+        setTimeout(() => {
+            responseIndicator.classList.add('hidden');
+            const aiMessage = document.createElement('div');
+            aiMessage.className = 'message ai-message flex justify-start items-start space-x-2';
+            aiMessage.innerHTML = `
+                <img src="/build/images/nimbus-ai.png" alt="Nimbus AI" class="w-8 h-8 rounded-full">
+                <div class="relative bg-gray-700 text-gray-100 p-2 rounded-lg max-w-xs">
+                    Thunderhead response: I’ve got some insights for you!
+                    <div class="message-actions absolute top-0 right-0 flex space-x-1 p-1 opacity-0 transition-opacity">
+                        <button class="refresh-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9H3m17 8h-5.582a8.001 8.001 0 001.356-8H21"></path>
+                            </svg>
+                        </button>
+                        <button class="continue-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <button class="copy-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </button>
+                        <button class="share-btn text-gray-200 hover:text-purple-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(aiMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            thunderheadActive = false;
+        }, 1000);
+    });
+
+    // Menu Dropdown Toggle
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuDropdown.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
+            menuDropdown.classList.add('hidden');
+        }
+    });
+
+    // Menu Navigation
+    nimbusAgentBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMain.classList.add('hidden');
+        nimbusAgentSection.classList.remove('hidden');
+        menuDropdown.classList.remove('hidden');
+    });
+    nimbusAgentBack.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMain.classList.remove('hidden');
+        nimbusAgentSection.classList.add('hidden');
+        menuDropdown.classList.remove('hidden');
+    });
+
+    settingsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMain.classList.add('hidden');
+        settingsSection.classList.remove('hidden');
+        menuDropdown.classList.remove('hidden');
+    });
+    settingsBack.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMain.classList.remove('hidden');
+        settingsSection.classList.add('hidden');
+        menuDropdown.classList.remove('hidden');
+    });
+
+    threadsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMain.classList.add('hidden');
+        threadsSection.classList.remove('hidden');
+        menuDropdown.classList.remove('hidden');
+    });
+    threadsBack.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuMain.classList.remove('hidden');
+        threadsSection.classList.add('hidden');
+        menuDropdown.classList.remove('hidden');
     });
 });
 </script>

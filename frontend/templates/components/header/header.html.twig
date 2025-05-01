@@ -1,0 +1,22 @@
+<header id="aviyon-header" class="bg-gray-900 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <!-- Left Section: Menu and Logo -->
+        {% include 'components/header/mainmenu.html.twig' %}
+
+        <!-- Center Section: Search Bar -->
+        {% include 'components/header/search.html.twig' %}
+
+        <!-- Right Section: Cart, Messages, Notifications, User -->
+        <div class="flex items-center space-x-2 md:space-x-3">
+            {% include 'components/header/cart.html.twig' %}
+            {% include 'components/header/messages.html.twig' %}
+            {% include 'components/header/notifications.html.twig' %}
+            {% include 'components/header/user.html.twig' %}
+        </div>
+    </div>
+</header>
+
+<!-- Ticker -->
+<div id="aviyon-ticker-container">
+    {% include 'components/ticker.html.twig' %}
+</div>

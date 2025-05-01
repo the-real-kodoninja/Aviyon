@@ -3,32 +3,40 @@
 {% block title %}{{ user.username }} - Aviyon{% endblock %}
 
 {% block body %}
-    <!-- Profile Header -->
+{% if 'user' in app.routes|keys %}
+<div class="container mx-auto px-4 py-12 bg-gray-900 min-h-screen">
+    <!-- Profile Header with Kodoverse Lore -->
     <section class="py-12">
         <div class="flex items-center space-x-6">
-            <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-24 h-24 rounded-full border-2 border-purple-400">
+            <div class="relative">
+                <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-24 h-24 rounded-full border-4 border-purple-400">
+                <div class="absolute inset-0 rounded-full bg-purple-400/30 animate-pulse"></div>
+            </div>
             <div>
                 <h1 class="text-3xl font-bold text-gray-100">{{ user.username }}</h1>
                 <p class="text-gray-400">@{{ user.handle }}</p>
                 <p class="text-gray-300 mt-2">{{ user.bio }}</p>
+                <p class="text-gray-300 mt-1">Aether Rank: <span class="text-purple-400">{{ user.aetherRank | default('Novice Weaver') }}</span></p>
+                <p class="text-gray-300 mt-1">Aether Marks: <span class="text-purple-400">{{ user.aetherMarks | default(0) }}</span></p>
                 <div class="flex space-x-4 mt-4">
-                    <span class="text-gray-400">Projects: <span class="text-purple-400">{{ user.projects_count }}</span></span>
-                    <span class="text-gray-400">Followers: <span class="text-purple-400">{{ user.followers_count }}</span></span>
+                    <span class="text-gray-400">Aether Constructs: <span class="text-purple-400">{{ user.projects_count }}</span></span>
+                    <span class="text-gray-400">Allegiant Followers: <span class="text-purple-400">{{ user.followers_count }}</span></span>
                     <span class="text-gray-400">Following: <span class="text-purple-400">{{ user.following_count }}</span></span>
                 </div>
             </div>
         </div>
-        <div class="mt-6">
-            <button class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Follow</button>
+        <div class="mt-6 flex space-x-4">
+            <button id="follow-user" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Pledge to Follow</button>
+            <button id="gift-mark" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Gift Aether Mark</button>
         </div>
     </section>
 
     <!-- Tabs for Profile Sections -->
     <section class="border-t border-gray-700">
         <div class="flex space-x-6 text-gray-400 border-b border-gray-700">
-            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="projects">Projects</button>
-            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="activity">Activity</button>
-            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">NFTs</button>
+            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="projects">Aether Constructs</button>
+            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="activity">Aether Weaves</button>
+            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">Aether Relics</button>
         </div>
         <!-- Projects Tab -->
         <div id="projects" class="py-6 hidden">
@@ -38,8 +46,9 @@
                         <h3 class="text-xl text-purple-400 mb-2">{{ project.name }}</h3>
                         <p class="text-gray-300 mb-4">{{ project.description }}</p>
                         <div class="flex space-x-3">
-                            <a href="{{ path('project_view', {'id': project.id}) }}" class="text-gray-400 hover:text-purple-400">View</a>
-                            <span class="text-gray-400">Stars: {{ project.stars }}</span>
+                            <a href="{{ path('project_view', {'id': project.id}) }}" class="text-gray-400 hover:text-purple-400">Inspect Construct</a>
+                            <span class="text-gray-400">Aether Stars: {{ project.stars }}</span>
+                            <button class="boost-project text-gray-400 hover:text-blue-400" data-project-id="{{ loop.index }}">Boost (+1 Mark)</button>
                         </div>
                     </div>
                 {% endfor %}
@@ -62,24 +71,68 @@
                     <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
                         <img src="{{ asset('build/images/nfts/' ~ nft.id ~ '.png') }}" alt="{{ nft.name }}" class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-xl text-purple-400 mb-2">{{ nft.name }}</h3>
-                        <p class="text-gray-300">Value: {{ nft.value }} AVY</p>
+                        <p class="text-gray-300">Value: {{ nft.value }} Aether Marks</p>
+                        <button class="trade-nft text-gray-400 hover:text-blue-400 mt-2" data-nft-id="{{ loop.index }}">Trade Relic</button>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </section>
+</div>
+{% else %}
+<div class="container mx-auto px-4 py-12 bg-gray-900 min-h-screen text-center">
+    <h1 class="text-4xl font-bold text-purple-400 mb-4">Nexus Hub Unavailable</h1>
+    <p class="text-xl text-gray-300">This Aether Weaver's Nexus Hub cannot be accessed. The route to this realm does not exist.</p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block styles %}
+<style>
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.3; }
+}
+</style>
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        document.querySelectorAll('[data-tab]').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('text-purple-400', 'border-purple-400'));
-                tab.classList.add('text-purple-400', 'border-purple-400');
-                document.querySelectorAll('#projects, #activity, #nfts').forEach(content => content.classList.add('hidden'));
-                document.getElementById(tab.dataset.tab).classList.remove('hidden');
-            });
-        });
-        document.querySelector('[data-tab="projects"]').click();
-    </script>
+<script>
+document.querySelectorAll('[data-tab]').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('text-purple-400', 'border-purple-400'));
+        tab.classList.add('text-purple-400', 'border-purple-400');
+        document.querySelectorAll('#projects, #activity, #nfts').forEach(content => content.classList.add('hidden'));
+        document.getElementById(tab.dataset.tab).classList.remove('hidden');
+    });
+});
+document.querySelector('[data-tab="projects"]').click();
+
+document.getElementById('follow-user')?.addEventListener('click', () => {
+    alert('You have pledged to follow {{ user.username }}! Their Aether Rank may rise with your support.');
+});
+
+document.getElementById('gift-mark')?.addEventListener('click', () => {
+    alert('You have gifted an Aether Mark to {{ user.username }}! Their influence in the Kodoverse grows.');
+});
+
+document.querySelectorAll('.boost-project').forEach(button => {
+    button.addEventListener('click', () => {
+        alert('You have boosted this Aether Construct with 1 Aether Mark! Its visibility in the Kodoverse increases.');
+        button.disabled = true;
+    });
+});
+
+document.querySelectorAll('.trade-nft').forEach(button => {
+    button.addEventListener('click', () => {
+        const nftId = button.dataset.nftId;
+        const nftName = button.closest('.bg-gray-800').querySelector('h3').textContent;
+        alert(`You have initiated a trade for the Aether Relic: ${nftName}. Check the Marketplace for offers.`);
+    });
+});
+</script>
 {% endblock %}

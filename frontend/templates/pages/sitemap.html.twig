@@ -28,25 +28,25 @@
                 <ul id="admin-section" class="ml-6 space-y-2 hidden">
                     <li><a href="{{ path('admin') }}" class="hover:text-purple-400 transition">Admin Dashboard</a></li>
                     <li>
-                        {% try %}
+                        {% if 'admin_manage_platforms' in app.routes|keys %}
                             <a href="{{ path('admin_manage_platforms') }}" class="hover:text-purple-400 transition">Manage Platforms</a>
-                        {% catch %}
+                        {% else %}
                             <span class="text-gray-500">Manage Platforms (Route not available)</span>
-                        {% endtry %}
+                        {% endif %}
                     </li>
                     <li>
-                        {% try %}
+                        {% if 'admin_manage_users' in app.routes|keys %}
                             <a href="{{ path('admin_manage_users') }}" class="hover:text-purple-400 transition">Manage Users</a>
-                        {% catch %}
+                        {% else %}
                             <span class="text-gray-500">Manage Users (Route not available)</span>
-                        {% endtry %}
+                        {% endif %}
                     </li>
                     <li>
-                        {% try %}
+                        {% if 'admin_manage_reports' in app.routes|keys %}
                             <a href="{{ path('admin_manage_reports') }}" class="hover:text-purple-400 transition">Manage Reports</a>
-                        {% catch %}
+                        {% else %}
                             <span class="text-gray-500">Manage Reports (Route not available)</span>
-                        {% endtry %}
+                        {% endif %}
                     </li>
                 </ul>
             </li>

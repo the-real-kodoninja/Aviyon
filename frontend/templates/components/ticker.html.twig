@@ -1,201 +1,320 @@
-<div class="ticker bg-dark-light py-2 overflow-hidden shadow-lg">
-    <div class="ticker-container flex animate-ticker">
-        <div id="ticker-items" class="flex space-x-6">
-            <!-- Ticker items will be populated by JavaScript -->
+<div class="ticker bg-gray-800 py-2 shadow-lg h-[70px] overflow-x-auto">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-1">
+            <p class="text-xs text-gray-400">Powered by Stoploss from Aviyon</p>
         </div>
-    </div>
-
-    <!-- Ticker Detail Modal -->
-    <div id="ticker-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50 animate-fade-in">
-        <div class="bg-dark-light p-8 rounded-lg max-w-lg w-full shadow-lg">
-            <div class="flex justify-between items-center mb-6">
-                <h2 id="ticker-modal-title" class="text-2xl font-inter text-neon-purple"></h2>
-                <button id="ticker-modal-close" class="text-gray-400 hover:text-neon-purple transition">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 6L6 18M6 6l12 12"></path>
-                    </svg>
-                </button>
+        <div class="flex space-x-4">
+            <!-- Stocks -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">AAPL</span>
+                    <canvas id="stock-chart-aapl" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-green-500">+2.3%</span>
+                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">Apple Inc. (AAPL)</h3>
+                        <canvas id="stock-chart-aapl-detail" class="w-full h-32 mb-4"></canvas>
+                        <p class="text-gray-400 mb-1">Price: $175.32</p>
+                        <p class="text-gray-400 mb-1">24h Change: +2.3%</p>
+                        <p class="text-gray-400 mb-1">Volume: 45M</p>
+                        <p class="text-gray-400 mb-1">Market Cap: $2.8T</p>
+                        <a href="https://stoploss.com/aapl" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
             </div>
-            <canvas id="ticker-modal-chart" class="w-full h-64 mb-6"></canvas>
-            <p id="ticker-modal-price" class="text-gray-400 mb-2"></p>
-            <p id="ticker-modal-change" class="text-gray-400 mb-2"></p>
-            <p id="ticker-modal-stoploss" class="text-gray-400"></p>
+            <!-- Stock Exchanges -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">NYSE</span>
+                    <canvas id="exchange-chart-nyse" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-red-500">-0.8%</span>
+                        <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">NYSE Composite</h3>
+                        <canvas id="exchange-chart-nyse-detail" class="w-full h-32 mb-4"></canvas>
+                        <p class="text-gray-400 mb-1">Index: 18,450.32</p>
+                        <p class="text-gray-400 mb-1">24h Change: -0.8%</p>
+                        <p class="text-gray-400 mb-1">Volume: 3.2B</p>
+                        <p class="text-gray-400 mb-1">Top Gainer: +5.2%</p>
+                        <a href="https://stoploss.com/nyse" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
+            <!-- REITs -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">VNQ</span>
+                    <canvas id="reit-chart-vnq" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-green-500">+1.5%</span>
+                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">Vanguard REIT ETF (VNQ)</h3>
+                        <canvas id="reit-chart-vnq-detail" class="w-full h-32 mb-4"></canvas>
+                        <p class="text-gray-400 mb-1">Price: $90.45</p>
+                        <p class="text-gray-400 mb-1">24h Change: +1.5%</p>
+                        <p class="text-gray-400 mb-1">Dividend Yield: 3.8%</p>
+                        <p class="text-gray-400 mb-1">Assets: $45B</p>
+                        <a href="https://stoploss.com/vnq" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Commodities -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">GOLD</span>
+                    <canvas id="commodity-chart-gold" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-green-500">+0.9%</span>
+                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">Gold Futures</h3>
+                        <canvas id="commodity-chart-gold-detail" class="w-full h-32 mb-4"></canvas>
+                        <p class="text-gray-400 mb-1">Price: $2,350.60/oz</p>
+                        <p class="text-gray-400 mb-1">24h Change: +0.9%</p>
+                        <p class="text-gray-400 mb-1">Volume: 120K contracts</p>
+                        <p class="text-gray-400 mb-1">Open Interest: 450K</p>
+                        <a href="https://stoploss.com/gold" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Index Funds -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">SPY</span>
+                    <canvas id="index-chart-spy" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-red-500">-1.2%</span>
+                        <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">S&P 500 ETF (SPY)</h3>
+                        <canvas id="index-chart-spy-detail" class="w-full h-32 mb-4"></canvas>
+                        <p class="text-gray-400 mb-1">Price: $510.25</p>
+                        <p class="text-gray-400 mb-1">24h Change: -1.2%</p>
+                        <p class="text-gray-400 mb-1">Volume: 80M</p>
+                        <p class="text-gray-400 mb-1">Assets: $400B</p>
+                        <a href="https://stoploss.com/spy" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">BTC</span>
+                    <canvas id="crypto-chart-btc" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-green-500">+3.1%</span>
+                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">Bitcoin (BTC)</h3>
+                        <canvas id="crypto-chart-btc-detail" class="w-full h-32 mb-4"></canvas>
+                        <p class="text-gray-400 mb-1">Price: $62,450.00</p>
+                        <p class="text-gray-400 mb-1">24h Change: +3.1%</p>
+                        <p class="text-gray-400 mb-1">Volume: $35B</p>
+                        <p class="text-gray-400 mb-1">Market Cap: $1.2T</p>
+                        <a href="https://stoploss.com/btc" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
+            <!-- NFTs -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <img src="{{ asset('build/images/nfts/bayc.jpg') }}" alt="BAYC" class="w-6 h-6 rounded">
+                    <canvas id="nft-chart-bayc" class="w-16 h-6"></canvas>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-red-500">-2.5%</span>
+                        <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">Bored Ape Yacht Club</h3>
+                        <img src="{{ asset('build/images/nfts/bayc.jpg') }}" alt="BAYC" class="w-full h-32 object-cover rounded-lg mb-4">
+                        <p class="text-gray-400 mb-1">Floor Price: 50 ETH</p>
+                        <p class="text-gray-400 mb-1">24h Change: -2.5%</p>
+                        <p class="text-gray-400 mb-1">Volume: 120 ETH</p>
+                        <p class="text-gray-400 mb-1">Owners: 6,500</p>
+                        <a href="https://stoploss.com/bayc" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
+            <!-- More -->
+            <div class="relative">
+                <div class="flex items-center space-x-2 bg-gray-900 p-2 rounded-lg cursor-pointer">
+                    <span class="text-gray-300 font-semibold">More</span>
+                </div>
+                <div class="absolute left-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50 ticker-dropdown">
+                    <div class="p-4">
+                        <h3 class="text-gray-300 font-semibold mb-2">More Markets</h3>
+                        <ul class="space-y-2">
+                            <li class="text-gray-400">Forex: USD/EUR +0.3%</li>
+                            <li class="text-gray-400">Bonds: 10Y Treasury -0.1%</li>
+                            <li class="text-gray-400">Options: SPY Calls +1.8%</li>
+                        </ul>
+                        <a href="https://stoploss.com/markets" target="_blank" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View in Stoploss</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Function to initialize modal
-function initModal(modalId, triggerSelector, closeSelector) {
-    const modal = document.getElementById(modalId);
-    const triggers = document.querySelectorAll(triggerSelector);
-    const closeButton = document.querySelector(closeSelector);
-
-    triggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
-    });
-
-    closeButton.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
-
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.add('hidden');
-    });
-}
-
-// Asset data
-const assets = [
-    { id: 'bitcoin', name: 'BTC', type: 'crypto', stopLoss: 30000 },
-    { id: 'ethereum', name: 'ETH', type: 'crypto', stopLoss: 1500 },
-    { id: 'internet-computer', name: 'ICP', type: 'crypto', stopLoss: 5 },
-    { id: 'bored-ape-yacht-club', name: 'BAYC', type: 'nft', stopLoss: 20 },
-    { id: 'kodoverse-nft', name: 'KodoNFT', type: 'nft', stopLoss: 0.5 }
-];
-
-// Historical price data for sparklines
-let priceHistory = {};
-
-// Fetch initial prices
-async function fetchPrices() {
-    const cryptoIds = assets.filter(a => a.type === 'crypto').map(a => a.id).join(',');
-    const cryptoResponse = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoIds}&vs_currencies=usd&include_24hr_change=true`)
-        .then(res => res.json())
-        .catch(err => {
-            console.error('Error fetching crypto prices:', err);
-            return {};
-        });
-
-    // Simulate NFT floor prices (replace with real API if available)
-    const nftPrices = {
-        'bored-ape-yacht-club': { usd: 50, usd_24h_change: 2.5 },
-        'kodoverse-nft': { usd: 1.2, usd_24h_change: -1.8 }
-    };
-
-    const prices = {};
-    assets.forEach(asset => {
-        if (asset.type === 'crypto') {
-            prices[asset.id] = cryptoResponse[asset.id] || { usd: 0, usd_24h_change: 0 };
-        } else {
-            prices[asset.id] = nftPrices[asset.id] || { usd: 0, usd_24h_change: 0 };
+// Candlestick Chart Helper
+function createCandlestickChart(ctx, data, color) {
+    new Chart(ctx, {
+        type: 'candlestick',
+        data: {
+            datasets: [{
+                label: '',
+                data: data,
+                borderColor: color,
+                backgroundColor: color
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { x: { display: false }, y: { display: false } },
+            plugins: { legend: { display: false }, tooltip: { enabled: false } }
         }
-
-        // Update price history for sparklines
-        if (!priceHistory[asset.id]) priceHistory[asset.id] = [];
-        priceHistory[asset.id].push(prices[asset.id].usd);
-        if (priceHistory[asset.id].length > 30) priceHistory[asset.id].shift();
     });
-
-    return prices;
 }
 
-// Update Ticker
-async function updateTicker() {
-    const prices = await fetchPrices();
-    const tickerItems = document.getElementById('ticker-items');
-    tickerItems.innerHTML = '';
-
-    assets.forEach(asset => {
-        const price = prices[asset.id].usd;
-        const change = prices[asset.id].usd_24h_change;
-        const isBelowStopLoss = price < asset.stopLoss;
-
-        const item = document.createElement('div');
-        item.className = 'ticker-item flex items-center space-x-2 mx-4 cursor-pointer';
-        item.innerHTML = `
-            <span class="font-inter text-gray-300">${asset.name}:</span>
-            <span class="${isBelowStopLoss ? 'text-red-500' : 'text-gray-300'}">$${price.toFixed(2)}</span>
-            <span class="${change >= 0 ? 'text-green-500' : 'text-red-500'}">
-                (${change >= 0 ? '+' : ''}${change.toFixed(2)}%)
-                ${change >= 0 ? '↑' : '↓'}
-            </span>
-            <canvas id="sparkline-${asset.id}" class="w-24 h-8"></canvas>
-        `;
-        tickerItems.appendChild(item);
-
-        // Draw Sparkline
-        const sparklineData = priceHistory[asset.id] || Array(30).fill(price);
-        new Chart(document.getElementById(`sparkline-${asset.id}`), {
-            type: 'line',
-            data: {
-                labels: Array(30).fill(''),
-                datasets: [{
-                    data: sparklineData,
-                    borderColor: change >= 0 ? '#34d399' : '#ef4444',
-                    backgroundColor: 'transparent',
-                    borderWidth: 1,
-                    pointRadius: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: { x: { display: false }, y: { display: false } },
-                plugins: { legend: { display: false }, tooltip: { enabled: false } }
-            }
-        });
-
-        // Modal on Click
-        item.addEventListener('click', () => {
-            document.getElementById('ticker-modal-title').textContent = `${asset.name} (${asset.type.toUpperCase()})`;
-            document.getElementById('ticker-modal-price').textContent = `Price: $${price.toFixed(2)}`;
-            document.getElementById('ticker-modal-change').textContent = `24h Change: ${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
-            document.getElementById('ticker-modal-stoploss').textContent = `Stop-Loss: $${asset.stopLoss.toFixed(2)} ${isBelowStopLoss ? '(Triggered)' : ''}`;
-            document.getElementById('ticker-modal').classList.remove('hidden');
-
-            // Draw Detailed Chart in Modal
-            const modalChartCanvas = document.getElementById('ticker-modal-chart');
-            new Chart(modalChartCanvas, {
-                type: 'line',
-                data: {
-                    labels: Array(30).fill('').map((_, i) => `-${29 - i}m`),
-                    datasets: [{
-                        label: 'Price (USD)',
-                        data: sparklineData,
-                        borderColor: change >= 0 ? '#34d399' : '#ef4444',
-                        backgroundColor: change >= 0 ? 'rgba(52, 211, 153, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: { beginAtZero: false },
-                        x: { display: false }
-                    },
-                    plugins: { legend: { labels: { color: '#d1d5db' } } }
-                }
-            });
-        });
+// Line Chart Helper
+function createLineChart(ctx, data, color) {
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array(data.length).fill(''),
+            datasets: [{
+                data: data,
+                borderColor: color,
+                backgroundColor: 'transparent',
+                borderWidth: 1,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { x: { display: false }, y: { display: false } },
+            plugins: { legend: { display: false }, tooltip: { enabled: false } }
+        }
     });
-
-    // Duplicate items to create a seamless loop
-    tickerItems.innerHTML += tickerItems.innerHTML;
 }
 
-// Initialize Modal
-initModal('ticker-modal', '.ticker-item', '#ticker-modal-close');
+// Detailed Chart Helper
+function createDetailedChart(ctx, data, color) {
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array(data.length).fill('').map((_, i) => `-${data.length - 1 - i}m`),
+            datasets: [{
+                label: 'Price',
+                data: data,
+                borderColor: color,
+                backgroundColor: color + '33',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { y: { beginAtZero: false }, x: { display: false } },
+            plugins: { legend: { labels: { color: '#d1d5db' } } }
+        }
+    });
+}
 
-// Update ticker every 30 seconds
-updateTicker();
-setInterval(updateTicker, 30000);
+// Stock: AAPL
+createCandlestickChart(document.getElementById('stock-chart-aapl'), [
+    { t: 1, o: 174, h: 175, l: 173, c: 175 },
+    { t: 2, o: 175, h: 176, l: 174, c: 175.32 }
+], '#34d399');
+createDetailedChart(document.getElementById('stock-chart-aapl-detail'), [174, 174.5, 175, 174.8, 175.32], '#34d399');
+
+// Exchange: NYSE
+createCandlestickChart(document.getElementById('exchange-chart-nyse'), [
+    { t: 1, o: 18500, h: 18550, l: 18450, c: 18480 },
+    { t: 2, o: 18480, h: 18500, l: 18430, c: 18450.32 }
+], '#ef4444');
+createDetailedChart(document.getElementById('exchange-chart-nyse-detail'), [18500, 18490, 18480, 18460, 18450.32], '#ef4444');
+
+// REIT: VNQ
+createCandlestickChart(document.getElementById('reit-chart-vnq'), [
+    { t: 1, o: 89, h: 90, l: 88.5, c: 90 },
+    { t: 2, o: 90, h: 90.5, l: 89.8, c: 90.45 }
+], '#34d399');
+createDetailedChart(document.getElementById('reit-chart-vnq-detail'), [89, 89.5, 90, 90.2, 90.45], '#34d399');
+
+// Commodity: GOLD
+createCandlestickChart(document.getElementById('commodity-chart-gold'), [
+    { t: 1, o: 2340, h: 2355, l: 2335, c: 2350 },
+    { t: 2, o: 2350, h: 2360, l: 2345, c: 2350.60 }
+], '#34d399');
+createDetailedChart(document.getElementById('commodity-chart-gold-detail'), [2340, 2345, 2350, 2352, 2350.60], '#34d399');
+
+// Index: SPY
+createCandlestickChart(document.getElementById('index-chart-spy'), [
+    { t: 1, o: 512, h: 513, l: 510, c: 511 },
+    { t: 2, o: 511, h: 512, l: 509, c: 510.25 }
+], '#ef4444');
+createDetailedChart(document.getElementById('index-chart-spy-detail'), [512, 511.5, 511, 510.5, 510.25], '#ef4444');
+
+// Crypto: BTC
+createCandlestickChart(document.getElementById('crypto-chart-btc'), [
+    { t: 1, o: 62000, h: 62500, l: 61800, c: 62400 },
+    { t: 2, o: 62400, h: 62600, l: 62200, c: 62450 }
+], '#34d399');
+createDetailedChart(document.getElementById('crypto-chart-btc-detail'), [62000, 62100, 62300, 62400, 62450], '#34d399');
+
+// NFT: BAYC
+createLineChart(document.getElementById('nft-chart-bayc'), [52, 51.5, 51, 50.5, 50], '#ef4444');
+
+// Dropdown Toggle
+document.querySelectorAll('.ticker > div > div > .relative').forEach(item => {
+    const dropdown = item.querySelector('.ticker-dropdown');
+    item.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+        if (!item.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+});
 </script>
-
-<style>
-.ticker-container {
-    width: max-content;
-    min-height: 40px; /* Ensure visibility */
-}
-@keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-.animate-ticker {
-    animation: ticker 30s linear infinite;
-}
-.ticker:hover .animate-ticker {
-    animation-play-state: paused;
-}
-</style>

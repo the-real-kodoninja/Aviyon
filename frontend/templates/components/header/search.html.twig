@@ -1,0 +1,117 @@
+<div class="relative flex-1 ml-2.5" style="margin: 0px 10px 0px 10px;">
+    <div class="flex items-center w-full bg-gray-700 rounded-lg p-1">
+        <!-- Mobile SVG Icon -->
+        <div class="md:hidden">
+            <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </div>
+        <!-- Search Input -->
+        <input id="aviyon-search-bar" type="text" placeholder="Search users, platforms, NFT's, posts, and more..." class="flex-1 bg-transparent text-gray-100 placeholder-gray-400 focus:outline-none pl-2 indent-2.5" style="background: transparent; text-indent: 10px; padding: 10px;">
+    </div>
+
+    <!-- Search Dropdown -->
+    <div id="aviyon-search-dropdown" class="absolute left-0 mt-2 w-full bg-gray-800 rounded-lg shadow-lg hidden z-50">
+        <div class="p-4 space-y-3">
+            <!-- Search Result 1: User -->
+            <a href="/profile/kodo" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
+                <div class="relative">
+                    <img src="{{ asset('build/images/users/kodo.png') }}" alt="Kodo" class="w-12 h-12 rounded-full">
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-300 font-semibold">Kodo</p>
+                    <p class="text-gray-400 text-sm">@kodo • Aether Weaver</p>
+                    <p class="text-gray-500 text-xs mt-1">Last active: 5m ago</p>
+                </div>
+                <span class="text-purple-400 text-sm font-medium">Follow</span>
+            </a>
+            <!-- Search Result 2: Platform -->
+            <a href="/platform/kodoverse" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
+                <div class="relative">
+                    <img src="{{ asset('build/images/kodoverse-profile.jpg') }}" alt="Kodoverse" class="w-12 h-12 rounded-full">
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-300 font-semibold">Kodoverse</p>
+                    <p class="text-gray-400 text-sm">Platform • Fiery Ambition</p>
+                    <p class="text-gray-500 text-xs mt-1">Members: 1.2K • Est. 2023</p>
+                </div>
+                <span class="text-purple-400 text-sm font-medium">Join</span>
+            </a>
+            <!-- Search Result 3: NFT -->
+            <div class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
+                <img src="{{ asset('build/images/nfts/nft1.png') }}" alt="NFT" class="w-12 h-12 rounded">
+                <div class="flex-1">
+                    <p class="text-gray-300 font-semibold">Aether Relic #001</p>
+                    <p class="text-gray-400 text-sm">NFT • 50 Aether Marks</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-green-400 text-xs">+5% (24h)</span>
+                        <span class="text-gray-500 text-xs">Owned by @kodo</span>
+                    </div>
+                </div>
+                <span class="text-purple-400 text-sm font-medium">Buy</span>
+            </div>
+            <!-- Search Result 4: Post -->
+            <div class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
+                <img src="{{ asset('build/images/posts/post1.jpg') }}" alt="Post" class="w-12 h-12 rounded">
+                <div class="flex-1">
+                    <p class="text-gray-300 font-semibold">Kodo's Post</p>
+                    <p class="text-gray-400 text-sm truncate">Just launched my new project in the Kodoverse! Check it out and let me know your thoughts.</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-gray-500 text-xs">2h ago</span>
+                        <span class="text-gray-500 text-xs">• 150 Likes</span>
+                    </div>
+                </div>
+                <span class="text-purple-400 text-sm font-medium">View</span>
+            </div>
+            <!-- Search Result 5: Marketplace Item -->
+            <a href="{{ path('marketplace') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
+                <img src="{{ asset('build/images/marketplace-item.jpg') }}" alt="Item" class="w-12 h-12 rounded">
+                <div class="flex-1">
+                    <p class="text-gray-300 font-semibold">Virtual Land Plot</p>
+                    <p class="text-gray-400 text-sm">Marketplace • 100 Aether Marks</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-gray-500 text-xs">Seller: @ninja</span>
+                        <span class="text-gray-500 text-xs">• 10 bids</span>
+                    </div>
+                </div>
+                <span class="text-purple-400 text-sm font-medium">Bid</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const Search = {
+        getElement: function(id) {
+            try {
+                const element = document.getElementById(id);
+                if (!element) throw new Error(`Element with ID ${id} not found`);
+                return element;
+            } catch (e) {
+                console.error('[Search] Error:', e.message);
+                return null;
+            }
+        },
+
+        init: function() {
+            const searchBar = this.getElement('aviyon-search-bar');
+            const searchDropdown = this.getElement('aviyon-search-dropdown');
+            if (searchBar && searchDropdown) {
+                searchBar.addEventListener('focus', () => searchDropdown.classList.remove('hidden'));
+                searchBar.addEventListener('blur', () => setTimeout(() => searchDropdown.classList.add('hidden'), 100));
+
+                document.addEventListener('click', (e) => {
+                    if (!searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
+                        searchDropdown.classList.add('hidden');
+                    }
+                });
+            }
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        Search.init();
+    });
+})();
+</script>

@@ -18,7 +18,7 @@
         <section class="py-12">
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl text-purple-400 mb-4">Create New Agent</h2>
-                {% try %}
+                {% if 'dashboard_agent_create' in app.routes|keys %}
                     <form action="{{ path('dashboard_agent_create') }}" method="POST">
                         <div class="grid gap-4 md:grid-cols-2">
                             <div>
@@ -40,16 +40,16 @@
                         </div>
                         <button type="submit" class="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Create Agent</button>
                     </form>
-                {% catch %}
+                {% else %}
                     <p class="text-gray-500">Create Agent form is unavailable (Route not available).</p>
-                {% endtry %}
+                {% endif %}
             </div>
         </section>
 
         <!-- Agent List -->
         <section class="py-12">
             <h2 class="text-3xl font-semibold text-purple-400 mb-6">Your Agents</h2>
-            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-4 md:grid-cols-2 lg: grid-cols-3">
                 {% for agent in agents %}
                     <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
                         <h3 class="text-xl text-purple-400 mb-2">{{ agent.name }}</h3>

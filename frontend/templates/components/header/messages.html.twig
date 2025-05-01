@@ -1,0 +1,148 @@
+<div class="relative">
+    <button id="aviyon-messages-toggle" class="text-gray-300 hover:text-purple-400 transition relative">
+        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+        </svg>
+        <span class="absolute -top-7 left-2.5 bg-purple-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" style="margin: -30px 0px 0px 8px;">2</span>
+    </button>
+    <div id="aviyon-messages-dropdown" class="absolute right-0 mt-2 w-96 bg-gray-800 rounded-lg shadow-lg hidden z-50">
+        <div class="p-4">
+            <h3 class="text-gray-300 font-semibold mb-3">Messages</h3>
+            <div id="aviyon-messages-list" class="space-y-3 max-h-80 overflow-y-auto">
+                <!-- Message 1 -->
+                <div class="aviyon-message-item flex items-center space-x-3 hover:bg-gray-700 p-2 rounded cursor-pointer">
+                    <div class="relative">
+                        <img src="{{ asset('build/images/users/kodo.png') }}" alt="Kodo" class="w-10 h-10 rounded-full">
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Kodo</p>
+                        <p class="text-gray-400 text-sm">Hey, check out my new NFT! - 1h ago</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="aviyon-save-message text-gray-400 hover:text-blue-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                        <button class="aviyon-delete-message text-gray-400 hover:text-red-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Message 2 -->
+                <div class="aviyon-message-item flex items-center space-x-3 hover:bg-gray-700 p-2 rounded cursor-pointer">
+                    <div class="relative">
+                        <img src="{{ asset('build/images/users/ninja.png') }}" alt="Ninja" class="w-10 h-10 rounded-full">
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Ninja</p>
+                        <p class="text-gray-400 text-sm">Let's collaborate on a project! - 3h ago</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="aviyon-save-message text-gray-400 hover:text-blue-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                        <button class="aviyon-delete-message text-gray-400 hover:text-red-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="aviyon-message-view" class="hidden">
+                <button id="aviyon-message-back" class="text-gray-400 hover:text-purple-400 mb-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="relative">
+                        <img src="{{ asset('build/images/users/kodo.png') }}" alt="Kodo" class="w-10 h-10 rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-gray-300 font-semibold">Kodo</p>
+                        <p class="text-gray-400 text-sm">1h ago</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">Hey, check out my new NFT! It's available on the marketplace if you're interested.</p>
+                <textarea class="w-full p-2 bg-gray-700 rounded text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Reply to Kodo..."></textarea>
+                <button class="mt-2 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Send</button>
+            </div>
+            <a href="{{ path('dashboard_messages') }}" class="block mt-3 text-center text-purple-400 hover:underline">View All Messages</a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const Messages = {
+        getElement: function(id) {
+            try {
+                const element = document.getElementById(id);
+                if (!element) throw new Error(`Element with ID ${id} not found`);
+                return element;
+            } catch (e) {
+                console.error('[Messages] Error:', e.message);
+                return null;
+            }
+        },
+
+        toggleDropdown: function(toggleId, dropdownId) {
+            const toggle = this.getElement(toggleId);
+            const dropdown = this.getElement(dropdownId);
+            if (!toggle || !dropdown) return;
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+        },
+
+        init: function() {
+            this.toggleDropdown('aviyon-messages-toggle', 'aviyon-messages-dropdown');
+
+            document.addEventListener('click', (e) => {
+                const messagesDropdown = this.getElement('aviyon-messages-dropdown');
+                const messagesToggle = this.getElement('aviyon-messages-toggle');
+                if (messagesDropdown && messagesToggle && !messagesToggle.contains(e.target) && !messagesDropdown.contains(e.target)) {
+                    messagesDropdown.classList.add('hidden');
+                }
+
+                const target = e.target;
+                if (target.closest('.aviyon-message-item')) {
+                    const messagesList = this.getElement('aviyon-messages-list');
+                    const messageView = this.getElement('aviyon-message-view');
+                    if (messagesList && messageView) {
+                        messagesList.classList.add('hidden');
+                        messageView.classList.remove('hidden');
+                    }
+                }
+
+                if (target.closest('#aviyon-message-back')) {
+                    const messagesList = this.getElement('aviyon-messages-list');
+                    const messageView = this.getElement('aviyon-message-view');
+                    if (messagesList && messageView) {
+                        messagesList.classList.remove('hidden');
+                        messageView.classList.add('hidden');
+                    }
+                }
+
+                if (target.closest('.aviyon-delete-message')) {
+                    e.stopPropagation();
+                    const messageItem = target.closest('.aviyon-message-item');
+                    messageItem.remove();
+                }
+            });
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        Messages.init();
+    });
+})();
+</script>

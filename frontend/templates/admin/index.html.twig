@@ -102,11 +102,11 @@
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xl text-purple-400">Platform Overview</h3>
-                    {% try %}
+                    {% if 'admin_manage_platforms' in app.routes|keys %}
                         <a href="{{ path('admin_manage_platforms') }}" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Manage Platforms</a>
-                    {% catch %}
+                    {% else %}
                         <span class="text-gray-500">Manage Platforms (Route not available)</span>
-                    {% endtry %}
+                    {% endif %}
                 </div>
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {% for platform in platforms %}
@@ -117,11 +117,11 @@
                             </div>
                             <p class="text-gray-300 mb-2">{{ platform.description|length > 100 ? platform.description|slice(0, 100) ~ '...' : platform.description }}</p>
                             <div class="flex space-x-2">
-                                {% try %}
+                                {% if 'admin_manage_platforms' in app.routes|keys %}
                                     <a href="{{ path('admin_manage_platforms') }}" class="text-purple-400 hover:underline">View Details</a>
-                                {% catch %}
+                                {% else %}
                                     <span class="text-gray-500">View Details (Route not available)</span>
-                                {% endtry %}
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}
@@ -247,7 +247,7 @@ new Chart(resourceUsageCtx, {
         labels: ['5m', '4m', '3m', '2m', '1m'],
         datasets: [
             { label: 'CPU', data: [1, 1.5, 2, 1.8, 2], borderColor: '#8b5cf6', fill: false },
-            { label: 'RAM', data: [2, 3, 4, 3.5, 4'alto], borderColor: '#6b48ff', fill: false }
+            { label: 'RAM', data: [2, 3, 4, 3.5, 4], borderColor: '#6b48ff', fill: false }
         ]
     },
     options: { scales: { y: { beginAtZero: true } } }

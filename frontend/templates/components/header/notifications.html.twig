@@ -1,0 +1,146 @@
+<div class="relative">
+    <button id="aviyon-notifications-toggle" class="text-gray-300 hover:text-purple-400 transition relative">
+        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+        </svg>
+        <span class="absolute -top-7 left-2.5 bg-purple-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" style="margin: -30px 0px 0px 8px;">5</span>
+    </button>
+    <div id="aviyon-notifications-dropdown" class="absolute right-0 mt-2 w-96 bg-gray-800 rounded-lg shadow-lg hidden z-50">
+        <div class="p-4">
+            <h3 class="text-gray-300 font-semibold mb-3">Notifications</h3>
+            <div id="aviyon-notifications-list" class="space-y-3 max-h-80 overflow-y-auto">
+                <!-- Notification 1 -->
+                <div class="aviyon-notification-item flex items-center space-x-3 hover:bg-gray-700 p-2 rounded cursor-pointer">
+                    <div class="relative">
+                        <img src="{{ asset('build/images/users/ninja.png') }}" alt="Ninja" class="w-10 h-10 rounded-full">
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Ninja</p>
+                        <p class="text-gray-400 text-sm">Liked your post - 30m ago</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="aviyon-save-notification text-gray-400 hover:text-blue-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                        <button class="aviyon-delete-notification text-gray-400 hover:text-red-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Notification 2 -->
+                <div class="aviyon-notification-item flex items-center space-x-3 hover:bg-gray-700 p-2 rounded cursor-pointer">
+                    <div class="relative">
+                        <img src="{{ asset('build/images/users/kodo.png') }}" alt="Kodo" class="w-10 h-10 rounded-full">
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Kodo</p>
+                        <p class="text-gray-400 text-sm">Followed you - 1h ago</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="aviyon-save-notification text-gray-400 hover:text-blue-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </button>
+                        <button class="aviyon-delete-notification text-gray-400 hover:text-red-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="aviyon-notification-view" class="hidden">
+                <button id="aviyon-notification-back" class="text-gray-400 hover:text-purple-400 mb-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="relative">
+                        <img src="{{ asset('build/images/users/ninja.png') }}" alt="Ninja" class="w-10 h-10 rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-gray-300 font-semibold">Ninja</p>
+                        <p class="text-gray-400 text-sm">30m ago</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">Ninja liked your post: "Just launched my new project in the Kodoverse!"</p>
+            </div>
+            <a href="{{ path('notifications') }}" class="block mt-3 text-center text-purple-400 hover:underline">View All Notifications</a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const Notifications = {
+        getElement: function(id) {
+            try {
+                const element = document.getElementById(id);
+                if (!element) throw new Error(`Element with ID ${id} not found`);
+                return element;
+            } catch (e) {
+                console.error('[Notifications] Error:', e.message);
+                return null;
+            }
+        },
+
+        toggleDropdown: function(toggleId, dropdownId) {
+            const toggle = this.getElement(toggleId);
+            const dropdown = this.getElement(dropdownId);
+            if (!toggle || !dropdown) return;
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+        },
+
+        init: function() {
+            this.toggleDropdown('aviyon-notifications-toggle', 'aviyon-notifications-dropdown');
+
+            document.addEventListener('click', (e) => {
+                const notificationsDropdown = this.getElement('aviyon-notifications-dropdown');
+                const notificationsToggle = this.getElement('aviyon-notifications-toggle');
+                if (notificationsDropdown && notificationsToggle && !notificationsToggle.contains(e.target) && !notificationsDropdown.contains(e.target)) {
+                    notificationsDropdown.classList.add('hidden');
+                }
+
+                const target = e.target;
+                if (target.closest('.aviyon-notification-item')) {
+                    const notificationsList = this.getElement('aviyon-notifications-list');
+                    const notificationView = this.getElement('aviyon-notification-view');
+                    if (notificationsList && notificationView) {
+                        notificationsList.classList.add('hidden');
+                        notificationView.classList.remove('hidden');
+                    }
+                }
+
+                if (target.closest('#aviyon-notification-back')) {
+                    const notificationsList = this.getElement('aviyon-notifications-list');
+                    const notificationView = this.getElement('aviyon-notification-view');
+                    if (notificationsList && notificationView) {
+                        notificationsList.classList.remove('hidden');
+                        notificationView.classList.add('hidden');
+                    }
+                }
+
+                if (target.closest('.aviyon-delete-notification')) {
+                    e.stopPropagation();
+                    const notificationItem = target.closest('.aviyon-notification-item');
+                    notificationItem.remove();
+                }
+            });
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        Notifications.init();
+    });
+})();
+</script>

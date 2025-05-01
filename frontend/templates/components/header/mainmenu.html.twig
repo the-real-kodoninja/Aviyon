@@ -1,0 +1,203 @@
+<div class="flex items-center space-x-3">
+    <!-- Menu Icon and Dropdown -->
+    <div class="relative mr-2.5" style="margin: 5px 0px 0px 0px;">
+        <button id="aviyon-menu-toggle" class="text-gray-300 hover:text-purple-400 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div id="aviyon-menu-dropdown" class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-lg shadow-lg hidden z-50">
+            <div class="p-4">
+                <!-- Categories -->
+                <div class="mb-4">
+                    <h3 class="text-gray-300 font-semibold mb-2">Explore Kodoverse</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ path('dashboard') }}" class="text-gray-400 hover:text-purple-400 transition">Dashboard</a></li>
+                        <li><a href="{{ path('marketplace') }}" class="text-gray-400 hover:text-purple-400 transition">Marketplace</a></li>
+                        <li><a href="{{ path('investing') }}" class="text-gray-400 hover:text-purple-400 transition">Investing</a></li>
+                        <li><a href="{{ path('explore') }}" class="text-gray-400 hover:text-purple-400 transition">Explore</a></li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-gray-300 font-semibold mb-2">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ path('about') }}" class="text-gray-400 hover:text-purple-400 transition">About</a></li>
+                        <li><a href="{{ path('docs') }}" class="text-gray-400 hover:text-purple-400 transition">Documentation</a></li>
+                        <li><a href="{{ path('contact') }}" class="text-gray-400 hover:text-purple-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Ticker Controls -->
+                <div class="mb-4">
+                    <button id="aviyon-toggle-ticker" class="text-gray-400 hover:text-purple-400 transition">Show/Hide Ticker</button>
+                </div>
+                <div class="mb-4">
+                    <button id="aviyon-ticker-prefs" class="text-gray-400 hover:text-purple-400 transition">Ticker Preferences</button>
+                </div>
+                <!-- Theme Toggle -->
+                <div>
+                    <h3 class="text-gray-300 font-semibold mb-2">Theme</h3>
+                    <select id="aviyon-theme-toggle" class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                        <option value="earth">Earth</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Aviyon Logo -->
+    <a href="{{ path('app_root') }}" class="flex items-center relative">
+        <span class="text-gray-300 text-lg font-semibold">Aviyon</span>
+        <span class="absolute top-0 left-[50px] w-2 h-2 bg-green-400 rounded-full"></span>
+    </a>
+</div>
+
+<!-- Ticker Preferences Popup -->
+<div id="aviyon-ticker-prefs-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+    <div class="bg-gray-800 p-6 rounded-lg max-w-md w-full shadow-lg">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl text-purple-400">Ticker Preferences</h2>
+            <button id="aviyon-ticker-prefs-close" class="text-gray-400 hover:text-purple-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <!-- Display Options -->
+            <div>
+                <label class="block text-gray-300 mb-2">Sections to Display</label>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">Stocks</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">Stock Exchanges</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">REITs</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">Commodities</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">Index Funds</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">Crypto</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" checked class="mr-2 bg-gray-700 border-gray-600 text-purple-500 focus:ring-purple-500">
+                        <span class="text-gray-400">NFTs</span>
+                    </label>
+                </div>
+            </div>
+            <!-- Chart Style -->
+            <div>
+                <label class="block text-gray-300 mb-2">Chart Style</label>
+                <select class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option>Candlestick</option>
+                    <option>Line</option>
+                    <option>Area</option>
+                </select>
+            </div>
+            <!-- Color Customization -->
+            <div>
+                <label class="block text-gray-300 mb-2">Bullish Color</label>
+                <input type="color" value="#34d399" class="w-full h-10 bg-gray-700 rounded">
+            </div>
+            <div>
+                <label class="block text-gray-300 mb-2">Bearish Color</label>
+                <input type="color" value="#ef4444" class="w-full h-10 bg-gray-700 rounded">
+            </div>
+            <!-- Update Frequency -->
+            <div>
+                <label class="block text-gray-300 mb-2">Update Frequency</label>
+                <select class="w-full p-2 bg-gray-700 rounded text-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option>30 seconds</option>
+                    <option>1 minute</option>
+                    <option>5 minutes</option>
+                </select>
+            </div>
+            <button class="w-full bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Save Preferences</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const MainMenu = {
+        getElement: function(id) {
+            try {
+                const element = document.getElementById(id);
+                if (!element) throw new Error(`Element with ID ${id} not found`);
+                return element;
+            } catch (e) {
+                console.error('[MainMenu] Error:', e.message);
+                return null;
+            }
+        },
+
+        toggleDropdown: function(toggleId, dropdownId) {
+            const toggle = this.getElement(toggleId);
+            const dropdown = this.getElement(dropdownId);
+            if (!toggle || !dropdown) return;
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+        },
+
+        init: function() {
+            // Menu Dropdown
+            this.toggleDropdown('aviyon-menu-toggle', 'aviyon-menu-dropdown');
+
+            // Event Delegation
+            document.addEventListener('click', (e) => {
+                const menuDropdown = this.getElement('aviyon-menu-dropdown');
+                const menuToggle = this.getElement('aviyon-menu-toggle');
+                if (menuDropdown && menuToggle && !menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
+                    menuDropdown.classList.add('hidden');
+                }
+
+                // Ticker Controls
+                if (e.target.closest('#aviyon-toggle-ticker')) {
+                    const ticker = this.getElement('aviyon-ticker-container');
+                    if (ticker) ticker.classList.toggle('hidden');
+                }
+
+                if (e.target.closest('#aviyon-ticker-prefs')) {
+                    const modal = this.getElement('aviyon-ticker-prefs-modal');
+                    if (modal) modal.classList.remove('hidden');
+                }
+
+                if (e.target.closest('#aviyon-ticker-prefs-close')) {
+                    const modal = this.getElement('aviyon-ticker-prefs-modal');
+                    if (modal) modal.classList.add('hidden');
+                }
+            });
+
+            // Theme Toggle
+            const themeToggle = this.getElement('aviyon-theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('change', (e) => {
+                    const theme = e.target.value;
+                    document.documentElement.classList.remove('dark', 'light', 'earth');
+                    document.documentElement.classList.add(theme);
+                });
+            }
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        MainMenu.init();
+    });
+})();
+</script>

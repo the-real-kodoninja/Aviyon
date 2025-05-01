@@ -1,0 +1,193 @@
+<div class="relative">
+    <button id="aviyon-cart-toggle" class="text-gray-300 hover:text-purple-400 transition relative">
+        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        <span id="aviyon-cart-count" class="absolute -top-7 left-2.5 bg-purple-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" style="margin: -30px 0px 0px 8px;">3</span>
+    </button>
+    <div id="aviyon-cart-dropdown" class="absolute right-0 mt-2 w-80 bg-gray-800 rounded-lg shadow-lg hidden z-50">
+        <div class="p-4">
+            <h3 class="text-gray-300 font-semibold mb-3">Your Cart</h3>
+            <div id="aviyon-cart-items" class="space-y-3 max-h-64 overflow-y-auto">
+                <!-- Cart Item 1 -->
+                <div class="aviyon-cart-item flex items-center space-x-3">
+                    <img src="{{ asset('build/images/nfts/nft1.png') }}" alt="Aether Relic #001" class="w-12 h-12 rounded">
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Aether Relic #001</p>
+                        <p class="text-gray-400 text-sm">2 hours ago</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <button class="aviyon-quantity-decrease text-gray-400 hover:text-purple-400">-</button>
+                            <span class="aviyon-quantity text-gray-300">1</span>
+                            <button class="aviyon-quantity-increase text-gray-400 hover:text-purple-400">+</button>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="aviyon-price text-gray-300">50 AM</p>
+                        <div class="flex space-x-2 mt-1">
+                            <button class="aviyon-save-for-later text-gray-400 hover:text-blue-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </button>
+                            <button class="aviyon-delete-item text-gray-400 hover:text-red-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cart Item 2 -->
+                <div class="aviyon-cart-item flex items-center space-x-3">
+                    <img src="{{ asset('build/images/virtual-land.jpg') }}" alt="Virtual Land Plot" class="w-12 h-12 rounded">
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Virtual Land Plot</p>
+                        <p class="text-gray-400 text-sm">1 day ago</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <button class="aviyon-quantity-decrease text-gray-400 hover:text-purple-400">-</button>
+                            <span class="aviyon-quantity text-gray-300">2</span>
+                            <button class="aviyon-quantity-increase text-gray-400 hover:text-purple-400">+</button>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="aviyon-price text-gray-300">200 AM</p>
+                        <div class="flex space-x-2 mt-1">
+                            <button class="aviyon-save-for-later text-gray-400 hover:text-blue-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </button>
+                            <button class="aviyon-delete-item text-gray-400 hover:text-red-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cart Item 3 -->
+                <div class="aviyon-cart-item flex items-center space-x-3">
+                    <img src="{{ asset('build/images/kodoverse-pass.jpg') }}" alt="Kodoverse Pass" class="w-12 h-12 rounded">
+                    <div class="flex-1">
+                        <p class="text-gray-300 font-semibold">Kodoverse Pass</p>
+                        <p class="text-gray-400 text-sm">3 days ago</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <button class="aviyon-quantity-decrease text-gray-400 hover:text-purple-400">-</button>
+                            <span class="aviyon-quantity text-gray-300">1</span>
+                            <button class="aviyon-quantity-increase text-gray-400 hover:text-purple-400">+</button>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="aviyon-price text-gray-300">100 AM</p>
+                        <div class="flex space-x-2 mt-1">
+                            <button class="aviyon-save-for-later text-gray-400 hover:text-blue-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </button>
+                            <button class="aviyon-delete-item text-gray-400 hover:text-red-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-3 mt-3">
+                <p class="text-gray-300 font-semibold">Total: <span id="aviyon-cart-total">350 AM</span></p>
+                <a href="/cart" class="block mt-3 text-center bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">View Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const Cart = {
+        getElement: function(id) {
+            try {
+                const element = document.getElementById(id);
+                if (!element) throw new Error(`Element with ID ${id} not found`);
+                return element;
+            } catch (e) {
+                console.error('[Cart] Error:', e.message);
+                return null;
+            }
+        },
+
+        toggleDropdown: function(toggleId, dropdownId) {
+            const toggle = this.getElement(toggleId);
+            const dropdown = this.getElement(dropdownId);
+            if (!toggle || !dropdown) return;
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+        },
+
+        updateCartTotal: function() {
+            try {
+                const prices = Array.from(document.querySelectorAll('.aviyon-price')).map(p => parseFloat(p.textContent) || 0);
+                const total = prices.reduce((sum, price) => sum + price, 0);
+                const cartTotal = this.getElement('aviyon-cart-total');
+                if (cartTotal) cartTotal.textContent = `${total.toFixed(2)} AM`;
+            } catch (e) {
+                console.error('[Cart] Error updating cart total:', e.message);
+            }
+        },
+
+        init: function() {
+            this.toggleDropdown('aviyon-cart-toggle', 'aviyon-cart-dropdown');
+
+            document.addEventListener('click', (e) => {
+                const cartDropdown = this.getElement('aviyon-cart-dropdown');
+                const cartToggle = this.getElement('aviyon-cart-toggle');
+                if (cartDropdown && cartToggle && !cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
+                    cartDropdown.classList.add('hidden');
+                }
+
+                const target = e.target;
+                if (target.closest('.aviyon-quantity-increase')) {
+                    const item = target.closest('.aviyon-cart-item');
+                    const quantityEl = item.querySelector('.aviyon-quantity');
+                    const priceEl = item.querySelector('.aviyon-price');
+                    const basePrice = parseFloat(priceEl.textContent) / parseInt(quantityEl.textContent);
+                    const count = parseInt(quantityEl.textContent) + 1;
+                    quantityEl.textContent = count;
+                    priceEl.textContent = `${(basePrice * count).toFixed(2)} AM`;
+                    this.updateCartTotal();
+                }
+
+                if (target.closest('.aviyon-quantity-decrease')) {
+                    const item = target.closest('.aviyon-cart-item');
+                    const quantityEl = item.querySelector('.aviyon-quantity');
+                    const priceEl = item.querySelector('.aviyon-price');
+                    const count = parseInt(quantityEl.textContent);
+                    if (count > 1) {
+                        const basePrice = parseFloat(priceEl.textContent) / count;
+                        quantityEl.textContent = count - 1;
+                        priceEl.textContent = `${(basePrice * (count - 1)).toFixed(2)} AM`;
+                        this.updateCartTotal();
+                    }
+                }
+
+                if (target.closest('.aviyon-delete-item')) {
+                    const item = target.closest('.aviyon-cart-item');
+                    item.remove();
+                    this.updateCartTotal();
+                    const cartCount = this.getElement('aviyon-cart-count');
+                    if (cartCount) {
+                        cartCount.textContent = document.querySelectorAll('.aviyon-cart-item').length;
+                    }
+                }
+            });
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        Cart.init();
+    });
+})();
+</script>

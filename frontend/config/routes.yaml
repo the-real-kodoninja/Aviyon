@@ -322,3 +322,7 @@ contact_submit:
 sitemap:
     path: /sitemap
     controller: App\Controller\PagesController::sitemap
+
+wallet:
+    path: /dashboard/wallet
+    controller: App\Controller\WalletController::index
