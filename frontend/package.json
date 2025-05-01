@@ -2,14 +2,21 @@
   "name": "aviyon-frontend",
   "version": "1.0.0",
   "scripts": {
-    "dev": "encore dev",
-    "build": "encore production",
-    "watch": "encore dev --watch"
+    "dev": "npm-run-all --sequential clear-cache build start-server",
+    "clear-cache": "rm -rf var/cache/dev && php bin/console cache:clear --env=dev && php bin/console cache:warmup --env=dev",
+    "build": "encore dev",
+    "watch": "encore dev --watch",
+    "start-server": "concurrently \"npm run watch\" \"symfony server:start --port=8000 --no-tls\"",
+    "build-prod": "encore production"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^5.1.0",
     "autoprefixer": "^10.4.20",
+    "coffee-loader": "^5.0.0",
+    "coffeescript": "^2.7.0",
+    "concurrently": "^9.0.1",
     "copy-webpack-plugin": "^13.0.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.47",
     "postcss-loader": "^8.1.1",
     "sass": "^1.79.4",

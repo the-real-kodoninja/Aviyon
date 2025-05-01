@@ -7,6 +7,7 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addEntry('app', './assets/js/app.js')
+    .addEntry('ticker', './assets/js/components/ticker.coffee') // Add ticker entry
     .addStyleEntry('base', './assets/css/base.css')
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
@@ -27,6 +28,11 @@ Encore
                 require('autoprefixer'),
             ],
         };
+    })
+    // Enable CoffeeScript support
+    .addLoader({
+        test: /\.coffee$/,
+        use: ['coffee-loader']
     })
     // Optimize for production
     .configureTerserPlugin((options) => {
