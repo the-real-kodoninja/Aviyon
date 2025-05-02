@@ -345,3 +345,4 @@ bulletinboard:
 api_bulletin_create:
     path: /api/bulletin/create
     controller: Ap
+
