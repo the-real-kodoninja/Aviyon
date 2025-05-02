@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Create New Article - Aviyon{% endblock %}
+
+{% block body %}
+    <section class="py-16 max-w-[1280px] mx-auto px-4">
+        <h1 class="text-4xl font-bold text-gray-100 mb-4">Create New Article</h1>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <!-- WYSIWYG Toolbar -->
+            <div class="flex flex-wrap space-x-2 mb-4 p-2 bg-gray-700 rounded-t-lg">
+                <button id="save-article" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Save">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V7l-4-4zm-5 16a3 3 0 110-6 3 3 0 010 6zm3-10H9V5h6v4z"/>
+                    </svg>
+                </button>
+                <button id="add-image" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Add Image">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V5h14v14zm-5-7l-3 3-2-2-3 3V7h8v5z"/>
+                    </svg>
+                </button>
+                <button id="add-video" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Add Video">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2zm-9 13l-5-4 5-4v8zm2-2V7h5v10h-5z"/>
+                    </svg>
+                </button>
+                <button id="add-youtube" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Add YouTube Video">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.615 3H4.385A2.385 2.385 0 002 5.385v13.23A2.385 2.385 0 004.385 21h15.23A2.385 2.385 0 0022 18.615V5.385A2.385 2.385 0 0019.615 3zM10 16V8l6 4-6 4z"/>
+                    </svg>
+                </button>
+                <button id="bold" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Bold">
+                    <strong>B</strong>
+                </button>
+                <button id="italic" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Italic">
+                    <em>I</em>
+                </button>
+                <button id="underline" class="p-2 text-gray-300 hover:text-purple-400 transition" title="Underline">
+                    <u>U</u>
+                </button>
+                <select id="heading" class="p-2 bg-gray-600 text-gray-300 rounded">
+                    <option value="">Normal</option>
+                    <option value="h1">Heading 1</option>
+                    <option value="h2">Heading 2</option>
+                    <option value="h3">Heading 3</option>
+                </select>
+            </div>
+            <!-- Title Input -->
+            <input type="text" id="article-title" class="w-full p-2 mb-4 bg-gray-600 text-gray-100 rounded" placeholder="Article Title">
+            <!-- Editor -->
+            <div id="editor" contenteditable="true" class="w-full h-96 p-4 bg-gray-600 text-gray-100 rounded-b-lg overflow-y-auto">
+                <p>Start writing your article here...</p>
+            </div>
+        </div>
+    </section>
+    <script src="{{ asset('build/js/news/articles/editor.js') }}"></script>
+{% endblock %}

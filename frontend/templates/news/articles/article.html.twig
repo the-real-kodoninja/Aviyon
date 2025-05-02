@@ -1,0 +1,14 @@
+<div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+    <h3 class="text-xl text-purple-400 mb-2">
+        <a href="{{ path('news_article', {'date': article.date, 'title': article.title|replace({' ': '_'})|lower}) }}">{{ article.title }}</a>
+    </h3>
+    <p class="text-gray-300 mb-4">{{ article.snippet }}</p>
+    {% if article.video %}
+        <video controls class="w-full h-48 object-cover rounded-lg mb-4">
+            <source src="{{ asset('build/videos/' ~ article.video) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% elseif article.image %}
+        <img src="{{ asset('build/images/' ~ article.image) }}" alt="{{ article.title }}" class="w-full h-48 object-cover rounded-lg mb-4">
+    {% endif %}
+</div>

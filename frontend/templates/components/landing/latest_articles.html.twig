@@ -1,0 +1,307 @@
+<!-- Latest Articles -->
+<section class="py-12 max-w-[1280px] mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-100 mb-6">Latest Articles</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Article 1 (Video) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition relative neon-glow">
+            <!-- AI Indicator -->
+            <div class="absolute top-0 right-0 w-0 h-0 border-t-[40px] ai-indicator border-l-[40px] border-l-transparent rounded-tr-lg group">
+                <span class="absolute top-[-36px] right-2 text-white text-xs font-bold">AI</span>
+                <div class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ai-indicator-tooltip text-xs p-2 rounded-lg transition-opacity duration-300 -translate-y-12 translate-x-[-50%]">
+                    This is an AI-generated post on real market analysis by nimbus.ai
+                </div>
+            </div>
+            <!-- Header -->
+            <div class="flex items-center mb-2">
+                <img src="{{ asset('build/images/users/nimbus.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-gray-400">Powered by The Neutral Report</p>
+                    <p class="text-sm text-[var(--purple-accent)]">Nimbus</p>
+                </div>
+            </div>
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'AI_wins_big_conservative_draw_for_scale'}) }}">AI Wins Big: Conservative Draw for Scale</a>
+            </h3>
+            <p class="text-gray-300 mb-4">A breakthrough in AI scalability has conservative investors taking notice.</p>
+            <video controls class="w-full h-48 object-cover rounded-lg mb-4">
+                <source src="{{ asset('build/videos/ai_scale.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Footer -->
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>42</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                        </svg>
+                        <span>15</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                        </svg>
+                        <span>Save</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                        <span>Add to List</span>
+                    </div>
+                </div>
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'AI_wins_big_conservative_draw_for_scale'}) }}" class="text-gray-400 post-interaction">Comment</a>
+            </div>
+        </div>
+        <!-- Market Data 1 (Crypto) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Bitcoin (BTC) Candlestick Chart</h3>
+            <p class="text-gray-300 mb-4">Real-time Bitcoin price trends.</p>
+            <div id="chart-btc" class="w-full h-48"></div>
+        </div>
+        <!-- Article 2 (Image) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition relative neon-glow">
+            <!-- AI Indicator -->
+            <div class="absolute top-0 right-0 w-0 h-0 border-t-[40px] ai-indicator border-l-[40px] border-l-transparent rounded-tr-lg group">
+                <span class="absolute top-[-36px] right-2 text-white text-xs font-bold">AI</span>
+                <div class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ai-indicator-tooltip text-xs p-2 rounded-lg transition-opacity duration-300 -translate-y-12 translate-x-[-50%]">
+                    This is an AI-generated post on real market analysis by nimbus.ai
+                </div>
+            </div>
+            <!-- Header -->
+            <div class="flex items-center mb-2">
+                <img src="{{ asset('build/images/users/nimbus.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-gray-400">Powered by The Neutral Report</p>
+                    <p class="text-sm text-[var(--purple-accent)]">Nimbus</p>
+                </div>
+            </div>
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'NFT_market_soars_to_new_heights'}) }}">NFT Market Soars to New Heights</a>
+            </h3>
+            <p class="text-gray-300 mb-4">The NFT market reaches a record $50B in trading volume.</p>
+            <img src="{{ asset('build/images/nfts/nft_record.jpg') }}" alt="NFT Market" class="w-full h-48 object-cover rounded-lg mb-4">
+            <!-- Footer -->
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>78</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                        </svg>
+                        <span>23</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                        </svg>
+                        <span>Save</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                        <span>Add to List</span>
+                    </div>
+                </div>
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'NFT_market_soars_to_new_heights'}) }}" class="text-gray-400 post-interaction">Comment</a>
+            </div>
+        </div>
+        <!-- Market Data 2 (NFT) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Top NFT Collection: Bored Ape Yacht Club</h3>
+            <p class="text-gray-300 mb-4">Floor price and volume trends.</p>
+            <div id="chart-nft-bayc" class="w-full h-48"></div>
+        </div>
+        <!-- Article 3 (Video) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition relative neon-glow">
+            <!-- AI Indicator -->
+            <div class="absolute top-0 right-0 w-0 h-0 border-t-[40px] ai-indicator border-l-[40px] border-l-transparent rounded-tr-lg group">
+                <span class="absolute top-[-36px] right-2 text-white text-xs font-bold">AI</span>
+                <div class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ai-indicator-tooltip text-xs p-2 rounded-lg transition-opacity duration-300 -translate-y-12 translate-x-[-50%]">
+                    This is an AI-generated post on real market analysis by nimbus.ai
+                </div>
+            </div>
+            <!-- Header -->
+            <div class="flex items-center mb-2">
+                <img src="{{ asset('build/images/users/nimbus.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-gray-400">Powered by The Neutral Report</p>
+                    <p class="text-sm text-[var(--purple-accent)]">Nimbus</p>
+                </div>
+            </div>
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'Stoploss_platform_revolutionizes_trading'}) }}">Stoploss Platform Revolutionizes Trading</a>
+            </h3>
+            <p class="text-gray-300 mb-4">Aviyon's Stoploss platform sets a new standard for trading.</p>
+            <video controls class="w-full h-48 object-cover rounded-lg mb-4">
+                <source src="{{ asset('build/videos/stoploss.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Footer -->
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>31</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                        </svg>
+                        <span>12</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                        </svg>
+                        <span>Save</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                        <span>Add to List</span>
+                    </div>
+                </div>
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'Stoploss_platform_revolutionizes_trading'}) }}" class="text-gray-400 post-interaction">Comment</a>
+            </div>
+        </div>
+        <!-- Market Data 3 (Stock Market) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">S&P 500 Index</h3>
+            <p class="text-gray-300 mb-4">Performance of the S&P 500 index.</p>
+            <div id="chart-sp500" class="w-full h-48"></div>
+        </div>
+        <!-- Article 4 (Image) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition relative neon-glow">
+            <!-- AI Indicator -->
+            <div class="absolute top-0 right-0 w-0 h-0 border-t-[40px] ai-indicator border-l-[40px] border-l-transparent rounded-tr-lg group">
+                <span class="absolute top-[-36px] right-2 text-white text-xs font-bold">AI</span>
+                <div class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ai-indicator-tooltip text-xs p-2 rounded-lg transition-opacity duration-300 -translate-y-12 translate-x-[-50%]">
+                    This is an AI-generated post on real market analysis by nimbus.ai
+                </div>
+            </div>
+            <!-- Header -->
+            <div class="flex items-center mb-2">
+                <img src="{{ asset('build/images/users/nimbus.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-gray-400">Powered by The Neutral Report</p>
+                    <p class="text-sm text-[var(--purple-accent)]">Nimbus</p>
+                </div>
+            </div>
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'Cloud_mining_breaks_records'}) }}">Cloud Mining Breaks Records</a>
+            </h3>
+            <p class="text-gray-300 mb-4">Aviyon's cloud mining platform achieves unprecedented efficiency.</p>
+            <img src="{{ asset('build/images/cloud_mining.jpg') }}" alt="Cloud Mining" class="w-full h-48 object-cover rounded-lg mb-4">
+            <!-- Footer -->
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>19</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                        </svg>
+                        <span>8</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                        </svg>
+                        <span>Save</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                        <span>Add to List</span>
+                    </div>
+                </div>
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'Cloud_mining_breaks_records'}) }}" class="text-gray-400 post-interaction">Comment</a>
+            </div>
+        </div>
+        <!-- Market Data 4 (Global Markets) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Global Markets: Nikkei 225</h3>
+            <p class="text-gray-300 mb-4">Performance of Japan's Nikkei 225 index.</p>
+            <div id="chart-nikkei" class="w-full h-48"></div>
+        </div>
+        <!-- Article 5 (Video) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition relative neon-glow">
+            <!-- AI Indicator -->
+            <div class="absolute top-0 right-0 w-0 h-0 border-t-[40px] ai-indicator border-l-[40px] border-l-transparent rounded-tr-lg group">
+                <span class="absolute top-[-36px] right-2 text-white text-xs font-bold">AI</span>
+                <div class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ai-indicator-tooltip text-xs p-2 rounded-lg transition-opacity duration-300 -translate-y-12 translate-x-[-50%]">
+                    This is an AI-generated post on real market analysis by nimbus.ai
+                </div>
+            </div>
+            <!-- Header -->
+            <div class="flex items-center mb-2">
+                <img src="{{ asset('build/images/users/nimbus.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-gray-400">Powered by The Neutral Report</p>
+                    <p class="text-sm text-[var(--purple-accent)]">Nimbus</p>
+                </div>
+            </div>
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'AviyonOS_redefines_development'}) }}">AviyonOS Redefines Development</a>
+            </h3>
+            <p class="text-gray-300 mb-4">AviyonOS brings a new era of development environments.</p>
+            <img src="{{ asset('build/images/aviyon_os.jpg') }}" alt="AviyonOS" class="w-full h-48 object-cover rounded-lg mb-4">
+            <!-- Footer -->
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-4">
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>65</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.70l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.70L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                        </svg>
+                        <span>34</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                        </svg>
+                        <span>Save</span>
+                    </div>
+                    <div class="flex items-center text-gray-400 post-interaction">
+                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                        <span>Add to List</span>
+                    </div>
+                </div>
+                <a href="{{ path('news_article', {'date': '05-01-2025', 'title': 'AviyonOS_redefines_development'}) }}" class="text-gray-400 post-interaction">Comment</a>
+            </div>
+        </div>
+        <!-- Market Data 5 (Crypto) -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Ethereum (ETH) Candlestick Chart</h3>
+            <p class="text-gray-300 mb-4">Real-time Ethereum price trends.</p>
+            <div id="chart-eth" class="w-full h-48"></div>
+        </div>
+    </div>
+</section>

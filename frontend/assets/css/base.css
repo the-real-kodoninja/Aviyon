@@ -36,3 +36,32 @@ a, button {
 .neon-glow {
     @apply shadow-lg shadow-purple-500/50;
 }
+
+/* Support for AI Indicator Triangle */
+.ai-indicator {
+    border-top-color: var(--purple-accent);
+}
+.ai-indicator-tooltip {
+    @apply bg-gray-800 text-gray-100;
+}
+
+/* Support for Bias Meter */
+.bias-meter-bar {
+    background-color: var(--purple-accent);
+}
+
+/* Ensure hover effects for post interactions */
+.post-interaction:hover {
+    color: var(--purple-accent);
+}
+
+/* Chart Containers */
+[id^="chart-"] {
+    min-height: 192px;
+}
+
+/* Video and Image Styling */
+video, img {
+    max-width: 100%;
+    height: auto;
+}

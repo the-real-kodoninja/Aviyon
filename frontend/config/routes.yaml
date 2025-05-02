@@ -1,12 +1,15 @@
 # config/routes.yaml
+controllers:
+    resource: ../src/Controller/
+    type: attribute
 
 app_root:
     path: /
-    controller: App\Controller\AuthController::root
+    controller: App\Controller\LandingController::index
 
 landing:
     path: /landing
-    controller: App\Controller\AuthController::landing
+    controller: App\Controller\LandingController::index
 
 login:
     path: /login
@@ -337,3 +340,54 @@ sitemap:
 wallet:
     path: /dashboard/wallet
     controller: App\Controller\WalletController::index
+
+news_article:
+    path: /news/articles/{date}/{title}
+    controller: App\Controller\News\ArticlesController::view
+
+news_article_new:
+    path: /news/articles/new
+    controller: App\Controller\News\ArticlesController::new
+
+news_article_edit:
+    path: /news/articles/{id}/edit
+    controller: App\Controller\News\ArticlesController::edit
+
+# Global Feed Routes
+post_view:
+    path: /post/{id}
+    controller: App\Controller\PostController::viewPost
+    methods: [GET]
+
+post_comment:
+    path: /post/{id}/comment
+    controller: App\Controller\PostController::addComment
+    methods: [POST]
+
+global_feed:
+    path: /feed
+    controller: App\Controller\PagesController::globalFeed
+    methods: [GET]
+
+post_popup:
+    path: /post/popup
+    controller: App\Controller\PostPopup\PostPopupController::index
+
+api_post_create:
+    path: /api/post/create
+    controller: App\Controller\PostPopup\PostPopupController::createPost
+    methods: [POST]
+
+bulletinboard:
+    path: /bulletinboard
+    controller: App\Controller\Bulletinboard\BulletinboardController::index
+
+api_bulletin_create:
+    path: /api/bulletin/create
+    controller: App\Controller\Bulletinboard\BulletinboardController::createBulletin
+    methods: [POST]
+
+api_ticker:
+    path: /api/ticker
+    controller: App\Controller\TickerController::getTickerData
+    methods: [GET]

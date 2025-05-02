@@ -1,0 +1,37 @@
+<div id="post-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="bg-gray-800 p-6 rounded-lg shadow-2xl w-[90%] max-w-[800px] relative neon-glow">
+        <button id="close-post-popup" class="absolute top-4 right-4 text-gray-400 hover:text-purple-400 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <h2 class="text-2xl text-[var(--purple-accent)] font-bold mb-4 neon-glow-text">Create a Post</h2>
+        <div class="flex items-center mb-4">
+            <img src="{{ asset('build/images/users/current_user.png') }}" alt="User" class="w-10 h-10 rounded-full mr-3">
+            <div>
+                <p class="text-sm text-[var(--purple-accent)]">KodoNinja</p>
+                <p class="text-xs text-gray-400">Admin</p>
+            </div>
+        </div>
+        <textarea id="post-content" class="w-full h-48 p-4 bg-gray-700 text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--purple-accent)] resize-none" placeholder="What's on your mind?"></textarea>
+        <div class="flex justify-between items-center mb-4">
+            <span id="word-count" class="text-gray-400">0 words</span>
+            <div class="space-x-2">
+                <button id="add-image" class="p-2 text-gray-300 hover:text-purple-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V5h14v14zm-5-7l-3 3-2-2-3 3V7h8v5z"/>
+                    </svg>
+                </button>
+                <button id="add-video" class="p-2 text-gray-300 hover:text-purple-400 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2zm-9 13l-5-4 5-4v8zm2-2V7h5v10h-5z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <button id="submit-post" class="w-full bg-[var(--purple-accent)] text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Post</button>
+        <div id="post-status" class="hidden w-full bg-[var(--purple-accent)] text-white text-center py-2 rounded-lg mt-4" style="transition: width 1s ease;">
+            Posting to Aviyon... Please wait KodoNinja
+        </div>
+    </div>
+</div>

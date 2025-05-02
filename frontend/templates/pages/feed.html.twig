@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Global Feed - Kodoverse{% endblock %}
+
+{% block body %}
+    <!-- Global Feed Component -->
+    {% include 'components/feed/global_feed.html.twig' %}
+
+    <!-- Include CoffeeScript -->
+    <script src="{{ asset('build/feed.js') }}"></script>
+{% endblock %}

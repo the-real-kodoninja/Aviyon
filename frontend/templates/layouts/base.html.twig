@@ -8,6 +8,9 @@
     <script src="{{ asset('build/app.js') }}" defer></script>
     <!-- Add Chart.js for ticker sparklines and modal chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <!-- Add CSRF tokens -->
+    <meta name="csrf-token-post" content="{{ csrf_token('post_create') }}">
+    <meta name="csrf-token-bulletin" content="{{ csrf_token('bulletin_create') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 <body class="bg-dark text-gray-300 font-inter">

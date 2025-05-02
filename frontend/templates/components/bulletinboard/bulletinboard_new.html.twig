@@ -1,0 +1,24 @@
+<div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
+    <h2 class="text-xl text-[var(--purple-accent)] mb-4">Create Bulletin Post</h2>
+    <input type="text" id="bulletin-title" class="w-full p-2 mb-4 bg-gray-600 text-gray-100 rounded" placeholder="Post Title">
+    <div id="bulletin-editor" contenteditable="true" class="w-full h-48 p-4 bg-gray-700 text-gray-100 rounded-b-lg overflow-y-auto"></div>
+    <div class="flex justify-between items-center mt-4">
+        <span id="bulletin-word-count" class="text-gray-400">0 words</span>
+        <div class="space-x-2">
+            <button id="add-image-bulletin" class="p-2 text-gray-300 hover:text-purple-400 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V5h14v14zm-5-7l-3 3-2-2-3 3V7h8v5z"/>
+                </svg>
+            </button>
+            <button id="add-video-bulletin" class="p-2 text-gray-300 hover:text-purple-400 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2zm-9 13l-5-4 5-4v8zm2-2V7h5v10h-5z"/>
+                </svg>
+            </button>
+            <button id="submit-bulletin" class="bg-[var(--purple-accent)] text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Post</button>
+        </div>
+    </div>
+    <div id="bulletin-status" class="hidden w-full bg-[var(--purple-accent)] text-white text-center py-2 rounded-lg mt-4" style="transition: width 1s ease;">
+        Posting to Bulletin Board... Please wait KodoNinja
+    </div>
+</div>

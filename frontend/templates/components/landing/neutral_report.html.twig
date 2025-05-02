@@ -1,0 +1,84 @@
+<!-- Neutral Report Section -->
+<section class="py-12 max-w-[1280px] mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-100 mb-6">The Neutral Report</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- AI-Driven Market Analysis -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition relative neon-glow">
+            <!-- AI Indicator -->
+            <div class="absolute top-0 right-0 w-0 h-0 border-t-[40px] ai-indicator border-l-[40px] border-l-transparent rounded-tr-lg group">
+                <span class="absolute top-[-36px] right-2 text-white text-xs font-bold">AI</span>
+                <div class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 ai-indicator-tooltip text-xs p-2 rounded-lg transition-opacity duration-300 -translate-y-12 translate-x-[-50%]">
+                    This is an AI-generated market analysis by nimbus.ai
+                </div>
+            </div>
+            <!-- Header -->
+            <div class="flex items-center mb-4">
+                <img src="{{ asset('build/images/users/nimbus.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-gray-400">Powered by The Neutral Report</p>
+                    <p class="text-sm text-[var(--purple-accent)]">Nimbus</p>
+                </div>
+            </div>
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Market Sentiment: Tech Sector</h3>
+            <p class="text-gray-300 mb-4">The tech sector shows a bullish trend with a sentiment score of 78% positive.</p>
+            <!-- Sentiment Indicator -->
+            <div class="flex items-center mb-4">
+                <span class="text-gray-400 mr-2">Sentiment:</span>
+                <div class="w-24 h-4 bg-gray-700 rounded-full overflow-hidden">
+                    <div class="h-full sentiment-bar" style="width: 78%; background-color: #10b981;"></div>
+                </div>
+                <span class="text-gray-400 ml-2">Bullish</span>
+            </div>
+            <!-- Bias Meter -->
+            <div class="flex items-center mb-4">
+                <span class="text-gray-400 mr-2">Bias Meter:</span>
+                <div class="w-32 h-4 bg-gray-700 rounded-full overflow-hidden">
+                    <div class="h-full bias-meter-bar" style="width: 15%;"></div>
+                </div>
+                <span class="text-gray-400 ml-2">15% (Low Bias)</span>
+            </div>
+            <!-- Trend Graph -->
+            <div id="tech-sector-trend" class="w-full h-48 mb-4"></div>
+        </div>
+        <!-- Market Highlights -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Market Highlights</h3>
+            <ul class="text-gray-300 space-y-2">
+                <li class="flex items-center">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                    <span>Nasdaq up 2.3% - Tech stocks lead the rally.</span>
+                </li>
+                <li class="flex items-center">
+                    <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                    <span>Oil prices dip 1.5% amid supply concerns.</span>
+                </li>
+                <li class="flex items-center">
+                    <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
+                    <span>Gold steady at $2,450/oz - Investors cautious.</span>
+                </li>
+            </ul>
+        </div>
+        <!-- Quick Stats -->
+        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+            <h3 class="text-xl text-[var(--purple-accent)] mb-2">Quick Stats</h3>
+            <div class="grid grid-cols-2 gap-4 text-gray-300">
+                <div>
+                    <p class="text-sm text-gray-400">BTC Volatility</p>
+                    <p class="text-lg">12.4%</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">ETH Gas Fees</p>
+                    <p class="text-lg">32 Gwei</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">NFT Volume</p>
+                    <p class="text-lg">$1.2B</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">DeFi TVL</p>
+                    <p class="text-lg">$85B</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

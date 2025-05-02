@@ -1,0 +1,10 @@
+<!-- templates/pages/test.html.twig -->
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Test Page{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+    {{ dump() }} {# Add this to check if the template is rendering #}
+    <h1>Test Page</h1>
+{% endblock %}
