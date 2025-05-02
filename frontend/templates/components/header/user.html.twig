@@ -7,20 +7,15 @@
     <div id="aviyon-user-dropdown" class="absolute right-0 mt-2 w-72 bg-gray-800 rounded-lg shadow-lg hidden z-50 transition-all duration-300" style="margin: 0px 0px 0px 0px;min-width: 269px;">
         <!-- Banner Section -->
         <div class="relative h-32 bg-[rgb(102, 45, 145)]" style="background: rgb(102, 45, 145);">
-            <!-- Banner Gradient -->
             <div class="absolute rounded-t-lg"></div>
-            <!-- User Info Container -->
             <div class="absolute bottom-4 left-4 flex items-center space-x-3">
-                <!-- User Photo -->
                 <div class="relative">
                     <img src="{{ asset('build/images/users/current_user.png') }}" alt="User" class="w-12 h-12 rounded-full m-0 -mr-[5px] ml-2 bg-[rgb(0, 161, 199)" style="background: rgb(0, 161, 199); margin: 0px -4px 0px 8px;">
                 </div>
-                <!-- User Info -->
                 <div>
                     <div class="flex items-center space-x-2">
                         <a href="{{ path('dashboard') }}" class="text-white font-semibold hover:text-purple-300 transition">KodoNinja</a>
                         <span class="text-purple-400 text-sm flex items-center">
-                            <!-- Admin Icon -->
                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 2c-2.209 0-4 1.791-4 4v1h8v-1c0-2.209-1.791-4-4-4z"></path>
                             </svg>
@@ -35,6 +30,40 @@
         </div>
         <!-- Menu Options -->
         <div class="p-4">
+            <!-- Post Section (Collapsible) -->
+            <div class="relative group">
+                <button id="post-toggle" class="block text-gray-400 hover:text-purple-400 transition py-2 flex items-center w-full text-left">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                    </svg>
+                    Post
+                    <svg id="post-chevron" class="w-4 h-4 ml-auto transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div id="post-content" class="mt-2 hidden">
+                    <div class="p-4 bg-gray-700 rounded-lg">
+                        <a href="#" class="block text-gray-300 hover:text-purple-400 transition py-2 flex items-center" data-action="platform-post">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                            </svg>
+                            Platform Post
+                        </a>
+                        <a href="{{ path('news_article_new') }}" class="block text-gray-300 hover:text-purple-400 transition py-2 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            New Article
+                        </a>
+                        <a href="{{ path('bulletinboard') }}" class="block text-gray-300 hover:text-purple-400 transition py-2 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5z"></path>
+                            </svg>
+                            Bulletin Board
+                        </a>
+                    </div>
+                </div>
+            </div>
             <!-- Wallet Section (Collapsible) -->
             <div class="relative group">
                 <button id="wallet-toggle" class="block text-gray-400 hover:text-purple-400 transition py-2 flex items-center w-full text-left">
@@ -54,9 +83,7 @@
                             </svg>
                             Your Wallet
                         </h3>
-                        <!-- Coin Balances -->
                         <div class="space-y-3">
-                            <!-- AviyonCoin -->
                             <div class="flex items-center justify-between bg-gray-800 p-2 rounded-lg">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-gray-300">AviyonCoin</span>
@@ -72,7 +99,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <!-- KodoCoin -->
                             <div class="flex items-center justify-between bg-gray-800 p-2 rounded-lg">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-gray-300">KodoCoin</span>
@@ -88,7 +114,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <!-- ValecityCoin -->
                             <div class="flex items-center justify-between bg-gray-800 p-2 rounded-lg">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-gray-300">ValecityCoin</span>

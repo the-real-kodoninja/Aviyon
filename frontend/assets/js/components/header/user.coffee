@@ -1,3 +1,5 @@
+# assets/js/components/header/user.coffee
+
 User =
   getElement: (id) ->
     try
@@ -20,6 +22,18 @@ User =
   init: ->
     @toggleDropdown 'aviyon-user-toggle', 'aviyon-user-dropdown'
 
+    # Post Dropdown
+    postToggle = @getElement('post-toggle')
+    postContent = @getElement('post-content')
+    postChevron = @getElement('post-chevron')
+    if postToggle and postContent and postChevron
+      postToggle.addEventListener 'click', =>
+        postContent.classList.toggle('hidden')
+        postChevron.classList.toggle('rotate-180')
+    else
+      console.warn '[User] Post dropdown elements missing'
+
+    # Wallet Dropdown
     walletToggle = @getElement('wallet-toggle')
     walletContent = @getElement('wallet-content')
     walletChevron = @getElement('wallet-chevron')
@@ -27,6 +41,11 @@ User =
       walletToggle.addEventListener 'click', =>
         walletContent.classList.toggle('hidden')
         walletChevron.classList.toggle('rotate-180')
+
+    # Platform Post Popup Trigger
+    document.querySelector('[data-action="platform-post"]')?.addEventListener 'click', (e) =>
+      e.preventDefault()
+      PostPopup.open()
 
     document.addEventListener 'click', (e) =>
       userDropdown = @getElement('aviyon-user-dropdown')
