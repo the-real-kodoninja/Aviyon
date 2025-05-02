@@ -344,5 +344,9 @@ bulletinboard:
 
 api_bulletin_create:
     path: /api/bulletin/create
-    controller: Ap
+    controller: App\Controller\Bulletinboard\BulletinboardController::createBulletin
+    methods: [POST]
 
+post_popup:
+    path: /post/popup
+    controller: App\Controller\PostPopup\PostPopupController::index

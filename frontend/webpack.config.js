@@ -10,6 +10,7 @@ Encore
     .addEntry('ticker', './assets/js/components/ticker.coffee')
     .addEntry('nimbus_popup', './assets/js/components/nimbus_popup.coffee')
     .addEntry('newsletter', './assets/js/components/footer/newsletter.coffee') // Add newsletter entry
+    .addEntry('postPopup', './assets/js/components/postPopup/postPopup.coffee')
     .addEntry('bulletinboard_new', './assets/js/components/bulletinboard/bulletinboard_new.coffee')
     .addStyleEntry('base', './assets/css/base.css')
     .enableSingleRuntimeChunk()
