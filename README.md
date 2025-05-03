@@ -1,6 +1,8 @@
 Aviyon: From Cloud Platform to Cyberpunk AI Revolution - The Journey to nimbus.ai
 =================================================================================
 
+![current updates](https://github.com/the-real-kodoninja/Aviyon/blob/main/frontend/assets/images/captureit_5-2-2025_at_22-13-33.png)
+
 Aviyon started as a bold vision: a seamless, modular platform for development, deployment, and hosting, inspired by titans like Heroku, Hostinger, and Codeanywhere. It morphed into a cyberpunk coding odyssey, plunging developers into a neon-soaked dystopia of high-octane challenges and underground alliances. This metamorphosis birthed nimbus.ai, an AI-powered juggernaut chasing Artificial Superintelligence (ASI) and Artificial General Intelligence (AGI) to conquer the "mission of impossibilities" and propel humanity forward. This sprawling document traces Aviyon's ascent from its roots to its pinnacle as nimbus.ai, blending its technical backbone, cyberpunk flair, and audacious AI philosophy with the sprawling kodoverse ecosystem, including projects like KodoCity, kodoanime.social, and beyond.
 
 Table of Contents
