@@ -75,4 +75,11 @@ class PagesController extends AbstractController
     {
         return $this->render('pages/sitemap.html.twig');
     }
+
+    #[Route('/feed', name: 'global_feed', methods: ['GET'])]
+    public function globalFeed(): Response
+    {
+        return $this->render('pages/feed.html.twig');
+    }
+
 }
