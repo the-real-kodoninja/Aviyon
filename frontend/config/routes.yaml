@@ -350,3 +350,8 @@ api_bulletin_create:
 post_popup:
     path: /post/popup
     controller: App\Controller\PostPopup\PostPopupController::index
+
+api_ticker:
+    path: /api/ticker
+    controller: App\Controller\TickerController::getTickerData
+    methods: [GET]

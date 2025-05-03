@@ -21,6 +21,586 @@
                     </div>
                 </div>
             </div>
+            <!-- Stock: MSFT -->
+            <div class="relative ticker-item" data-symbol="MSFT" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">MSFT</span>
+                    <canvas id="chart-msft" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-msft" class="text-gray-300">$420.45</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-msft" class="text-red-500">-0.5%</span>
+                            <svg id="arrow-msft" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 30M</span>
+                        <span>RSI: 70</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: GOOGL -->
+            <div class="relative ticker-item" data-symbol="GOOGL" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">GOOGL</span>
+                    <canvas id="chart-googl" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-googl" class="text-gray-300">$150.25</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-googl" class="text-green-500">+1.8%</span>
+                            <svg id="arrow-googl" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 25M</span>
+                        <span>RSI: 62</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: AMZN -->
+            <div class="relative ticker-item" data-symbol="AMZN" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">AMZN</span>
+                    <canvas id="chart-amzn" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-amzn" class="text-gray-300">$185.67</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-amzn" class="text-red-500">-1.2%</span>
+                            <svg id="arrow-amzn" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 40M</span>
+                        <span>RSI: 58</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: TSLA -->
+            <div class="relative ticker-item" data-symbol="TSLA" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">TSLA</span>
+                    <canvas id="chart-tsla" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-tsla" class="text-gray-300">$265.89</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-tsla" class="text-green-500">+3.5%</span>
+                            <svg id="arrow-tsla" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 50M</span>
+                        <span>RSI: 75</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: NVDA -->
+            <div class="relative ticker-item" data-symbol="NVDA" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">NVDA</span>
+                    <canvas id="chart-nvda" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-nvda" class="text-gray-300">$870.12</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-nvda" class="text-green-500">+2.1%</span>
+                            <svg id="arrow-nvda" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 35M</span>
+                        <span>RSI: 80</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: META -->
+            <div class="relative ticker-item" data-symbol="META" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">META</span>
+                    <canvas id="chart-meta" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-meta" class="text-gray-300">$495.34</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-meta" class="text-red-500">-0.9%</span>
+                            <svg id="arrow-meta" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 20M</span>
+                        <span>RSI: 60</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: JPM -->
+            <div class="relative ticker-item" data-symbol="JPM" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">JPM</span>
+                    <canvas id="chart-jpm" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-jpm" class="text-gray-300">$195.78</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-jpm" class="text-green-500">+0.7%</span>
+                            <svg id="arrow-jpm" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 15M</span>
+                        <span>RSI: 55</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: V -->
+            <div class="relative ticker-item" data-symbol="V" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">V</span>
+                    <canvas id="chart-v" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-v" class="text-gray-300">$275.56</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-v" class="text-green-500">+1.3%</span>
+                            <svg id="arrow-v" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 10M</span>
+                        <span>RSI: 63</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: WMT -->
+            <div class="relative ticker-item" data-symbol="WMT" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">WMT</span>
+                    <canvas id="chart-wmt" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-wmt" class="text-gray-300">$60.23</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-wmt" class="text-red-500">-0.3%</span>
+                            <svg id="arrow-wmt" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 25M</span>
+                        <span>RSI: 52</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: DIS -->
+            <div class="relative ticker-item" data-symbol="DIS" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">DIS</span>
+                    <canvas id="chart-dis" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-dis" class="text-gray-300">$115.89</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-dis" class="text-green-500">+0.9%</span>
+                            <svg id="arrow-dis" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 18M</span>
+                        <span>RSI: 57</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: NFLX -->
+            <div class="relative ticker-item" data-symbol="NFLX" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">NFLX</span>
+                    <canvas id="chart-nflx" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-nflx" class="text-gray-300">$625.45</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-nflx" class="text-red-500">-1.5%</span>
+                            <svg id="arrow-nflx" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 12M</span>
+                        <span>RSI: 64</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: AMD -->
+            <div class="relative ticker-item" data-symbol="AMD" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">AMD</span>
+                    <canvas id="chart-amd" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-amd" class="text-gray-300">$165.78</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-amd" class="text-green-500">+2.7%</span>
+                            <svg id="arrow-amd" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 30M</span>
+                        <span>RSI: 72</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: INTC -->
+            <div class="relative ticker-item" data-symbol="INTC" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">INTC</span>
+                    <canvas id="chart-intc" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-intc" class="text-gray-300">$40.12</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-intc" class="text-red-500">-0.8%</span>
+                            <svg id="arrow-intc" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 22M</span>
+                        <span>RSI: 48</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Stock: CSCO -->
+            <div class="relative ticker-item" data-symbol="CSCO" data-type="stock">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">CSCO</span>
+                    <canvas id="chart-csco" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-csco" class="text-gray-300">$50.34</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-csco" class="text-green-500">+0.4%</span>
+                            <svg id="arrow-csco" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 15M</span>
+                        <span>RSI: 53</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: BTC -->
+            <div class="relative ticker-item" data-symbol="BTC" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">BTC</span>
+                    <canvas id="chart-btc" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-btc" class="text-gray-300">$62,450</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-btc" class="text-green-500">+3.1%</span>
+                            <svg id="arrow-btc" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $35B</span>
+                        <span>Dom: 54%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: ETH -->
+            <div class="relative ticker-item" data-symbol="ETH" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">ETH</span>
+                    <canvas id="chart-eth" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-eth" class="text-gray-300">$3,250.75</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-eth" class="text-red-500">-0.6%</span>
+                            <svg id="arrow-eth" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $15B</span>
+                        <span>Dom: 18%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: BNB -->
+            <div class="relative ticker-item" data-symbol="BNB" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">BNB</span>
+                    <canvas id="chart-bnb" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-bnb" class="text-gray-300">$580.23</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-bnb" class="text-green-500">+1.9%</span>
+                            <svg id="arrow-bnb" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $2B</span>
+                        <span>Dom: 4%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: ADA -->
+            <div class="relative ticker-item" data-symbol="ADA" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">ADA</span>
+                    <canvas id="chart-ada" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-ada" class="text-gray-300">$0.58</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-ada" class="text-red-500">-2.1%</span>
+                            <svg id="arrow-ada" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $500M</span>
+                        <span>Dom: 1%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: XRP -->
+            <div class="relative ticker-item" data-symbol="XRP" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">XRP</span>
+                    <canvas id="chart-xrp" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-xrp" class="text-gray-300">$0.62</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-xrp" class="text-green-500">+0.8%</span>
+                            <svg id="arrow-xrp" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $1B</span>
+                        <span>Dom: 1.5%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: SOL -->
+            <div class="relative ticker-item" data-symbol="SOL" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">SOL</span>
+                    <canvas id="chart-sol" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-sol" class="text-gray-300">$175.45</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-sol" class="text-green-500">+2.3%</span>
+                            <svg id="arrow-sol" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $3B</span>
+                        <span>Dom: 2%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Crypto: DOGE -->
+            <div class="relative ticker-item" data-symbol="DOGE" data-type="crypto">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">DOGE</span>
+                    <canvas id="chart-doge" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-doge" class="text-gray-300">$0.18</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-doge" class="text-red-500">-1.7%</span>
+                            <svg id="arrow-doge" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: $800M</span>
+                        <span>Dom: 0.5%</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Index: SPY -->
+            <div class="relative ticker-item" data-symbol="SPY" data-type="index">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">SPY</span>
+                    <canvas id="chart-spy" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-spy" class="text-gray-300">$510.25</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-spy" class="text-red-500">-1.2%</span>
+                            <svg id="arrow-spy" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 80M</span>
+                        <span>BB: 1.2</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Index: DIA -->
+            <div class="relative ticker-item" data-symbol="DIA" data-type="index">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">DIA</span>
+                    <canvas id="chart-dia" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-dia" class="text-gray-300">$385.67</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-dia" class="text-green-500">+0.5%</span>
+                            <svg id="arrow-dia" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 40M</span>
+                        <span>BB: 1.0</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Index: QQQ -->
+            <div class="relative ticker-item" data-symbol="QQQ" data-type="index">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">QQQ</span>
+                    <canvas id="chart-qqq" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-qqq" class="text-gray-300">$435.89</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-qqq" class="text-red-500">-0.9%</span>
+                            <svg id="arrow-qqq" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 50M</span>
+                        <span>BB: 1.5</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Index: IWM -->
+            <div class="relative ticker-item" data-symbol="IWM" data-type="index">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">IWM</span>
+                    <canvas id="chart-iwm" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-iwm" class="text-gray-300">$205.34</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-iwm" class="text-green-500">+1.1%</span>
+                            <svg id="arrow-iwm" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 30M</span>
+                        <span>BB: 1.3</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Commodity: GOLD -->
+            <div class="relative ticker-item" data-symbol="GOLD" data-type="commodity">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">GOLD</span>
+                    <canvas id="chart-gold" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-gold" class="text-gray-300">$2,350</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-gold" class="text-green-500">+0.9%</span>
+                            <svg id="arrow-gold" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 120K</span>
+                        <span>OI: 450K</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Commodity: OIL -->
+            <div class="relative ticker-item" data-symbol="OIL" data-type="commodity">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">OIL</span>
+                    <canvas id="chart-oil" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-oil" class="text-gray-300">$85.23</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-oil" class="text-red-500">-0.4%</span>
+                            <svg id="arrow-oil" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 200K</span>
+                        <span>OI: 600K</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Commodity: SILVER -->
+            <div class="relative ticker-item" data-symbol="SILVER" data-type="commodity">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">SILVER</span>
+                    <canvas id="chart-silver" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-silver" class="text-gray-300">$27.45</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-silver" class="text-green-500">+1.2%</span>
+                            <svg id="arrow-silver" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 150K</span>
+                        <span>OI: 300K</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Commodity: CORN -->
+            <div class="relative ticker-item" data-symbol="CORN" data-type="commodity">
+                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
+                    <span class="text-gray-300 font-semibold">CORN</span>
+                    <canvas id="chart-corn" class="w-12 h-6"></canvas>
+                    <div class="flex flex-col items-center">
+                        <span id="price-corn" class="text-gray-300">$450.78</span>
+                        <div class="flex items-center space-x-1">
+                            <span id="change-corn" class="text-red-500">-0.7%</span>
+                            <svg id="arrow-corn" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-gray-400 text-[10px]">
+                        <span>Vol: 80K</span>
+                        <span>OI: 200K</span>
+                    </div>
+                </div>
+            </div>
             <!-- Exchange: NYSE -->
             <div class="relative ticker-item" data-symbol="NYSE" data-type="exchange">
                 <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
@@ -58,66 +638,6 @@
                     <div class="flex flex-col text-gray-400 text-[10px]">
                         <span>Yield: 3.8%</span>
                         <span>MACD: 0.5</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Commodity: GOLD -->
-            <div class="relative ticker-item" data-symbol="GOLD" data-type="commodity">
-                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
-                    <span class="text-gray-300 font-semibold">GOLD</span>
-                    <canvas id="chart-gold" class="w-12 h-6"></canvas>
-                    <div class="flex flex-col items-center">
-                        <span id="price-gold" class="text-gray-300">$2,350</span>
-                        <div class="flex items-center space-x-1">
-                            <span id="change-gold" class="text-green-500">+0.9%</span>
-                            <svg id="arrow-gold" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="flex flex-col text-gray-400 text-[10px]">
-                        <span>Vol: 120K</span>
-                        <span>OI: 450K</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Index: SPY -->
-            <div class="relative ticker-item" data-symbol="SPY" data-type="index">
-                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
-                    <span class="text-gray-300 font-semibold">SPY</span>
-                    <canvas id="chart-spy" class="w-12 h-6"></canvas>
-                    <div class="flex flex-col items-center">
-                        <span id="price-spy" class="text-gray-300">$510.25</span>
-                        <div class="flex items-center space-x-1">
-                            <span id="change-spy" class="text-red-500">-1.2%</span>
-                            <svg id="arrow-spy" class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="flex flex-col text-gray-400 text-[10px]">
-                        <span>Vol: 80M</span>
-                        <span>BB: 1.2</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Crypto: BTC -->
-            <div class="relative ticker-item" data-symbol="BTC" data-type="crypto">
-                <div class="flex items-center space-x-1 bg-gray-950 p-1 rounded-lg cursor-pointer text-xs h-10 w-48 overflow-hidden">
-                    <span class="text-gray-300 font-semibold">BTC</span>
-                    <canvas id="chart-btc" class="w-12 h-6"></canvas>
-                    <div class="flex flex-col items-center">
-                        <span id="price-btc" class="text-gray-300">$62,450</span>
-                        <div class="flex items-center space-x-1">
-                            <span id="change-btc" class="text-green-500">+3.1%</span>
-                            <svg id="arrow-btc" class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="flex flex-col text-gray-400 text-[10px]">
-                        <span>Vol: $35B</span>
-                        <span>Dom: 54%</span>
                     </div>
                 </div>
             </div>
@@ -221,7 +741,7 @@
 
 <!-- Include Chart.js and the compiled ticker script -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ asset('build/ticker.js') }}"></script>
+<script src="{{ asset('build/ticker.js') }}" defer></script>
 
 <style>
 /* Hide scrollbar but keep scrolling functionality */
