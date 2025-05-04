@@ -1,85 +1,65 @@
 document.addEventListener 'DOMContentLoaded', ->
-  tabButtons = document.querySelectorAll '.tab-btn'
-  sidebar = document.getElementById 'sidebar'
+  # Calendar Logic
+  calendarDays = document.getElementById 'calendar-days'
+  monthYear = document.getElementById 'month-year'
+  prevMonth = document.getElementById 'prev-month'
+  nextMonth = document.getElementById 'next-month'
+  currentDate = new Date()
+  currentMonth = currentDate.getMonth()
+  currentYear = currentDate.getFullYear()
 
-  updateSidebar = (tab) ->
-    sidebar.innerHTML = switch tab
-      when 'post'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Trending Topics</h3>
-          <ul class="text-gray-300 space-y-2">
-            <li><a href="/search?q=%23AviyonOS" class="hover:text-purple-400">#AviyonOS</a></li>
-            <li><a href="/search?q=%23CloudMining" class="hover:text-purple-400">#CloudMining</a></li>
-            <li><a href="/search?q=%23NFTs" class="hover:text-purple-400">#NFTs</a></li>
-          </ul>
-        </div>
-        """
-      when 'replies'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Recent Replies</h3>
-          <ul class="text-gray-300 space-y-2">
-            <li><a href="/user/alice" class="hover:text-purple-400">Alice on ASI</a></li>
-            <li><a href="/user/bob" class="hover:text-purple-400">Bob on Cloud</a></li>
-          </ul>
-        </div>
-        """
-      when 'photos'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Photo Highlights</h3>
-          <div class="grid grid-cols-2 gap-2">
-            <img src="{{ asset('build/images/sample1.jpg') }}" class="rounded">
-            <img src="{{ asset('build/images/sample2.jpg') }}" class="rounded">
-          </div>
-        </div>
-        """
-      when 'videos'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Video Picks</h3>
-          <ul class="text-gray-300 space-y-2">
-            <li><a href="/video/1" class="hover:text-purple-400">Demo Video 1</a></li>
-            <li><a href="/video/2" class="hover:text-purple-400">Tutorial 2</a></li>
-          </ul>
-        </div>
-        """
-      when 'likes'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Liked Communities</h3>
-          <ul class="text-gray-300 space-y-2">
-            <li><a href="/community/ai" class="hover:text-purple-400">AI Enthusiasts</a></li>
-            <li><a href="/community/dev" class="hover:text-purple-400">Developers</a></li>
-          </ul>
-        </div>
-        """
-      when 'list'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Custom Lists</h3>
-          <ul class="text-gray-300 space-y-2">
-            <li><a href="/list/innovators" class="hover:text-purple-400">Innovators</a></li>
-            <li><a href="/list/creators" class="hover:text-purple-400">Creators</a></li>
-          </ul>
-        </div>
-        """
-      when 'saves'
-        """
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg text-purple-400 mb-4">Saved Insights</h3>
-          <ul class="text-gray-300 space-y-2">
-            <li><a href="/save/1" class="hover:text-purple-400">ASI Article</a></li>
-            <li><a href="/save/2" class="hover:text-purple-400">Coding Tip</a></li>
-          </ul>
-        </div>
-        """
-      else ''
-    return
+  renderCalendar = ->
+    firstDay = new Date(currentYear, currentMonth, 1).getDay()
+    daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
+    monthYear.textContent = "#{currentDate.toLocaleString('default', { month: 'long' })} #{currentYear}"
+    calendarDays.innerHTML = ''
+    for i in [0...firstDay]
+      calendarDays.innerHTML += '<div></div>'
+    for day in [1..daysInMonth]
+      calendarDays.innerHTML += "<div class='hover:bg-gray-700 p-1 rounded'>#{day}</div>"
 
-  for button in tabButtons
-    button.addEventListener 'click', (e) ->
-      tab = e.target.getAttribute 'data-tab'
-      updateSidebar tab
-  updateSidebar 'post' # Initial sidebar
+  prevMonth.addEventListener 'click', ->
+    currentMonth--
+    if currentMonth < 0
+      currentMonth = 11
+      currentYear--
+    currentDate = new Date(currentYear, currentMonth, 1)
+    renderCalendar()
+
+  nextMonth.addEventListener 'click', ->
+    currentMonth++
+    if currentMonth > 11
+      currentMonth = 0
+      currentYear++
+    currentDate = new Date(currentYear, currentMonth, 1)
+    renderCalendar()
+
+  renderCalendar()
+
+  # Live Activity Feed Simulation
+  activityFeed = document.getElementById 'activity-feed'
+  activities = [
+    "Sahar liked a post • 2m ago",
+    "Emmanuel shared an NFT • 5m ago",
+    "Alice commented on a post • 10m ago"
+  ]
+  setInterval ->
+    activity = activities[Math.floor(Math.random() * activities.length)]
+    li = document.createElement 'li'
+    li.className = 'flex items-center'
+    li.innerHTML = "<span class='w-2 h-2 bg-green-400 rounded-full mr-2'></span><span>#{activity}</span>"
+    activityFeed.prepend li
+    if activityFeed.children.length > 5
+      activityFeed.removeChild activityFeed.lastChild
+  , 10000
+
+  # Dark Mode Toggle
+  darkModeToggle = document.getElementById 'dark-mode-toggle'
+  toggleDot = document.querySelector '.toggle-dot'
+  darkModeToggle.addEventListener 'change', ->
+    if darkModeToggle.checked
+      document.documentElement.classList.add 'dark'
+      toggleDot.style.transform = 'translateX(24px)'
+    else
+      document.documentElement.classList.remove 'dark'
+      toggleDot.style.transform = 'translateX(0)'

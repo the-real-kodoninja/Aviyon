@@ -1,0 +1,43 @@
+<div class="bg-gray-800 p-6 rounded-xl shadow-lg mb-6 neon-glow">
+    <div class="flex items-center mb-4">
+        <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-10 h-10 rounded-full mr-4">
+        <textarea id="post-input" placeholder="What's on your mind, {{ user.username }}?" class="w-full bg-gray-700 text-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-all duration-200" rows="1" style="max-height: 200px; overflow-y: auto;" maxlength="280"></textarea>
+    </div>
+    <div class="flex justify-between items-center">
+        <div class="space-x-4 flex items-center">
+            <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                <input type="file" id="post-photo" accept="image/*" class="hidden" multiple>
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                </svg>
+            </label>
+            <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                <input type="file" id="post-video" accept="video/*" class="hidden" multiple>
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+            </label>
+            <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                <input type="file" id="post-document" accept=".pdf,.doc,.docx" class="hidden" multiple>
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 2l5 5h-5V4zm3 16H6V4h6v5h5v11z"/>
+                </svg>
+            </label>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div id="word-count" class="flex items-center text-gray-300">
+                <svg class="w-6 h-6" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="gray" stroke-width="2" fill="none" />
+                    <circle id="progress-circle" cx="12" cy="12" r="10" stroke="transparent" stroke-width="2" fill="none" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(-90 12 12)" />
+                    <text x="12" y="15" text-anchor="middle" font-size="12" fill="gray">280</text>
+                </svg>
+            </div>
+            <button id="post-submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">Post</button>
+        </div>
+    </div>
+    <div id="post-preview" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div id="preview-photos" class="hidden"></div>
+        <div id="preview-videos" class="hidden"></div>
+        <div id="preview-documents" class="hidden"></div>
+    </div>
+</div>

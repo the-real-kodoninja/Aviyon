@@ -1,44 +1,75 @@
 <div class="py-8">
-    <div class="bg-gray-800 p-6 rounded-xl shadow-lg mb-6 neon-glow">
-        <div class="flex items-center mb-4">
-            <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-10 h-10 rounded-full mr-4">
-            <textarea id="post-input" placeholder="What's on your mind, {{ user.username }}?" class="w-full bg-gray-700 text-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-all duration-200" rows="1"></textarea>
+    <div class="bg-gray-800 p-6 rounded-xl shadow-lg mb-6 neon-glow relative group" id="post-container">
+        <!-- Pinned Label -->
+        <div id="pinned-label" class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded hidden animate-pulse-once">
+            Pinned
         </div>
-        <div class="flex justify-between items-center">
+        <!-- Settings Menu -->
+        <div class="absolute top-4 right-4">
+            <button id="settings-btn" class="text-gray-400 hover:text-purple-400 focus:outline-none">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm9-2c0-.55-.45-1-1-1h-2.07c-.27-1.01-.71-1.96-1.27-2.83l1.47-1.47c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-1.47 1.47c-.87-.56-1.82-1-2.83-1.27V4c0-.55-.45-1-1-1s-1 .45-1 1v1.07c-1.01.27-1.96.71-2.83 1.27L5.41 4.87c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L5.47 7.74c-.56.87-1 .82-1.27 2.83H4c-.55 0-1 .45-1 1s.45 1 1 1h2.07c.27 1.01.71 1.96 1.27 2.83L4.87 18.59c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.47-1.47c.87.56 1.82 1 2.83 1.27V20c0 .55.45 1 1 1s1-.45 1-1v-1.07c1.01-.27 1.96-.71 2.83-1.27l1.47 1.47c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.47-1.47c.56-.87 1-.82 1.27-2.83H20c.55 0 1-.45 1-1z"/>
+                </svg>
+            </button>
+            <div id="settings-menu" class="absolute right-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-xl hidden z-10 border border-gray-700">
+                <button id="pin-post" class="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition">Pin Post</button>
+                <button id="edit-post" class="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition">Edit Post</button>
+                <button id="delete-post" class="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition">Delete Post</button>
+                <button id="report-post" class="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition">Report Post</button>
+                <button id="mute-user" class="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition">Mute User</button>
+            </div>
+        </div>
+        <!-- Post Content -->
+        <div class="flex items-center mb-4">
+            <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-10 h-10 rounded-full mr-4 transition-transform group-hover:scale-105">
+            <textarea id="post-input" placeholder="What's on your mind, {{ user.username }}?" class="w-full bg-gray-700 text-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-all duration-200" rows="1" maxlength="280"></textarea>
+        </div>
+        <div class="flex justify-between items-center mb-4">
             <div class="space-x-4 flex items-center">
-                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer transition-colors">
                     <input type="file" id="post-photo" accept="image/*" class="hidden">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
                     </svg>
                 </label>
-                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer transition-colors">
                     <input type="file" id="post-video" accept="video/*" class="hidden">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                 </label>
-                <button id="post-emoji" class="flex items-center text-gray-400 hover:text-purple-400">
+                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer transition-colors">
+                    <input type="file" id="post-document" accept=".pdf,.doc,.docx" class="hidden">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 2l5 5h-5V4zm3 16H6V4h6v5h5v11z"/>
+                    </svg>
+                </label>
+                <button id="post-emoji" class="flex items-center text-gray-400 hover:text-purple-400 transition-colors">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2zm1-9c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                 </button>
-                <button id="post-gif" class="flex items-center text-gray-400 hover:text-purple-400">
+                <button id="post-gif" class="flex items-center text-gray-400 hover:text-purple-400 transition-colors">
                     <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M5 5v14h14V5H5zm2 2h10v10H7V7zm4 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 6H9v-2h6v2z"/>
                     </svg>
                 </button>
-                <div class="relative">
-                    <button id="post-info" class="flex items-center text-gray-400 hover:text-purple-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/>
-                        </svg>
-                    </button>
-                    <span id="info-tooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden bg-gray-700 text-white text-xs p-2 rounded-lg whitespace-nowrap">Add text, photos, videos, emojis, GIFs, or URLs for a rich post!</span>
-                </div>
+                <button id="post-poll" class="flex items-center text-gray-400 hover:text-purple-400 transition-colors">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-8-2h2v-4h4V8h-6V5h-2v3H7v6h4v5z"/>
+                    </svg>
+                </button>
+                <button id="post-schedule" class="flex items-center text-gray-400 hover:text-purple-400 transition-colors">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
+                </button>
             </div>
-            <button id="post-submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">Post</button>
+            <button id="post-submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105">
+                Post
+            </button>
         </div>
+        <!-- Preview Area -->
         <div id="post-preview" class="mt-4 hidden">
             <div class="bg-gray-700 p-4 rounded-lg">
                 <p id="preview-text" class="text-gray-300"></p>
@@ -47,9 +78,12 @@
                     <source src="" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div id="preview-link" class="mt-2 hidden"></div>
+                <div id="preview-document" class="mt-2 hidden"></div>
+                <div id="preview-poll" class="mt-2 hidden"></div>
+                <div id="preview-schedule" class="mt-2 hidden"></div>
             </div>
         </div>
+        <!-- Popups -->
         <div id="emoji-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
             <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-1/2 max-h-[80vh] overflow-y-auto">
                 <button id="close-emoji" class="absolute top-4 right-4 text-gray-400 hover:text-white">
@@ -57,9 +91,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-                <div id="emoji-content" class="grid grid-cols-8 gap-2 text-2xl">
-                    <!-- Emoji content populated by JS -->
-                </div>
+                <div id="emoji-content" class="grid grid-cols-10 gap-2 text-2xl"></div>
             </div>
         </div>
         <div id="gif-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
@@ -69,19 +101,142 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-                <div id="gif-content" class="grid grid-cols-4 gap-2">
-                    <!-- GIF content populated by JS -->
+                <input id="gif-search" class="w-full bg-gray-800 text-gray-300 p-2 rounded mb-4" placeholder="Search GIFs...">
+                <div id="gif-content" class="grid grid-cols-4 gap-2"></div>
+            </div>
+        </div>
+        <div id="poll-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+            <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-1/2 max-h-[80vh] overflow-y-auto">
+                <button id="close-poll" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div id="poll-form">
+                    <input id="poll-question" class="w-full bg-gray-800 text-gray-300 p-2 rounded mb-2" placeholder="Poll Question">
+                    <div id="poll-options" class="space-y-2">
+                        <input class="w-full bg-gray-800 text-gray-300 p-2 rounded" placeholder="Option 1">
+                        <input class="w-full bg-gray-800 text-gray-300 p-2 rounded" placeholder="Option 2">
+                    </div>
+                    <button id="add-poll-option" class="bg-purple-600 text-white px-4 py-2 rounded mt-2 hover:bg-purple-700">Add Option</button>
+                    <button id="submit-poll" class="bg-purple-600 text-white px-4 py-2 rounded mt-2 hover:bg-purple-700">Create Poll</button>
                 </div>
             </div>
         </div>
+        <div id="schedule-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+            <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-1/2 max-h-[80vh] overflow-y-auto">
+                <button id="close-schedule" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <input type="datetime-local" id="schedule-time" class="w-full bg-gray-800 text-gray-300 p-2 rounded mb-2">
+                <button id="submit-schedule" class="bg-purple-600 text-white px-4 py-2 rounded mt-2 hover:bg-purple-700">Schedule Post</button>
+            </div>
+        </div>
+        <!-- Analytics Overlay -->
+        <div id="analytics-overlay" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+            <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-1/2 max-h-[80vh] overflow-y-auto">
+                <button id="close-analytics" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <h3 class="text-purple-400 text-lg mb-2">Post Analytics</h3>
+                <p class="text-gray-300">Views: 1,234 | Likes: 120 | Comments: 45 | Shares: 15</p>
+                <div id="analytics-chart" class="mt-4"></div>
+            </div>
+        </div>
+        <!-- Post Content Display -->
+        <div id="post-content" class="text-gray-300 mb-4 hidden"></div>
     </div>
-    <!-- Filter Bar and New Post Placement -->
-    <div class="bg-gray-800 p-4 rounded-lg shadow-lg flex space-x-4 mb-4">
-        <button class="filter-btn text-gray-300 hover:text-purple-400 active">All</button>
-        <button class="filter-btn text-gray-300 hover:text-purple-400">Following</button>
-        <button class="filter-btn text-gray-300 hover:text-purple-400">Trending</button>
-        <button class="filter-btn text-gray-300 hover:text-purple-400">AI-Generated</button>
+    <!-- New Post Container -->
+    <div id="new-post-container" class="space-y-6"></div>
+    <!-- Comment Section -->
+    <div class="bg-gray-800 p-6 rounded-xl shadow-lg relative group/comment-section">
+        <div class="absolute top-4 right-4">
+            <button id="toggle-analytics" class="text-gray-400 hover:text-purple-400 focus:outline-none">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="flex justify-end mb-4">
+            <a href="#" id="view-comments" class="text-purple-400 hover:underline transition-colors">View Comments (<span id="comment-count">0</span>)</a>
+        </div>
+        <div id="comments-section" class="hidden">
+            <!-- New Comment Area -->
+            <div class="flex items-center mb-4">
+                <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-8 h-8 rounded-full mr-2 transition-transform hover:scale-110">
+                <textarea id="new-comment" placeholder="Add a comment..." class="w-full bg-gray-700 text-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-all duration-200" rows="1" maxlength="140"></textarea>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <div class="space-x-4 flex items-center">
+                    <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer transition-colors">
+                        <input type="file" id="comment-photo" accept="image/*" class="hidden">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                        </svg>
+                    </label>
+                    <button id="comment-emoji" class="flex items-center text-gray-400 hover:text-purple-400 transition-colors">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2zm1-9c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        </svg>
+                    </button>
+                    <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer transition-colors">
+                        <input type="file" id="comment-document" accept=".pdf,.doc,.docx" class="hidden">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 2l5 5h-5V4zm3 16H6V4h6v5h5v11z"/>
+                        </svg>
+                    </label>
+                    <button id="comment-gif" class="flex items-center text-gray-400 hover:text-purple-400 transition-colors">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5 5v14h14V5H5zm2 2h10v10H7V7zm4 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 6H9v-2h6v2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <button id="submit-comment" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-transform transform hover:scale-105">
+                    Comment
+                </button>
+            </div>
+            <!-- Comment Preview -->
+            <div id="comment-preview" class="mt-4 hidden">
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <img id="comment-preview-photo" class="mt-2 max-h-48 rounded-lg hidden">
+                    <div id="comment-preview-document" class="mt-2 hidden"></div>
+                </div>
+            </div>
+            <!-- Comments List -->
+            <div id="comments-list" class="space-y-4 max-h-[300px] overflow-y-auto">
+                <!-- Initial comments populated by JS -->
+            </div>
+            <button id="view-more-comments" class="text-purple-400 hover:underline mt-2 hidden">
+                View More Comments
+            </button>
+            <!-- Live Reactions -->
+            <div id="live-reactions" class="flex space-x-2 mt-4 hidden">
+                <span class="text-purple-400 animate-bounce">👍 5</span>
+                <span class="text-green-400 animate-bounce">❤️ 3</span>
+                <span class="text-yellow-400 animate-bounce">😂 2</span>
+            </div>
+            <!-- Share Options -->
+            <div class="flex space-x-4 mt-4">
+                <button class="text-gray-400 hover:text-purple-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                    </svg>
+                </button>
+                <button class="text-gray-400 hover:text-purple-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/>
+                    </svg>
+                </button>
+                <button class="text-gray-400 hover:text-purple-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-6-7l-4 3V8l4 3z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
-    <div id="new-post-container"></div>
-    {% include 'components/feed/global_feed.html.twig' with {'feedItems': user.feed|default([])} %}
 </div>

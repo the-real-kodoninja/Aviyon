@@ -4,31 +4,25 @@
 
 {% block body %}
     {% include 'components/user/header.html.twig' with {'user': user} %}
-    <div class="max-w-[1280px] mx-auto px-4 py-6 flex">
-        <div class="w-3/4">
-            {% include 'components/user/nav.html.twig' %}
-            <div class="flex">
+    <div class="max-w-[1280px] mx-auto px-4 py-6">
+        <div class="flex flex-col lg:flex-row">
+            <div class="w-full lg:w-3/4">
+                {% include 'components/user/page_nav.html.twig' with {'user': user} %}
                 <div class="w-full">
-                    <div id="post" class="py-8">
-                        {% include 'components/user/post.html.twig' with {'user': user} %}
-                    </div>
-                    <div id="replies" class="py-8 hidden">{% include 'components/user/replies.html.twig' %}</div>
-                    <div id="photos" class="py-8 hidden">{% include 'components/user/photos.html.twig' %}</div>
-                    <div id="videos" class="py-8 hidden">{% include 'components/user/videos.html.twig' %}</div>
-                    <div id="likes" class="py-8 hidden">{% include 'components/user/likes.html.twig' %}</div>
-                    <div id="list" class="py-8 hidden">{% include 'components/user/list.html.twig' %}</div>
-                    <div id="saves" class="py-8 hidden">{% include 'components/user/saves.html.twig' %}</div>
+                    {% include 'components/user/new_post.html.twig' with {'user': user} %}
+                    {% include 'components/user/posts.html.twig' with {'feedItems': user.feed|default([])} %}
                 </div>
-                <div class="w-1/4 pl-6" id="sidebar">
-                    <!-- Dynamic sidebar content -->
-                </div>
+            </div>
+            <div class="w-full lg:w-1/4 pl-0 lg:pl-6 mt-6 lg:mt-0">
+                {% include 'components/user/sidebar.html.twig' %}
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('build/pages/user/post.js') }}" defer></script>
     <script src="{{ asset('build/pages/user/nav.js') }}" defer></script>
+    <script src="{{ asset('build/pages/user/new_post.js') }}" defer></script>
+    <script src="{{ asset('build/pages/user/posts.js') }}" defer></script>
     <script src="{{ asset('build/pages/user/sidebar.js') }}" defer></script>
 {% endblock %}

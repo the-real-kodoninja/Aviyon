@@ -1,0 +1,85 @@
+<div class="space-y-6">
+    <!-- Trending Hashtags -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg text-purple-400 mb-4">Trending Hashtags</h3>
+        <ul class="text-gray-300 space-y-2">
+            <li><a href="/search?q=%23AviyonOS" class="hover:text-purple-400">#AviyonOS</a></li>
+            <li><a href="/search?q=%23CloudMining" class="hover:text-purple-400">#CloudMining</a></li>
+            <li><a href="/search?q=%23NFTBoom" class="hover:text-purple-400">#NFTBoom</a></li>
+        </ul>
+    </div>
+
+    <!-- Mini Calendar -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg text-purple-400 mb-4">Upcoming Events</h3>
+        <div id="mini-calendar" class="text-gray-300">
+            <div class="flex justify-between mb-2">
+                <button id="prev-month" class="text-gray-400 hover:text-purple-400">&larr;</button>
+                <span id="month-year" class="font-bold"></span>
+                <button id="next-month" class="text-gray-400 hover:text-purple-400">&rarr;</button>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-center text-sm">
+                <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+                <div id="calendar-days" class="grid grid-cols-7 gap-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live User Activity Feed -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg text-purple-400 mb-4">Live Activity</h3>
+        <ul id="activity-feed" class="text-gray-300 space-y-2">
+            <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                <span>Sahar liked a post • 2m ago</span>
+            </li>
+            <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                <span>Emmanuel shared an NFT • 5m ago</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Trending Creators -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg text-purple-400 mb-4">Trending Creators</h3>
+        <ul class="text-gray-300 space-y-4">
+            <li class="flex items-center">
+                <img src="{{ asset('build/images/users/sahar.jpg') }}" alt="Sahar" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-purple-400">Sahar</p>
+                    <p class="text-xs">AI Innovator</p>
+                </div>
+            </li>
+            <li class="flex items-center">
+                <img src="{{ asset('build/images/users/emmanuel.jpg') }}" alt="Emmanuel" class="w-8 h-8 rounded-full mr-2">
+                <div>
+                    <p class="text-sm text-purple-400">Emmanuel</p>
+                    <p class="text-xs">Tech Visionary</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg text-purple-400 mb-4">Quick Links</h3>
+        <ul class="text-gray-300 space-y-2">
+            <li><a href="/explore" class="hover:text-purple-400">Explore</a></li>
+            <li><a href="/messages" class="hover:text-purple-400">Messages</a></li>
+            <li><a href="/settings" class="hover:text-purple-400">Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg text-purple-400 mb-4">Theme</h3>
+        <label class="flex items-center cursor-pointer">
+            <span class="text-gray-300 mr-4">Dark Mode</span>
+            <input type="checkbox" id="dark-mode-toggle" class="hidden">
+            <div class="w-12 h-6 bg-gray-600 rounded-full p-1 flex items-center">
+                <div class="w-4 h-4 bg-white rounded-full toggle-dot transition-transform duration-300"></div>
+            </div>
+        </label>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="flex items-center justify-between mb-5 text-gray-400 border-b border-gray-700 lg:px-0">
+    <div class="flex space-x-8">
+        <button class="tab-btn py-2 px-4 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="post">Posts</button>
+        <button class="tab-btn py-2 px-4 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="replies">Replies</button>
+        <button class="tab-btn py-2 px-4 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="photos">Photos</button>
+        <button class="tab-btn py-2 px-4 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="videos">Videos</button>
+        <button class="tab-btn py-2 px-4 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="likes">Likes</button>
+    </div>
+    <div class="flex space-x-6 items-center">
+        <span>Followers: <span class="text-purple-400">{{ user.followers_count|default(5000) }}</span></span>
+        <span>Following: <span class="text-purple-400">{{ user.following_count|default(200) }}</span></span>
+        <div class="relative">
+            <button id="menu-btn" class="tab-btn py-2 px-4 hover:text-purple-400">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+            <div id="menu-dropdown" class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg hidden">
+            		<a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">List</a>
+                <a href="#" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Saves</a>
+            </div>
+        </div>
+    </div>
+</div>
