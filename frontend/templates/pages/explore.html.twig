@@ -3,7 +3,7 @@
 {% block title %}Aviyon - Explore{% endblock %}
 
 {% block body %}
-<section class="explore container mx-auto py-12 px-4">
+<section class="explore container max-w-[1280px] mx-auto py-12 px-4">
     <h1 class="text-4xl font-inter font-bold text-neon-purple mb-4">Explore Aviyon</h1>
     <p class="text-gray-400 mb-8">Discover trending projects, NFTs, and community posts.</p>
 
@@ -24,7 +24,7 @@
                             <h3 class="text-neon-purple text-xl font-inter">{{ item.name|default('NFT Title') }}</h3>
                             <p class="text-gray-400">By {{ item.creator|default('Unknown') }}</p>
                             <p class="text-gray-400">Price: {{ item.price|default('N/A') }}</p>
-                            <a href="{{ path('marketplace') }}" class="btn mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">View</a>
+                            <a href="{{ path('marketplace_root') }}" class="btn mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">View</a>
                         {% elseif item.type == 'post' %}
                             <p class="text-gray-300">{{ item.content|default('')|replace({'#': '<a href="' ~ path('search', {'q': '#\\1'}) ~ '" class="text-neon-purple">#'})|replace({'@': '<a href="' ~ path('user_profile', {'username': '\\1'}) ~ '" class="text-neon-purple">@'})|raw }}</p>
                             <p class="text-gray-400">By {{ item.author|default('Unknown') }}</p>

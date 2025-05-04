@@ -1,385 +1,413 @@
-# config/routes.yaml
-
 app_root:
-    path: /
-    controller: App\Controller\AuthController::root
+   path: /
+   controller: App\Controller\AuthController::root
 
 landing:
-    path: /landing
-    controller: App\Controller\AuthController::landing
+   path: /landing
+   controller: App\Controller\AuthController::landing
 
 login:
-    path: /login
-    controller: App\Controller\AuthController::login
+   path: /login
+   controller: App\Controller\AuthController::login
 
 signup:
-    path: /signup
-    controller: App\Controller\AuthController::signup
+   path: /signup
+   controller: App\Controller\AuthController::signup
 
 logout:
-    path: /logout
-    controller: App\Controller\AuthController::logout
+   path: /logout
+   controller: App\Controller\AuthController::logout
 
 password_reset:
-    path: /password/reset
-    controller: App\Controller\AuthController::passwordReset
+   path: /password/reset
+   controller: App\Controller\AuthController::passwordReset
 
 reset:
-    path: /reset
-    controller: App\Controller\AuthController::reset
-    methods: [POST]
+   path: /reset
+   controller: App\Controller\AuthController::reset
+   methods: [POST]
 
 2fa_verify:
-    path: /2fa/verify
-    controller: App\Controller\AuthController::verify2FA
-    methods: [POST]
+   path: /2fa/verify
+   controller: App\Controller\AuthController::verify2FA
+   methods: [POST]
 
 docs:
-    path: /docs
-    controller: App\Controller\DocsController::docs
+   path: /docs
+   controller: App\Controller\DocsController::docs
 
 docs_file:
-    path: /docs/{file<.+>}
-    controller: App\Controller\DocsController::serveDocsFile
+   path: /docs/{file<.+>}
+   controller: App\Controller\DocsController::serveDocsFile
 
 marketplace_root:
-    path: /marketplace
-    controller: App\Controller\MarketplaceController::index
+   path: /marketplace
+   controller: App\Controller\MarketplaceController::index
 
-marketplace:
-    path: /dashboard/marketplace
-    controller: App\Controller\DashboardController::marketplace
+dashboard_marketplace:
+   path: /dashboard/marketplace
+   controller: App\Controller\DashboardController::marketplace
 
 about:
     path: /about
-    controller: App\Controller\PagesController::about
-
-deploy_app:
-    path: /dashboard/deploy
-    controller: App\Controller\AuthController::deployApp
-    methods: [POST]
+    controller: App\Controller\AboutController::index
 
 user_profile:
     path: /user/{username}
-    controller: App\Controller\AuthController::userProfile
+    controller: App\Controller\UserController::userProfile
+    defaults: { username: null }
+
+# Placeholder routes
+nimbus_ai_about:
+    path: /nimbus-ai
+    controller: App\Controller\AboutController::index
+
+defi_about:
+    path: /defi
+    controller: App\Controller\AboutController::index
+
+roadmap_about:
+    path: /roadmap
+    controller: App\Controller\AboutController::index
+
+marketplace_about:
+    path: /marketplace
+    controller: App\Controller\AboutController::index
+
+kodoverse_about:
+    path: /kodoverse
+    controller: App\Controller\AboutController::index
+
+partners_about:
+    path: /partners
+    controller: App\Controller\AboutController::index
+
+team_about:
+    path: /team
+    controller: App\Controller\AboutController::index
+
+deploy:
+   path: /dashboard/deploy
+   controller: App\Controller\AuthController::deployApp
+   methods: [POST]
 
 explore:
-    path: /explore
-    controller: App\Controller\ExploreController::explore
+   path: /explore
+   controller: App\Controller\ExploreController::explore
 
 platform:
-    path: /platform/{platformName}
-    controller: App\Controller\AuthController::platform
-    methods: [GET]
+   path: /platform/{platformName}
+   controller: App\Controller\AuthController::platform
+   methods: [GET]
 
 search:
-    path: /search
-    controller: App\Controller\AuthController::search
-    methods: [GET]
+   path: /search
+   controller: App\Controller\AuthController::search
+   methods: [GET]
 
 add_comment:
-    path: /comment
-    controller: App\Controller\AuthController::addComment
-    methods: [POST]
+   path: /comment
+   controller: App\Controller\AuthController::addComment
+   methods: [POST]
 
 like_post:
-    path: /like
-    controller: App\Controller\AuthController::likePost
-    methods: [POST]
+   path: /like
+   controller: App\Controller\AuthController::likePost
+   methods: [POST]
 
 register_domain:
-    path: /domain/register
-    controller: App\Controller\DomainController::registerDomain
-    methods: [POST]
+   path: /domain/register
+   controller: App\Controller\DomainController::registerDomain
+   methods: [POST]
 
 ide:
-    path: /ide
-    controller: App\Controller\AuthController::ide
+   path: /ide
+   controller: App\Controller\AuthController::ide
 
 np_plus_plus:
-    path: /np-plus-plus
-    controller: App\Controller\IDEController::openNimbusPad
-    defaults: { workspace: null }
+   path: /np-plus-plus
+   controller: App\Controller\IDEController::openNimbusPad
+   defaults: { workspace: null }
 
 np_plus_plus_workspace:
-    path: /np-plus-plus/{workspace}
-    controller: App\Controller\IDEController::openNimbusPad
+   path: /np-plus-plus/{workspace}
+   controller: App\Controller\IDEController::openNimbusPad
 
 # Admin Routes
 admin:
-    path: /admin
-    controller: App\Controller\AdminController::index
+   path: /admin
+   controller: App\Controller\AdminController::index
 
 admin_users_new:
-    path: /admin/users/new
-    controller: App\Controller\AdminController::newUser
+   path: /admin/users/new
+   controller: App\Controller\AdminController::newUser
 
 admin_user_edit:
-    path: /admin/user/{id}/edit
-    controller: App\Controller\AdminController::editUser
+   path: /admin/user/{id}/edit
+   controller: App\Controller\AdminController::editUser
 
 admin_user_delete:
-    path: /admin/user/delete
-    controller: App\Controller\AdminController::deleteUser
-    methods: [POST]
+   path: /admin/user/delete
+   controller: App\Controller\AdminController::deleteUser
+   methods: [POST]
 
 admin_platforms_new:
-    path: /admin/platforms/new
-    controller: App\Controller\AdminController::newPlatform
+   path: /admin/platforms/new
+   controller: App\Controller\AdminController::newPlatform
 
 admin_platform_edit:
-    path: /admin/platform/{id}/edit
-    controller: App\Controller\AdminController::editPlatform
+   path: /admin/platform/{id}/edit
+   controller: App\Controller\AdminController::editPlatform
 
 admin_platform_delete:
-    path: /admin/platform/delete
-    controller: App\Controller\AdminController::deletePlatform
-    methods: [POST]
+   path: /admin/platform/delete
+   controller: App\Controller\AdminController::deletePlatform
+   methods: [POST]
 
 admin_report_view:
-    path: /admin/report/{id}/view
-    controller: App\Controller\AdminController::viewReport
+   path: /admin/report/{id}/view
+   controller: App\Controller\AdminController::viewReport
 
 admin_report_dismiss:
-    path: /admin/report/dismiss
-    controller: App\Controller\AdminController::dismissReport
-    methods: [POST]
+   path: /admin/report/dismiss
+   controller: App\Controller\AdminController::dismissReport
+   methods: [POST]
 
 admin_report_remove_content:
-    path: /admin/report/remove-content
-    controller: App\Controller\AdminController::removeContent
-    methods: [POST]
+   path: /admin/report/remove-content
+   controller: App\Controller\AdminController::removeContent
+   methods: [POST]
 
 admin_settings_save:
-    path: /admin/settings/save
-    controller: App\Controller\AdminController::saveSettings
-    methods: [POST]
+   path: /admin/settings/save
+   controller: App\Controller\AdminController::saveSettings
+   methods: [POST]
 
 # Dashboard Routes
 dashboard:
-    path: /dashboard
-    controller: App\Controller\DashboardController::index
+   path: /dashboard
+   controller: App\Controller\DashboardController::index
 
 dashboard_workspaces:
-    path: /dashboard/workspaces
-    controller: App\Controller\DashboardController::workspaces
+   path: /dashboard/workspaces
+   controller: App\Controller\DashboardController::workspaces
 
 create_workspace:
-    path: /dashboard/workspace/create
-    controller: App\Controller\DashboardController::createWorkspace
+   path: /dashboard/workspace/create
+   controller: App\Controller\DashboardController::createWorkspace
 
 branch:
-    path: /branch/{workspaceId}
-    controller: App\Controller\DashboardController::openBranch
+   path: /branch/{workspaceId}
+   controller: App\Controller\DashboardController::openBranch
 
 repository:
-    path: /repository/{workspaceId}
-    controller: App\Controller\DashboardController::openRepository
+   path: /repository/{workspaceId}
+   controller: App\Controller\DashboardController::openRepository
 
 remove_branch:
-    path: /remove-branch/{workspaceId}
-    controller: App\Controller\DashboardController::removeBranch
+   path: /remove-branch/{workspaceId}
+   controller: App\Controller\DashboardController::removeBranch
 
 remove_repository:
-    path: /remove-repository/{workspaceId}
-    controller: App\Controller\DashboardController::removeRepository
+   path: /remove-repository/{workspaceId}
+   controller: App\Controller\DashboardController::removeRepository
 
 dashboard_deployments:
-    path: /dashboard/deployments
-    controller: App\Controller\DashboardController::deployments
+   path: /dashboard/deployments
+   controller: App\Controller\DashboardController::deployments
 
 dashboard_deployment_logs:
-    path: /dashboard/deployment_logs
-    controller: App\Controller\DashboardController::deploymentLogs
+   path: /dashboard/deployment_logs
+   controller: App\Controller\DashboardController::deploymentLogs
 
 dashboard_hosting:
-    path: /dashboard/hosting
-    controller: App\Controller\DashboardController::hosting
+   path: /dashboard/hosting
+   controller: App\Controller\DashboardController::hosting
 
 dashboard_hosting_analytics:
-    path: /dashboard/hosting_analytics
-    controller: App\Controller\DashboardController::hostingAnalytics
+   path: /dashboard/hosting_analytics
+   controller: App\Controller\DashboardController::hostingAnalytics
 
 dashboard_agents:
-    path: /dashboard/agents
-    controller: App\Controller\DashboardController::agents
+   path: /dashboard/agents
+   controller: App\Controller\DashboardController::agents
 
 dashboard_agent_edit:
-    path: /dashboard/agent/edit
-    controller: App\Controller\DashboardController::editAgent
+   path: /dashboard/agent/edit
+   controller: App\Controller\DashboardController::editAgent
 
 dashboard_messages:
-    path: /dashboard/messages
-    controller: App\Controller\DashboardController::messages
+   path: /dashboard/messages
+   controller: App\Controller\DashboardController::messages
 
 dashboard_nimbus_ai:
-    path: /dashboard/nimbus-ai
-    controller: App\Controller\DashboardController::nimbusAi
+   path: /dashboard/nimbus-ai
+   controller: App\Controller\DashboardController::nimbusAi
 
 dashboard_virtual_world:
-    path: /dashboard/virtual-world
-    controller: App\Controller\DashboardController::virtualWorld
+   path: /dashboard/virtual-world
+   controller: App\Controller\DashboardController::virtualWorld
 
 dashboard_virtual_world_enter:
-    path: /dashboard/virtual-world/enter
-    controller: App\Controller\DashboardController::virtualWorldEnter
-    methods: [GET, POST]
+   path: /dashboard/virtual-world/enter
+   controller: App\Controller\DashboardController::virtualWorldEnter
+   methods: [GET, POST]
 
 dashboard_virtual_project:
-    path: /dashboard/virtual-project/{id}
-    controller: App\Controller\DashboardController::virtualProject
+   path: /dashboard/virtual-project/{id}
+   controller: App\Controller\DashboardController::virtualProject
 
 # Investing Routes
 investing:
-    path: /investing
-    controller: App\Controller\InvestingController::index
+   path: /investing
+   controller: App\Controller\InvestingController::index
 
 investing_non_equity_submit:
-    path: /investing/non-equity/submit
-    controller: App\Controller\InvestingController::submitNonEquity
-    methods: [POST]
+   path: /investing/non-equity/submit
+   controller: App\Controller\InvestingController::submitNonEquity
+   methods: [POST]
 
 investing_equity_submit:
-    path: /investing/equity/submit
-    controller: App\Controller\InvestingController::submitEquity
-    methods: [POST]
+   path: /investing/equity/submit
+   controller: App\Controller\InvestingController::submitEquity
+   methods: [POST]
 
 # Notifications Routes
 notifications:
-    path: /dashboard/notifications
-    controller: App\Controller\Header\NotificationsController::dashboardNotifications
-    methods: [GET]
+   path: /dashboard/notifications
+   controller: App\Controller\Header\NotificationsController::dashboardNotifications
+   methods: [GET]
 
 mark_notification_as_read:
-    path: /notifications/mark-as-read/{id}
-    controller: App\Controller\Header\NotificationsController::markAsRead
-    methods: [POST]
+   path: /notifications/mark-as-read/{id}
+   controller: App\Controller\Header\NotificationsController::markAsRead
+   methods: [POST]
 
 header_notifications:
-    path: /header/notifications
-    controller: App\Controller\Header\NotificationsController::index
-    methods: [GET]
+   path: /header/notifications
+   controller: App\Controller\Header\NotificationsController::index
+   methods: [GET]
 
 # Settings Routes
 settings:
-    path: /settings
-    controller: App\Controller\SettingsController::index
+   path: /settings
+   controller: App\Controller\SettingsController::index
 
 settings_profile_save:
-    path: /settings/profile/save
-    controller: App\Controller\SettingsController::saveProfile
-    methods: [POST]
+   path: /settings/profile/save
+   controller: App\Controller\SettingsController::saveProfile
+   methods: [POST]
 
 settings_security_save:
-    path: /settings/security/save
-    controller: App\Controller\SettingsController::saveSecurity
-    methods: [POST]
+   path: /settings/security/save
+   controller: App\Controller\SettingsController::saveSecurity
+   methods: [POST]
 
 settings_notifications_save:
-    path: /settings/notifications/save
-    controller: App\Controller\SettingsController::saveNotifications
-    methods: [POST]
+   path: /settings/notifications/save
+   controller: App\Controller\SettingsController::saveNotifications
+   methods: [POST]
 
 settings_theme_save:
-    path: /settings/theme/save
-    controller: App\Controller\SettingsController::saveTheme
-    methods: [POST]
+   path: /settings/theme/save
+   controller: App\Controller\SettingsController::saveTheme
+   methods: [POST]
 
 # Careers Routes
 careers:
-    path: /careers
-    controller: App\Controller\CareersController::index
+   path: /careers
+   controller: App\Controller\CareersController::index
 
 careers_apply:
-    path: /careers/apply
-    controller: App\Controller\CareersController::apply
-    methods: [POST]
+   path: /careers/apply
+   controller: App\Controller\CareersController::apply
+   methods: [POST]
 
 # Pages Routes
 features:
-    path: /features
-    controller: App\Controller\PagesController::features
+   path: /features
+   controller: App\Controller\PagesController::features
 
 checkout:
-    path: /checkout
-    controller: App\Controller\CheckoutController::checkout
+   path: /checkout
+   controller: App\Controller\CheckoutController::checkout
 
 domain:
-    path: /domain
-    controller: App\Controller\DomainController::domain
+   path: /domain
+   controller: App\Controller\DomainController::domain
 
 newsletter_subscribe:
-    path: /newsletter/subscribe
-    controller: App\Controller\PagesController::subscribeNewsletter
-    methods: [POST]
+   path: /newsletter/subscribe
+   controller: App\Controller\PagesController::subscribeNewsletter
+   methods: [POST]
 
 terms:
-    path: /terms
-    controller: App\Controller\PagesController::terms
+   path: /terms
+   controller: App\Controller\PagesController::terms
 
 privacy:
-    path: /privacy
-    controller: App\Controller\PagesController::privacy
+   path: /privacy
+   controller: App\Controller\PagesController::privacy
 
 contact:
-    path: /contact
-    controller: App\Controller\PagesController::contact
+   path: /contact
+   controller: App\Controller\PagesController::contact
 
 contact_submit:
-    path: /contact/submit
-    controller: App\Controller\PagesController::contactSubmit
-    methods: [POST]
+   path: /contact/submit
+   controller: App\Controller\PagesController::contactSubmit
+   methods: [POST]
 
 sitemap:
-    path: /sitemap
-    controller: App\Controller\PagesController::sitemap
+   path: /sitemap
+   controller: App\Controller\PagesController::sitemap
 
 wallet:
-    path: /dashboard/wallet
-    controller: App\Controller\WalletController::index
+   path: /dashboard/wallet
+   controller: App\Controller\WalletController::index
 
 news_article:
-    path: /news/articles/{date}/{title}
-    controller: App\Controller\News\ArticlesController::view
+   path: /news/articles/{date}/{title}
+   controller: App\Controller\News\ArticlesController::view
 
 news_article_new:
-    path: /news/articles/new
-    controller: App\Controller\News\ArticlesController::new
+   path: /news/articles/new
+   controller: App\Controller\News\ArticlesController::new
 
 news_article_edit:
-    path: /news/articles/{id}/edit
-    controller: App\Controller\News\ArticlesController::edit
+   path: /news/articles/{id}/edit
+   controller: App\Controller\News\ArticlesController::edit
 
 # Global Feed Routes
 post_view:
-    path: /post/{id}
-    controller: App\Controller\PostController::viewPost
-    methods: [GET]
+   path: /post/{id}
+   controller: App\Controller\PostController::viewPost
+   methods: [GET]
 
 post_comment:
-    path: /post/{id}/comment
-    controller: App\Controller\PostController::addComment
-    methods: [POST]
+   path: /post/{id}/comment
+   controller: App\Controller\PostController::addComment
+   methods: [POST]
 
 global_feed:
-    path: /feed
-    controller: App\Controller\PagesController::globalFeed
-    methods: [GET]
+   path: /feed
+   controller: App\Controller\PagesController::globalFeed
+   methods: [GET]
 
 post_popup:
-    path: /post/popup
-    controller: App\Controller\PostPopup\PostPopupController::index
+   path: /post/popup
+   controller: App\Controller\PostPopup\PostPopupController::index
 
 bulletinboard:
-    path: /bulletinboard
-    controller: App\Controller\Bulletinboard\BulletinboardController::index
+   path: /bulletinboard
+   controller: App\Controller\Bulletinboard\BulletinboardController::index
 
 api_bulletin_create:
-    path: /api/bulletin/create
-    controller: App\Controller\Bulletinboard\BulletinboardController::createBulletin
-    methods: [POST]
+   path: /api/bulletin/create
+   controller: App\Controller\Bulletinboard\BulletinboardController::createBulletin
+   methods: [POST]
 
 api_ticker:
-    path: /api/ticker
-    controller: App\Controller\TickerController::getTickerData
-    methods: [GET]
+   path: /api/ticker
+   controller: App\Controller\TickerController::getTickerData
+   methods: [GET]

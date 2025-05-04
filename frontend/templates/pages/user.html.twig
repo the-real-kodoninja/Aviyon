@@ -1,138 +1,74 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}{{ user.username }} - Aviyon{% endblock %}
+{% block title %}{{ user.username }} - Kodoverse Elite{% endblock %}
 
 {% block body %}
-{% if 'user' in app.routes|keys %}
-<div class="container mx-auto px-4 py-12 bg-gray-900 min-h-screen">
-    <!-- Profile Header with Kodoverse Lore -->
-    <section class="py-12">
-        <div class="flex items-center space-x-6">
-            <div class="relative">
-                <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-24 h-24 rounded-full border-4 border-purple-400">
-                <div class="absolute inset-0 rounded-full bg-purple-400/30 animate-pulse"></div>
+<div class="max-w-[1280px] mx-auto px-4 py-12 bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 min-h-screen">
+    <!-- Profile Hero -->
+    <section class="py-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('{{ asset('images/neon-grid.jpg') }}')] bg-cover bg-center opacity-20"></div>
+        <div class="relative flex items-center space-x-8">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-400 shadow-lg">
+                <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-full h-full object-cover">
             </div>
             <div>
-                <h1 class="text-3xl font-bold text-gray-100">{{ user.username }}</h1>
-                <p class="text-gray-400">@{{ user.handle }}</p>
-                <p class="text-gray-300 mt-2">{{ user.bio }}</p>
-                <p class="text-gray-300 mt-1">Aether Rank: <span class="text-purple-400">{{ user.aetherRank | default('Novice Weaver') }}</span></p>
-                <p class="text-gray-300 mt-1">Aether Marks: <span class="text-purple-400">{{ user.aetherMarks | default(0) }}</span></p>
-                <div class="flex space-x-4 mt-4">
-                    <span class="text-gray-400">Aether Constructs: <span class="text-purple-400">{{ user.projects_count }}</span></span>
-                    <span class="text-gray-400">Allegiant Followers: <span class="text-purple-400">{{ user.followers_count }}</span></span>
-                    <span class="text-gray-400">Following: <span class="text-purple-400">{{ user.following_count }}</span></span>
+                <h1 class="text-4xl font-extrabold text-purple-400">{{ user.username }}</h1>
+                <p class="text-gray-400 text-lg">@{{ user.handle }}</p>
+                <p class="text-gray-300 mt-2 leading-relaxed">{{ user.bio|default('A Kodoverse pioneer weaving aether into reality.') }}</p>
+                <div class="flex space-x-6 mt-4 text-gray-400">
+                    <span>Aether Rank: <span class="text-purple-400">{{ user.aetherRank|default('Aether Sovereign') }}</span></span>
+                    <span>Aether Marks: <span class="text-purple-400">{{ user.aetherMarks|default(1000) }}</span></span>
+                    <span>Constructs: <span class="text-purple-400">{{ user.projects_count|default(15) }}</span></span>
+                    <span>Followers: <span class="text-purple-400">{{ user.followers_count|default(5000) }}</span></span>
+                    <span>Following: <span class="text-purple-400">{{ user.following_count|default(200) }}</span></span>
+                </div>
+                <div class="mt-6 flex space-x-4">
+                    <button id="follow-user" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition-shadow shadow-md">Pledge Allegiance</button>
+                    <button id="gift-mark" class="bg-cyan-600 text-white px-6 py-3 rounded-full hover:bg-cyan-700 transition-shadow shadow-md">Gift Aether Mark</button>
+                    <a href="mailto:{{ user.email|default(user.username ~ '@kodoverse.com') }}" class="bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-600 transition-shadow shadow-md">Message</a>
                 </div>
             </div>
         </div>
-        <div class="mt-6 flex space-x-4">
-            <button id="follow-user" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition">Pledge to Follow</button>
-            <button id="gift-mark" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Gift Aether Mark</button>
-        </div>
     </section>
 
-    <!-- Tabs for Profile Sections -->
+    <!-- Tabs -->
     <section class="border-t border-gray-700">
-        <div class="flex space-x-6 text-gray-400 border-b border-gray-700">
-            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="projects">Aether Constructs</button>
-            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="activity">Aether Weaves</button>
-            <button class="py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">Aether Relics</button>
+        <div class="flex space-x-8 text-gray-400 border-b border-gray-700">
+            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="projects">Aether Constructs</button>
+            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="activity">Aether Weaves</button>
+            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">Aether Relics</button>
+            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="feed">Aether Echoes</button>
         </div>
-        <!-- Projects Tab -->
-        <div id="projects" class="py-6 hidden">
+        <div id="projects" class="py-8 hidden">
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {% for project in user.projects %}
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
-                        <h3 class="text-xl text-purple-400 mb-2">{{ project.name }}</h3>
-                        <p class="text-gray-300 mb-4">{{ project.description }}</p>
-                        <div class="flex space-x-3">
-                            <a href="{{ path('project_view', {'id': project.id}) }}" class="text-gray-400 hover:text-purple-400">Inspect Construct</a>
-                            <span class="text-gray-400">Aether Stars: {{ project.stars }}</span>
-                            <button class="boost-project text-gray-400 hover:text-blue-400" data-project-id="{{ loop.index }}">Boost (+1 Mark)</button>
-                        </div>
-                    </div>
+                    {% include 'components/user/project-card.html.twig' with {'project': project} %}
                 {% endfor %}
             </div>
         </div>
-        <!-- Activity Tab -->
-        <div id="activity" class="py-6 hidden">
-            <ul class="space-y-4">
+        <div id="activity" class="py-8 hidden">
+            <ul class="space-y-6">
                 {% for activity in user.activities %}
-                    <li class="bg-gray-800 p-4 rounded-lg">
+                    <li class="bg-gray-800 p-6 rounded-xl shadow-md">
                         <p class="text-gray-300">{{ activity.description }} <span class="text-gray-500 text-sm">{{ activity.time }}</span></p>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-        <!-- NFTs Tab -->
-        <div id="nfts" class="py-6 hidden">
+        <div id="nfts" class="py-8 hidden">
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {% for nft in user.nfts %}
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
-                        <img src="{{ asset('build/images/nfts/' ~ nft.id ~ '.png') }}" alt="{{ nft.name }}" class="w-full h-48 object-cover rounded-lg mb-4">
-                        <h3 class="text-xl text-purple-400 mb-2">{{ nft.name }}</h3>
-                        <p class="text-gray-300">Value: {{ nft.value }} Aether Marks</p>
-                        <button class="trade-nft text-gray-400 hover:text-blue-400 mt-2" data-nft-id="{{ loop.index }}">Trade Relic</button>
-                    </div>
+                    {% include 'components/user/nft-card.html.twig' with {'nft': nft} %}
                 {% endfor %}
             </div>
         </div>
+        <div id="feed" class="py-8 hidden">
+            {% include 'components/feed/global_feed.html.twig' with {'feedItems': user.feed|default([])} %}
+        </div>
     </section>
 </div>
-{% else %}
-<div class="container mx-auto px-4 py-12 bg-gray-900 min-h-screen text-center">
-    <h1 class="text-4xl font-bold text-purple-400 mb-4">Nexus Hub Unavailable</h1>
-    <p class="text-xl text-gray-300">This Aether Weaver's Nexus Hub cannot be accessed. The route to this realm does not exist.</p>
-</div>
-{% endif %}
-{% endblock %}
-
-{% block styles %}
-<style>
-.animate-pulse {
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-    100% { opacity: 0.3; }
-}
-</style>
 {% endblock %}
 
 {% block javascripts %}
-<script>
-document.querySelectorAll('[data-tab]').forEach(tab => {
-    tab.addEventListener('click', () => {
-        document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('text-purple-400', 'border-purple-400'));
-        tab.classList.add('text-purple-400', 'border-purple-400');
-        document.querySelectorAll('#projects, #activity, #nfts').forEach(content => content.classList.add('hidden'));
-        document.getElementById(tab.dataset.tab).classList.remove('hidden');
-    });
-});
-document.querySelector('[data-tab="projects"]').click();
-
-document.getElementById('follow-user')?.addEventListener('click', () => {
-    alert('You have pledged to follow {{ user.username }}! Their Aether Rank may rise with your support.');
-});
-
-document.getElementById('gift-mark')?.addEventListener('click', () => {
-    alert('You have gifted an Aether Mark to {{ user.username }}! Their influence in the Kodoverse grows.');
-});
-
-document.querySelectorAll('.boost-project').forEach(button => {
-    button.addEventListener('click', () => {
-        alert('You have boosted this Aether Construct with 1 Aether Mark! Its visibility in the Kodoverse increases.');
-        button.disabled = true;
-    });
-});
-
-document.querySelectorAll('.trade-nft').forEach(button => {
-    button.addEventListener('click', () => {
-        const nftId = button.dataset.nftId;
-        const nftName = button.closest('.bg-gray-800').querySelector('h3').textContent;
-        alert(`You have initiated a trade for the Aether Relic: ${nftName}. Check the Marketplace for offers.`);
-    });
-});
-</script>
+    <script src="{{ asset('build/user/user.js') }}" defer></script>
 {% endblock %}

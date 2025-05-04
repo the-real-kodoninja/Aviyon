@@ -1,0 +1,22 @@
+<div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition neon-glow">
+    <div class="flex items-center mb-4">
+        <img src="{{ asset('build/images/users/' ~ app.user.username ~ '.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+        <div>
+            <p class="text-sm text-purple-400">{{ app.user.username }}</p>
+            <p class="text-xs text-gray-400">1 hour ago</p>
+        </div>
+    </div>
+    <h3 class="text-xl text-purple-400 mb-2">{{ project.name }}</h3>
+    <p class="text-gray-300 mb-4">{{ project.description }}</p>
+    <div class="flex justify-between items-center">
+        <div class="flex space-x-4">
+            <div class="flex items-center text-gray-400 post-interaction">
+                <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span>{{ project.stars|default(0) }}</span>
+            </div>
+        </div>
+        <a href="{{ path('project_view', {'id': project.id}) }}" class="text-gray-400 post-interaction hover:text-purple-400">Inspect</a>
+    </div>
+</div>

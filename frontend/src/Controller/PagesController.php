@@ -9,12 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PagesController extends AbstractController
 {
-    #[Route('/about', name: 'about')]
-    public function about(): Response
-    {
-        return $this->render('pages/about.html.twig');
-    }
-
     #[Route('/features', name: 'features')]
     public function features(): Response
     {

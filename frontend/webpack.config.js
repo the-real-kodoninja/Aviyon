@@ -1,5 +1,4 @@
 const Encore = require('@symfony/webpack-encore');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
 
@@ -9,7 +8,7 @@ Encore
 
     // JavaScript and CoffeeScript entries
     .addEntry('user', './assets/js/components/header/user.coffee')
-    .addEntry('app', './assets/js/app.coffee') // Updated to app.coffee
+    .addEntry('app', './assets/js/app.coffee')
     .addEntry('ticker', './assets/js/components/ticker.coffee')
     .addEntry('header', './assets/js/components/header.coffee')
     .addEntry('nimbus_popup', './assets/js/components/nimbus_popup.coffee')
@@ -19,7 +18,8 @@ Encore
     .addEntry('feed', './assets/js/components/feed/feed.coffee')
     .addEntry('postPopup', './assets/js/components/postPopup/postPopup.coffee')
     .addEntry('bulletinboard_new', './assets/js/components/bulletinboard/bulletinboard_new.coffee')
-    
+    .addEntry('pages/about/team', './assets/js/pages/about/team.coffee')
+ 
     // CSS entry
     .addStyleEntry('base', './assets/css/base.css')
    
@@ -55,11 +55,29 @@ Encore
         use: ['coffee-loader']
     })
     
+    // Handle images as assets
+    .addRule({
+        test: /\.(jpg|jpeg|png|gif|svg)$/,
+        type: 'asset/resource',
+        generator: {
+            filename: 'images/[name][ext][query]'
+        }
+    })
+    
+    // Handle videos as assets
+    .addRule({
+        test: /\.(mp4|webm|ogg)$/,
+        type: 'asset/resource',
+        generator: {
+            filename: 'videos/[name][ext][query]'
+        }
+    })
+    
     // Optimize for production
     .configureTerserPlugin((options) => {
         options.terserOptions = {
             compress: {
-                drop_console: Encore.isProduction(), // Remove console.logs in production
+                drop_console: Encore.isProduction(),
             },
         };
     })
@@ -68,21 +86,7 @@ Encore
     .addAliases({
         '@js': path.resolve(__dirname, 'assets/js'),
         '@css': path.resolve(__dirname, 'assets/css'),
+        '@images': path.resolve(__dirname, 'assets/images'),
     });
-
-    // Add CopyWebpackPlugin for images, videos, and other static assets
-const patterns = [];
-if (fs.existsSync('assets/images')) {
-    patterns.push({ from: 'assets/images', to: 'images', globOptions: { dot: true, ignore: ['**/*.DS_Store'] } });
-}
-if (fs.existsSync('assets/videos')) {
-    patterns.push({ from: 'assets/videos', to: 'videos', globOptions: { dot: true, ignore: ['**/*.DS_Store'] } });
-}
-
-if (patterns.length > 0) {
-    Encore.addPlugin(new CopyWebpackPlugin({
-        patterns: patterns,
-    }));
-}
 
 module.exports = Encore.getWebpackConfig();

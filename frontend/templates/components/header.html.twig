@@ -16,7 +16,7 @@
                             <h3 class="text-gray-300 font-semibold mb-2">Explore Kodoverse</h3>
                             <ul class="space-y-2">
                                 <li><a href="{{ path('dashboard') }}" class="text-gray-400 hover:text-purple-400 transition">Dashboard</a></li>
-                                <li><a href="{{ path('marketplace') }}" class="text-gray-400 hover:text-purple-400 transition">Marketplace</a></li>
+                                <li><a href="{{ path('marketplace_root') }}" class="text-gray-400 hover:text-purple-400 transition">Marketplace</a></li>
                                 <li><a href="{{ path('investing') }}" class="text-gray-400 hover:text-purple-400 transition">Investing</a></li>
                                 <li><a href="{{ path('explore') }}" class="text-gray-400 hover:text-purple-400 transition">Explore</a></li>
                             </ul>
@@ -122,7 +122,7 @@
                         <span class="text-purple-400 text-sm font-medium">View</span>
                     </div>
                     <!-- Search Result 5: Marketplace Item -->
-                    <a href="{{ path('marketplace') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
+                    <a href="{{ path('marketplace_root') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded transition">
                         <img src="{{ asset('build/images/marketplace-item.jpg') }}" alt="Item" class="w-12 h-12 rounded">
                         <div class="flex-1">
                             <p class="text-gray-300 font-semibold">Virtual Land Plot</p>

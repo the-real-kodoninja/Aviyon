@@ -1,0 +1,13 @@
+<div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition neon-glow">
+    <div class="flex items-center mb-4">
+        <img src="{{ asset('build/images/users/' ~ app.user.username ~ '.jpg') }}" alt="User Photo" class="w-8 h-8 rounded-full mr-2">
+        <div>
+            <p class="text-sm text-purple-400">{{ app.user.username }}</p>
+            <p class="text-xs text-gray-400">1 hour ago</p>
+        </div>
+    </div>
+    <img src="{{ asset('build/images/nfts/' ~ nft.id ~ '.png') }}" alt="{{ nft.name }}" class="w-full h-48 object-cover rounded-lg mb-4">
+    <h3 class="text-xl text-purple-400 mb-2">{{ nft.name }}</h3>
+    <p class="text-gray-300">Value: {{ nft.value }} Aether Marks</p>
+    <button class="trade-nft text-gray-400 hover:text-blue-400 mt-2 px-4 py-2 rounded-full" data-nft-id="{{ loop.index }}">Trade Relic</button>
+</div>
