@@ -1,16 +1,28 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Documentation - Aviyon{% endblock %}
+{% block title %}Aviyon Documentation Hub{% endblock %}
 
 {% block body %}
-<div class="flex min-h-screen bg-gray-950 text-gray-200">
-    <aside class="w-72 bg-gray-900 p-6 shadow-lg">
-        {% include 'components/docs/sidebar.html.twig' with {'activeFile': activeFile|default('Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267.md')} %}
+<div class="flex min-h-screen bg-gray-950 text-gray-200 relative overflow-hidden">
+    <!-- Starry Background -->
+    <div class="absolute inset-0 starry-bg pointer-events-none"></div>
+
+    <!-- Sidebar -->
+    <aside class="w-80 bg-gray-900/20 backdrop-blur-xl p-6 shadow-lg border-r border-gray-700/50">
+        {% include 'components/docs/sidebar.html.twig' with {'activeFile': activeFile|default('Aviyon Corporation dd1f156f667e4272b706350d65fdc267.md')} %}
     </aside>
-    <main class="flex-1 p-8">
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 relative">
+        <!-- Floating Search Bar -->
+        <div class="floating-search mb-8 flex justify-center">
+            <input type="text" id="doc-search" placeholder="Search Documentation..." class="w-1/2 p-3 bg-gray-800/50 backdrop-blur-md border border-neon-purple rounded-full text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon-cyan shadow-lg neon-glow transition-all duration-300">
+        </div>
+
         <div class="container mx-auto">
-            <h1 class="text-5xl font-inter text-neon-purple mb-8 tracking-tight">Aviyon Documentation</h1>
-            <div id="doc-content" class="bg-gray-900 rounded-lg shadow-xl p-8 prose prose-invert max-w-none">
+            <!-- Holographic Header -->
+            <h1 class="text-6xl font-inter text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan mb-8 tracking-tight animate-pulse">Aviyon Documentation Hub</h1>
+            <div id="doc-content" class="bg-gray-900/30 backdrop-blur-lg rounded-xl shadow-2xl p-8 prose prose-invert max-w-none border border-gray-700/50 animate__animated animate__fadeIn">
                 <p class="text-gray-400">Loading documentation...</p>
             </div>
         </div>
@@ -22,15 +34,108 @@
 <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/lib/marked.min.js"></script>
 <script type="text/javascript" src="{{ asset('build/pages/docs.js') }}"></script>
 <script type="text/javascript" src="{{ asset('build/pages/docs/sidebar.js') }}"></script>
+<!-- Animate.css for animations -->
+<link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
 <style>
+/* Starry Background */
+.starry-bg {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.starry-bg::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+                100px 50px 0 rgba(255, 255, 255, 0.6),
+                200px 150px 0 rgba(255, 255, 255, 0.7),
+                300px 80px 0 rgba(255, 255, 255, 0.5),
+                400px 200px 0 rgba(255, 255, 255, 0.6),
+                500px 120px 0 rgba(255, 255, 255, 0.8),
+                600px 180px 0 rgba(255, 255, 255, 0.7),
+                700px 90px 0 rgba(255, 255, 255, 0.5),
+                800px 220px 0 rgba(255, 255, 255, 0.6),
+                900px 140px 0 rgba(255, 255, 255, 0.8),
+                1000px 160px 0 rgba(255, 255, 255, 0.7);
+    animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+/* Custom Colors */
+.text-neon-purple { color: #9333ea; }
+.text-neon-cyan { color: #22d3ee; }
+.bg-neon-purple { background-color: #9333ea; }
+.bg-neon-cyan { background-color: #22d3ee; }
+.border-neon-purple { border-color: #9333ea; }
+.border-neon-cyan { border-color: #22d3ee; }
+
+/* Floating Search Bar Animation */
+.floating-search {
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Prose Adjustments for Dark Theme */
+.prose-invert {
+    --tw-prose-body: #e5e7eb;
+    --tw-prose-headings: #fff;
+    --tw-prose-links: #22d3ee;
+    --tw-prose-code: #f472b6;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-pre-code: #e5e7eb;
+    --tw-prose-quote-borders: #9333ea;
+}
+
+/* Active Link Style */
 .active {
     font-weight: bold;
-    color: #8b5cf6 !important;
-    border-left: 3px solid #8b5cf6;
+    color: #22d3ee !important;
+    border-left: 3px solid #9333ea;
     padding-left: 8px;
+    background: linear-gradient(to right, rgba(147, 51, 234, 0.2), transparent);
 }
+
+/* Rotate Animation for Dropdown */
 .rotate-180 {
     transform: rotate(180deg);
 }
 </style>
+<script>
+// Add search functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('doc-search');
+    const docLinks = document.querySelectorAll('.doc-link');
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        docLinks.forEach(link => {
+            const text = link.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+                link.parentElement.style.display = 'block';
+                let parentUl = link.closest('.section-content');
+                while (parentUl) {
+                    parentUl.classList.remove('hidden');
+                    parentUl = parentUl.parentElement.closest('.section-content');
+                }
+            } else {
+                link.parentElement.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

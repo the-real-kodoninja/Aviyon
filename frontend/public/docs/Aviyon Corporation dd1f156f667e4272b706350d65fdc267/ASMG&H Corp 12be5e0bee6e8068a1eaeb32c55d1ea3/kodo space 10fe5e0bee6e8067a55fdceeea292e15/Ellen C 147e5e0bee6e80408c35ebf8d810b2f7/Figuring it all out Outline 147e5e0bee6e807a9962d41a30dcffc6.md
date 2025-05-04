@@ -16,17 +16,4 @@
         - Her arguing with herself
         - In fights with herself
     - Only after she has found her new purpose in life she starts to take medicine again and things become clearer, in the bed she is talking with him and he says:
-        - Him: “So it’s almost time,… You’ll have to make a decision”
-        - Her: “Almost time for what? And what decision?”
-        - Him: “Time for you to choose a life like the one you had before a mundane dead end or the new life of fun adventures with new friends, passions, goals and dreams.
-            - Camera shows his body is becoming slightly opaque
-        - Her: “A life with my new found passions and goals of course, I love you”
-        - He kisses her and says
-        - Him: “Ditto, now let’s get some sleep princess”
-        - The medicine has fully digested and he is gone and the journey that she took herself reveals itself of her taking charge.
-        - After that shortly she meets a true guy of her dreams (option 1 or 2)
-- Inspiration
-    - Based on the article “Figuring out who you are (book coming 2021)”
-    - “My disability is a superpower” - Ye
-    - Fight Club
-        - A manifestation of a perfect alpha male taking charge in life not giving a fuck, pulling him out of his mundane life showing him how to fight, taking charge of his life
+        - Him: 

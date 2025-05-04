@@ -67,8 +67,4 @@
 - Liquid Investments
     - Blue Chip stocks
     - Bonds
-    - ETF’s
-    - Commodities (gold, silver)
-    - Index Funds
-    - Robo Advisors
-- https://www.ello.com/
+    - ETF

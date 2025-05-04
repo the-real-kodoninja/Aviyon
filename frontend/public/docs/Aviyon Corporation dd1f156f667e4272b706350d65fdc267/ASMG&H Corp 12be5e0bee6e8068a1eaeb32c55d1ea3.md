@@ -8,13 +8,4 @@
 | 40M | https://vero.co/ |
 | 2M | https://www.minds.com/ |
 |  | https://zora.co/ |
-| ≤ 100M | https://audius.co/ |
-|  | https://myspace.com/ |
-|  | http://ello.co   |
-| **Postponed** |  |
-| 6B-10B | http://reddit.com |
-- https://audius.co/
-    - **Concept**:
-        - A decentralized music streaming platform built on blockchain technology that enables artists to distribute music without intermediaries and get paid directly via cryptocurrencies.
-    - **Why Consider**:
-        - Audius taps into the decentralized creator economy. As it continues to grow, its valuation might be under $100M, making it an attractive acquisition target for expanding decentralized media.
+| 

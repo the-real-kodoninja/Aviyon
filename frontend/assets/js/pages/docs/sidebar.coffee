@@ -3,14 +3,22 @@ document.addEventListener 'DOMContentLoaded', ->
   docLinks = document.querySelectorAll '.doc-link'
   docContent = document.getElementById 'doc-content'
 
-  # Toggle Section Collapsing
+  # Toggle Section Collapsing with Animation
   toggleButtons.forEach (button) ->
     button.addEventListener 'click', (e) ->
       e.preventDefault()
       content = button.nextElementSibling
       arrow = button.querySelector 'svg'
-      content.classList.toggle 'hidden'
-      arrow.classList.toggle 'rotate-180'
+      if content.classList.contains 'hidden'
+        content.classList.remove 'hidden'
+        content.classList.add 'animate__animated', 'animate__fadeInDown'
+        arrow.classList.add 'rotate-180'
+      else
+        content.classList.add 'animate__animated', 'animate__fadeOutUp'
+        content.addEventListener 'animationend', ->
+          content.classList.add 'hidden'
+        , once: true
+        arrow.classList.remove 'rotate-180'
 
   # Load Markdown Content on Link Click
   docLinks.forEach (link) ->
@@ -21,18 +29,5 @@ document.addEventListener 'DOMContentLoaded', ->
       # Update active link
       docLinks.forEach (l) -> l.classList.remove 'active'
       link.classList.add 'active'
-
-  # Function to load Markdown
-  loadMarkdown = (file) ->
-    try
-      response = await fetch "/docs/#{file}"
-      throw new Error('Failed to load Markdown file') unless response.ok
-      markdown = await response.text()
-      html = marked.parse markdown,
-        baseUrl: "/docs/#{file.substring(0, file.lastIndexOf('/'))}/"
-        breaks: true
-        gfm: true
-      docContent.innerHTML = html
-    catch error
-      console.error 'Error loading Markdown:', error
-      docContent.innerHTML = '<p class="text-red-500">Failed to load documentation.</p>'
+      # Animate content transition
+      docContent.classList.add 'animate__animated', 'animate__fadeIn'

@@ -154,4 +154,4 @@
 - Equipment / Features
     - Purpose (pro)
     - Pro training oasis, for pro trainers
-    - No unnecessary BS equipment that don’t work
+    - No unnecessary BS equipment that don
