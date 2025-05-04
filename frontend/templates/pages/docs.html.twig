@@ -3,323 +3,34 @@
 {% block title %}Documentation - Aviyon{% endblock %}
 
 {% block body %}
-<div class="flex abban relative">
-    <!-- Sidebar Navigation -->
-    <aside class="w-64 bg-dark-light h-screen fixed top-0 left-0 pt-16 overflow-y-auto shadow-lg">
-        <nav class="p-4">
-            <h2 class="text-2xl font-inter text-neon-purple mb-4">Documentation</h2>
-            <ul class="space-y-2">
-                <!-- Aviyon Corporation (Root Markdown) -->
-                <li>
-                    <a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267.md" class="doc-link block text-gray-300 hover:text-neon-purple transition font-inter active">Aviyon Corporation</a>
-                </li>
-
-                <!-- Aviyon Corporation Directory -->
-                <li>
-                    <button class="toggle-section w-full text-left text-gray-300 hover:text-neon-purple transition font-inter flex justify-between items-center">
-                        Aviyon Corporation
-                        <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <ul class="section-content hidden ml-4 space-y-1">
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">ASMG&H Corp</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Aviyon_Advanced_Technology_10ee5e0bee6e806d9890cd4e67b8cf32.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Aviyon Advanced Technology</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Aviyon_com_1dde5e0bee6e805f9d4cde1f66acd117.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Aviyon.com</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Aviyon_Corporation_IBT&H_Hire_List_1b1e5e0bee6e808cb2cfc9537a2b351a.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Aviyon Corporation IBT&H Hire List</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Aviyon_Trading_Group_10ee5e0bee6e80d19610d69eac9b9c14.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Aviyon Trading Group</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Employment_Perks_&_Benefits_119e5e0bee6e80c690b3ed670aa9382f.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Employment Perks & Benefits</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/EV_HD_Group_114e5e0bee6e801ba744c37cd580e921.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">EV HD Group</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoAcademy_108e5e0bee6e80c69ee1d79244bd13da.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">KodoAcademy</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodobinder_442a8f35aa414f018fd88bb2fdcbc83a.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Kodobinder</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodocity_6a92bb66c7004554ae7f4e408162867e.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Kodocity</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFilms_studios_26f1e272155b4381b92c7056fff8eb99.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">KodoFilms Studios</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFitness_Group_10fe5e0bee6e8019b9ccd86aeab15183.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">KodoFitness Group</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodoninja_Group_10fe5e0bee6e80c0912cd99ba0718515.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Kodoninja Group</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodowater_0566b93bb06743a7ade59bb1c230ec37.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Kodowater</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/kodo_xxx_Unrated_Group_115e5e0bee6e80dcbf33f11623e90aa2.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Kodo XXX Unrated Group</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Merra_Corporation_10ee5e0bee6e802bbc79f2671aabd8dc.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Merra Corporation</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Money_Allocation_Guarantee_118e5e0bee6e80598554c54b619ef438.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Money Allocation Guarantee</a></li>
-                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Velocity_Corporation_37a7b8452a364882a2c4d9da7df578a8.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Velocity Corporation</a></li>
-
-                        <!-- ASMG&H Corp Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                ASMG&H Corp
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">kodo space</a></li>
-                                <!-- kodo space Subdirectory -->
-                                <li>
-                                    <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                        kodo space
-                                        <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                    </button>
-                                    <ul class="section-content hidden ml-4 space-y-1">
-                                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/An_N_(Annhinna)_13ee5e0bee6e80368f96cbbefb82ab61.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">An N (Annhinna)</a></li>
-                                        <li>
-                                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                                Chantel Viera, Collection
-                                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <ul class="section-content hidden ml-4 space-y-1">
-                                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/Chantel_Viera,_Collection_136e5e0bee6e8041b173c4265d5e65a1/Designers_Block_Outline_147e5e0bee6e80f0b5ffd53c4471f765.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Designers Block Outline</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                                Ellen C
-                                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <ul class="section-content hidden ml-4 space-y-1">
-                                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/Ellen_C_147e5e0bee6e80408c35ebf8d810b2f7/Figuring_it_all_out_Outline_147e5e0bee6e807a9962d41a30dcffc6.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Figuring it all out Outline</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/Ios_&_Android_kodo_space_App_-_design_tree_12ce5e0bee6e80cbbb0fef01d1b99767.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Ios & Android kodo space App - design tree</a></li>
-                                        <li>
-                                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                                Kodoninja “Immanuel Barry Taylor”
-                                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <ul class="section-content hidden ml-4 space-y-1">
-                                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/Kodoninja_“Immanuel_Barry_Taylor”_147e5e0bee6e8029904de808d9028df1/Notified_147e5e0bee6e804db185d3aa01510574.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Notified</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                                Sahar H
-                                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <ul class="section-content hidden ml-4 space-y-1">
-                                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/Sahar_H_139e5e0bee6e804184a6ef31e169d859/Balieh_Raqiṣat_(راقِصة_بالية)_Outline_147e5e0bee6e80a58825df4e45637f7d.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Balieh Raqiṣat (راقِصة بالية) Outline</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                                Spanny R
-                                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <ul class="section-content hidden ml-4 space-y-1">
-                                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/ASMG&H_Corp_12be5e0bee6e8068a1eaeb32c55d1ea3/kodo_space_10fe5e0bee6e8067a55fdceeea292e15/Spanny_R_13ae5e0bee6e800a82dde6981428fecf/Broken_Chords_Outline_146e5e0bee6e80d3a4b1d0f7fa3f316d.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Broken Chords Outline</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <!-- Kodocity Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                Kodocity
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li><p class="text-gray-400 italic">Blueprints available in Kodocity section</p></li>
-                            </ul>
-                        </li>
-
-                        <!-- KodoFilms Studios Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                KodoFilms Studios
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li>
-                                    <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                        AMC Theaters (9B)
-                                        <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                    </button>
-                                    <ul class="section-content hidden ml-4 space-y-1">
-                                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFilms_studios_26f1e272155b4381b92c7056fff8eb99/AMC_Theaters_(9B)_106e5e0bee6e803ab8c4c9bf229c39af.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">AMC Theaters (9B)</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFilms_studios_26f1e272155b4381b92c7056fff8eb99/KDN_tv_8bd56dda18e34c8394ec4bc28a33d5e5.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">KDN tv</a></li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFilms_studios_26f1e272155b4381b92c7056fff8eb99/Nomad_tv_12ae5e0bee6e806a91f5fe435c3d3e0c.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Nomad tv</a></li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFilms_studios_26f1e272155b4381b92c7056fff8eb99/REP_tv_11ee5e0bee6e8036a4cbfcd3fc97cf2a.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">REP tv</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- KodoFitness Group Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                KodoFitness Group
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFitness_Group_10fe5e0bee6e8019b9ccd86aeab15183/REP_Fitness_(gym)_7098ed8eac54492eb40026ea685a4da5.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">REP Fitness (gym)</a></li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/KodoFitness_Group_10fe5e0bee6e8019b9ccd86aeab15183/repmagazine_com_11ee5e0bee6e80acb61decfbd6a70f9c.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">repmagazine.com</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Kodoninja Group Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                Kodoninja Group
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li>
-                                    <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                        Becoming Immanuel (Kodoninja)
-                                        <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                        </svg>
-                                    </button>
-                                    <ul class="section-content hidden ml-4 space-y-1">
-                                        <li>
-                                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                                Books
-                                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                </svg>
-                                            </button>
-                                            <ul class="section-content hidden ml-4 space-y-1">
-                                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodoninja_Group_10fe5e0bee6e80c0912cd99ba0718515/Becoming_Immanuel_(Kodoninja)_110e5e0bee6e80d6939ec6fd185608a4/Books_148e5e0bee6e80aaa851f195a096d81c/A_Republican’s_Bipartisan_Take_on_Liberal_Ideology_148e5e0bee6e801caa85ebd83c0647df.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">A Republican’s Bipartisan Take on Liberal Ideology</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodoninja_Group_10fe5e0bee6e80c0912cd99ba0718515/Becoming_Immanuel_(Kodoninja)_110e5e0bee6e80d6939ec6fd185608a4/Immanuel’s_(“Kodoninja”)_Net_worth_&_pay_Explained_157e5e0bee6e80e695d3dfca8a2b74f1.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Immanuel’s (“Kodoninja”) Net worth & pay Explained</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Kodoninja_Group_10fe5e0bee6e80c0912cd99ba0718515/kodoninja_com_&_Kodoninja_promo_12fe5e0bee6e8028bb55eea9c188cea8.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">kodoninja.com & Kodoninja promo</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Merra Corporation Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                Merra Corporation
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li><p class="text-gray-400 italic">Images available in Merra Corporation section</p></li>
-                            </ul>
-                        </li>
-
-                        <!-- Velocity Corporation Subdirectory -->
-                        <li>
-                            <button class="toggle-section w-full text-left text-gray-400 hover:text-neon-purple transition flex justify-between items-center">
-                                Velocity Corporation
-                                <svg class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <ul class="section-content hidden ml-4 space-y-1">
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Velocity_Corporation_37a7b8452a364882a2c4d9da7df578a8/Velocity_Esports_2597dba5db3345fca730b4a6f28a5853.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Velocity Esports</a></li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Velocity_Corporation_37a7b8452a364882a2c4d9da7df578a8/Velocity_Gaming_34453bbfcd234b01b955c53495063a34.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Velocity Gaming</a></li>
-                                <li><a href="#" data-md-file="Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267/Velocity_Corporation_37a7b8452a364882a2c4d9da7df578a8/Velocity_social_6a7e3f241359462aa169236fdd718484.md" class="doc-link block text-gray-400 hover:text-neon-purple transition">Velocity Social</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+<div class="flex min-h-screen bg-gray-950 text-gray-200">
+    <aside class="w-72 bg-gray-900 p-6 shadow-lg">
+        {% include 'components/docs/sidebar.html.twig' with {'activeFile': activeFile|default('Aviyon_Corporation_dd1f156f667e4272b706350d65fdc267.md')} %}
     </aside>
-
-    <!-- Main Content -->
-    <div class="flex-1 ml-64 p-6">
+    <main class="flex-1 p-8">
         <div class="container mx-auto">
-            <h1 class="text-4xl font-inter text-neon-purple mb-6">Aviyon Documentation</h1>
-            <div id="doc-content" class="bg-dark-light rounded-lg shadow-lg p-6 prose prose-invert max-w-none">
-                <!-- Markdown content will be loaded here -->
+            <h1 class="text-5xl font-inter text-neon-purple mb-8 tracking-tight">Aviyon Documentation</h1>
+            <div id="doc-content" class="bg-gray-900 rounded-lg shadow-xl p-8 prose prose-invert max-w-none">
                 <p class="text-gray-400">Loading documentation...</p>
             </div>
         </div>
-    </div>
+    </main>
 </div>
+{% endblock %}
 
 {% block javascripts %}
 <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/lib/marked.min.js"></script>
-<script>
-// Toggle Section Collapsing
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleButtons = document.querySelectorAll('.toggle-section');
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            const arrow = button.querySelector('svg');
-            content.classList.toggle('hidden');
-            arrow.classList.toggle('rotate-180');
-        });
-    });
-
-    // Load Markdown Content
-    const docLinks = document.querySelectorAll('.doc-link');
-    const docContent = document.getElementById('doc-content');
-
-    async function loadMarkdown(file) {
-        try {
-            const response = await fetch(`/docs/${file}`);
-            if (!response.ok) throw new Error('Failed to load Markdown file');
-            const markdown = await response.text();
-            const html = marked.parse(markdown, {
-                baseUrl: `/docs/${file.substring(0, file.lastIndexOf('/'))}/`,
-                breaks: true,
-                gfm: true
-            });
-            docContent.innerHTML = html;
-
-            // Update active link
-            docLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = Array.from(docLinks).find(link => link.dataset.mdFile === file);
-            if (activeLink) activeLink.classList.add('active');
-        } catch (error) {
-            console.error('Error loading Markdown:', error);
-            docContent.innerHTML = '<p class="text-red-500">Failed to load documentation.</p>';
-        }
-    }
-
-    docLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const file = link.dataset.mdFile;
-            loadMarkdown(file);
-        });
-    });
-
-    // Load the first document by default
-    const firstLink = docLinks[0];
-    if (firstLink) {
-        loadMarkdown(firstLink.dataset.mdFile);
-    }
-});
-</script>
+<script type="text/javascript" src="{{ asset('build/pages/docs.js') }}"></script>
+<script type="text/javascript" src="{{ asset('build/pages/docs/sidebar.js') }}"></script>
 <style>
 .active {
     font-weight: bold;
-    color: #8b5cf6;
+    color: #8b5cf6 !important;
+    border-left: 3px solid #8b5cf6;
+    padding-left: 8px;
 }
 .rotate-180 {
     transform: rotate(180deg);
 }
 </style>
-{% endblock %}
 {% endblock %}

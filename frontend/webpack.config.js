@@ -19,6 +19,8 @@ Encore
     .addEntry('postPopup', './assets/js/components/postPopup/postPopup.coffee')
     .addEntry('bulletinboard_new', './assets/js/components/bulletinboard/bulletinboard_new.coffee')
     .addEntry('pages/about/team', './assets/js/pages/about/team.coffee')
+    .addEntry('pages/docs', './assets/js/pages/docs.coffee')
+    .addEntry('pages/docs/sidebar', './assets/js/pages/docs/sidebar.coffee')
  
     // CSS entry
     .addStyleEntry('base', './assets/css/base.css')
@@ -29,7 +31,7 @@ Encore
     .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
-   
+
     // Babel configuration for modern JavaScript 
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
