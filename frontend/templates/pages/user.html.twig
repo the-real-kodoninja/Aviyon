@@ -3,72 +3,32 @@
 {% block title %}{{ user.username }} - Kodoverse Elite{% endblock %}
 
 {% block body %}
-<div class="max-w-[1280px] mx-auto px-4 py-12 bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 min-h-screen">
-    <!-- Profile Hero -->
-    <section class="py-12 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('{{ asset('images/neon-grid.jpg') }}')] bg-cover bg-center opacity-20"></div>
-        <div class="relative flex items-center space-x-8">
-            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-400 shadow-lg">
-                <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-full h-full object-cover">
-            </div>
-            <div>
-                <h1 class="text-4xl font-extrabold text-purple-400">{{ user.username }}</h1>
-                <p class="text-gray-400 text-lg">@{{ user.handle }}</p>
-                <p class="text-gray-300 mt-2 leading-relaxed">{{ user.bio|default('A Kodoverse pioneer weaving aether into reality.') }}</p>
-                <div class="flex space-x-6 mt-4 text-gray-400">
-                    <span>Aether Rank: <span class="text-purple-400">{{ user.aetherRank|default('Aether Sovereign') }}</span></span>
-                    <span>Aether Marks: <span class="text-purple-400">{{ user.aetherMarks|default(1000) }}</span></span>
-                    <span>Constructs: <span class="text-purple-400">{{ user.projects_count|default(15) }}</span></span>
-                    <span>Followers: <span class="text-purple-400">{{ user.followers_count|default(5000) }}</span></span>
-                    <span>Following: <span class="text-purple-400">{{ user.following_count|default(200) }}</span></span>
+    {% include 'components/user/header.html.twig' with {'user': user} %}
+    <div class="max-w-[1280px] mx-auto px-4 py-6 flex">
+        <div class="w-3/4">
+            {% include 'components/user/nav.html.twig' %}
+            <div class="flex">
+                <div class="w-full">
+                    <div id="post" class="py-8">
+                        {% include 'components/user/post.html.twig' with {'user': user} %}
+                    </div>
+                    <div id="replies" class="py-8 hidden">{% include 'components/user/replies.html.twig' %}</div>
+                    <div id="photos" class="py-8 hidden">{% include 'components/user/photos.html.twig' %}</div>
+                    <div id="videos" class="py-8 hidden">{% include 'components/user/videos.html.twig' %}</div>
+                    <div id="likes" class="py-8 hidden">{% include 'components/user/likes.html.twig' %}</div>
+                    <div id="list" class="py-8 hidden">{% include 'components/user/list.html.twig' %}</div>
+                    <div id="saves" class="py-8 hidden">{% include 'components/user/saves.html.twig' %}</div>
                 </div>
-                <div class="mt-6 flex space-x-4">
-                    <button id="follow-user" class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition-shadow shadow-md">Pledge Allegiance</button>
-                    <button id="gift-mark" class="bg-cyan-600 text-white px-6 py-3 rounded-full hover:bg-cyan-700 transition-shadow shadow-md">Gift Aether Mark</button>
-                    <a href="mailto:{{ user.email|default(user.username ~ '@kodoverse.com') }}" class="bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-600 transition-shadow shadow-md">Message</a>
+                <div class="w-1/4 pl-6" id="sidebar">
+                    <!-- Dynamic sidebar content -->
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Tabs -->
-    <section class="border-t border-gray-700">
-        <div class="flex space-x-8 text-gray-400 border-b border-gray-700">
-            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="projects">Aether Constructs</button>
-            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="activity">Aether Weaves</button>
-            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="nfts">Aether Relics</button>
-            <button class="tab-btn py-4 px-6 hover:text-purple-400 border-b-2 border-transparent hover:border-purple-400 transition" data-tab="feed">Aether Echoes</button>
-        </div>
-        <div id="projects" class="py-8 hidden">
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {% for project in user.projects %}
-                    {% include 'components/user/project-card.html.twig' with {'project': project} %}
-                {% endfor %}
-            </div>
-        </div>
-        <div id="activity" class="py-8 hidden">
-            <ul class="space-y-6">
-                {% for activity in user.activities %}
-                    <li class="bg-gray-800 p-6 rounded-xl shadow-md">
-                        <p class="text-gray-300">{{ activity.description }} <span class="text-gray-500 text-sm">{{ activity.time }}</span></p>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div id="nfts" class="py-8 hidden">
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {% for nft in user.nfts %}
-                    {% include 'components/user/nft-card.html.twig' with {'nft': nft} %}
-                {% endfor %}
-            </div>
-        </div>
-        <div id="feed" class="py-8 hidden">
-            {% include 'components/feed/global_feed.html.twig' with {'feedItems': user.feed|default([])} %}
-        </div>
-    </section>
-</div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('build/user/user.js') }}" defer></script>
+    <script src="{{ asset('build/pages/user/post.js') }}" defer></script>
+    <script src="{{ asset('build/pages/user/nav.js') }}" defer></script>
+    <script src="{{ asset('build/pages/user/sidebar.js') }}" defer></script>
 {% endblock %}

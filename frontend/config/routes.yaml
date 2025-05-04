@@ -57,6 +57,13 @@ user_profile:
     controller: App\Controller\UserController::userProfile
     defaults: { username: null }
 
+user:
+    resource: '../config/routes/user.yaml'
+
+users_list:
+    path: /users
+    controller: App\Controller\UserController::usersList
+
 # Placeholder routes
 nimbus_ai_about:
     path: /nimbus-ai

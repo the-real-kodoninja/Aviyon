@@ -1,0 +1,87 @@
+<div class="py-8">
+    <div class="bg-gray-800 p-6 rounded-xl shadow-lg mb-6 neon-glow">
+        <div class="flex items-center mb-4">
+            <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-10 h-10 rounded-full mr-4">
+            <textarea id="post-input" placeholder="What's on your mind, {{ user.username }}?" class="w-full bg-gray-700 text-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-all duration-200" rows="1"></textarea>
+        </div>
+        <div class="flex justify-between items-center">
+            <div class="space-x-4 flex items-center">
+                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                    <input type="file" id="post-photo" accept="image/*" class="hidden">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                </label>
+                <label class="flex items-center text-gray-400 hover:text-purple-400 cursor-pointer">
+                    <input type="file" id="post-video" accept="video/*" class="hidden">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
+                </label>
+                <button id="post-emoji" class="flex items-center text-gray-400 hover:text-purple-400">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2zm1-9c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                    </svg>
+                </button>
+                <button id="post-gif" class="flex items-center text-gray-400 hover:text-purple-400">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 5v14h14V5H5zm2 2h10v10H7V7zm4 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 6H9v-2h6v2z"/>
+                    </svg>
+                </button>
+                <div class="relative">
+                    <button id="post-info" class="flex items-center text-gray-400 hover:text-purple-400">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/>
+                        </svg>
+                    </button>
+                    <span id="info-tooltip" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden bg-gray-700 text-white text-xs p-2 rounded-lg whitespace-nowrap">Add text, photos, videos, emojis, GIFs, or URLs for a rich post!</span>
+                </div>
+            </div>
+            <button id="post-submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">Post</button>
+        </div>
+        <div id="post-preview" class="mt-4 hidden">
+            <div class="bg-gray-700 p-4 rounded-lg">
+                <p id="preview-text" class="text-gray-300"></p>
+                <img id="preview-photo" class="mt-2 max-h-48 rounded-lg hidden">
+                <video id="preview-video" controls class="mt-2 max-h-48 rounded-lg hidden">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div id="preview-link" class="mt-2 hidden"></div>
+            </div>
+        </div>
+        <div id="emoji-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+            <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-1/2 max-h-[80vh] overflow-y-auto">
+                <button id="close-emoji" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div id="emoji-content" class="grid grid-cols-8 gap-2 text-2xl">
+                    <!-- Emoji content populated by JS -->
+                </div>
+            </div>
+        </div>
+        <div id="gif-popup" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+            <div class="bg-gray-900 p-6 rounded-xl shadow-2xl w-1/2 max-h-[80vh] overflow-y-auto">
+                <button id="close-gif" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div id="gif-content" class="grid grid-cols-4 gap-2">
+                    <!-- GIF content populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Filter Bar and New Post Placement -->
+    <div class="bg-gray-800 p-4 rounded-lg shadow-lg flex space-x-4 mb-4">
+        <button class="filter-btn text-gray-300 hover:text-purple-400 active">All</button>
+        <button class="filter-btn text-gray-300 hover:text-purple-400">Following</button>
+        <button class="filter-btn text-gray-300 hover:text-purple-400">Trending</button>
+        <button class="filter-btn text-gray-300 hover:text-purple-400">AI-Generated</button>
+    </div>
+    <div id="new-post-container"></div>
+    {% include 'components/feed/global_feed.html.twig' with {'feedItems': user.feed|default([])} %}
+</div>

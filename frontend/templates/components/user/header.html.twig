@@ -1,0 +1,16 @@
+<div class="bg-gradient-to-r from-purple-900 to-cyan-900 py-12 text-gray-100">
+    <div class="max-w-[1280px] mx-auto px-4 flex items-center space-x-8">
+        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-purple-400 shadow-lg">
+            <img src="{{ asset('build/images/users/' ~ user.username ~ '.png') }}" alt="{{ user.username }} Avatar" class="w-full h-full object-cover">
+        </div>
+        <div>
+            <h1 class="text-4xl font-extrabold text-purple-400">{{ user.username }}</h1>
+            <p class="text-gray-400 text-lg">@{{ user.handle }}</p>
+            <p class="text-gray-300 mt-2 leading-relaxed">{{ user.bio|default('A Kodoverse pioneer weaving aether into reality.') }}</p>
+            <div class="flex space-x-6 mt-4 text-gray-400">
+                <span>Followers: <span class="text-purple-400">{{ user.followers_count|default(5000) }}</span></span>
+                <span>Following: <span class="text-purple-400">{{ user.following_count|default(200) }}</span></span>
+            </div>
+        </div>
+    </div>
+</div>

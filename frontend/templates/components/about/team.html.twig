@@ -14,23 +14,18 @@
             <p class="text-gray-300 text-center font-semibold">Founder & Chief Technology Officer</p>
             <p class="text-gray-400 text-center">A coding prodigy and entrepreneur, Emmanuel architected the Kodoverse, blending cyberpunk aesthetics with scalable tech.</p>
         </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 cursor-pointer team-member" data-member="alexandra-kim">
-            <img src="{{ asset('build/images/alexandra-kim.jpg') }}" alt="Alexandra Kim" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-400">
-            <h3 class="text-2xl text-purple-400 text-center mb-2">Alexandra Kim</h3>
-            <p class="text-gray-300 text-center font-semibold">Chief Innovation Officer</p>
-            <p class="text-gray-400 text-center">A Stanford alum and blockchain pioneer, Alexandra drives our Web3-5 and NFT initiatives with visionary finesse.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 cursor-pointer team-member" data-member="rajesh-patel">
-            <img src="{{ asset('build/images/rajesh-patel.jpg') }}" alt="Rajesh Patel" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-cyan-400">
-            <h3 class="text-2xl text-cyan-400 text-center mb-2">Rajesh Patel</h3>
-            <p class="text-gray-300 text-center font-semibold">Chief Financial Officer</p>
-            <p class="text-gray-400 text-center">A Harvard MBA and DeFi expert, Rajesh orchestrates our billion-dollar financial strategy with precision.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 cursor-pointer team-member" data-member="lila-chan">
-            <img src="{{ asset('build/images/lila-chan.jpg') }}" alt="Lila Chan" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-400">
-            <h3 class="text-2xl text-purple-400 text-center mb-2">Lila Chan</h3>
-            <p class="text-gray-300 text-center font-semibold">Chief Marketing Officer</p>
-            <p class="text-gray-400 text-center">A global branding guru from Tokyo, Lila crafts our cyberpunk narrative to captivate millions.</p>
+    </div>
+    <!-- Profile Card Modal -->
+    <div id="profile-card-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+        <div class="bg-gray-900 p-8 rounded-xl shadow-2xl w-11/12 md:w-2/3 lg:w-1/2 max-h-[90vh] overflow-y-auto">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div id="profile-card-content" class="text-gray-300">
+                <!-- Populated dynamically via JavaScript -->
+            </div>
         </div>
     </div>
 </section>
