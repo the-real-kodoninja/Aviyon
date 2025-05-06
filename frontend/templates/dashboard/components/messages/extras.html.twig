@@ -1,0 +1,25 @@
+<div class="bg-gray-800/50 backdrop-blur-md border border-gray-700/50 rounded-lg p-4 h-full">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl text-purple-400">Extras</h2>
+        <button onclick="showConversation()" class="text-gray-400 hover:text-purple-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+    </div>
+    <div class="space-y-4">
+        <button id="voice-call-btn" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition">Start Voice Call</button>
+        <button id="schedule-meeting-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition">Schedule Meeting</button>
+        <div class="text-gray-400 text-sm">AI Suggestions:
+            <span id="ai-suggestion" class="text-purple-400">Draft a project proposal</span>
+        </div>
+        <div class="mt-4">
+            <label class="text-gray-300">Theme:</label>
+            <select id="theme-select" class="w-full p-2 bg-gray-700 rounded text-gray-100">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="neon">Neon</option>
+            </select>
+        </div>
+    </div>
+</div>

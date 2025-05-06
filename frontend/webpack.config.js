@@ -20,10 +20,13 @@ Encore
     .addEntry('bulletinboard_new', './assets/js/components/bulletinboard/bulletinboard_new.coffee')
     .addEntry('pages/about/team', './assets/js/pages/about/team.coffee')
     .addEntry('aviyon_notes', './Aviyon-Notes/assets/js/aviyon_notes.coffee')
- 
+    .addEntry('messages_chat', './assets/js/dashboard/components/messages/chat.js.coffee')
+    .addEntry('messages_conversation', './assets/js/dashboard/components/messages/conversation.js.coffee')
+    .addEntry('messages_extras', './assets/js/dashboard/components/messages/extras.js.coffee')
+
     // CSS entry
     .addStyleEntry('base', './assets/css/base.css')
-   
+
     // Encore settings
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
@@ -31,15 +34,15 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
 
-    // Babel configuration for modern JavaScript 
+    // Babel configuration for modern JavaScript
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
     })
-    
+
     // Enable SCSS support
     .enableSassLoader()
-    
+
     // Enable PostCSS and Tailwind CSS
     .enablePostCssLoader((options) => {
         options.postcssOptions = {
@@ -49,13 +52,13 @@ Encore
             ],
         };
     })
-    
+
     // Enable CoffeeScript support
     .addLoader({
         test: /\.coffee$/,
         use: ['coffee-loader']
     })
-    
+
     // Handle images as assets
     .addRule({
         test: /\.(jpg|jpeg|png|gif|svg)$/,
@@ -64,7 +67,7 @@ Encore
             filename: 'images/[name][ext][query]'
         }
     })
-    
+
     // Handle videos as assets
     .addRule({
         test: /\.(mp4|webm|ogg)$/,
@@ -73,7 +76,7 @@ Encore
             filename: 'videos/[name][ext][query]'
         }
     })
-    
+
     // Optimize for production
     .configureTerserPlugin((options) => {
         options.terserOptions = {
@@ -82,7 +85,7 @@ Encore
             },
         };
     })
-    
+
     // Add aliases for easier imports
     .addAliases({
         '@js': path.resolve(__dirname, 'assets/js'),

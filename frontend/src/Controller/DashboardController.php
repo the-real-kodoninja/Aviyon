@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -306,9 +307,9 @@ class DashboardController extends AbstractController
     }
 
     #[Route('/dashboard/messages', name: 'dashboard_messages')]
-    public function messages(): Response
+    public function messages(): RedirectResponse
     {
-        return $this->render('dashboard/messages.html.twig');
+        return new RedirectResponse($this->generateUrl('app_messages'));
     }
 
     #[Route('/dashboard/nimbus-ai', name: 'dashboard_nimbus_ai')]

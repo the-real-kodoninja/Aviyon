@@ -3,39 +3,26 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Psr\Log\LoggerInterface;
 
 class SettingsController extends AbstractController
 {
-    #[Route('/settings', name: 'settings')]
-    public function index(): Response
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
     {
-        return $this->render('pages/settings.html.twig');
+        $this->logger = $logger;
     }
 
-    #[Route('/settings/profile/save', name: 'settings_profile_save', methods: ['POST'])]
-    public function saveProfile(Request $request): Response
+    #[Route('/settings', name: 'app_settings')]
+    public function settings(): Response
     {
-        return $this->redirectToRoute('settings');
-    }
-
-    #[Route('/settings/security/save', name: 'settings_security_save', methods: ['POST'])]
-    public function saveSecurity(Request $request): Response
-    {
-        return $this->redirectToRoute('settings');
-    }
-
-    #[Route('/settings/notifications/save', name: 'settings_notifications_save', methods: ['POST'])]
-    public function saveNotifications(Request $request): Response
-    {
-        return $this->redirectToRoute('settings');
-    }
-
-    #[Route('/settings/theme/save', name: 'settings_theme_save', methods: ['POST'])]
-    public function saveTheme(Request $request): Response
-    {
-        return $this->redirectToRoute('settings');
+        $this->logger->info('Accessed Settings page');
+        return $this->render('pages/settings.html.twig', [
+            'about_text' => 'Unleash the power of communication with Aviyon’s decentralized messaging system. Collaborate on projects, trade NFTs, seek AI assistance from Nimbus AI, or connect with the Kodoverse community—all with end-to-end encryption and real-time sync.'
+        ]);
     }
 }
