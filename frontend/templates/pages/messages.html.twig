@@ -8,9 +8,9 @@
         .dashboard-container {
             display: grid;
             grid-template-areas:
-                "ticker ticker ticker"
-                "sidebar main main"
-                "footer footer footer";
+                "ticker ticker"
+                "sidebar main"
+                "footer footer";
             grid-template-columns: minmax(64px, 200px) 1fr;
             grid-template-rows: auto 1fr auto;
             min-height: 100vh;
@@ -18,30 +18,23 @@
             overflow: hidden;
         }
 
-        /* Ticker styles */
-        .ticker {
-            grid-area: ticker;
-            z-index: 10;
-            background: #0f0f1a;
-        }
-
-        /* Sidebar styles */
         .sidebar {
             grid-area: sidebar;
             background: #0f0f1a;
             z-index: 5;
             overflow-y: auto;
             transition: width 0.3s ease;
-            width: 200px; /* Default expanded width */
+            width: 200px;
+            max-height: 100vh;
         }
 
         .sidebar.collapsed {
-            width: 64px; /* Collapsed width */
+            width: 64px;
         }
 
         .sidebar .nav-item span {
             display: inline-block;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, width 0.3s ease;
         }
 
         .sidebar.collapsed .nav-item span {
@@ -50,35 +43,31 @@
             overflow: hidden;
         }
 
-        /* Main content styles */
         .main-content {
             grid-area: main;
             display: flex;
             flex-direction: column;
             padding: 0;
             width: 100%;
+            transition: margin-left 0.3s ease;
         }
 
-        /* Message area within main content */
         .message-area {
             flex: 1;
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 1rem;
             padding: 1rem;
-            transition: margin-left 0.3s ease;
         }
 
-        .sidebar.collapsed + .main-content .message-area {
-            margin-left: 64px; /* Adjust margin when sidebar is collapsed */
+        .sidebar.collapsed + .main-content {
+            margin-left: 64px;
         }
 
-        /* Extras panel (hidden by default) */
         .extras-panel {
             display: none;
         }
 
-        /* Footer styles */
         .footer {
             grid-area: footer;
             z-index: 5;
@@ -86,27 +75,29 @@
             padding: 0.5rem;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .dashboard-container {
                 grid-template-areas:
-                    "ticker ticker ticker"
-                    "main main main"
-                    "footer footer footer";
+                    "ticker ticker"
+                    "main main"
+                    "footer footer";
                 grid-template-columns: 1fr;
             }
 
             .sidebar {
-                display: none; /* Hide sidebar on mobile; can be toggled with JS if needed */
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
             }
 
             .message-area {
                 grid-template-columns: 1fr;
-                margin-left: 0;
             }
         }
 
-        @media (min-width: 1920px) { /* For wide screens like 59" */
+        @media (min-width: 1920px) {
             .dashboard-container {
                 max-width: 80vw;
                 margin-left: auto;
@@ -118,6 +109,9 @@
 
 {% block body %}
 <div class="dashboard-container">
+    <div class="sidebar">
+        {% include 'dashboard/sidebar.html.twig' %}
+    </div>
     <div class="main-content">
         <div class="message-area">
             {% include 'dashboard/components/messages/chatpanel.html.twig' %}
@@ -129,48 +123,12 @@
             </div>
         </div>
     </div>
-    {% include 'dashboard/sidebar.html.twig' with { class: 'sidebar' } %}
 </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        window.messagesConfig = {
-            settingsUrl: '{{ path('app_settings') }}#about',
-            calendarUrl: '{{ path('app_calendar') }}'
-        };
-
-        // Toggle Extras panel visibility
-        document.addEventListener('DOMContentLoaded', () => {
-            const conversationPanel = document.getElementById('conversation-panel');
-            const extrasPanel = document.getElementById('extras-panel');
-            const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.getElementById('sidebar-toggle');
-
-            // Function to show Extras and hide Conversation
-            window.showExtras = () => {
-                conversationPanel.style.display = 'none';
-                extrasPanel.style.display = 'block';
-            };
-
-            // Function to show Conversation and hide Extras
-            window.showConversation = () => {
-                conversationPanel.style.display = 'block';
-                extrasPanel.style.display = 'none';
-            };
-
-            // Toggle sidebar collapse/expand
-            toggleBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('collapsed');
-                const isCollapsed = sidebar.classList.contains('collapsed');
-                sidebar.querySelectorAll('.nav-item').forEach(item => {
-                    const span = item.querySelector('span');
-                    if (span) span.style.opacity = isCollapsed ? '0' : '1';
-                });
-            });
-        });
-    </script>
+    <script src="{{ asset('build/coffee/chat.js') }}"></script>
     <script src="{{ asset('build/app.js') }}"></script>
     <script src="{{ asset('build/messages_chat.js') }}"></script>
     <script src="{{ asset('build/messages_conversation.js') }}"></script>

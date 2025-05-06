@@ -1,5 +1,5 @@
 {% block sidebar %}
-<div class="bg-gray-900 text-gray-300 p-2 overflow-y-auto">
+<div class="bg-gray-900 text-gray-300 p-2 overflow-y-auto" style="max-height: 100vh;">
     <div class="mb-2 flex justify-center">
         <button id="sidebar-toggle" class="text-gray-300 hover:text-purple-400 transition-colors duration-200">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -9,220 +9,218 @@
     </div>
     <div class="mb-4">
         <ul class="space-y-2">
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Dashboard Home">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Dashboard Home">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
                         <polyline points="9 22 9 12 15 12 15 22"/>
                     </svg>
-                    <span class="ml-2">Dashboard Home</span>
+                    <span>Dashboard Home</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_agents') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Agents">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_agents') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Agents">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                         <circle cx="9" cy="7" r="4"/>
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                     </svg>
-                    <span class="ml-2">Agents</span>
+                    <span>Agents</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_deployments') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Deployments">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_deployments') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Deployments">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M4 12h16"/>
                         <path d="M4 6h16"/>
                         <path d="M4 18h16"/>
                     </svg>
-                    <span class="ml-2">Deployments</span>
+                    <span>Deployments</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_deployment_logs') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Deployment Logs">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_deployment_logs') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Deployment Logs">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2v20"/>
                         <path d="M2 12h20"/>
                         <path d="M6 6l12 12"/>
                         <path d="M6 18L18 6"/>
                     </svg>
-                    <span class="ml-2">Deployment Logs</span>
+                    <span>Deployment Logs</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_hosting') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Hosting">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_hosting') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Hosting">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                         <circle cx="12" cy="10" r="3"/>
                     </svg>
-                    <span class="ml-2">Hosting</span>
+                    <span>Hosting</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_hosting_analytics') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Hosting Analytics">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_hosting_analytics') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Hosting Analytics">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                     </svg>
-                    <span class="ml-2">Hosting Analytics</span>
+                    <span>Hosting Analytics</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('marketplace_root') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Marketplace">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('marketplace_root') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Marketplace">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
                         <path d="M8 2v4"/>
                         <path d="M16 2v4"/>
                         <path d="M3 10h18"/>
                     </svg>
-                    <span class="ml-2">Marketplace</span>
+                    <span>Marketplace</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_messages') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Messages">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_messages') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Messages">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                     </svg>
-                    <span class="ml-2">Messages</span>
+                    <span>Messages</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_nimbus_ai') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Nimbus AI">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_nimbus_ai') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Nimbus AI">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                     </svg>
-                    <span class="ml-2">Nimbus AI</span>
+                    <span>Nimbus AI</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_virtual_world') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Virtual World">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_virtual_world') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Virtual World">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2a10 10 0 0 0-8 14.5l8-2.5 8 2.5A10 10 0 0 0 12 2z"/>
                         <path d="M12 22s-4-8-4-12 4-8 4-8 4 4 4 8-4 12-4 12z"/>
                     </svg>
-                    <span class="ml-2">Virtual World</span>
+                    <span>Virtual World</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_virtual_world_enter') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Enter Virtual World">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_virtual_world_enter') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Enter Virtual World">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
                         <polyline points="10 17 15 12 10 7"/>
                         <line x1="15" y1="12" x2="3" y2="12"/>
                     </svg>
-                    <span class="ml-2">Enter Virtual World</span>
+                    <span>Enter Virtual World</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('dashboard_virtual_project', {'id': 1}) }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Virtual Project">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('dashboard_virtual_project', {'id': 1}) }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Virtual Project">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                         <polyline points="14 2 14 8 20 8"/>
                         <line x1="16" y1="13" x2="8" y2="13"/>
                         <line x1="16" y1="17" x2="8" y2="17"/>
                         <polyline points="10 9 9 9 8 9"/>
                     </svg>
-                    <span class="ml-2">Virtual Project</span>
+                    <span>Virtual Project</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('ide') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="IDE Home">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('ide') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="IDE Home">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                     </svg>
-                    <span class="ml-2">IDE Home</span>
+                    <span>IDE Home</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="{{ path('np_plus_plus') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Nimbuspad++">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="{{ path('np_plus_plus') }}" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Nimbuspad++">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2v4m0 12v4M2 12h4m12 0h4M4.93 4.93l2.83 2.83m9.9 9.9l-2.83-2.83M4.93 19.07l2.83-2.83m9.9-9.9l-2.83 2.83"/>
                         <circle cx="12" cy="12" r="10"/>
                     </svg>
-                    <span class="ml-2">Nimbuspad++</span>
+                    <span>Nimbuspad++</span>
                 </a>
             </li>
         </ul>
     </div>
-
     <div class="mb-4">
         <h3 class="text-sm font-semibold text-gray-500 mb-2 text-center">Repos</h3>
         <ul class="space-y-2">
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="All Repositories">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="All Repositories">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                     </svg>
-                    <span class="ml-2">All Repositories</span>
+                    <span>All Repositories</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="github.com/the-real-kodoninja/Aviyon (main)">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="github.com/the-real-kodoninja/Aviyon (main)">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="5" cy="6" r="2"/>
                         <circle cx="5" cy="18" r="2"/>
                         <path d="M5 8v8"/>
                         <path d="M5 12h8"/>
                         <circle cx="15" cy="12" r="2"/>
                     </svg>
-                    <span class="ml-2">Aviyon (main)</span>
+                    <span>Aviyon (main)</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="github.com/kodoninja/nft-marketplace (master)">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="github.com/kodoninja/nft-marketplace (master)">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="5" cy="6" r="2"/>
                         <circle cx="5" cy="18" r="2"/>
                         <path d="M5 8v8"/>
                         <path d="M5 12h8"/>
                         <circle cx="15" cy="12" r="2"/>
                     </svg>
-                    <span class="ml-2">NFT Marketplace (master)</span>
+                    <span>NFT Marketplace (master)</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="github.com/kodoninja/defi-app (main)">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="github.com/kodoninja/defi-app (main)">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="5" cy="6" r="2"/>
                         <circle cx="5" cy="18" r="2"/>
                         <path d="M5 8v8"/>
                         <path d="M5 12h8"/>
                         <circle cx="15" cy="12" r="2"/>
                     </svg>
-                    <span class="ml-2">DeFi App (main)</span>
+                    <span>DeFi App (main)</span>
                 </a>
             </li>
         </ul>
     </div>
-
     <div>
         <h3 class="text-sm font-semibold text-gray-500 mb-2 text-center">Other</h3>
         <ul class="space-y-2">
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Drafts">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Drafts">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                     </svg>
-                    <span class="ml-2">Drafts</span>
+                    <span>Drafts</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="All Folders">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="All Folders">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
                     </svg>
-                    <span class="ml-2">All Folders</span>
+                    <span>All Folders</span>
                 </a>
             </li>
-            <li class="nav-item flex items-center justify-center">
-                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200" title="Recently Deleted">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li class="nav-item flex items-center p-2">
+                <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center" title="Recently Deleted">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                         <path d="M3 6h18"/>
                         <path d="M16 10a4 4 0 0 1-8 0"/>
                     </svg>
-                    <span class="ml-2">Recently Deleted</span>
+                    <span>Recently Deleted</span>
                 </a>
             </li>
         </ul>
