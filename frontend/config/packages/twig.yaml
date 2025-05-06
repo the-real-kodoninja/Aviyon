@@ -1,6 +1,4 @@
-# config/packages/twig.yaml
 twig:
+    default_path: '%kernel.project_dir%/templates'
     paths:
-        '%kernel.project_dir%/templates': ~
-    debug: '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
+        '%kernel.project_dir%/Aviyon-Notes/templates': Aviyon-Notes

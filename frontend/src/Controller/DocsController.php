@@ -18,28 +18,10 @@ class DocsController extends AbstractController
     }
 
     #[Route('/docs', name: 'docs')]
-    public function docs(): Response
+    #[Route('/docs/{path}', name: 'docs_catchall', requirements: ['path' => '.+'])]
+    public function aviyonNotes(Request $request): Response
     {
-        return $this->render('pages/docs.html.twig');
-    }
-
-    #[Route('/docs/{file<.+>}', name: 'docs_file')]
-    public function serveDocsFile(string $file): Response
-    {
-        // Decode URL to handle spaces correctly
-        $normalizedFile = urldecode($file);
-        $filePath = $this->getParameter('kernel.project_dir') . '/public/docs/' . $normalizedFile;
-        $this->logger->info("Attempting to serve Markdown file: {$filePath}");
-        
-        if (!file_exists($filePath)) {
-            $this->logger->error("Markdown file not found: {$filePath}");
-            throw $this->createNotFoundException('Documentation file not found: ' . $filePath);
-        }
-
-        $content = file_get_contents($filePath);
-        $this->logger->info("Successfully read Markdown file: {$filePath}");
-        $response = new Response($content, 200);
-        $response->headers->set('Content-Type', 'text/markdown');
-        return $response;
+        $this->logger->info('Serving Aviyon Notes from /docs with path: ' . $request->getPathInfo());
+        return $this->file('index.html', true); // Serve Vite app for all /docs routes
     }
 }

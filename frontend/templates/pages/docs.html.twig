@@ -1,47 +1,55 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Aviyon Documentation Hub{% endblock %}
+{% block title %}Aviyon Notes - Notion Clone{% endblock %}
 
 {% block body %}
-<div class="flex min-h-screen bg-gray-950 text-gray-200 relative overflow-hidden">
+<div class="flex min-h-screen bg-gray-900 text-gray-200 relative overflow-hidden">
     <!-- Starry Background -->
     <div class="absolute inset-0 starry-bg pointer-events-none"></div>
 
-    <!-- Sidebar -->
-    <aside class="w-80 bg-gray-900/20 backdrop-blur-xl p-6 shadow-lg border-r border-gray-700/50">
-        {% include 'components/docs/sidebar.html.twig' with {'activeFile': activeFile|default('Aviyon Corporation dd1f156f667e4272b706350d65fdc267.md')} %}
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1 p-8 relative">
-        <!-- Floating Search Bar -->
-        <div class="floating-search mb-8 flex justify-center">
-            <input type="text" id="doc-search" placeholder="Search Documentation..." class="w-1/2 p-3 bg-gray-800/50 backdrop-blur-md border border-neon-purple rounded-full text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon-cyan shadow-lg neon-glow transition-all duration-300">
+    <!-- Main Layout -->
+    <div class="flex w-full h-screen">
+        <!-- File Tree (Left Panel) -->
+        <div class="w-1/4 bg-gray-800/50 backdrop-blur-md border-r border-gray-700/50 p-4 overflow-y-auto">
+            <h2 class="text-2xl font-inter text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan mb-4 tracking-wide">File Explorer</h2>
+            <div id="file-tree" class="space-y-2"></div>
         </div>
 
-        <div class="container mx-auto">
-            <!-- Holographic Header -->
-            <h1 class="text-6xl font-inter text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan mb-8 tracking-tight animate-pulse">Aviyon Documentation Hub</h1>
-            <div id="doc-content" class="bg-gray-900/30 backdrop-blur-lg rounded-xl shadow-2xl p-8 prose prose-invert max-w-none border border-gray-700/50 animate__animated animate__fadeIn">
-                <p class="text-gray-400">Loading documentation...</p>
+        <!-- Editor (Right Panel) -->
+        <div class="w-3/4 p-6 relative">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-4xl font-inter text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan animate-pulse">Aviyon Notes</h1>
+                <div class="flex space-x-4">
+                    <button id="save-btn" class="px-4 py-2 bg-neon-purple/50 hover:bg-neon-purple text-white rounded-lg shadow-lg neon-glow transition-all duration-300">Save</button>
+                    <button id="new-note-btn" class="px-4 py-2 bg-neon-cyan/50 hover:bg-neon-cyan text-white rounded-lg shadow-lg neon-glow transition-all duration-300">New Note</button>
+                </div>
+            </div>
+
+            <!-- Editor Area -->
+            <div class="bg-gray-800/50 backdrop-blur-md border border-gray-700/50 rounded-lg p-4 h-[calc(100vh-12rem)] overflow-y-auto">
+                <textarea id="editor" class="w-full h-full bg-transparent text-gray-200 resize-none focus:outline-none" placeholder="Start typing your note..."></textarea>
+            </div>
+
+            <!-- Terminal (Bottom Panel) -->
+            <div class="mt-4 bg-gray-900/70 backdrop-blur-md border border-gray-700/50 rounded-lg p-4 h-32 overflow-y-auto">
+                <div id="terminal" class="text-green-400"></div>
             </div>
         </div>
-    </main>
+    </div>
 </div>
 {% endblock %}
 
 {% block javascripts %}
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/lib/marked.min.js"></script>
 <script type="text/javascript" src="{{ asset('build/pages/docs.js') }}"></script>
-<script type="text/javascript" src="{{ asset('build/pages/docs/sidebar.js') }}"></script>
-<!-- Animate.css for animations -->
 <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
 <style>
 /* Starry Background */
 .starry-bg {
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 1) 100%);
     position: relative;
-    overflow: hidden;
 }
 .starry-bg::before {
     content: '';
@@ -52,14 +60,7 @@
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
                 100px 50px 0 rgba(255, 255, 255, 0.6),
                 200px 150px 0 rgba(255, 255, 255, 0.7),
-                300px 80px 0 rgba(255, 255, 255, 0.5),
-                400px 200px 0 rgba(255, 255, 255, 0.6),
-                500px 120px 0 rgba(255, 255, 255, 0.8),
-                600px 180px 0 rgba(255, 255, 255, 0.7),
-                700px 90px 0 rgba(255, 255, 255, 0.5),
-                800px 220px 0 rgba(255, 255, 255, 0.6),
-                900px 140px 0 rgba(255, 255, 255, 0.8),
-                1000px 160px 0 rgba(255, 255, 255, 0.7);
+                300px 80px 0 rgba(255, 255, 255, 0.5);
     animation: twinkle 3s infinite alternate;
 }
 @keyframes twinkle {
@@ -80,61 +81,77 @@
 .border-neon-purple { border-color: #9333ea; }
 .border-neon-cyan { border-color: #22d3ee; }
 
-/* Floating Search Bar Animation */
-.floating-search {
-    animation: float 3s ease-in-out infinite;
+/* File Tree Item */
+.file-tree-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
 }
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Prose Adjustments for Dark Theme */
-.prose-invert {
-    --tw-prose-body: #e5e7eb;
-    --tw-prose-headings: #fff;
-    --tw-prose-links: #22d3ee;
-    --tw-prose-code: #f472b6;
-    --tw-prose-pre-bg: #1f2937;
-    --tw-prose-pre-code: #e5e7eb;
-    --tw-prose-quote-borders: #9333ea;
+.file-tree-item:hover {
+    background: rgba(147, 51, 234, 0.2);
+    color: #22d3ee;
 }
 
-/* Active Link Style */
-.active {
+/* Active File */
+.file-tree-item.active {
+    background: linear-gradient(to right, rgba(147, 51, 234, 0.3), transparent);
+    color: #22d3ee;
     font-weight: bold;
-    color: #22d3ee !important;
-    border-left: 3px solid #9333ea;
-    padding-left: 8px;
-    background: linear-gradient(to right, rgba(147, 51, 234, 0.2), transparent);
-}
-
-/* Rotate Animation for Dropdown */
-.rotate-180 {
-    transform: rotate(180deg);
 }
 </style>
 <script>
-// Add search functionality
 document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('doc-search');
-    const docLinks = document.querySelectorAll('.doc-link');
+    const fileTree = document.getElementById('file-tree');
+    const editor = document.getElementById('editor');
+    const terminal = document.getElementById('terminal');
+    const saveBtn = document.getElementById('save-btn');
+    const newNoteBtn = document.getElementById('new-note-btn');
 
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        docLinks.forEach(link => {
-            const text = link.textContent.toLowerCase();
-            if (text.includes(searchTerm)) {
-                link.parentElement.style.display = 'block';
-                let parentUl = link.closest('.section-content');
-                while (parentUl) {
-                    parentUl.classList.remove('hidden');
-                    parentUl = parentUl.parentElement.closest('.section-content');
-                }
-            } else {
-                link.parentElement.style.display = 'none';
-            }
-        });
+    // Load default note (Aviyon Notes)
+    loadFile('Aviyon Corporation dd1f156f667e4272b706350d65fdc267.md');
+
+    // Build File Tree from public/docs/
+    fetch('/docs/files')
+        .then(response => response.json())
+        .then(files => {
+            files.forEach(file => {
+                const item = document.createElement('div');
+                item.className = 'file-tree-item cursor-pointer';
+                item.textContent = file.name;
+                item.dataset.path = file.path;
+                item.addEventListener('click', () => loadFile(file.path));
+                fileTree.appendChild(item);
+            });
+        })
+        .catch(error => terminal.innerHTML += `<div>Error loading file tree: ${error}</div>`);
+
+    function loadFile(path) {
+        fetch(`/docs/${encodeURI(path)}`)
+            .then(response => response.text())
+            .then(markdown => {
+                editor.value = markdown;
+                document.querySelectorAll('.file-tree-item').forEach(item => item.classList.remove('active'));
+                document.querySelector(`.file-tree-item[data-path="${path}"]`).classList.add('active');
+                terminal.innerHTML += `<div>Loaded: ${path}</div>`;
+            })
+            .catch(error => terminal.innerHTML += `<div>Error loading ${path}: ${error}</div>`);
+    }
+
+    saveBtn.addEventListener('click', () => {
+        const path = document.querySelector('.file-tree-item.active')?.dataset.path || 'new_note.md';
+        fetch(`/docs/save/${encodeURI(path)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: editor.value })
+        })
+        .then(response => response.text())
+        .then(msg => terminal.innerHTML += `<div>${msg}</div>`)
+        .catch(error => terminal.innerHTML += `<div>Error saving: ${error}</div>`);
+    });
+
+    newNoteBtn.addEventListener('click', () => {
+        editor.value = '# New Note\nStart here...';
+        terminal.innerHTML += `<div>Created new note</div>`;
     });
 });
 </script>

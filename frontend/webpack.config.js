@@ -19,9 +19,7 @@ Encore
     .addEntry('postPopup', './assets/js/components/postPopup/postPopup.coffee')
     .addEntry('bulletinboard_new', './assets/js/components/bulletinboard/bulletinboard_new.coffee')
     .addEntry('pages/about/team', './assets/js/pages/about/team.coffee')
-    .addEntry('pages/docs', './assets/js/pages/docs.js')
-    .addEntry('pages/docs-coffee', './assets/js/pages/docs.coffee')
-    .addEntry('pages/docs/sidebar', './assets/js/pages/docs/sidebar.coffee')
+    .addEntry('aviyon_notes', './Aviyon-Notes/assets/js/aviyon_notes.coffee')
  
     // CSS entry
     .addStyleEntry('base', './assets/css/base.css')

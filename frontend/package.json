@@ -6,7 +6,7 @@
     "clear-cache": "rm -rf var/cache/dev && php bin/console cache:clear --env=dev && php bin/console cache:warmup --env=dev",
     "build": "encore dev",
     "watch": "encore dev --watch",
-    "start-server": "concurrently \"npm run watch\" \"symfony server:start --port=8000 --no-tls\"",
+    "start-server": "concurrently \"npm run watch\" \"symfony server:start --port=8000 --no-tls\" \"sh Aviyon-Notes/start_rust_server.sh\"",
     "build-prod": "encore production"
   },
   "devDependencies": {
