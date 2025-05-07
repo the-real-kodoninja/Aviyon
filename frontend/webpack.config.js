@@ -130,13 +130,14 @@ Encore
         }
     ])
 
-    // Add external libraries (e.g., Three.js, Chart.js) to avoid bundling
+    // Add external libraries to avoid bundling
     .addExternals({
         'three': 'THREE',
-        'chart.js': 'Chart'
+        'chart.js': 'Chart',
+        'chartjs-chart-financial': 'chartjsChartFinancial'
     });
 
-// Get the Webpack config and modify it to support CoffeeScript resolution
+// Support CoffeeScript resolution
 const webpackConfig = Encore.getWebpackConfig();
 webpackConfig.resolve = webpackConfig.resolve || {};
 webpackConfig.resolve.extensions = webpackConfig.resolve.extensions || [];

@@ -1,25 +1,35 @@
 init = ->
+  console.log 'Nav init started'
+
   tabs = document.querySelectorAll '.nav-tab'
   sections = document.querySelectorAll '.content-sections .section'
 
-  console.log 'Initializing nav with tabs:', tabs, 'sections:', sections
+  console.log 'Tabs found:', tabs.length
+  console.log 'Sections found:', sections.length
 
-  # Show the first section and set the first tab as active on load
-  if sections.length > 0 and tabs.length > 0
-    sections[0].classList.remove 'hidden'
-    tabs[0].classList.add 'active-tab'
-    console.log 'Default section shown:', sections[0].id
+  # Ensure tabs and sections are found
+  unless tabs.length > 0
+    console.error 'No nav tabs found with class .nav-tab'
+    return
+  unless sections.length > 0
+    console.error 'No sections found with class .content-sections .section'
+    return
 
-  tabs.forEach (tab) ->
+  # Set up click listeners for each tab
+  tabs.forEach (tab, index) ->
+    console.log 'Attaching listener to tab:', tab.getAttribute('href')
     tab.addEventListener 'click', (e) ->
       e.preventDefault()
-      targetId = tab.getAttribute('href').substring(1)
+      targetId = tab.getAttribute('href')?.substring(1)
+      console.log 'Tab clicked, target ID:', targetId
+
+      unless targetId
+        console.error 'No href attribute found on tab:', tab
+        return
+
       targetSection = document.getElementById(targetId)
-
-      console.log 'Clicked tab for:', targetId, 'targetSection:', targetSection
-
       unless targetSection
-        console.error 'Target section not found for:', targetId
+        console.error 'Target section not found for ID:', targetId
         return
 
       # Hide all sections
@@ -28,13 +38,17 @@ init = ->
 
       # Show the target section
       targetSection.classList.remove 'hidden'
+      console.log 'Showing section:', targetId
 
-      # Highlight active tab
+      # Update active tab styling
       tabs.forEach (t) ->
         t.classList.remove 'active-tab'
       tab.classList.add 'active-tab'
-      console.log 'Active section:', targetSection.id
+      console.log 'Active tab updated:', tab.textContent
 
-document.addEventListener 'DOMContentLoaded', init
+# Ensure the script runs after DOM is fully loaded
+document.addEventListener 'DOMContentLoaded', ->
+  console.log 'DOM fully loaded, initializing nav'
+  init()
 
 module.exports = { init }

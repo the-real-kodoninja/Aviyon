@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Investing - Kodoverse Hub{% endblock %}
+{% block title %}Investing Hub{% endblock %}
 
 {% block body %}
 <div class="relative investing-dashboard">
@@ -73,5 +73,23 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
 <script src="{{ asset('build/investing.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('.content-sections .section');
+  console.log('Inline script: Tabs:', tabs.length, 'Sections:', sections.length);
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = tab.getAttribute('href').substring(1);
+      console.log('Inline script: Clicked tab for:', targetId);
+      sections.forEach(section => section.classList.add('hidden'));
+      document.getElementById(targetId)?.classList.remove('hidden');
+      tabs.forEach(t => t.classList.remove('active-tab'));
+      tab.classList.add('active-tab');
+    });
+  });
+});
+</script>
 {% endblock %}
 {% endblock %}
