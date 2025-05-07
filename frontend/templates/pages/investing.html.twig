@@ -16,52 +16,52 @@
         {% include 'components/investing/nav.html.twig' %}
 
         <!-- Main Content Sections -->
-        <div class="content-sections space-y-12">
+        <div class="content-sections">
             <section id="portfolio" class="section">
                 {% include 'components/investing/portfolio.html.twig' %}
             </section>
 
-            <section id="trading" class="section">
+            <section id="trading" class="section hidden">
                 {% include 'components/investing/trading.html.twig' %}
             </section>
 
-            <section id="market-insights" class="section">
+            <section id="market-insights" class="section hidden">
                 {% include 'components/investing/market_insights.html.twig' %}
             </section>
 
-            <section id="virtual-simulator" class="section">
+            <section id="virtual-simulator" class="section hidden">
                 {% include 'components/investing/virtual_simulator.html.twig' %}
             </section>
 
-            <section id="staking-pools" class="section">
+            <section id="staking-pools" class="section hidden">
                 {% include 'components/investing/staking_pools.html.twig' %}
             </section>
 
-            <section id="investors" class="section">
+            <section id="investors" class="section hidden">
                 {% include 'components/investing/investors.html.twig' %}
             </section>
 
-            <section id="kodoverse-lore" class="section">
+            <section id="kodoverse-lore" class="section hidden">
                 {% include 'components/investing/kodoverse_lore.html.twig' %}
             </section>
 
-            <section id="social-trading" class="section">
+            <section id="social-trading" class="section hidden">
                 {% include 'components/investing/social_trading.html.twig' %}
             </section>
 
-            <section id="company-feed" class="section">
+            <section id="company-feed" class="section hidden">
                 {% include 'components/investing/company_feed.html.twig' %}
             </section>
 
-            <section id="blog" class="section">
+            <section id="blog" class="section hidden">
                 {% include 'components/investing/blog.html.twig' %}
             </section>
 
-            <section id="earnings" class="section">
+            <section id="earnings" class="section hidden">
                 {% include 'components/investing/earnings.html.twig' %}
             </section>
 
-            <section id="spending" class="section">
+            <section id="spending" class="section hidden">
                 {% include 'components/investing/spending.html.twig' %}
             </section>
         </div>
@@ -71,6 +71,7 @@
 {% block javascripts %}
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
 <script src="{{ asset('build/investing.js') }}"></script>
 {% endblock %}
 {% endblock %}
