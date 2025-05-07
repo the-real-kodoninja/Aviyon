@@ -1,0 +1,26 @@
+careers:
+   path: /careers
+   controller: App\Controller\CareersController::index
+
+careers_apply:
+   path: /careers/apply/{id}
+   controller: App\Controller\CareersController::apply
+   methods: [GET, POST]
+   requirements:
+       id: '\d+'
+
+careers_job:
+   path: /careers/job/{id}
+   controller: App\Controller\CareersController::job
+   methods: [GET]
+   requirements:
+       id: '\d+'
+
+careers_explore:
+   path: /careers/explore
+   controller: App\Controller\CareersController::explore
+
+careers_submit_application:
+   path: /careers/submit-application
+   controller: App\Controller\CareersController::submitApplication
+   methods: [POST]

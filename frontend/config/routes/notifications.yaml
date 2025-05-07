@@ -1,0 +1,14 @@
+notifications:
+   path: /dashboard/notifications
+   controller: App\Controller\Header\NotificationsController::dashboardNotifications
+   methods: [GET]
+
+mark_notification_as_read:
+   path: /notifications/mark-as-read/{id}
+   controller: App\Controller\Header\NotificationsController::markAsRead
+   methods: [POST]
+
+header_notifications:
+   path: /header/notifications
+   controller: App\Controller\Header\NotificationsController::index
+   methods: [GET]

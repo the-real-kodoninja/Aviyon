@@ -1,0 +1,23 @@
+app_settings:
+    path: /settings
+    controller: App\Controller\SettingsController::index
+
+settings_profile_save:
+   path: /settings/profile/save
+   controller: App\Controller\SettingsController::saveProfile
+   methods: [POST]
+
+settings_security_save:
+   path: /settings/security/save
+   controller: App\Controller\SettingsController::saveSecurity
+   methods: [POST]
+
+settings_notifications_save:
+   path: /settings/notifications/save
+   controller: App\Controller\SettingsController::saveNotifications
+   methods: [POST]
+
+settings_theme_save:
+   path: /settings/theme/save
+   controller: App\Controller\SettingsController::saveTheme
+   methods: [POST]

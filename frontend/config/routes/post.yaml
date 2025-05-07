@@ -1,0 +1,9 @@
+post_view:
+   path: /post/{id}
+   controller: App\Controller\PostController::viewPost
+   methods: [GET]
+
+post_comment:
+   path: /post/{id}/comment
+   controller: App\Controller\PostController::addComment
+   methods: [POST]

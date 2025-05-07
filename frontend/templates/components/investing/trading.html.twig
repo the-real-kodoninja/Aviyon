@@ -1,0 +1,59 @@
+<div class="bg-dark-light rounded-lg shadow-lg p-6">
+    <h2 class="text-3xl font-inter text-neon-purple mb-4">Trading Platforms</h2>
+    <div class="flex space-x-4 mb-4">
+        <button class="trading-tab px-4 py-2 bg-dark rounded-lg text-gray-300 hover:bg-neon-purple hover:text-white transition" data-tab="stoploss">Stoploss</button>
+        <button class="trading-tab px-4 py-2 bg-dark rounded-lg text-gray-300 hover:bg-neon-purple hover:text-white transition" data-tab="whale">Whale</button>
+        <button class="trading-tab px-4 py-2 bg-dark rounded-lg text-gray-300 hover:bg-neon-purple hover:text-white transition" data-tab="kodotrading">KodoTrading</button>
+    </div>
+
+    <!-- Stoploss Tab -->
+    <div id="stoploss-tab" class="trading-tab-content">
+        <h3 class="text-lg font-inter text-neon-purple mb-2">Stoploss v5.3</h3>
+        <p class="text-sm text-gray-400 mb-2">Advanced trading platform with AI-driven precision.</p>
+        <ul class="list-disc ml-6 text-gray-400">
+            <li>Multi-Broker Support: Alpaca, Binance, IB</li>
+            <li>Precision Trade Control: Stop-loss, take-profit</li>
+            <li>Advanced Charting: TA-Lib, Heikin-Ashi</li>
+        </ul>
+        <a href="https://github.com/the-real-kodoninja/stoploss" target="_blank" class="mt-4 inline-block bg-neon-green text-white px-4 py-2 rounded-lg hover:bg-neon-green/80 transition">Download Stoploss</a>
+    </div>
+
+    <!-- Whale Tab -->
+    <div id="whale-tab" class="trading-tab-content hidden">
+        <h3 class="text-lg font-inter text-neon-purple mb-2">Whale Module</h3>
+        <p class="text-sm text-gray-400 mb-2">Heavyweight AI for large accounts.</p>
+        <ul class="list-disc ml-6 text-gray-400">
+            <li>Advanced AI Trading</li>
+            <li>Fund Management</li>
+            <li>Auto-Trading</li>
+        </ul>
+        <button class="mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg cursor-not-allowed">Coming Soon</button>
+    </div>
+
+    <!-- KodoTrading Tab -->
+    <div id="kodotrading-tab" class="trading-tab-content hidden">
+        <h3 class="text-lg font-inter text-neon-purple mb-2">KodoTrading</h3>
+        <p class="text-sm text-gray-400 mb-2">Social trading platform with Web3 integration.</p>
+        <ul class="list-disc ml-6 text-gray-400">
+            <li>Social Feed</li>
+            <li>Portfolio Tracker</li>
+            <li>Web3 Integration</li>
+        </ul>
+        <a href="http://kodotrading.app" target="_blank" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Visit KodoTrading</a>
+    </div>
+
+    <!-- Trade Analytics -->
+    <div class="mt-6">
+        <h3 class="text-lg font-inter text-neon-purple mb-2">Trade Analytics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <h4 class="text-md font-inter text-earth-brown">Trade History</h4>
+                <canvas id="trade-history-chart" class="w-full h-64"></canvas>
+            </div>
+            <div>
+                <h4 class="text-md font-inter text-earth-brown">Trend Pattern</h4>
+                <canvas id="trend-pattern-chart" class="w-full h-64"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

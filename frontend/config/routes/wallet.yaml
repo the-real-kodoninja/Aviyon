@@ -1,0 +1,3 @@
+wallet:
+   path: /dashboard/wallet
+   controller: App\Controller\WalletController::index

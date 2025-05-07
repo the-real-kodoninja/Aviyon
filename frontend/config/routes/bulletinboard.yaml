@@ -1,0 +1,8 @@
+bulletinboard:
+   path: /bulletinboard
+   controller: App\Controller\Bulletinboard\BulletinboardController::index
+
+api_bulletin_create:
+   path: /api/bulletin/create
+   controller: App\Controller\Bulletinboard\BulletinboardController::createBulletin
+   methods: [POST]

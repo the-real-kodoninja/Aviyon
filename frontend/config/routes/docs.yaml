@@ -1,0 +1,7 @@
+docs:
+    path: /docs
+    controller: App\Controller\DocsController::aviyonNotes
+
+docs_file:
+   path: /docs/{file<.+>}
+   controller: App\Controller\DocsController::serveDocsFile

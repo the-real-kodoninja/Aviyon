@@ -1,292 +1,69 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Investing - Aviyon{% endblock %}
+{% block title %}Investing - Kodoverse Hub{% endblock %}
 
 {% block body %}
-<div class="relative">
+<div class="relative investing-dashboard">
     <!-- Background Canvas for 3D Visualization -->
-    <canvas id="portfolio-canvas" class="absolute inset-0 w-full h-full z-0 opacity-50"></canvas>
+    <canvas id="investing-canvas" class="absolute inset-0 w-full h-full z-0 opacity-30"></canvas>
 
-    <!-- Search Filter -->
-    <div class="container mx-auto px-4 py-6">
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-4xl font-inter text-neon-purple">Investing Dashboard</h1>
-            <div class="relative w-1/3">
-                <input type="text" id="feed-filter" placeholder="Filter feed (e.g., trades, acquisitions)" class="w-full p-3 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-                <svg class="absolute right-3 top-3 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </div>
-        </div>
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header Section -->
+        {% include 'components/investing/header.html.twig' %}
 
-        <!-- Navbar -->
-        <nav class="bg-dark-light rounded-lg shadow-lg p-4 mb-6">
-            <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-                <!-- Investing Section -->
-                <li class="relative group">
-                    <button class="text-gray-300 hover:text-neon-purple transition font-inter">Investing</button>
-                    <div class="absolute left-0 mt-2 w-96 bg-dark-light rounded-lg shadow-lg hidden group-hover:block z-10">
-                        <div class="p-4">
-                            <h3 class="text-lg font-inter text-neon-purple mb-2">Investment Models</h3>
-                            <a href="#open-door" class="block text-gray-300 hover:text-neon-purple transition mb-1">Open Door Transparency Model</a>
-                            <p class="text-sm text-gray-400 mb-2">Full transparency into company operations and investments.</p>
-                            <a href="#liquid-model" class="block text-gray-300 hover:text-neon-purple transition mb-1">100% Liquid Model</a>
-                            <p class="text-sm text-gray-400 mb-2">All investments are fully liquid, ensuring flexibility.</p>
-                            <a href="#whale-module" class="block text-gray-300 hover:text-neon-purple transition mb-1">Whale Module</a>
-                            <p class="text-sm text-gray-400 mb-2">Advanced AI-driven trading for large accounts.</p>
-                            <a href="#stoploss-module" class="block text-gray-300 hover:text-neon-purple transition mb-1">Stoploss Module</a>
-                            <p class="text-sm text-gray-400 mb-2">Precision trading with automated stop-loss and take-profit.</p>
+        <!-- Navigation Tabs -->
+        {% include 'components/investing/nav.html.twig' %}
 
-                            <h3 class="text-lg font-inter text-neon-purple mt-4 mb-2">Portfolio</h3>
-                            <a href="#portfolio" class="block text-gray-300 hover:text-neon-purple transition mb-1">View Portfolio</a>
-                            <div class="ml-4">
-                                <p class="text-gray-300 font-bold">Capital (Total: <span class="text-neon-green">$1,250,000</span>)</p>
-                                <p class="text-sm text-gray-400">Investment Accounts:</p>
-                                <ul class="list-disc ml-6 text-gray-400">
-                                    <li>Fidelity: $500,000</li>
-                                    <li>Vanguard: $300,000</li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mt-2">Trading Accounts:</p>
-                                <ul class="list-disc ml-6 text-gray-400">
-                                    <li>Interactive Brokers: $450,000</li>
-                                </ul>
-                                <a href="#holdings" class="block text-gray-300 hover:text-neon-purple transition mt-2">Holdings</a>
-                                <a href="#acquisitions" class="block text-gray-300 hover:text-neon-purple transition">Acquisitions</a>
-                            </div>
+        <!-- Main Content Sections -->
+        <div class="content-sections space-y-12">
+            <section id="portfolio" class="section">
+                {% include 'components/investing/portfolio.html.twig' %}
+            </section>
 
-                            <h3 class="text-lg font-inter text-neon-purple mt-4 mb-2">Investing in Aviyon</h3>
-                            <p class="text-sm text-gray-400 mb-2">Aviyon Corporation S-corp does not manage money outside its own equity & capital. We are not a banking firm, but a self-investment firm. We do not nor will ever manage outside entities nor any individuals' personal assets. Stoploss, Whale are trading software free to use via free tier. Shorting, borrowing capital via margin, against capital is BORROWING money via Aviyon Corporation S-Corp.</p>
-                            <p class="text-sm text-gray-400 italic mb-2">Disclaimer: Due to the large amount of company capital, it is unlikely to obtain an equity deal, however other deal types are likely.</p>
-                            <p class="text-sm text-gray-400 italic mb-2">Disclaimer: Parent company may go public in the near future, however as of now this is unlikely. Nonetheless several sibling & child companies within the umbrella will go public.</p>
+            <section id="trading" class="section">
+                {% include 'components/investing/trading.html.twig' %}
+            </section>
 
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Non-Equity Investment</h4>
-                            <form action="{{ path('investing_non_equity_submit') }}" method="POST" class="space-y-3">
-                                <input type="text" name="investor_name" placeholder="Your Name" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-                                <input type="email" name="investor_email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-                                <textarea name="investment_details" placeholder="Investment Details" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
-                                <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
-                            </form>
+            <section id="market-insights" class="section">
+                {% include 'components/investing/market_insights.html.twig' %}
+            </section>
 
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Equity Investment</h4>
-                            <form action="{{ path('investing_equity_submit') }}" method="POST" class="space-y-3">
-                                <input type="text" name="investor_name" placeholder="Your Name" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-                                <input type="email" name="investor_email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-                                <textarea name="investment_details" placeholder="Equity Investment Details" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
-                                <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
-                            </form>
+            <section id="virtual-simulator" class="section">
+                {% include 'components/investing/virtual_simulator.html.twig' %}
+            </section>
 
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Crypto Investments</h4>
-                            <ul class="list-disc ml-6 text-gray-400">
-                                <li>AVN Token</li>
-                                <li>AVN Coin</li>
-                                <li>Kodotoken</li>
-                                <li>Kodocoin</li>
-                                <li>Nimbus Coin</li>
-                                <li>Nimbus Token</li>
-                                <li>Velocity Coin</li>
-                                <li>Velocity Token</li>
-                            </ul>
+            <section id="staking-pools" class="section">
+                {% include 'components/investing/staking_pools.html.twig' %}
+            </section>
 
-                            <h4 class="text-md font-inter text-gray-300 mt-4">NFT Marketplace</h4>
-                            <p class="text-sm text-gray-400 mb-2">Explore our decentralized NFT marketplace where you can buy, sell, and trade unique digital assets powered by Kodoverse blockchain technology.</p>
-                            <a href="{{ path('marketplace_root') }}" class="text-neon-purple hover:underline">Visit NFT Marketplace</a>
+            <section id="investors" class="section">
+                {% include 'components/investing/investors.html.twig' %}
+            </section>
 
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Cloud Crypto Mining</h4>
-                            <p class="text-sm text-gray-400 mb-2">Leverage Aviyon's cloud infrastructure for efficient crypto mining with real-time analytics.</p>
+            <section id="kodoverse-lore" class="section">
+                {% include 'components/investing/kodoverse_lore.html.twig' %}
+            </section>
 
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Chess.social</h4>
-                            <p class="text-sm text-gray-400 mb-2">A social platform for chess enthusiasts with integrated purse funding for tournaments. Compete, learn, and earn with Chess.social.</p>
-                            <p class="text-sm text-gray-400 mb-2">Chess Purse Funding: Fund your chess journey with AVN Tokens.</p>
-                            <a href="#chess-social" class="text-neon-purple hover:underline">Visit Chess.social</a>
-                        </div>
-                    </div>
-                </li>
+            <section id="social-trading" class="section">
+                {% include 'components/investing/social_trading.html.twig' %}
+            </section>
 
-                <!-- Trading Section -->
-                <li class="relative group">
-                    <button class="text-gray-300 hover:text-neon-purple transition font-inter">Trading</button>
-                    <div class="absolute left-0 mt-2 w-96 bg-dark-light rounded-lg shadow-lg hidden group-hover:block z-10">
-                        <div class="p-4">
-                            <div class="flex space-x-4 mb-4">
-                                <button class="trading-tab px-4 py-2 bg-dark rounded-lg text-gray-300 hover:bg-neon-purple hover:text-white transition" data-tab="stoploss">Stoploss</button>
-                                <button class="trading-tab px-4 py-2 bg-dark rounded-lg text-gray-300 hover:bg-neon-purple hover:text-white transition" data-tab="whale">Whale</button>
-                                <button class="trading-tab px-4 py-2 bg-dark rounded-lg text-gray-300 hover:bg-neon-purple hover:text-white transition" data-tab="kodotrading">KodoTrading</button>
-                            </div>
+            <section id="company-feed" class="section">
+                {% include 'components/investing/company_feed.html.twig' %}
+            </section>
 
-                            <!-- Stoploss Tab -->
-                            <div id="stoploss-tab" class="trading-tab-content">
-                                <h3 class="text-lg font-inter text-neon-purple mb-2">Stoploss v5.3</h3>
-                                <p class="text-sm text-gray-400 mb-2">Stoploss v5.3 is the pinnacle of trading platforms, powered by Nimbus.AI Supreme. It excels in penny stock day trading ($0.01–$5) while supporting swing, scalp, options, forex, and futures trading. Features include:</p>
-                                <ul class="list-disc ml-6 text-gray-400">
-                                    <li>Multi-Broker Support: Alpaca, Binance, IB, offshore brokers for PDT bypass.</li>
-                                    <li>Precision Trade Control: Stop-loss, take-profit, trailing stops, OCO, hedging.</li>
-                                    <li>Advanced Charting: TA-Lib, Heikin-Ashi, Renko, Elliott Wave, Fibonacci.</li>
-                                    <li>Real-Time Analytics: P/L, risk metrics, Monte Carlo VaR.</li>
-                                    <li>Level 2 Data: eSignal-like real-time bid/ask data (Paid).</li>
-                                    <li>Earthy UI: Beige, olive, brown tones.</li>
-                                </ul>
-                                <a href="https://github.com/the-real-kodoninja/stoploss" target="_blank" class="mt-4 inline-block bg-neon-green text-white px-4 py-2 rounded-lg hover:bg-neon-green/80 transition">Download Stoploss</a>
-                            </div>
+            <section id="blog" class="section">
+                {% include 'components/investing/blog.html.twig' %}
+            </section>
 
-                            <!-- Whale Tab -->
-                            <div id="whale-tab" class="trading-tab-content hidden">
-                                <h3 class="text-lg font-inter text-neon-purple mb-2">Whale Module</h3>
-                                <p class="text-sm text-gray-400 mb-2">Whale is Stoploss on steroids for big accounts, featuring the ultimate heavyweight AI for investing, trading, fund management, and auto-trading. Key features include:</p>
-                                <ul class="list-disc ml-6 text-gray-400">
-                                    <li>Advanced AI Trading: Optimized for large capital accounts.</li>
-                                    <li>Fund Management: Automated portfolio balancing.</li>
-                                    <li>Auto-Trading: Executes trades with near-omniscient predictions.</li>
-                                </ul>
-                                <button class="mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg cursor-not-allowed">Coming Soon</button>
-                            </div>
+            <section id="earnings" class="section">
+                {% include 'components/investing/earnings.html.twig' %}
+            </section>
 
-                            <!-- KodoTrading Tab -->
-                            <div id="kodotrading-tab" class="trading-tab-content hidden">
-                                <h3 class="text-lg font-inter text-neon-purple mb-2">KodoTrading</h3>
-                                <p class="text-sm text-gray-400 mb-2">KodoTrading blends real-time insights with social features, inspired by Benzinga and StockTwits. Features include:</p>
-                                <ul class="list-disc ml-6 text-gray-400">
-                                    <li>Social Feed: Post, comment, share with tickers.</li>
-                                    <li>Portfolio Tracker: Real-time updates on holdings.</li>
-                                    <li>Live Chat: WebSocket-powered messaging.</li>
-                                    <li>Web3 Integration: Wallet connection, NFT marketplace.</li>
-                                    <li>Adaptive UI: Light/dark modes with fluid design.</li>
-                                </ul>
-                                <a href="http://kodotrading.app" target="_blank" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Visit KodoTrading</a>
-                            </div>
-
-                            <!-- Stoploss Module Showcase -->
-                            <h3 class="text-lg font-inter text-neon-purple mt-6 mb-2">Stoploss Trade Positions</h3>
-                            <div class="bg-earth-beige p-4 rounded-lg">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <!-- Trade History -->
-                                    <div>
-                                        <h4 class="text-md font-inter text-earth-brown">Trade History</h4>
-                                        <canvas id="trade-history-chart" class="w-full h-64"></canvas>
-                                    </div>
-                                    <!-- Trend Pattern -->
-                                    <div>
-                                        <h4 class="text-md font-inter text-earth-brown">Trend Pattern</h4>
-                                        <canvas id="trend-pattern-chart" class="w-full h-64"></canvas>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <h4 class="text-md font-inter text-earth-brown">Recent Trades</h4>
-                                    <table class="w-full text-gray-800">
-                                        <thead>
-                                            <tr class="border-b border-earth-olive">
-                                                <th class="py-2 text-left">Type</th>
-                                                <th class="py-2 text-left">Symbol</th>
-                                                <th class="py-2 text-left">Amount</th>
-                                                <th class="py-2 text-left">P/L</th>
-                                                <th class="py-2 text-left">Notes</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="border-b border-earth-olive">
-                                                <td class="py-2 text-neon-green">Buy</td>
-                                                <td>TSLA</td>
-                                                <td>$10,000</td>
-                                                <td class="text-neon-green">+5%</td>
-                                                <td>Breakout entry</td>
-                                            </tr>
-                                            <tr class="border-b border-earth-olive">
-                                                <td class="py-2 text-neon-red">Sell</td>
-                                                <td>AAPL</td>
-                                                <td>$8,000</td>
-                                                <td class="text-neon-red">-2%</td>
-                                                <td>Stop-loss triggered</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <h3 class="text-lg font-inter text-neon-purple mt-6 mb-2">Trading Banks</h3>
-                            <ul class="list-disc ml-6 text-gray-400">
-                                <li>Fidelity</li>
-                                <li>Vanguard</li>
-                                <li>Lightspeed</li>
-                                <li>Interactive Brokers</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Investors Section -->
-                <li class="relative group">
-                    <button class="text-gray-300 hover:text-neon-purple transition font-inter">Investors</button>
-                    <div class="absolute left-0 mt-2 w-96 bg-dark-light rounded-lg shadow-lg hidden group-hover:block z-10">
-                        <div class="p-4">
-                            <h3 class="text-lg font-inter text-neon-purple mb-2">Investors</h3>
-                            <p class="text-gray-300">1 Investor: Emmanuel (Founder)</p>
-                            <p class="text-neon-green">Invested: $0.00 (Reflects Portfolio Balance: $1,250,000)</p>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Blog Section -->
-                <li>
-                    <a href="#blog" class="text-gray-300 hover:text-neon-purple transition font-inter">Blog</a>
-                </li>
-
-                <!-- Earnings Section -->
-                <li class="relative group">
-                    <button class="text-gray-300 hover:text-neon-purple transition font-inter">Earnings</button>
-                    <div class="absolute left-0 mt-2 w-96 bg-dark-light rounded-lg shadow-lg hidden group-hover:block z-10">
-                        <div class="p-4">
-                            <h3 class="text-lg font-inter text-neon-purple mb-2">Quarter/Year Earnings</h3>
-                            <p class="text-gray-300 mb-2">View or download the latest earnings report.</p>
-                            <a href="/earnings-report.pdf" target="_blank" class="text-neon-purple hover:underline">View Report</a>
-                            <a href="/earnings-report.pdf" download class="ml-4 text-neon-purple hover:underline">Download Report</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Spending Section -->
-                <li class="relative group">
-                    <button class="text-gray-300 hover:text-neon-purple transition font-inter">Spending</button>
-                    <div class="absolute left-0 mt-2 w-96 bg-dark-light rounded-lg shadow-lg hidden group-hover:block z-10">
-                        <div class="p-4">
-                            <h3 class="text-lg font-inter text-neon-purple mb-2">Spending</h3>
-                            <p class="text-gray-300 mb-2">Salaries are confidential, with the exception of the founder who is paid $1/yr.</p>
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Receipts</h4>
-                            <p class="text-gray-400">Available upon request for investors.</p>
-                            <h4 class="text-md font-inter text-gray-300 mt-4">Quarter Budget</h4>
-                            <p class="text-gray-400">Q2 2025: $500,000</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Feed (Centerpiece) -->
-        <div class="bg-dark-light rounded-lg shadow-lg p-6 mb-6">
-            <h2 class="text-2xl font-inter text-neon-purple mb-4">Company Feed</h2>
-            <div id="company-feed" class="space-y-6">
-                <div class="post bg-dark p-4 rounded-lg">
-                    <p class="text-gray-300"><strong>Board Member:</strong> Purchased $100,000 in AVN Tokens.</p>
-                    <p class="text-gray-400 text-sm">2 hours ago</p>
-                    <button class="like-btn text-gray-300 hover:text-neon-purple transition mt-2" data-post-id="1"><span>0</span> Likes</button>
-                    <button class="comment-toggle text-gray-300 hover:text-neon-purple transition ml-4">Comment</button>
-                    <form class="comment-form hidden mt-2" action="{{ path('add_comment') }}" method="POST">
-                        <input type="hidden" name="post_id" value="1">
-                        <textarea name="comment" placeholder="Add a comment..." class="w-full p-2 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
-                        <button type="submit" class="mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
-                    </form>
-                </div>
-                <div class="post bg-dark p-4 rounded-lg">
-                    <p class="text-gray-300"><strong>Board Member:</strong> New blog post: "The Future of Web3 Investing"</p>
-                    <p class="text-gray-400 text-sm">1 day ago</p>
-                    <button class="like-btn text-gray-300 hover:text-neon-purple transition mt-2" data-post-id="2"><span>0</span> Likes</button>
-                    <button class="comment-toggle text-gray-300 hover:text-neon-purple transition ml-4">Comment</button>
-                    <form class="comment-form hidden mt-2" action="{{ path('add_comment') }}" method="POST">
-                        <input type="hidden" name="post_id" value="2">
-                        <textarea name="comment" placeholder="Add a comment..." class="w-full p-2 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
-                        <button type="submit" class="mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <button id="load-more-feed" data-page="1" class="mt-4 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Load More</button>
+            <section id="spending" class="section">
+                {% include 'components/investing/spending.html.twig' %}
+            </section>
         </div>
     </div>
 </div>
@@ -294,157 +71,6 @@
 {% block javascripts %}
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Trading Tabs
-    const tradingTabs = document.querySelectorAll('.trading-tab');
-    const tradingTabContents = document.querySelectorAll('.trading-tab-content');
-    tradingTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tradingTabs.forEach(t => t.classList.remove('bg-neon-purple', 'text-white'));
-            tab.classList.add('bg-neon-purple', 'text-white');
-            tradingTabContents.forEach(content => content.classList.add('hidden'));
-            document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
-        });
-    });
-
-    // Feed Filter
-    const feedFilter = document.getElementById('feed-filter');
-    const feed = document.getElementById('company-feed');
-    feedFilter.addEventListener('input', () => {
-        const filter = feedFilter.value.toLowerCase();
-        const posts = feed.querySelectorAll('.post');
-        posts.forEach(post => {
-            const text = post.textContent.toLowerCase();
-            post.style.display = text.includes(filter) ? '' : 'none';
-        });
-    });
-
-    // Load More Feed
-    const loadMoreFeed = document.getElementById('load-more-feed');
-    loadMoreFeed.addEventListener('click', async () => {
-        const page = parseInt(loadMoreFeed.dataset.page) + 1;
-        try {
-            const response = await fetch(`/investing?page=${page}`);
-            const data = await response.json();
-            data.posts.forEach(post => {
-                const postDiv = document.createElement('div');
-                postDiv.className = 'post bg-dark p-4 rounded-lg';
-                postDiv.innerHTML = `
-                    <p class="text-gray-300"><strong>Board Member:</strong> ${post.content}</p>
-                    <p class="text-gray-400 text-sm">${post.timestamp}</p>
-                    <button class="like-btn text-gray-300 hover:text-neon-purple transition mt-2" data-post-id="${post.id}"><span>${post.likes}</span> Likes</button>
-                    <button class="comment-toggle text-gray-300 hover:text-neon-purple transition ml-4">Comment</button>
-                    <form class="comment-form hidden mt-2" action="{{ path('add_comment') }}" method="POST">
-                        <input type="hidden" name="post_id" value="${post.id}">
-                        <textarea name="comment" placeholder="Add a comment..." class="w-full p-2 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
-                        <button type="submit" class="mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
-                    </form>
-                `;
-                feed.appendChild(postDiv);
-            });
-            loadMoreFeed.dataset.page = page;
-        } catch (error) {
-            console.error('Error loading feed:', error);
-        }
-    });
-
-    // Portfolio 3D Visualization
-    const portfolioCanvas = document.getElementById('portfolio-canvas');
-    if (portfolioCanvas) {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: portfolioCanvas, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.position.z = 5;
-
-        const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true });
-        const sphere = new THREE.Mesh(geometry, material);
-        scene.add(sphere);
-
-        function animate() {
-            requestAnimationFrame(animate);
-            sphere.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    }
-
-    // Trade History Chart
-    const tradeHistoryChart = document.getElementById('trade-history-chart');
-    if (tradeHistoryChart) {
-        new Chart(tradeHistoryChart, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-                datasets: [{
-                    label: 'Profit/Loss ($)',
-                    data: [5000, 3000, -2000, 4000, 6000],
-                    borderColor: '#10B981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                    fill: true,
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: '#808000' },
-                        ticks: { color: '#F5F5DC' }
-                    },
-                    x: {
-                        grid: { color: '#808000' },
-                        ticks: { color: '#F5F5DC' }
-                    }
-                },
-                plugins: {
-                    legend: { labels: { color: '#F5F5DC' } }
-                }
-            }
-        });
-    }
-
-    // Trend Pattern Chart
-    const trendPatternChart = document.getElementById('trend-pattern-chart');
-    if (trendPatternChart) {
-        new Chart(trendPatternChart, {
-            type: 'bar',
-            data: {
-                labels: ['Breakout', 'Reversal', 'Consolidation'],
-                datasets: [{
-                    label: 'Occurrences',
-                    data: [15, 10, 8],
-                    backgroundColor: '#8B4513',
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: '#808000' },
-                        ticks: { color: '#F5F5DC' }
-                    },
-                    x: {
-                        grid: { color: '#808000' },
-                        ticks: { color: '#F5F5DC' }
-                    }
-                },
-                plugins: {
-                    legend: { labels: { color: '#F5F5DC' } }
-                }
-            }
-        });
-    }
-});
-</script>
+<script src="{{ asset('build/investing.js') }}"></script>
 {% endblock %}
 {% endblock %}

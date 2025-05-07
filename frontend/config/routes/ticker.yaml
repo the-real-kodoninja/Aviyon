@@ -1,0 +1,4 @@
+api_ticker:
+   path: /api/ticker
+   controller: App\Controller\TickerController::getTickerData
+   methods: [GET]

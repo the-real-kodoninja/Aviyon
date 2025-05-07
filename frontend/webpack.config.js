@@ -23,6 +23,15 @@ Encore
     .addEntry('messages_chat', './assets/js/dashboard/components/messages/chat.js.coffee')
     .addEntry('messages_conversation', './assets/js/dashboard/components/messages/conversation.js.coffee')
     .addEntry('messages_extras', './assets/js/dashboard/components/messages/extras.js.coffee')
+    // Careers components
+    .addEntry('careers/job_filters', './assets/js/components/careers/job_filters.coffee')
+    .addEntry('careers/ai_recommendations', './assets/js/components/careers/ai_recommendations.coffee')
+    .addEntry('careers/modal_handler', './assets/js/components/careers/modal_handler.coffee')
+    .addEntry('careers/virtual_tour', './assets/js/components/careers/virtual_tour.js.coffee')
+    .addEntry('careers/live_chat', './assets/js/components/careers/live_chat.coffee')
+    .addEntry('careers/application_portal', './assets/js/components/careers/application_portal.js.coffee')
+    // Investing entry
+    .addEntry('investing', './assets/js/components/investing/main.coffee')
 
     // CSS entry
     .addStyleEntry('base', './assets/css/base.css')
@@ -68,6 +77,15 @@ Encore
         }
     })
 
+    // Handle models as assets
+    .addRule({
+        test: /\.(gltf|glb)$/,
+        type: 'asset/resource',
+        generator: {
+            filename: 'models/[name][ext][query]'
+        }
+    })
+
     // Handle videos as assets
     .addRule({
         test: /\.(mp4|webm|ogg)$/,
@@ -91,6 +109,37 @@ Encore
         '@js': path.resolve(__dirname, 'assets/js'),
         '@css': path.resolve(__dirname, 'assets/css'),
         '@images': path.resolve(__dirname, 'assets/images'),
+    })
+
+    // Copy static assets to the build directory
+    .copyFiles([
+        {
+            from: './assets/images',
+            to: 'images/[path][name].[ext]',
+            pattern: /\.(jpg|jpeg|png|gif|svg)$/
+        },
+        {
+            from: './assets/models',
+            to: 'models/[path][name].[ext]',
+            pattern: /\.(gltf|glb)$/
+        },
+        {
+            from: './assets/videos',
+            to: 'videos/[path][name].[ext]',
+            pattern: /\.(mp4|webm|ogg)$/
+        }
+    ])
+
+    // Add external libraries (e.g., Three.js, Chart.js) to avoid bundling
+    .addExternals({
+        'three': 'THREE',
+        'chart.js': 'Chart'
     });
 
-module.exports = Encore.getWebpackConfig();
+// Get the Webpack config and modify it to support CoffeeScript resolution
+const webpackConfig = Encore.getWebpackConfig();
+webpackConfig.resolve = webpackConfig.resolve || {};
+webpackConfig.resolve.extensions = webpackConfig.resolve.extensions || [];
+webpackConfig.resolve.extensions.push('.coffee');
+
+module.exports = webpackConfig;

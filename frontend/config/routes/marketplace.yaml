@@ -1,0 +1,7 @@
+marketplace_root:
+   path: /marketplace
+   controller: App\Controller\MarketplaceController::index
+
+dashboard_marketplace:
+   path: /dashboard/marketplace
+   controller: App\Controller\DashboardController::marketplace

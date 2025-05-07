@@ -1,0 +1,79 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Explore Careers - Aviyon{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-12 bg-gradient-to-br from-gray-900 via-cyan-900 to-black text-white min-h-screen">
+    <h1 class="text-5xl font-inter font-extrabold text-neon-purple mb-8 animate-pulse neon-glow">Explore the Aviyon Universe</h1>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 3D Virtual Tour -->
+        <div class="lg:col-span-2 bg-gray-800/70 backdrop-blur-md p-6 rounded-xl shadow-xl border border-gray-700 h-[600px] relative">
+            <h2 class="text-3xl text-neon-purple mb-4">Virtual KodoCity Tour</h2>
+            <div id="virtual-tour" class="w-full h-[500px] bg-black rounded-lg"></div>
+            <p class="text-gray-400 mt-2">Navigate our futuristic headquarters with AI-guided paths.</p>
+        </div>
+        <!-- AI Job Recommendations -->
+        <div class="bg-gray-800/70 backdrop-blur-md p-6 rounded-xl shadow-xl border border-gray-700">
+            <h2 class="text-3xl text-neon-purple mb-4">AI-Powered Recommendations</h2>
+            <div id="job-recommendations" class="space-y-4">
+                {% for job in recommended_jobs|default([]) %}
+                    <div class="p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition">
+                        <h3 class="text-xl text-neon-purple">{{ job.title }} at {{ job.company }}</h3>
+                        <p class="text-gray-400">{{ job.description|slice(0, 100) }}...</p>
+                        <button class="mt-2 bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition" onclick="openApplicationPortal('{{ job.id }}')">Apply</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="mt-12 bg-gray-800/70 backdrop-blur-md p-6 rounded-xl shadow-xl border border-gray-700">
+        <h2 class="text-3xl text-neon-purple mb-4">Job Galaxy</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for job in jobs %}
+                <div class="p-4 bg-gray-700 rounded-lg hover:bg-gray-600 transition transform hover:-translate-y-1">
+                    <h3 class="text-xl text-neon-purple">{{ job.title }}<br><span class="text-gray-400">{{ job.company }}</span></h3>
+                    <p class="text-gray-400 mt-2">{{ job.location }}</p>
+                    <button class="mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition" onclick="openApplicationPortal('{{ job.id }}')">Details</button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const virtualTour = document.getElementById('virtual-tour');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, virtualTour.clientWidth / virtualTour.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(virtualTour.clientWidth, virtualTour.clientHeight);
+            virtualTour.appendChild(renderer.domElement);
+
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = virtualTour.clientWidth / virtualTour.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(virtualTour.clientWidth, virtualTour.clientHeight);
+            });
+
+            function openApplicationPortal(jobId) {
+                window.location.href = `{{ path('careers') }}#application-portal?job=${jobId}`;
+            }
+        });
+    </script>
+{% endblock %}

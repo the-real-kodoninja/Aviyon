@@ -1,0 +1,3 @@
+explore:
+   path: /explore
+   controller: App\Controller\ExploreController::explore

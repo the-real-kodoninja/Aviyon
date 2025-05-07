@@ -1,0 +1,76 @@
+app_root:
+   path: /
+   controller: App\Controller\AuthController::root
+
+landing:
+   path: /landing
+   controller: App\Controller\AuthController::landing
+
+login:
+   path: /login
+   controller: App\Controller\AuthController::login
+
+signup:
+   path: /signup
+   controller: App\Controller\AuthController::signup
+
+logout:
+   path: /logout
+   controller: App\Controller\AuthController::logout
+
+password_reset:
+   path: /password/reset
+   controller: App\Controller\AuthController::passwordReset
+
+reset:
+   path: /reset
+   controller: App\Controller\AuthController::reset
+   methods: [POST]
+
+2fa_verify:
+   path: /2fa/verify
+   controller: App\Controller\AuthController::verify2FA
+   methods: [POST]
+
+deploy:
+   path: /dashboard/deploy
+   controller: App\Controller\AuthController::deployApp
+   methods: [POST]
+
+platform:
+   path: /platform/{platformName}
+   controller: App\Controller\AuthController::platform
+   methods: [GET]
+
+search:
+   path: /search
+   controller: App\Controller\AuthController::search
+   methods: [GET]
+
+add_comment:
+   path: /comment
+   controller: App\Controller\AuthController::addComment
+   methods: [POST]
+
+like_post:
+   path: /like
+   controller: App\Controller\AuthController::likePost
+   methods: [POST]
+
+register_domain:
+   path: /domain/register
+   controller: App\Controller\DomainController::registerDomain
+   methods: [POST]
+
+ide:
+   path: /ide
+   controller: App\Controller\AuthController::ide
+
+np_plus_plus:
+   path: /np-plus-plus
+   controller: App\Controller\IDEController::openNimbusPad
+   defaults: { workspace: null }
+
+np_plus_plus_workspace:
+   path: /np-plus-plus/{workspace}
+   controller: App\Controller\IDEController::openNimbusPad

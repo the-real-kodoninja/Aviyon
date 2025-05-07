@@ -1,0 +1,31 @@
+about:
+    path: /about
+    controller: App\Controller\AboutController::index
+
+nimbus_ai_about:
+    path: /nimbus-ai
+    controller: App\Controller\AboutController::index
+
+defi_about:
+    path: /defi
+    controller: App\Controller\AboutController::index
+
+roadmap_about:
+    path: /roadmap
+    controller: App\Controller\AboutController::index
+
+marketplace_about:
+    path: /marketplace
+    controller: App\Controller\AboutController::index
+
+kodoverse_about:
+    path: /kodoverse
+    controller: App\Controller\AboutController::index
+
+partners_about:
+    path: /partners
+    controller: App\Controller\AboutController::index
+
+team_about:
+    path: /team
+    controller: App\Controller\AboutController::index

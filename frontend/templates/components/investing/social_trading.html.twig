@@ -1,0 +1,21 @@
+<div class="bg-dark-light rounded-lg shadow-lg p-6">
+    <h2 class="text-3xl font-inter text-neon-purple mb-4">Social Trading</h2>
+    <p class="text-gray-300 mb-4">Follow top traders, share strategies, and compete in the Kodoverse.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <h3 class="text-lg font-inter text-neon-purple mb-2">Top Traders</h3>
+            <ul class="list-disc ml-6 text-gray-400">
+                <li>Emmanuel: +25% ROI</li>
+                <li>Sahar: +18% ROI</li>
+            </ul>
+            <button class="follow-btn mt-2 bg-neon-purple text-white px-4 py-2 rounded-lg" data-trader="Emmanuel">Follow Emmanuel</button>
+        </div>
+        <div>
+            <h3 class="text-lg font-inter text-neon-purple mb-2">Share Your Strategy</h3>
+            <form action="{{ path('social_trading_share') }}" method="POST" class="space-y-3">
+                <textarea name="strategy" placeholder="Share your trading strategy..." class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
+                <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Share</button>
+            </form>
+        </div>
+    </div>
+</div>

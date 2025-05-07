@@ -1,0 +1,37 @@
+features:
+   path: /features
+   controller: App\Controller\PagesController::features
+
+checkout:
+   path: /checkout
+   controller: App\Controller\CheckoutController::checkout
+
+domain:
+   path: /domain
+   controller: App\Controller\DomainController::domain
+
+newsletter_subscribe:
+   path: /newsletter/subscribe
+   controller: App\Controller\PagesController::subscribeNewsletter
+   methods: [POST]
+
+terms:
+   path: /terms
+   controller: App\Controller\PagesController::terms
+
+privacy:
+   path: /privacy
+   controller: App\Controller\PagesController::privacy
+
+contact:
+   path: /contact
+   controller: App\Controller\PagesController::contact
+
+contact_submit:
+   path: /contact/submit
+   controller: App\Controller\PagesController::contactSubmit
+   methods: [POST]
+
+sitemap:
+   path: /sitemap
+   controller: App\Controller\PagesController::sitemap

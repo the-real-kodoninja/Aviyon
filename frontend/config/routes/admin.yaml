@@ -1,0 +1,48 @@
+admin:
+   path: /admin
+   controller: App\Controller\AdminController::index
+
+admin_users_new:
+   path: /admin/users/new
+   controller: App\Controller\AdminController::newUser
+
+admin_user_edit:
+   path: /admin/user/{id}/edit
+   controller: App\Controller\AdminController::editUser
+
+admin_user_delete:
+   path: /admin/user/delete
+   controller: App\Controller\AdminController::deleteUser
+   methods: [POST]
+
+admin_platforms_new:
+   path: /admin/platforms/new
+   controller: App\Controller\AdminController::newPlatform
+
+admin_platform_edit:
+   path: /admin/platform/{id}/edit
+   controller: App\Controller\AdminController::editPlatform
+
+admin_platform_delete:
+   path: /admin/platform/delete
+   controller: App\Controller\AdminController::deletePlatform
+   methods: [POST]
+
+admin_report_view:
+   path: /admin/report/{id}/view
+   controller: App\Controller\AdminController::viewReport
+
+admin_report_dismiss:
+   path: /admin/report/dismiss
+   controller: App\Controller\AdminController::dismissReport
+   methods: [POST]
+
+admin_report_remove_content:
+   path: /admin/report/remove-content
+   controller: App\Controller\AdminController::removeContent
+   methods: [POST]
+
+admin_settings_save:
+   path: /admin/settings/save
+   controller: App\Controller\AdminController::saveSettings
+   methods: [POST]

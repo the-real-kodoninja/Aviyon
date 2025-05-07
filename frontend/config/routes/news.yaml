@@ -1,0 +1,11 @@
+news_article:
+   path: /news/articles/{date}/{title}
+   controller: App\Controller\News\ArticlesController::view
+
+news_article_new:
+   path: /news/articles/new
+   controller: App\Controller\News\ArticlesController::new
+
+news_article_edit:
+   path: /news/articles/{id}/edit
+   controller: App\Controller\News\ArticlesController::edit

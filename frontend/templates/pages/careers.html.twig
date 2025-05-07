@@ -1,74 +1,263 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Careers - Aviyon{% endblock %}
+{% block title %}Careers at Aviyon Corporation{% endblock %}
 
 {% block body %}
-<div class="container mx-auto px-4 py-12">
-    <!-- Header -->
-    <div class="flex justify-between items-center mb-8">
-        <h1 class="text-4xl font-inter font-bold text-neon-purple">Careers at Aviyon</h1>
-        <div class="relative">
-            <input type="text" id="job-filter" placeholder="Filter jobs..." class="p-3 bg-dark-light rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
-            <svg class="absolute right-3 top-3 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
+<div class="bg-gray-900 text-white min-h-screen font-inter">
+    <!-- Hero Section -->
+    <section class="relative py-20 flex items-center justify-center">
+        <div class="relative z-20 text-center px-6">
+            <h1 class="text-5xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-6 border-b-2 border-indigo-500/20 pb-2">Forge the Future with Aviyon</h1>
+            <p class="text-2xl md:text-2xl text-gray-200 mb-8">Join a limitless ecosystem of revolutionizing AI, entertainment, education, and beyond.</p>
+            <a href="#open-positions" class="bg-neon-purple text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-700 transition transform hover:scale-105">Discover Opportunitie</a>
+        </div>
+    </section>
+
+    <!-- About Aviyon Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12">Who We Are</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        Aviyon Corporation is a global innovator, leading with nimbus.ai’s ASI/AGI breakthroughs, KodoFilms Studios’ cinematic dominance, and KodoAcademy’s educational revolution. With a $20B+ investment, we’re crafting KodoCity and advancing brain-computer interfaces through Aviyon Advanced Technology.
+                    </p>
+                    <p class="text-lg text-gray-200 leading-relaxed mt-4">
+                        Our Kodoverse ecosystem connects virtual and real worlds, from velocity.social to kodoanime.social. Join a mission to redefine humanity’s future in a neon-lit universe.
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <img src="/build/images/aviyon-vision.jpg" alt="Aviyon Vision" class="rounded-xl shadow-lg max-w-full h-auto transform hover:scale-105 transition">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI-Driven Recommendations Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12">AI-Driven Job Recommendations</h2>
+            <div id="ai-recommendations" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Recommendations will be populated by JavaScript (once .coffee files are fixed) -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Ecosystem Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12">Our Ecosystem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">Kodoverse</h3>
+                    <p class="text-gray-200">A digital frontier with kodospace, kodofitness, and kodotrading. Innovate social, fitness, and trading platforms.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">KodoFilms Studios</h3>
+                    <p class="text-gray-200">A cinematic titan with KDN+ streaming and 20+ production houses. Craft Hollywood-rivaling content.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">Velocity Corporation</h3>
+                    <p class="text-gray-200">Pioneering esports, gaming, and VR with Velocity Esports and Virtiux. Build immersive gaming worlds.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">KodoAcademy</h3>
+                    <p class="text-gray-200">Revolutionizing education from K-12 to university, aiming to surpass MIT and Ivy Leagues.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">Aviyon Advanced Technology</h3>
+                    <p class="text-gray-200">Leading robotics, brain-link tech, and ASI/AGI. Shape the future of human-machine integration.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">KodoCity</h3>
+                    <p class="text-gray-200">A $5B urban innovation project. Design a city that blends tech and sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions Section -->
+    <section id="open-positions" class="py-20 px-6 md:px-12 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12">Open Positions</h2>
+            <!-- Job Search and Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <input id="search-jobs" type="text" placeholder="Search roles or keywords..." class="p-3 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-neon-purple w-full md:w-1/3">
+                <select id="filter-department" class="p-3 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-neon-purple w-full md:w-1/4">
+                    <option value="">All Departments</option>
+                    <option value="Executive Leadership">Executive Leadership</option>
+                    <option value="Technology & Development">Technology & Development</option>
+                    <option value="Creative & Media">Creative & Media</option>
+                    <option value="Education & Research">Education & Research</option>
+                    <option value="Operations & Infrastructure">Operations & Infrastructure</option>
+                </select>
+                <select id="filter-location" class="p-3 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-neon-purple w-full md:w-1/4">
+                    <option value="">All Locations</option>
+                    <option value="Remote">Remote</option>
+                    <option value="KodoCity, TX">KodoCity, TX</option>
+                    <option value="Los Angeles, CA">Los Angeles, CA</option>
+                </select>
+            </div>
+            <!-- Job Listings -->
+            <div id="job-listings" class="space-y-8">
+                <!-- Executive Roles -->
+                <div class="job-category" data-department="Executive Leadership">
+                    <h3 class="text-3xl font-semibold text-neon-purple mb-6">Executive Leadership</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="KodoCity, TX">
+                            <h4 class="text-xl font-semibold text-white">CEO, KodoFilms Studios</h4>
+                            <p class="text-gray-300 mt-2">Lead 20+ production companies and KDN+ streaming. 15+ years in film leadership.</p>
+                            <a href="{{ path('careers_job', {'id': 1}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="Remote">
+                            <h4 class="text-xl font-semibold text-white">CTO, Aviyon Advanced Technology</h4>
+                            <p class="text-gray-300 mt-2">Drive robotics and brain-computer interface innovation. 10+ years in AI/tech leadership.</p>
+                            <a href="{{ path('careers_job', {'id': 2}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Technology Roles -->
+                <div class="job-category" data-department="Technology & Development">
+                    <h3 class="text-3xl font-semibold text-neon-purple mb-6">Technology & Development</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="Remote">
+                            <h4 class="text-xl font-semibold text-white">Senior AI Engineer, nimbus.ai</h4>
+                            <p class="text-gray-300 mt-2">Develop ASI/AGI models with Python/Rust. 7+ years in ML.</p>
+                            <a href="{{ path('careers_job', {'id': 3}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="Remote">
+                            <h4 class="text-xl font-semibold text-white">VR Developer, Velocity Corporation</h4>
+                            <p class="text-gray-300 mt-2">Build VR for Velocity Esports. 5+ years in VR dev with Three.js.</p>
+                            <a href="{{ path('careers_job', {'id': 4}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Creative Roles -->
+                <div class="job-category" data-department="Creative & Media">
+                    <h3 class="text-3xl font-semibold text-neon-purple mb-6">Creative & Media</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="Los Angeles, CA">
+                            <h4 class="text-xl font-semibold text-white">Film Producer, KodoFilms Studios</h4>
+                            <p class="text-gray-300 mt-2">Produce blockbusters and animations. 8+ years in film production.</p>
+                            <a href="{{ path('careers_job', {'id': 5}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="Remote">
+                            <h4 class="text-xl font-semibold text-white">Social Media Manager, Kodoverse</h4>
+                            <p class="text-gray-300 mt-2">Boost kodoanime.social presence. 5+ years in digital marketing.</p>
+                            <a href="{{ path('careers_job', {'id': 6}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education Roles -->
+                <div class="job-category" data-department="Education & Research">
+                    <h3 class="text-3xl font-semibold text-neon-purple mb-6">Education & Research</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="KodoCity, TX">
+                            <h4 class="text-xl font-semibold text-white">Curriculum Developer, KodoAcademy</h4>
+                            <p class="text-gray-300 mt-2">Design curricula for K-12 and university. 7+ years in education, PhD required.</p>
+                            <a href="{{ path('careers_job', {'id': 7}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Operations Roles -->
+                <div class="job-category" data-department="Operations & Infrastructure">
+                    <h3 class="text-3xl font-semibold text-neon-purple mb-6">Operations & Infrastructure</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="job-card bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition" data-location="KodoCity, TX">
+                            <h4 class="text-xl font-semibold text-white">Project Manager, KodoCity</h4>
+                            <p class="text-gray-300 mt-2">Manage a $5B urban project. 10+ years in construction project management.</p>
+                            <a href="{{ path('careers_job', {'id': 8}) }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">View Details & Apply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12">Why Join Aviyon?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">Elite Compensation</h3>
+                    <p class="text-gray-200">Salaries up to $1M+, equity awards, and bonuses up to $5M for top performers.</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">Cutting-Edge Innovation</h3>
+                    <p class="text-gray-200">Work on ASI/AGI, VR, and urban projects with state-of-the-art tools.</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-4">Global Impact</h3>
+                    <p class="text-gray-200">Shape a mission that transforms industries and elevates humanity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Section -->
+    <section class="py-20 px-6 md:px-12 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12">Experience KodoCity</h2>
+            <div class="relative w-full h-[600px] bg-black rounded-xl overflow-hidden">
+                <div id="virtual-tour" class="w-full h-full"></div>
+                <div class="absolute top-4 right-4 flex gap-2">
+                    <button id="tour-play" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">Play Tour</button>
+                    <button id="tour-pause" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition hidden">Pause Tour</button>
+                    <button id="tour-reset" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition">Reset View</button>
+                </div>
+            </div>
+            <p class="text-gray-200 text-center mt-4">Explore KodoCity in a fully interactive 3D environment, powered by nimbus.ai.</p>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6 bg-neon-purple text-white text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Redefine the Future?</h2>
+        <p class="text-lg md:text-xl mb-8">Join Aviyon Corporation and build a legacy in a neon-lit universe.</p>
+        <a href="#open-positions" class="bg-white text-neon-purple px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-200 transition">Explore Roles Now</a>
+    </section>
+
+    <!-- Application Modal (Not used for now since .coffee is disabled) -->
+    <div id="application-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center">
+        <div class="bg-gray-900 p-8 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <h3 class="text-3xl text-neon-purple mb-6">Apply for Position</h3>
+            <div id="modal-content"></div>
+            <button id="close-modal" class="mt-6 bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-500 transition">Close</button>
         </div>
     </div>
 
-    <!-- Job Listings -->
-    <div id="job-listings" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {% for job in jobs|default([]) %}
-            <div class="job-card bg-dark-light p-6 rounded-lg shadow-lg hover:shadow-neon-purple/50 transition-all duration-300">
-                <h3 class="text-xl font-inter text-neon-purple">{{ job.title|default('Job Title') }}</h3>
-                <p class="text-gray-400">{{ job.department|default('Department') }}</p>
-                <p class="text-gray-400">{{ job.location|default('Location') }}</p>
-                <p class="text-gray-400 mt-2">{{ job.description|default('No description available.') }}</p>
-                <a href="{{ path('careers_apply') }}" class="mt-4 inline-block bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition font-inter">Apply Now</a>
+    <!-- Live Chat Widget (Not functional without .coffee) -->
+    <div id="live-chat" class="fixed bottom-4 right-4 z-40">
+        <button id="chat-toggle" class="bg-neon-purple text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </button>
+        <div id="chat-window" class="hidden bg-gray-800 rounded-xl shadow-lg w-80 h-96 flex flex-col mt-2">
+            <div class="bg-neon-purple text-white p-4 rounded-t-xl flex justify-between items-center">
+                <h3 class="text-lg font-semibold">Chat with Us</h3>
+                <button id="chat-close" class="text-white hover:text-gray-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
             </div>
-        {% else %}
-            <p class="text-gray-400 col-span-full">No job openings available at the moment.</p>
-        {% endfor %}
-    </div>
-
-    <!-- Application Form -->
-    <div class="bg-dark-light p-8 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-inter text-neon-purple mb-4">Apply for a Position</h2>
-        <form action="{{ path('careers_apply') }}" method="POST" class="space-y-4">
-            <div>
-                <label for="name" class="block text-gray-300 font-inter">Full Name</label>
-                <input type="text" id="name" name="name" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required>
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto"></div>
+            <div class="p-4 border-t border-gray-700">
+                <input id="chat-input" type="text" placeholder="Type your message..." class="w-full p-2 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-neon-purple">
             </div>
-            <div>
-                <label for="email" class="block text-gray-300 font-inter">Email</label>
-                <input type="email" id="email" name="email" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required>
-            </div>
-            <div>
-                <label for="position" class="block text-gray-300 font-inter">Position</label>
-                <input type="text" id="position" name="position" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required>
-            </div>
-            <div>
-                <label for="resume" class="block text-gray-300 font-inter">Resume (URL or Text)</label>
-                <textarea id="resume" name="resume" class="w-full p-3 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple" required></textarea>
-            </div>
-            <button type="submit" class="bg-neon-purple text-white px-6 py-3 rounded-lg hover:bg-neon-purple/80 transition font-inter">Submit Application</button>
-        </form>
+        </div>
     </div>
 </div>
+{% endblock %}
 
 {% block javascripts %}
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterInput = document.getElementById('job-filter');
-            const jobListings = document.getElementById('job-listings');
-            filterInput.addEventListener('input', () => {
-                const filter = filterInput.value.toLowerCase();
-                const jobs = jobListings.querySelectorAll('.job-card');
-                jobs.forEach(job => {
-                    const text = job.textContent.toLowerCase();
-                    job.style.display = text.includes(filter) ? '' : 'none';
-                });
-            });
-        }); // Added missing closing for DOMContentLoaded
-    </script>
-{% endblock %}
+    {{ parent() }}
+    <!-- Temporarily disable .coffee scripts until fixed -->
+    <!--
+    <script src="/build/careers/job_filters.js"></script>
+    <script src="/build/careers/ai_recommendations.js"></script>
+    <script src="/build/careers/modal_handler.js"></script>
+    <script src="/build/careers/virtual_tour.js"></script>
+    <script src="/build/careers/live_chat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/examples/js/loaders/GLTFLoader.js"></script>
+    -->
 {% endblock %}

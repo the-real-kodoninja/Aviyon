@@ -1,27 +1,44 @@
+users_list:
+    path: /users
+    controller: App\Controller\UserController::usersList
+
+user_profile:
+    path: /user/{username}
+    controller: App\Controller\UserController::userProfile
+    defaults: { username: null }
+
 user_header:
     path: /user/{username}/header
     controller: App\Controller\User\HeaderController::index
+
 user_nav:
     path: /user/{username}/nav
     controller: App\Controller\User\NavController::index
+
 user_post:
     path: /user/{username}/post
     controller: App\Controller\User\PostController::index
+
 user_replies:
     path: /user/{username}/replies
     controller: App\Controller\User\RepliesController::index
+
 user_photos:
     path: /user/{username}/photos
     controller: App\Controller\User\PhotosController::index
+
 user_videos:
     path: /user/{username}/videos
     controller: App\Controller\User\VideosController::index
+
 user_likes:
     path: /user/{username}/likes
     controller: App\Controller\User\LikesController::index
+
 user_list:
     path: /user/{username}/list
     controller: App\Controller\User\ListController::index
+
 user_saves:
     path: /user/{username}/saves
     controller: App\Controller\User\SavesController::index

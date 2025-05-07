@@ -1,0 +1,8 @@
+global_feed:
+   path: /feed
+   controller: App\Controller\PagesController::globalFeed
+   methods: [GET]
+
+post_popup:
+   path: /post/popup
+   controller: App\Controller\PostPopup\PostPopupController::index

@@ -1,0 +1,31 @@
+investing:
+    path: /investing
+    controller: App\Controller\InvestingController::index
+
+investing_non_equity_submit:
+    path: /investing/non-equity/submit
+    controller: App\Controller\InvestingController::submitNonEquity
+    methods: [POST]
+
+investing_equity_submit:
+    path: /investing/equity/submit
+    controller: App\Controller\InvestingController::submitEquity
+    methods: [POST]
+
+investing_feed:
+    path: /investing/feed
+    controller: App\Controller\Investing\FeedController::fetchFeed
+
+add_comment:
+    path: /investing/add-comment
+    controller: App\Controller\Investing\FeedController::addComment
+    methods: [POST]
+
+social_trading_share:
+    path: /investing/social-trading/share
+    controller: App\Controller\Investing\SocialTradingController::shareStrategy
+    methods: [POST]
+
+marketplace_root:
+    path: /marketplace
+    controller: App\Controller\MarketplaceController::index

@@ -1,0 +1,20 @@
+<div class="bg-dark-light rounded-lg shadow-lg p-6">
+    <h2 class="text-3xl font-inter text-neon-purple mb-4">Investors</h2>
+    <p class="text-gray-300">Founder: Emmanuel</p>
+    <p class="text-neon-green">Invested: $0.00 (Portfolio Balance: $1,250,000)</p>
+    <!-- Investment Forms -->
+    <h3 class="text-lg font-inter text-neon-purple mt-4 mb-2">Non-Equity Investment</h3>
+    <form action="{{ path('investing_non_equity_submit') }}" method="POST" class="space-y-3">
+        <input type="text" name="investor_name" placeholder="Your Name" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+        <input type="email" name="investor_email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+        <textarea name="investment_details" placeholder="Investment Details" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
+        <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
+    </form>
+    <h3 class="text-lg font-inter text-neon-purple mt-4 mb-2">Equity Investment</h3>
+    <form action="{{ path('investing_equity_submit') }}" method="POST" class="space-y-3">
+        <input type="text" name="investor_name" placeholder="Your Name" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+        <input type="email" name="investor_email" placeholder="Your Email" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple">
+        <textarea name="investment_details" placeholder="Equity Investment Details" class="w-full p-2 bg-dark rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-neon-purple"></textarea>
+        <button type="submit" class="bg-neon-purple text-white px-4 py-2 rounded-lg hover:bg-neon-purple/80 transition">Submit</button>
+    </form>
+</div>
