@@ -1,0 +1,11 @@
+hosting:
+    path: /hosting/{domain}
+    controller: App\Controller\HostingController::hosting
+    defaults:
+        domain: null
+
+hosting_select_plan:
+    path: /hosting/select-plan/{plan}/{domain}
+    controller: App\Controller\HostingController::selectPlan
+    defaults:
+        domain: null

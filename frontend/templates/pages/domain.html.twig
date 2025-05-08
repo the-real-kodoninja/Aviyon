@@ -1,122 +1,62 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block title %}Aviyon - Free Domain & Hosting{% endblock %}
+{% block title %}Aviyon - Claim Your Domain{% endblock %}
 
 {% block body %}
-<section class="domain-page">
+<div class="bg-gray-900 text-white min-h-screen font-inter">
     <!-- Hero Section -->
-    <div class="relative bg-gradient-to-r from-primary to-accent py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-bold text-white mb-4 animate-fade-in">Get Your Free Domain & Hosting</h1>
-            <p class="text-xl text-secondary mb-8">Launch your Web3 project with a custom subdomain like <span class="text-accent">yourname.aviyon.com</span> — powered by the Internet Computer.</p>
-            <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
-                <form action="{{ path('register_domain') }}" method="POST" class="flex flex-col gap-4" id="domain-form">
-                    <div class="flex items-center gap-4">
-                        <input type="text" name="subdomain" placeholder="yourname" class="form-control flex-1" required>
-                        <span class="text-primary font-semibold">.aviyon.com</span>
-                    </div>
-                    <button type="submit" class="btn bg-accent text-white hover:bg-accent-hover transition">Claim Now</button>
-                </form>
-            </div>
-        </div>
-        <div class="absolute inset-0 bg-black opacity-30"></div>
-    </div>
+    {% include 'components/domain/hero.html.twig' %}
 
     <!-- Benefits Section -->
-    <section class="benefits container mx-auto py-12 px-4">
-        <h2 class="text-3xl font-bold text-accent text-center mb-8">Why Choose Aviyon Hosting?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="benefit-card bg-secondary p-6 rounded-lg shadow-lg text-center">
-                <svg class="w-12 h-12 text-accent mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <h3 class="text-xl font-semibold text-accent mb-2">Completely Free</h3>
-                <p class="text-primary">No hidden fees. Get your subdomain and hosting at no cost.</p>
-            </div>
-            <div class="benefit-card bg-secondary p-6 rounded-lg shadow-lg text-center">
-                <svg class="w-12 h-12 text-accent mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
-                </svg>
-                <h3 class="text-xl font-semibold text-accent mb-2">Decentralized & Secure</h3>
-                <p class="text-primary">Powered by ICP, ensuring 99.9% uptime and blockchain security.</p>
-            </div>
-            <div class="benefit-card bg-secondary p-6 rounded-lg shadow-lg text-center">
-                <svg class="w-12 h-12 text-accent mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-                <h3 class="text-xl font-semibold text-accent mb-2">Lightning Fast</h3>
-                <p class="text-primary">Optimized infrastructure for quick deployment and scaling.</p>
-            </div>
-        </div>
-    </section>
+    {% include 'components/domain/benefits.html.twig' %}
 
     <!-- How It Works Section -->
-    <section class="how-it-works container mx-auto py-12 px-4 bg-primary">
-        <h2 class="text-3xl font-bold text-accent text-center mb-8">How It Works</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="step text-center">
-                <div class="step-number w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-                <h3 class="text-xl font-semibold text-accent mb-2">Choose Your Subdomain</h3>
-                <p class="text-secondary">Enter your desired subdomain and claim it instantly.</p>
-            </div>
-            <div class="step text-center">
-                <div class="step-number w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-                <h3 class="text-xl font-semibold text-accent mb-2">Deploy Your Project</h3>
-                <p class="text-secondary">Use our IDE to deploy your DApp or website seamlessly.</p>
-            </div>
-            <div class="step text-center">
-                <div class="step-number w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-                <h3 class="text-xl font-semibold text-accent mb-2">Go Live</h3>
-                <p class="text-secondary">Your project is now live on the Internet Computer!</p>
-            </div>
-        </div>
-    </section>
+    {% include 'components/domain/how_it_works.html.twig' %}
+
+    <!-- Features Section -->
+    {% include 'components/domain/features.html.twig' %}
 
     <!-- CTA Section -->
-    <section class="cta container mx-auto py-12 px-4 text-center">
-        <h2 class="text-4xl font-bold text-accent mb-4">Ready to Launch?</h2>
-        <p class="text-secondary mb-8">Join thousands of creators building on Aviyon today.</p>
-        <a href="{{ path('signup') }}" class="btn bg-accent text-white hover:bg-accent-hover transition text-lg px-8">Get Started</a>
+    <section class="py-20 px-6 bg-neon-purple text-white text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 animate-slide-up">Ready to Launch Your Project?</h2>
+        <p class="text-lg md:text-xl mb-8">Join thousands of creators building on Aviyon today.</p>
+        <a href="{{ path('signup') }}" class="bg-white text-neon-purple px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-200 transition transform hover:scale-105">Get Started Now</a>
     </section>
-</section>
+</div>
+{% endblock %}
 
 {% block stylesheets %}
 <style>
     .animate-fade-in {
         animation: fadeIn 1s ease-in;
     }
+    .animate-slide-up {
+        animation: slideUp 0.8s ease-out;
+    }
+    .animate-pulse {
+        animation: pulse 2s infinite;
+    }
     @keyframes fadeIn {
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
     }
-    .form-control {
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 0.375rem;
-        width: 100%;
+    @keyframes slideUp {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
-    .btn {
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.375rem;
-        transition: background-color 0.3s ease;
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .form-control {
+        border: none;
+        outline: none;
+        width: 100%;
     }
 </style>
 {% endblock %}
 
 {% block javascripts %}
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('domain-form');
-    form.addEventListener('submit', (e) => {
-        const subdomainInput = form.querySelector('input[name="subdomain"]');
-        const subdomain = subdomainInput.value.trim();
-        const subdomainRegex = /^[a-zA-Z0-9-]{3,}$/;
-        if (!subdomainRegex.test(subdomain)) {
-            e.preventDefault();
-            alert('Subdomain must be at least 3 characters long and can only contain letters, numbers, and hyphens.');
-        }
-    });
-});
-</script>
-{% endblock %}
+<script src="{{ asset('build/domain/main.js') }}"></script>
 {% endblock %}

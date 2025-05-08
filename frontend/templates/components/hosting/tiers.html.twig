@@ -1,0 +1,47 @@
+<section class="container mx-auto py-20 px-6 md:px-12 bg-gray-900">
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-neon-purple mb-12 animate-slide-up">Hosting Tiers</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Free Tier -->
+        <div class="tier-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border border-gray-700">
+            <h3 class="text-3xl font-semibold text-neon-purple mb-4">Free Tier</h3>
+            <p class="text-2xl text-white mb-6">$0/mo</p>
+            <ul class="text-gray-200 space-y-3 mb-6">
+                <li>1GB Storage</li>
+                <li>512MB RAM</li>
+                <li>1 vCPU</li>
+                <li>Basic IDE & Hosting</li>
+                <li>Motoko/ICP Deployment</li>
+                <li>Community-Driven Cycles</li>
+            </ul>
+            <a href="{{ path('hosting_select_plan', {'plan': 'free', 'domain': domain}) }}" class="block bg-neon-purple text-white px-6 py-3 rounded-lg text-center font-semibold hover:bg-purple-700 transition">Select Plan</a>
+        </div>
+        <!-- Neon Tier -->
+        <div class="tier-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border border-neon-purple relative">
+            <span class="absolute top-4 right-4 bg-neon-purple text-white text-sm px-3 py-1 rounded-full">Most Popular</span>
+            <h3 class="text-3xl font-semibold text-neon-purple mb-4">Neon Tier</h3>
+            <p class="text-2xl text-white mb-6">$10/mo</p>
+            <ul class="text-gray-200 space-y-3 mb-6">
+                <li>10GB Storage</li>
+                <li>2GB RAM</li>
+                <li>2 vCPUs</li>
+                <li>Premium IDE Features</li>
+                <li>Enhanced ICP Canister Capacity</li>
+            </ul>
+            <a href="{{ path('hosting_select_plan', {'plan': 'neon', 'domain': domain}) }}" class="block bg-neon-purple text-white px-6 py-3 rounded-lg text-center font-semibold hover:bg-purple-700 transition">Select Plan</a>
+        </div>
+        <!-- Overclock Tier -->
+        <div class="tier-card bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border border-gray-700">
+            <h3 class="text-3xl font-semibold text-neon-purple mb-4">Overclock Tier</h3>
+            <p class="text-2xl text-white mb-6">$50/mo</p>
+            <ul class="text-gray-200 space-y-3 mb-6">
+                <li>50GB Storage</li>
+                <li>8GB RAM</li>
+                <li>4 vCPUs</li>
+                <li>Full DeFi Toolkit</li>
+                <li>Priority Support</li>
+                <li>Unlimited Canisters & Cycles</li>
+            </ul>
+            <a href="{{ path('hosting_select_plan', {'plan': 'overclock', 'domain': domain}) }}" class="block bg-neon-purple text-white px-6 py-3 rounded-lg text-center font-semibold hover:bg-purple-700 transition">Select Plan</a>
+        </div>
+    </div>
+</section>

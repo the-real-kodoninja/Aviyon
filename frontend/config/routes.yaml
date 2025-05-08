@@ -57,3 +57,6 @@ global_feed:
 
 explore:
     resource: '../config/routes/explore.yaml'
+
+hosting:
+    resource: '../config/routes/hosting.yaml'

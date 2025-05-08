@@ -15,12 +15,14 @@ class DomainController extends AbstractController
         return $this->render('pages/domain.html.twig');
     }
 
-    #[Route('/register-domain', name: 'register_domain', methods: ['POST'])]
+    #[Route('/domain/register', name: 'register_domain', methods: ['POST'])]
     public function registerDomain(Request $request): Response
     {
         $subdomain = $request->request->get('subdomain');
+        $domainExtension = $request->request->get('domain_extension', '.aviyon.com');
+        $fullDomain = $subdomain . $domainExtension;
         // Add logic to register the subdomain (e.g., save to database, check availability)
-        $this->addFlash('success', "Subdomain '$subdomain.aviyon.com' registered successfully!");
-        return $this->redirectToRoute('domain');
+        $this->addFlash('success', "Subdomain '$fullDomain' registered successfully!");
+        return $this->redirectToRoute('hosting', ['domain' => $fullDomain]);
     }
 }

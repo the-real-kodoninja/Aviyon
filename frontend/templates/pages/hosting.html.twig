@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon - Hosting Plans{% endblock %}
+
+{% block body %}
+<div class="bg-gray-900 text-white min-h-screen font-inter">
+    <!-- Hero Section -->
+    {% include 'components/hosting/hero.html.twig' with {'domain': domain} %}
+
+    <!-- Hosting Tiers Section -->
+    {% include 'components/hosting/tiers.html.twig' with {'domain': domain} %}
+
+    <!-- Comparison Section -->
+    {% include 'components/hosting/comparison.html.twig' %}
+
+    <!-- CTA Section -->
+    {% include 'components/hosting/cta.html.twig' %}
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .animate-fade-in {
+        animation: fadeIn 1s ease-in;
+    }
+    .animate-slide-up {
+        animation: slideUp 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+{% endblock %}
