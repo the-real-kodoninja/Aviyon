@@ -14,3 +14,13 @@ services:
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # Manually register the StringExtension for Twig (optional, can be removed if not needed)
+    twig.extension.string:
+        class: Twig\Extra\String\StringExtension
+        tags:
+            - { name: twig.extension }
+
+    # Register the custom AppExtension
+    App\Twig\AppExtension:
+        tags: ['twig.extension']

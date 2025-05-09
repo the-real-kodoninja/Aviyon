@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}{{ bulletin.title }} - Kodoverse Bulletin{% endblock %}
+
+{% block body %}
+<div class="bg-gray-900 text-white min-h-screen font-inter">
+    <section class="py-20 px-6 md:px-12">
+        <div class="container mx-auto max-w-4xl">
+            <h1 class="text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-6">{{ bulletin.title }}</h1>
+            <div class="flex items-center mb-6">
+                <img src="{{ asset('images/users/' ~ bulletin.author|lower|replace({' ': '_'}) ~ '.jpg')|default(asset('images/users/default.jpg')) }}" alt="{{ bulletin.author }} Photo" class="w-12 h-12 rounded-full mr-4 border-2 border-indigo-500">
+                <div>
+                    <p class="text-sm font-semibold text-indigo-500">{{ bulletin.author }}</p>
+                    <p class="text-xs text-gray-400">{{ bulletin.date }} | {{ bulletin.location }}</p>
+                    <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">{{ bulletin.category|capitalize }}</span>
+                </div>
+            </div>
+            {% if bulletin.media == 'image' %}
+                <img src="{{ bulletin.mediaSrc }}" alt="Bulletin Media" class="w-full h-96 object-cover rounded-lg mb-6">
+            {% elseif bulletin.media == 'video' %}
+                <video controls class="w-full h-96 object-cover rounded-lg mb-6">
+                    <source src="{{ bulletin.mediaSrc }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% endif %}
+            <p class="text-gray-200 text-lg leading-relaxed mb-6">{{ bulletin.content }}</p>
+            <div class="flex justify-between items-center text-gray-400">
+                <div class="flex gap-4">
+                    <button class="flex items-center gap-2 hover:text-purple-500 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>{{ bulletin.likes }}</span>
+                    </button>
+                    <button class="flex items-center gap-2 hover:text-indigo-500 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+                        </svg>
+                        <span>{{ bulletin.comments }}</span>
+                    </button>
+                </div>
+                <a href="{{ path('bulletinboard') }}" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">Back to Bulletin Board</a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

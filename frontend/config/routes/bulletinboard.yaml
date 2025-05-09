@@ -6,3 +6,10 @@ api_bulletin_create:
    path: /api/bulletin/create
    controller: App\Controller\Bulletinboard\BulletinboardController::createBulletin
    methods: [POST]
+
+bulletin_post:
+   path: /bulletinboard/post/{id}
+   controller: App\Controller\Bulletinboard\BulletinboardController::show
+   methods: [GET]
+   requirements:
+      id: '\d+'

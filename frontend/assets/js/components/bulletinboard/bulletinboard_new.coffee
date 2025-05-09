@@ -2,27 +2,33 @@
 
 BulletinBoardNew =
   init: ->
-    @editor = document.getElementById('bulletin-content')
+    @editor = document.getElementById('bulletin-editor')
+    @titleInput = document.getElementById('bulletin-title')
     @wordCount = document.getElementById('bulletin-word-count')
     @statusBar = document.getElementById('bulletin-status')
-    @closeBtn = document.getElementById('close-bulletin-popup')
     @submitBtn = document.getElementById('submit-bulletin')
-    @initialized = false
-
-    # Fetch CSRF token
+    @previewBtn = document.getElementById('preview-bulletin')
+    @previewContent = document.getElementById('preview-content')
+    @previewSection = document.getElementById('bulletin-preview')
+    @aiSuggestBtn = document.getElementById('ai-suggest-content')
     @csrfToken = document.querySelector('meta[name="csrf-token-bulletin"]')?.content or ''
 
     @setupEvents()
 
   setupEvents: ->
     @editor.addEventListener 'input', @updateWordCount.bind(@)
-    document.getElementById('add-bulletin-image').addEventListener 'click', @addImage.bind(@)
-    document.getElementById('add-bulletin-video').addEventListener 'click', @addVideo.bind(@)
+    document.getElementById('add-image-bulletin').addEventListener 'click', @addImage.bind(@)
+    document.getElementById('add-video-bulletin').addEventListener 'click', @addVideo.bind(@)
     @submitBtn.addEventListener 'click', @submitBulletin.bind(@)
-    @closeBtn.addEventListener 'click', @close.bind(@)
+    @previewBtn.addEventListener 'click', @previewBulletin.bind(@)
+    @aiSuggestBtn.addEventListener 'click', @suggestContent.bind(@)
+    document.getElementById('bulletin-modal').addEventListener 'click', (e) =>
+      if e.target == document.getElementById('bulletin-modal')
+        document.getElementById('bulletin-modal').classList.add('hidden')
 
   updateWordCount: ->
-    words = @editor.value.trim().split(/\s+/).length
+    text = @editor.innerText.trim()
+    words = if text then text.split(/\s+/).length else 0
     @wordCount.textContent = "#{words} words"
 
   addImage: ->
@@ -37,7 +43,7 @@ BulletinBoardNew =
           img = document.createElement('img')
           img.src = event.target.result
           img.className = 'w-full h-auto my-2 rounded-lg'
-          @editor.insertAdjacentElement('beforebegin', img)
+          @editor.appendChild(img)
         reader.readAsDataURL(file)
     fileInput.click()
 
@@ -57,22 +63,37 @@ BulletinBoardNew =
           source.src = event.target.result
           source.type = file.type
           video.appendChild(source)
-          @editor.insertAdjacentElement('beforebegin', video)
+          @editor.appendChild(video)
         reader.readAsDataURL(file)
     fileInput.click()
 
+  previewBulletin: ->
+    @previewContent.innerHTML = @editor.innerHTML
+    @previewSection.classList.remove('hidden')
+
+  suggestContent: ->
+    fetch '/api/ai/assist',
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-CSRF-Token': @csrfToken
+      body: JSON.stringify({ prompt: 'Suggest content for a bulletin post about ' + @titleInput.value })
+    .then (response) => response.json()
+    .then (data) =>
+      @editor.innerHTML = data.suggestion
+
   submitBulletin: ->
-    content = @editor.value
-    if content.trim()
+    title = @titleInput.value
+    content = @editor.innerHTML
+    if title.trim() and content.trim()
       @statusBar.style.width = '0%'
       @statusBar.classList.remove('hidden')
 
-      # Prepare the data for the API call
       data =
+        title: title
         content: content
         _token: @csrfToken
 
-      # Make the API call
       fetch '/api/bulletin/create',
         method: 'POST'
         headers:
@@ -94,7 +115,6 @@ BulletinBoardNew =
         @statusBar.style.backgroundColor = '#e53e3e'
         setTimeout (=> @statusBar.classList.add('hidden')), 3000
 
-      # Simulate progress bar animation
       animate = =>
         width = parseInt(@statusBar.style.width) or 0
         if width < 100
@@ -103,7 +123,7 @@ BulletinBoardNew =
           setTimeout(animate, 200)
       animate()
     else
-      alert 'Please enter some content!'
+      alert 'Please enter a title and content!'
 
   handleBulletinSuccess: (json) ->
     @statusBar.textContent = 'Your bulletin has been posted!'
@@ -116,27 +136,10 @@ BulletinBoardNew =
           count--
           if count < 0
             clearInterval(interval)
-            @close()
+            document.getElementById('bulletin-modal').classList.add('hidden')
         , 1000
       countdown()
     , 1000
-
-  open: ->
-    popup = document.getElementById('bulletin-popup')
-    popup.classList.remove('hidden')
-    popup.style.position = 'fixed'
-    popup.style.top = '50%'
-    popup.style.left = '50%'
-    popup.style.transform = 'translate(-50%, -50%)'
-    @init() if not @initialized
-    @initialized = true
-
-  close: ->
-    document.getElementById('bulletin-popup').classList.add('hidden')
-    @editor.value = ''
-    @wordCount.textContent = '0 words'
-    @statusBar.classList.add('hidden')
-    @statusBar.style.width = '0%'
 
 document.addEventListener 'DOMContentLoaded', ->
   BulletinBoardNew.init()

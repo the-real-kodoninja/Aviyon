@@ -1,4 +1,5 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals: {}
     paths:
         '%kernel.project_dir%/Aviyon-Notes/templates': Aviyon-Notes
