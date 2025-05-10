@@ -1,0 +1,163 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Aviyon Articles Hub{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/articles.css') }}">
+    <style>
+        .animate-fade-in { animation: fadeIn 1s ease-in; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        .gradient-purple { background: linear-gradient(45deg, #6B46C1, #805AD5); }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="bg-gray-900 text-white min-h-screen font-inter">
+    <!-- Hero Section -->
+    <section class="relative py-24 bg-gradient-to-br from-gray-900 to-gray-800 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-6 border-b-4 border-purple-500/20 pb-4">Aviyon Articles Hub</h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">Dive into the pulse of innovation with Aviyon’s premier blog, curated by nimbus.ai and powered by a global ecosystem.</p>
+            <div class="flex justify-center gap-4">
+                <input id="article-search" type="text" placeholder="Search articles by title, author, or date..." class="p-4 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-purple-500 w-full md:w-1/2">
+                <button id="search-btn" class="bg-purple-600 text-white px-6 py-4 rounded-lg hover:bg-purple-700 transition">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sidebar Filters -->
+    <section class="py-12 px-6 md:px-12">
+        <div class="container mx-auto flex flex-col md:flex-row gap-8">
+            <!-- Filter Sidebar -->
+            <aside class="w-full md:w-1/4 bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold text-purple-500 mb-6">Filters</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-gray-300">Date</label>
+                        <select id="date-filter" class="w-full p-2 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-purple-500">
+                            <option value="">All Years</option>
+                            {% for year in ['2025', '2024', '2023'] %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-gray-300">Category</label>
+                        <select id="category-filter" class="w-full p-2 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-purple-500">
+                            <option value="">All Categories</option>
+                            <option value="technology">Technology</option>
+                            <option value="events">Events</option>
+                            <option value="insights">Insights</option>
+                            <option value="kodoverse">Kodoverse</option>
+                        </select>
+                    </div>
+                    <button id="apply-filters" class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">Apply</button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="w-full md:w-3/4">
+                <!-- Pinned Article -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-purple-500 mb-4">Pinned Article</h4>
+                    {% include 'components/articles/article_post.html.twig' with {
+                        id: 1,
+                        title: 'Aviyon’s $10B AI Revolution',
+                        author: 'Nimbus AI',
+                        date: '2025-05-09',
+                        content: 'Unveiling the future of AI with a $10B investment in nimbus.ai...',
+                        media: 'image',
+                        mediaSrc: asset('build/images/ai-revolution.jpg')|default('https://via.placeholder.com/640x360'),
+                        likes: 1200,
+                        comments: 89,
+                        category: 'technology',
+                        location: 'Global',
+                        ai_generated: true
+                    } %}
+                </div>
+
+                <!-- Highlighted Article -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-purple-500 mb-4">Highlighted</h4>
+                    {% include 'components/articles/article_post.html.twig' with {
+                        id: 2,
+                        title: 'Kodoverse VR Expansion',
+                        author: 'Velocity Team',
+                        date: '2025-05-08',
+                        content: 'Expanding the virtual world with cutting-edge VR technology...',
+                        media: 'video',
+                        mediaSrc: asset('build/videos/vr-expansion.mp4')|default('https://via.placeholder.com/640x360'),
+                        likes: 850,
+                        comments: 45,
+                        category: 'kodoverse',
+                        location: 'Virtual'
+                    } %}
+                </div>
+
+                <!-- Top Read Articles -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-purple-500 mb-4">Top Reads</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {% include 'components/articles/article_post.html.twig' with {
+                            id: 3,
+                            title: 'AI Ethics in 2025',
+                            author: 'Nimbus AI',
+                            date: '2025-05-07',
+                            content: 'Exploring the ethical boundaries of AI development...',
+                            media: 'image',
+                            mediaSrc: asset('build/images/ai-ethics.jpg')|default('https://via.placeholder.com/640x360'),
+                            likes: 600,
+                            comments: 30,
+                            category: 'insights',
+                            location: 'Global',
+                            ai_generated: true
+                        } %}
+                        {% include 'components/articles/article_post.html.twig' with {
+                            id: 4,
+                            title: 'KodoCity Urban Milestone',
+                            author: 'KodoCity Team',
+                            date: '2025-05-06',
+                            content: 'A $5B urban project reaches a new phase...',
+                            media: 'image',
+                            mediaSrc: asset('build/images/kodocity-milestone.jpg')|default('https://via.placeholder.com/640x360'),
+                            likes: 450,
+                            comments: 20,
+                            category: 'events',
+                            location: 'KodoCity'
+                        } %}
+                    </div>
+                </div>
+
+                <!-- Category Sections -->
+                <div>
+                    <h4 class="text-xl font-semibold text-purple-500 mb-4">By Category</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {% for category, articles in categories %}
+                            <div>
+                                <h5 class="text-lg font-medium text-indigo-500 mb-2">{{ category|capitalize }}</h5>
+                                {% for article in articles|slice(0, 2) %}
+                                    {% include 'components/articles/article_post.html.twig' with article %}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-br from-purple-600 to-indigo-600 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 animate-slide-up">Stay Informed</h2>
+        <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto">Subscribe to Aviyon’s newsletter for exclusive articles and updates.</p>
+        <a href="{{ path('signup') }}" class="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-200 transition transform hover:scale-105">Subscribe Now</a>
+    </section>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/components/articles/article.js') }}"></script>
+{% endblock %}

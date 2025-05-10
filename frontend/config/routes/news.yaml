@@ -9,3 +9,14 @@ news_article_new:
 news_article_edit:
    path: /news/articles/{id}/edit
    controller: App\Controller\News\ArticlesController::edit
+
+articles:
+   path: /articles
+   controller: App\Controller\News\ArticlesController::index
+
+articles_redirect:
+   path: /{path}
+   controller: App\Controller\News\ArticlesController::index
+   requirements: {'path': 'article|articles'}
+   defaults: {'path': null}
+   methods: [GET]

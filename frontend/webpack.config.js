@@ -37,6 +37,8 @@ Encore
     .addEntry('domain/main', './assets/js/components/domain/main.coffee')
     // Hosting entry
     .addEntry('hosting/main', './assets/js/components/hosting/main.coffee')
+    // Articles entry
+    .addEntry('article', './assets/js/components/articles/article.coffee')
 
     // CSS entry
     .addStyleEntry('base', './assets/css/base.css')

@@ -1,0 +1,128 @@
+<div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-purple-500/20 animate-fade-in group relative" data-tilt data-tilt-max="10">
+    <!-- AI Indicator (Top Right Triangle) -->
+    {% if ai_generated|default(false) %}
+        <div class="absolute top-2 right-2 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-[var(--gradient-purple)] border-r-[20px] border-r-transparent rotate-45 transform">
+            <span class="absolute top-[-16px] right-[-8px] text-xs text-white font-semibold transform -rotate-45">AI</span>
+        </div>
+    {% endif %}
+
+    <!-- Header -->
+    <div class="flex items-center mb-6">
+        <img src="{{ asset('images/users/' ~ author|lower|replace({' ': '_'}) ~ '.jpg')|default(asset('images/users/default.jpg')) }}" alt="{{ author }} Photo" class="w-12 h-12 rounded-full mr-4 border-2 border-indigo-500">
+        <div>
+            <p class="text-sm font-semibold text-indigo-500">{{ author }}</p>
+            <p class="text-xs text-gray-400">{{ date }} | {{ location }}</p>
+            <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">{{ category|capitalize }}</span>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4 group-hover:from-purple-600 group-hover:to-indigo-700 transition-colors">{{ title }}</h3>
+    <p class="text-gray-300 mb-6">{{ content|custom_truncate(200, true, '...') }}</p>
+    {% if media == 'image' %}
+        <img src="{{ mediaSrc }}" alt="Article Media" class="w-full h-64 object-cover rounded-lg mb-6 transform hover:scale-105 transition">
+    {% elseif media == 'video' %}
+        <video controls class="w-full h-64 object-cover rounded-lg mb-6">
+            <source src="{{ mediaSrc }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+
+    <!-- Interaction Icons -->
+    <div class="flex justify-between items-center text-gray-400 mb-6">
+        <div class="flex gap-4">
+            <button class="like-btn flex items-center gap-2 hover:text-purple-500 transition" data-tooltip="Like">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                <span class="like-count">{{ likes }}</span>
+            </button>
+            <button class="comment-btn flex items-center gap-2 hover:text-indigo-500 transition" data-tooltip="View Comments" data-comment-id="{{ id }}">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+                </svg>
+                <span class="comment-count">{{ comments }}</span>
+            </button>
+        </div>
+        <div class="flex gap-2">
+            <button class="save-btn hover:text-purple-400 transition" data-tooltip="Save">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-7-7h2v2H5v-2zm12 2h-2v-2h2v2z"/>
+                </svg>
+            </button>
+            <button class="list-btn hover:text-indigo-500 transition" data-tooltip="Add to List">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v2h-2V5zm0 4h2v2h-2V9zm0 4h2v2h-2v-2zm4-8h2v2h-2V5zm0 4h2v2h-2V9zm0 4h2v2h-2v-2z"/>
+                </svg>
+            </button>
+            <button class="share-btn hover:text-purple-400 transition" data-tooltip="Share">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Explore Link -->
+    <a href="{{ path('news_article', {'date': date, 'title': title|replace({' ': '_'})|lower}) }}" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg text-center hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105">Read More</a>
+
+    <!-- Comment Section (Hidden by Default) -->
+    <div class="comment-section hidden mt-6 bg-gray-700 p-4 rounded-lg" data-comment-id="{{ id }}">
+        <h4 class="text-lg font-semibold text-indigo-500 mb-4">Comments ({{ comments }})</h4>
+
+        <!-- Comment Form -->
+        <div class="mb-4">
+            <div class="flex items-center mb-2">
+                <img src="{{ app.user ? asset('images/users/' ~ app.user.username|lower|replace({' ': '_'}) ~ '.jpg')|default(asset('images/users/default.jpg')) : asset('images/users/default.jpg') }}" alt="Your Photo" class="w-8 h-8 rounded-full mr-2">
+                <input type="text" class="comment-input w-full p-2 bg-gray-600 text-gray-100 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="Add a comment...">
+            </div>
+            <div class="flex gap-2">
+                <button class="add-emoji-btn p-2 hover:text-purple-500" data-tooltip="Add Emoji">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2V7zm0 4h2v6h-2v-6zm4 3.5c0 .83-.67 1.5-1.5 1.5h-1c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5h1c.83 0 1.5.67 1.5 1.5zm-4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                </button>
+                <button class="add-gif-btn p-2 hover:text-indigo-500" data-tooltip="Add GIF">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm2 2h2v2H8v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
+                    </svg>
+                </button>
+                <button class="add-photo-btn p-2 hover:text-purple-500" data-tooltip="Add Photo">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V5h14v14zm-5-7l-3 3-2-2-3 3V7h8v5z"/>
+                    </svg>
+                </button>
+                <button class="submit-comment-btn bg-purple-600 text-white px-3 py-1 rounded-lg hover:bg-purple-700 transition">Post</button>
+            </div>
+        </div>
+
+        <!-- Sample Comments -->
+        <div class="comment-thread space-y-4 max-h-60 overflow-y-auto">
+            <div class="bg-gray-600 p-3 rounded-lg">
+                <div class="flex items-center mb-2">
+                    <img src="{{ asset('images/users/alice.jpg') }}" alt="Alice" class="w-8 h-8 rounded-full mr-2">
+                    <div>
+                        <p class="text-sm text-indigo-500">Alice</p>
+                        <p class="text-xs text-gray-400">2h ago</p>
+                    </div>
+                </div>
+                <p class="text-gray-200">Amazing article! 😄</p>
+                <button class="reply-btn text-purple-500 mt-2 hover:underline" data-tooltip="Reply">Reply</button>
+                <div class="reply-section hidden mt-2">
+                    <input type="text" class="reply-input w-full p-2 bg-gray-500 text-gray-100 rounded-lg mt-1" placeholder="Reply...">
+                    <button class="submit-reply-btn bg-indigo-600 text-white px-2 py-1 rounded-lg mt-1 hover:bg-indigo-700">Post Reply</button>
+                </div>
+            </div>
+            <div class="bg-gray-600 p-3 rounded-lg ml-8">
+                <div class="flex items-center mb-2">
+                    <img src="{{ asset('images/users/bob.jpg') }}" alt="Bob" class="w-8 h-8 rounded-full mr-2">
+                    <div>
+                        <p class="text-sm text-indigo-500">Bob</p>
+                        <p class="text-xs text-gray-400">1h ago</p>
+                    </div>
+                </div>
+                <p class="text-gray-200">Great insights! 📸</p>
+            </div>
+        </div>
+    </div>
+</div>
