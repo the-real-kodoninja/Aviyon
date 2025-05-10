@@ -1,168 +1,40 @@
-<!-- Sectors Section -->
-<section class="py-16 max-w-[1280px] mx-auto px-4">
-    <h2 class="text-3xl font-semibold text-gray-100 mb-6 text-center">We're a DeFi Cloud Computing Platform That Invests & Owns Market Share in the Following Sectors</h2>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm1-4c-1.1 0-2-.9-2-2V7h4v4c0 1.1-.9 2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Software Development</h3>
-                <p class="text-gray-300">Building cutting-edge software solutions for global industries.</p>
+<!-- Sectors -->
+    <section class="py-20 px-6 md:px-12 bg-gray-800 z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-12 animate-slide-up">Our Sectors</h2>
+            <p class="text-lg text-gray-200 mb-10 text-center max-w-3xl mx-auto animate-fade-in">We're a DeFi Cloud Computing Platform That Invests & Owns Market Share in the Following Sectors</p>
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                {% set sectors = [
+                    { 'title': 'Software Development', 'description': 'Building cutting-edge software solutions for global industries.' },
+                    { 'title': 'Social Media', 'description': 'Innovating social platforms with DeFi integration.' },
+                    { 'title': 'DeFi (Web3-5)', 'description': 'Leading the future of decentralized finance.' },
+                    { 'title': 'AI', 'description': 'Harnessing AI for smarter solutions.' },
+                    { 'title': 'Crypto', 'description': 'Driving innovation in cryptocurrency markets.' },
+                    { 'title': 'NFT', 'description': 'Pioneering the NFT ecosystem.' },
+                    { 'title': 'Cloud Crypto Mining', 'description': 'Scalable cloud-based crypto mining solutions.' },
+                    { 'title': 'Crypto Mining', 'description': 'Efficient and sustainable crypto mining operations.' },
+                    { 'title': 'Business', 'description': 'Strategic business solutions for global markets.' },
+                    { 'title': 'Investing', 'description': 'Expert investment strategies with Stoploss & Whale.' },
+                    { 'title': 'Trading', 'description': 'Advanced trading platforms for all markets.' },
+                    { 'title': 'Gaming', 'description': 'Immersive gaming experiences with blockchain integration.' },
+                    { 'title': 'Electronics', 'description': 'Innovative electronics for the modern world.' },
+                    { 'title': 'Film', 'description': 'Producing blockbuster films with cutting-edge tech.' },
+                    { 'title': 'Fitness', 'description': 'Tech-driven fitness solutions for all.' },
+                    { 'title': 'Protocol & Biohacking', 'description': 'Advancing human potential through science.' },
+                    { 'title': 'Fashion & Talent', 'description': 'Redefining fashion and talent discovery.' },
+                    { 'title': 'Business & STEM', 'description': 'Investing in the future of business and STEM innovation.' }
+                ] %}
+                {% for sector in sectors %}
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30 flex items-start">
+                        <svg class="w-8 h-8 text-indigo-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
+                        </svg>
+                        <div>
+                            <h3 class="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-2">{{ sector.title }}</h3>
+                            <p class="text-gray-200">{{ sector.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18 2H6v2h12V2zm0 4H6v2h12V6zm-6 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Social Media</h3>
-                <p class="text-gray-300">Innovating social platforms with DeFi integration.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-9h2v6h-2zm0-4h2v2h-2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">DeFi (Web3-5)</h3>
-                <p class="text-gray-300">Leading the future of decentralized finance.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2a10 10 0 00-8 4h4v4H2v4h6v4H4a10 10 0 1016 0h-4v-4h6v-4h-6V6h4a10 10 0 00-8-4zm-2 12H8v-4h2v4zm6 0h-2v-4h2v4z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">AI</h3>
-                <p class="text-gray-300">Harnessing AI for smarter solutions.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Crypto</h3>
-                <p class="text-gray-300">Driving innovation in cryptocurrency markets.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm1-4c-1.1 0-2-.9-2-2V7h4v4c0 1.1-.9 2-2-2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">NFT</h3>
-                <p class="text-gray-300">Pioneering the NFT ecosystem.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Cloud Crypto Mining</h3>
-                <p class="text-gray-300">Scalable cloud-based crypto mining solutions.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Crypto Mining</h3>
-                <p class="text-gray-300">Efficient and sustainable crypto mining operations.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Business</h3>
-                <p class="text-gray-300">Strategic business solutions for global markets.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Investing</h3>
-                <p class="text-gray-300">Expert investment strategies with Stoploss & Whale.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Trading</h3>
-                <p class="text-gray-300">Advanced trading platforms for all markets.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Gaming</h3>
-                <p class="text-gray-300">Immersive gaming experiences with blockchain integration.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Electronics</h3>
-                <p class="text-gray-300">Innovative electronics for the modern world.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Film</h3>
-                <p class="text-gray-300">Producing blockbuster films with cutting-edge tech.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Fitness</h3>
-                <p class="text-gray-300">Tech-driven fitness solutions for all.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Protocol & Biohacking</h3>
-                <p class="text-gray-300">Advancing human potential through science.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Fashion & Talent</h3>
-                <p class="text-gray-300">Redefining fashion and talent discovery.</p>
-            </div>
-        </div>
-        <div class="bg-[var(--dark-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition flex items-start">
-            <svg class="w-8 h-8 text-[var(--purple-accent)] mr-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9-2-2 2z"/>
-            </svg>
-            <div>
-                <h3 class="text-xl text-[var(--purple-accent)] mb-2">Business & STEM</h3>
-                <p class="text-gray-300">Investing in the future of business and STEM innovation.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>

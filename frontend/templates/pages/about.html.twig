@@ -2,47 +2,71 @@
 
 {% block title %}About Aviyon & Nimbus.ai - The Pinnacle of the Kodoverse{% endblock %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/base.css') }}">
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
+<div class="relative bg-gray-900 text-white min-h-screen font-inter overflow-hidden">
+    <!-- Subtle Neural Network Background -->
+    <div class="absolute inset-0 z-0 opacity-10">
+        <canvas id="neural-canvas" class="w-full h-full"></canvas>
+    </div>
+
     <!-- Hero Section -->
-    <section class="py-20 text-center bg-[url('{{ asset('images/cyberpunk-bg.jpg') }}')] bg-cover bg-center rounded-lg shadow-2xl">
-        <div class="max-w-[1280px] mx-auto px-4">
-            <h1 class="text-5xl font-extrabold text-purple-400 mb-6 drop-shadow-lg">About Aviyon & Nimbus.ai</h1>
-            <p class="text-2xl text-cyan-300 mb-8 max-w-4xl mx-auto">A Billion-Dollar Odyssey: From Cloud Innovation to Cyberpunk AI Mastery in the Kodoverse</p>
+    <section class="relative py-20 flex items-center justify-center z-10">
+        <div class="relative z-20 text-center px-6">
+            <h1 class="text-5xl md:text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-6 border-b-2 border-indigo-500/20 pb-2 animate-slide-up">About Aviyon & Nimbus.ai</h1>
+            <p class="text-2xl md:text-2xl text-gray-200 mb-8 animate-fade-in">A Billion-Dollar Odyssey: From Cloud Innovation to Cyberpunk AI Mastery in the Kodoverse</p>
             <div class="flex justify-center space-x-6">
-                <a href="{{ path('marketplace_about') }}" class="bg-purple-600 text-white px-8 py-4 rounded-full hover:bg-purple-700 transition-shadow shadow-lg hover:shadow-xl">Explore Our NFT Vault</a>
-                <a href="{{ path('app_root') }}" class="bg-cyan-600 text-white px-8 py-4 rounded-full hover:bg-cyan-700 transition-shadow shadow-lg hover:shadow-xl">Access Elite Workspaces</a>
+                <a href="{{ path('marketplace_about') }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105 animate-fade-in">Explore Our NFT Vault</a>
+                <a href="{{ path('app_root') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition transform hover:scale-105 animate-fade-in">Access Elite Workspaces</a>
             </div>
         </div>
     </section>
 
     <!-- Vision Statement -->
-    <section class="py-16 bg-gray-900">
-        <div class="max-w-[1280px] mx-auto px-4">
-            <h2 class="text-4xl font-semibold text-purple-400 mb-6">Our Vision</h2>
-            <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">Aviyon and Nimbus.ai are redefining the technological frontier, merging cutting-edge cloud solutions with Artificial Superintelligence (ASI) to empower a global community of innovators. Anchored in the Kodoverse, we strive for a future where human potential is limitless, supported by decentralized ecosystems and unparalleled AI-driven insights.</p>
+    <section class="py-20 px-6 md:px-12 bg-gray-800 z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-12 animate-slide-up">Our Vision</h2>
+            <p class="text-lg text-gray-200 leading-relaxed max-w-3xl mx-auto text-center animate-fade-in">Aviyon and Nimbus.ai are redefining the technological frontier, merging cutting-edge cloud solutions with Artificial Superintelligence (ASI) to empower a global community of innovators. Anchored in the Kodoverse, we strive for a future where human potential is limitless, supported by decentralized ecosystems and unparalleled AI-driven insights.</p>
         </div>
     </section>
 
     <!-- Timeline -->
-    <section class="py-16 bg-gray-800">
-        <div class="max-w-[1280px] mx-auto px-4">
-            <div class="bg-gray-800 p-10 rounded-xl shadow-xl">
-                <h2 class="text-4xl font-bold text-cyan-300 mb-8">Milestones of Mastery</h2>
-                <div class="relative pl-12">
-                    <div class="absolute left-4 top-0 bottom-0 w-2 bg-gradient-to-b from-purple-400 to-cyan-400"></div>
-                    <div class="space-y-10">
-                        <div class="relative">
-                            <span class="absolute left-[-20px] top-2 w-6 h-6 bg-purple-400 rounded-full border-4 border-gray-800 flex items-center justify-center text-white text-xs">2023</span>
-                            <p class="text-gray-300 text-lg ml-2">Founded Aviyon as a revolutionary cloud platform, setting a new standard for developer empowerment.</p>
-                        </div>
-                        <div class="relative">
-                            <span class="absolute left-[-20px] top-2 w-6 h-6 bg-purple-400 rounded-full border-4 border-gray-800 flex items-center justify-center text-white text-xs">2024</span>
-                            <p class="text-gray-300 text-lg ml-2">Unveiled Nimbus.ai and a cyberpunk UI, igniting a global AI and coding renaissance.</p>
-                        </div>
-                        <div class="relative">
-                            <span class="absolute left-[-20px] top-2 w-6 h-6 bg-purple-400 rounded-full border-4 border-gray-800 flex items-center justify-center text-white text-xs">2025</span>
-                            <p class="text-gray-300 text-lg ml-2">Expanded the Kodoverse with DeFi, NFTs, and a metaverse hub, cementing our billion-dollar legacy.</p>
-                        </div>
+    <section class="py-20 px-6 md:px-12 bg-gray-900 z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-12 animate-slide-up">Milestones of Mastery</h2>
+            <div class="relative pl-12">
+                <div class="absolute left-4 top-0 bottom-0 w-2 bg-gradient-to-b from-purple-500 to-indigo-600"></div>
+                <div class="space-y-10">
+                    <div class="relative animate-fade-in">
+                        <span class="absolute left-[-20px] top-2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-gray-900 flex items-center justify-center text-white text-xs">2023</span>
+                        <p class="text-gray-200 text-lg ml-2">Founded Aviyon as a revolutionary cloud platform, setting a new standard for developer empowerment.</p>
+                    </div>
+                    <div class="relative animate-fade-in">
+                        <span class="absolute left-[-20px] top-2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-gray-900 flex items-center justify-center text-white text-xs">2024</span>
+                        <p class="text-gray-200 text-lg ml-2">Unveiled Nimbus.ai and a cyberpunk UI, igniting a global AI and coding renaissance.</p>
+                    </div>
+                    <div class="relative animate-fade-in">
+                        <span class="absolute left-[-20px] top-2 w-6 h-6 bg-indigo-600 rounded-full border-4 border-gray-900 flex items-center justify-center text-white text-xs">2025</span>
+                        <p class="text-gray-200 text-lg ml-2">Expanded the Kodoverse with DeFi, NFTs, and a metaverse hub, cementing our billion-dollar legacy.</p>
                     </div>
                 </div>
             </div>
@@ -50,41 +74,222 @@
     </section>
 
     <!-- Modular Content Blocks -->
-    {% include 'components/about/vision.html.twig' %}
-    {% include 'components/about/nimbus-ai.html.twig' %}
-    {% include 'components/about/kodoverse.html.twig' %}
-    {% include 'components/about/tech-stack.html.twig' %}
-    {% include 'components/about/web3-defi.html.twig' %}
-    {% include 'components/about/hosting-plans.html.twig' %}
-    {% include 'components/about/crypto-nfts.html.twig' %}
-    {% include 'components/about/future-vision.html.twig' %}
-    {% include 'components/about/team.html.twig' %}
-    {% include 'components/about/acknowledgements.html.twig' %}
+    <section class="py-20 px-6 md:px-12 bg-gray-800 z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-12 animate-slide-up">Our Mission & Innovations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Vision -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Our Vision</h3>
+                    <p class="text-gray-200">Aviyon and Nimbus.ai are forging a billion-dollar legacy, merging Artificial Superintelligence (ASI) with decentralized innovation to redefine the Kodoverse.</p>
+                    <div class="mt-4">
+                        <a href="{{ path('marketplace_about') }}" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105">Join the Revolution</a>
+                    </div>
+                </div>
+                <!-- Nimbus.ai -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Nimbus.ai: The ASI Frontier</h3>
+                    <p class="text-gray-200">Nimbus.ai harnesses quantum-inspired algorithms to empower global innovators, led by PhD pioneers from MIT and Stanford.</p>
+                    <div class="mt-4">
+                        <a href="{{ path('nimbus_ai_about') }}" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition transform hover:scale-105">Discover Nimbus.ai</a>
+                    </div>
+                </div>
+                <!-- Kodoverse -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">The Kodoverse</h3>
+                    <p class="text-gray-200">A decentralized metaverse hub blending NFT marketplaces, DeFi protocols, and virtual realms for a billion-dollar creative economy.</p>
+                    <div class="mt-4">
+                        <a href="{{ path('kodoverse_about') }}" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105">Enter the Kodoverse</a>
+                    </div>
+                </div>
+                <!-- Tech Stack -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Our Tech Stack</h3>
+                    <p class="text-gray-200">Powered by Symfony, Tailwind CSS, Web3-5, and quantum frameworks, engineered for a scalable, billion-dollar infrastructure.</p>
+                </div>
+                <!-- Web3 & DeFi -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Web3 & DeFi</h3>
+                    <p class="text-gray-200">Our Web3-5 and DeFi platforms manage $10B+ in assets, offering seamless NFT trading and decentralized finance.</p>
+                    <div class="mt-4">
+                        <a href="{{ path('defi_about') }}" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition transform hover:scale-105">Explore DeFi</a>
+                    </div>
+                </div>
+                <!-- Crypto & NFTs -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Crypto & NFTs</h3>
+                    <p class="text-gray-200">Our NFT marketplace features rare Kodoverse artifacts, driving a billion-dollar digital economy.</p>
+                    <div class="mt-4">
+                        <a href="{{ path('marketplace_about') }}" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition transform hover:scale-105">Visit Marketplace</a>
+                    </div>
+                </div>
+                <!-- Hosting Plans -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Hosting Plans</h3>
+                    <p class="text-gray-200">Cloud hosting with 99.999% uptime for enterprises and startups, backed by ex-AWS architects.</p>
+                    <div class="mt-4 space-y-2">
+                        <p class="text-gray-400 text-sm">Basic: $99/mo - 100GB</p>
+                        <p class="text-gray-400 text-sm">Pro: $299/mo - 1TB</p>
+                        <p class="text-gray-400 text-sm">Enterprise: Custom</p>
+                    </div>
+                </div>
+                <!-- Future Vision -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 animate-fade-in border border-purple-500/30">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">Future Vision</h3>
+                    <p class="text-gray-200">A roadmap to metaverse cities, ASI-driven governance, and a $50B valuation by 2030.</p>
+                    <div class="mt-4">
+                        <a href="{{ path('roadmap_about') }}" class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105">View Roadmap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 px-6 md:px-12 bg-gray-900 z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-12 animate-slide-up">Our Visionary Leaders</h2>
+            <p class="text-gray-200 mb-10 text-center max-w-3xl mx-auto animate-fade-in">Meet the elite minds behind Aviyon and Nimbus.ai, driving a billion-dollar empire with unparalleled expertise and passion.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border border-purple-500/30 animate-fade-in team-member" data-member="sahar-hassounat">
+                    <img src="{{ asset('build/images/sahar-hassounat.jpg') }}" alt="Sahar Hassounat" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-600">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 text-center mb-2">Sahar Hassounat</h3>
+                    <p class="text-gray-200 text-center font-semibold">Chief Executive Officer</p>
+                    <p class="text-gray-300 text-center">A trailblazing AI strategist with a PhD from MIT, Sahar leads with a vision to achieve ASI, reshaping global innovation.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2 border border-purple-500/30 animate-fade-in team-member" data-member="emmanuel-moore">
+                    <img src="{{ asset('build/images/emmanuel-moore.jpg') }}" alt="Emmanuel Moore" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-600">
+                    <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 text-center mb-2">Emmanuel Moore</h3>
+                    <p class="text-gray-200 text-center font-semibold">Founder & Chief Technology Officer</p>
+                    <p class="text-gray-300 text-center">A coding prodigy and entrepreneur, Emmanuel architected the Kodoverse, blending cyberpunk aesthetics with scalable tech.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section class="py-20 px-6 md:px-12 bg-gray-800 z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-12 animate-slide-up">Acknowledgements</h2>
+            <p class="text-lg text-gray-200 leading-relaxed max-w-3xl mx-auto text-center animate-fade-in">We extend gratitude to our global community, strategic partners like xAI, and our elite team for propelling Aviyon to a billion-dollar future.</p>
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="{{ path('partners_about') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition transform hover:scale-105 animate-fade-in">Meet Our Partners</a>
+                <a href="{{ path('team_about') }}" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105 animate-fade-in">Meet Our Team</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
-    <section class="py-16 text-center bg-gray-900">
-        <div class="max-w-[1280px] mx-auto px-4">
-            <h2 class="text-4xl font-semibold text-purple-400 mb-6">Join Our Revolution</h2>
-            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Partner with us to shape the future. Contact our leadership for collaboration opportunities.</p>
-            <a href="mailto:partnerships@aviyon.com" class="bg-cyan-600 text-white px-8 py-4 rounded-full hover:bg-cyan-700 transition-shadow shadow-lg hover:shadow-xl">Reach Out</a>
+    <section class="py-20 px-6 bg-gray-900 text-center z-10">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-6 animate-slide-up">Join Our Revolution</h2>
+            <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto animate-fade-in">Partner with us to shape the future. Contact our leadership for collaboration opportunities.</p>
+            <a href="mailto:partnerships@aviyon.com" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105 animate-fade-in">Reach Out</a>
         </div>
     </section>
 
     <!-- Profile Card Modal -->
-    <div id="profile-card-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
-        <div class="bg-gray-900 p-8 rounded-xl shadow-2xl w-11/12 md:w-2/3 lg:w-1/2 max-h-[90vh] overflow-y-auto">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+    <div id="profile-card-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-h-[90vh] overflow-y-auto border border-purple-500/30">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-200 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <div id="profile-card-content" class="text-gray-300">
+            <div id="profile-card-content" class="text-gray-200">
                 <!-- Populated dynamically via JavaScript -->
             </div>
         </div>
     </div>
+
+    <!-- Live Chat Widget -->
+    <div id="live-chat" class="fixed bottom-4 right-4 z-40">
+        <button id="chat-toggle" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:from-purple-700 hover:to-indigo-700 transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </button>
+        <div id="chat-window" class="hidden bg-gray-800 rounded-xl shadow-lg w-80 h-96 flex flex-col mt-2">
+            <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-t-xl flex justify-between items-center">
+                <h3 class="text-lg font-semibold">Kodoverse Support</h3>
+                <button id="chat-close" class="text-white hover:text-gray-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto"></div>
+            <div class="p-4 border-t border-gray-700">
+                <input id="chat-input" type="text" placeholder="Type your message..." class="w-full p-2 bg-gray-700 rounded-lg text-gray-200 focus:ring-2 focus:ring-indigo-600">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inline JavaScript for Neural Network Background -->
+<script>
+    // Subtle Neural Network Background
+    const canvas = document.getElementById('neural-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    const particleCount = 40;
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 1.5 + 0.5;
+            this.speedX = Math.random() * 0.3 - 0.15;
+            this.speedY = Math.random() * 0.3 - 0.15;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.fillStyle = 'rgba(139, 92, 246, 0.8)';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+
+    function animateNeural() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+            particles.forEach(p2 => {
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 60) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 - distance / 400})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            });
+        });
+        requestAnimationFrame(animateNeural);
+    }
+    animateNeural();
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     <script src="{{ asset('build/pages/about/team.js') }}" defer></script>
 {% endblock %}

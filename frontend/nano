@@ -1,0 +1,97 @@
+<div class="bg-gray-800 p-8 rounded-xl shadow-xl max-w-3xl w-full border border-purple-500/30">
+    <h2 class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-6 animate-slide-up">Create a Kodoverse Event</h2>
+    <form id="event-form" class="space-y-6">
+        <div class="mb-4">
+            <input type="text" id="event-title" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500 placeholder-gray-400" placeholder="Enter event title..." required>
+        </div>
+        <div class="mb-4">
+            <textarea id="event-description" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500 placeholder-gray-400" placeholder="Enter event description..." rows="4"></textarea>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+                <label class="text-gray-200 mb-2 block">Start Date & Time</label>
+                <input type="datetime-local" id="event-start" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500" required>
+            </div>
+            <div>
+                <label class="text-gray-200 mb-2 block">End Date & Time</label>
+                <input type="datetime-local" id="event-end" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500" required>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="text-gray-200 mb-2 block">Category</label>
+            <select id="event-category" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500">
+                <option value="meetups">Meetups</option>
+                <option value="webinars">Webinars</option>
+                <option value="workshops">Workshops</option>
+                <option value="live">Live Events</option>
+                <option value="kodoverse">Kodoverse Events</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="text-gray-200 mb-2 block">Location</label>
+            <select id="event-location" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500">
+                <option value="KodoCity">KodoCity, TX</option>
+                <option value="Global">Global</option>
+                <option value="Virtual">Virtual Kodoverse</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="flex items-center gap-2 text-gray-200">
+                <input type="checkbox" id="event-recurring" class="form-checkbox h-5 w-5 text-purple-500">
+                <span>Recurring Event</span>
+            </label>
+            <div id="recurring-options" class="hidden mt-4">
+                <select id="recurring-frequency" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500 mb-4">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <label class="text-gray-200 mb-2 block">End Recurrence</label>
+                <input type="date" id="recurring-end" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500">
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="flex items-center gap-2 text-gray-200">
+                <input type="checkbox" id="event-reminder" class="form-checkbox h-5 w-5 text-purple-500">
+                <span>Set Reminder</span>
+            </label>
+            <div id="reminder-options" class="hidden mt-4">
+                <select id="reminder-time" class="w-full p-4 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500">
+                    <option value="5">5 minutes before</option>
+                    <option value="15">15 minutes before</option>
+                    <option value="30">30 minutes before</option>
+                    <option value="60">1 hour before</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex justify-between items-center mb-6">
+            <span id="event-char-count" class="text-gray-400 animate-fade-in">0 characters</span>
+            <div class="flex gap-4">
+                <button type="button" id="add-image-event" class="p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm0 16H5V5h14v14zm-5-7l-3 3-2-2-3 3V7h8v5z"/>
+                    </svg>
+                </button>
+                <button type="button" id="add-video-event" class="p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2zm-9 13l-5-4 5-4v8zm2-2V7h5v10h-5z"/>
+                    </svg>
+                </button>
+                <button type="button" id="ai-suggest-event" class="p-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="flex justify-end gap-4">
+            <button type="button" id="preview-event" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition transform hover:scale-105">Preview</button>
+            <button type="submit" id="submit-event" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition transform hover:scale-105">Create Event</button>
+        </div>
+    </form>
+    <div id="event-status" class="hidden w-full bg-purple-600 text-white text-center py-3 rounded-lg mt-4 animate-fade-in" style="transition: opacity 0.5s ease;"></div>
+    <div id="event-preview" class="hidden mt-6 p-6 bg-gray-900 rounded-xl border border-purple-500/20">
+        <h3 class="text-xl font-semibold text-indigo-500 mb-4 animate-slide-up">Preview</h3>
+        <div id="preview-content" class="text-gray-200"></div>
+    </div>
+</div>

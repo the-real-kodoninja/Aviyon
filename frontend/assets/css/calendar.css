@@ -1,0 +1,47 @@
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #4b5563;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.calendar-day {
+    background: #1f2937;
+    padding: 0.5rem;
+    min-height: 100px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.calendar-day:hover {
+    background: #374151;
+}
+
+.event-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.section-separator {
+    margin: 4rem 0;
+    border-top: 1px solid #4b5563;
+}

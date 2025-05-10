@@ -60,3 +60,6 @@ explore:
 
 hosting:
     resource: '../config/routes/hosting.yaml'
+
+calendar:
+    resource: '../config/routes/calendar.yaml'

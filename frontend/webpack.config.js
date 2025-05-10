@@ -24,6 +24,9 @@ Encore
     .addEntry('messages_chat', './assets/js/dashboard/components/messages/chat.js.coffee')
     .addEntry('messages_conversation', './assets/js/dashboard/components/messages/conversation.js.coffee')
     .addEntry('messages_extras', './assets/js/dashboard/components/messages/extras.js.coffee')
+    // Calendar components
+    .addEntry('calendar', './assets/js/components/calendar/calendar.coffee')
+    .addEntry('event_new', './assets/js/components/calendar/event_new.coffee')
     // Careers components
     .addEntry('careers/job_filters', './assets/js/components/careers/job_filters.coffee')
     .addEntry('careers/ai_recommendations', './assets/js/components/careers/ai_recommendations.coffee')

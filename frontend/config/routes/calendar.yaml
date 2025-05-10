@@ -1,0 +1,7 @@
+calendar:
+    path: /calendar
+    controller: App\Controller\CalendarController::index
+
+calendar_event:
+    path: /calendar/event/{id}
+    controller: App\Controller\CalendarController::event
